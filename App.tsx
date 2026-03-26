@@ -319,7 +319,20 @@ function App() {
         return <React.Suspense fallback={<LoadingFallback />}><BlogSearchPage navigate={navigateToBlog} /></React.Suspense>;
       
       default:
-        return <div>Page Not Found</div>;
+        return (
+          <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark p-6">
+            <div className="text-center">
+              <h1 className="text-4xl font-serif font-bold mb-4">404</h1>
+              <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-8">Page not found.</p>
+              <button
+                onClick={() => handleNavigation('HOME')}
+                className="bg-brand-green-600 hover:bg-brand-green-500 text-white font-bold py-2 px-6 rounded transition-colors"
+              >
+                Return to Dashboard
+              </button>
+            </div>
+          </div>
+        );
     }
   };
 
