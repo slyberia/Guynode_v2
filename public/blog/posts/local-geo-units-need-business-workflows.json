@@ -1,0 +1,47 @@
+{
+  "id": "post-1",
+  "slug": "local-geo-units-need-business-workflows",
+  "title": "Local Geo Units in Guyana Need Business Workflows",
+  "excerpt": "Neighborhood Democratic Councils (NDCs) struggle with revenue collection. Integrating simple GIS workflows can revolutionize how local properties are managed and taxed.",
+  "content": "\n      <p>Neighborhood Democratic Councils (NDCs) in Guyana form the backbone of local governance, yet many operate with outdated, paper-based workflows. One of the most critical challenges they face is <strong>revenue collection</strong>—specifically, the ability to accurately track property rates and taxes.</p>\n      \n      <h2>The Spatial Gap in Revenue Collection</h2>\n      <p>Without a spatial view of their jurisdiction, NDCs rely on lists that may not reflect new construction, subdivisions, or changes in land use. A GIS-based approach allows councils to:</p>\n      <ul>\n        <li>Visualize tax compliance on a map.</li>\n        <li>Identify unregistered properties.</li>\n        <li>Plan collection routes efficiently.</li>\n      </ul>\n      \n      <p>At GuyNode, we are piloting a \"Business Workflow\" layer for NDCs that integrates property boundaries with simplified status codes (Paid, Arrears, Unregistered).</p>\n    ",
+  "publishedDate": "2024-11-15T09:00:00Z",
+  "author": {
+    "id": "auth-1",
+    "name": "GuyNode Team",
+    "role": "Editorial Staff",
+    "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+  },
+  "categories": [
+    {
+      "id": "cat-1",
+      "slug": "gis-strategy",
+      "name": "GIS Strategy",
+      "description": "Strategic implementation of spatial technologies."
+    },
+    {
+      "id": "cat-2",
+      "slug": "local-government",
+      "name": "Local Government",
+      "description": "Administrative and municipal data insights."
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag-1",
+      "slug": "ndc",
+      "name": "NDC"
+    },
+    {
+      "id": "tag-2",
+      "slug": "revenue-collection",
+      "name": "Revenue Collection"
+    }
+  ],
+  "heroImageUrl": "/images/blog-placeholder.jpg",
+  "readTimeMinutes": 5,
+  "isFeatured": true,
+  "isPublished": true,
+  "relatedDatasets": [
+    "d1"
+  ]
+}

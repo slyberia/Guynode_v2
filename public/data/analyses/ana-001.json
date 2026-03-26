@@ -1,0 +1,58 @@
+{
+  "id": "ana-001",
+  "slug": "agricultural-output-q3-2024",
+  "title": "Q3 2024 Agricultural Output Report",
+  "summary": "Analysis of rice and sugar production yields across Regions 3, 5, and 6 combining satellite imagery and ground reports.",
+  "tags": [
+    "Agriculture",
+    "Economy",
+    "Yields"
+  ],
+  "datasetsUsed": [
+    "d1"
+  ],
+  "publishedAt": "2024-10-15T09:00:00Z",
+  "author": "Min. of Agriculture",
+  "level": "policy-brief",
+  "status": "published",
+  "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+  "mapConfig": {
+    "datasetIds": [
+      "d1"
+    ],
+    "zoom": 8,
+    "center": {
+      "lat": 6.5,
+      "lng": -58
+    }
+  },
+  "charts": [
+    {
+      "id": "chart-1",
+      "title": "Rice Yield by Region",
+      "type": "bar",
+      "description": "Comparison of metric tonnes per hectare across major cultivation zones.",
+      "note": "Data source: Guyana Rice Development Board"
+    }
+  ],
+  "sections": [
+    {
+      "id": "s1",
+      "type": "intro",
+      "title": "Executive Summary",
+      "body": "The third quarter of 2024 saw a 15% increase in rice production compared to the same period in 2023. Favorable weather conditions and improved drainage infrastructure in Region 5 contributed significantly to this growth."
+    },
+    {
+      "id": "s2",
+      "type": "results",
+      "title": "Regional Performance",
+      "body": "Region 5 (Mahaica-Berbice) outperformed all other regions, accounting for 42% of total national output. Region 3 maintained steady production levels despite localized flooding events in July."
+    },
+    {
+      "id": "s3",
+      "type": "conclusion",
+      "title": "Outlook",
+      "body": "Projections for Q4 remain positive, assuming the secondary rainy season follows historical averages. Continued investment in farm-to-market access roads is critical for sustaining this momentum."
+    }
+  ]
+}

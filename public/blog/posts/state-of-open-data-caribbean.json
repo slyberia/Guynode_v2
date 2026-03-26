@@ -1,0 +1,33 @@
+{
+  "id": "post-5",
+  "slug": "state-of-open-data-caribbean",
+  "title": "The State of Open Data in the Caribbean: A 2023 Retrospective",
+  "excerpt": "A comparative analysis of Spatial Data Infrastructure (SDI) implementations across CARICOM nations.",
+  "content": "\n      <p>Open data is a policy choice. In 2023, we conducted a review of national SDIs across the Caribbean Community (CARICOM). The results show a fragmented landscape but one full of potential.</p>\n      \n      <p>While Jamaica and Trinidad & Tobago have established mature portals, nations like Guyana and Suriname are rapidly catching up through grassroots initiatives like GuyNode.</p>\n      \n      <p>This report analyzes accessibility, licensing, and update frequency across 12 member states.</p>\n    ",
+  "publishedDate": "2023-12-12T10:15:00Z",
+  "author": {
+    "id": "auth-1",
+    "name": "GuyNode Team",
+    "role": "Editorial Staff",
+    "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+  },
+  "categories": [
+    {
+      "id": "cat-5",
+      "slug": "open-data",
+      "name": "Open Data",
+      "description": "Research and advocacy for open spatial data."
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag-5",
+      "slug": "caricom",
+      "name": "CARICOM"
+    }
+  ],
+  "heroImageUrl": "/images/blog-placeholder.jpg",
+  "readTimeMinutes": 10,
+  "isFeatured": false,
+  "isPublished": true
+}

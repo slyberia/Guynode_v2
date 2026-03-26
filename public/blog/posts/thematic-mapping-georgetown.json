@@ -1,0 +1,33 @@
+{
+  "id": "post-3",
+  "slug": "thematic-mapping-georgetown",
+  "title": "Thematic Mapping: Georgetown, Guyana as a Top-Class Caribbean City",
+  "excerpt": "Visualizing urban density, zoning, and infrastructure to understand Georgetown’s potential and challenges as a regional capital.",
+  "content": "\n      <p>Georgetown is transforming. With the oil and gas boom, the city is experiencing rapid verticalization and sprawl. Thematic mapping provides the lens through which we can understand this change.</p>\n      \n      <h3>Key Indicators Mapped</h3>\n      <ul>\n        <li><strong>Commercial Density:</strong> The shift of business districts southwards.</li>\n        <li><strong>Traffic Flow:</strong> Choke points in the classic grid layout.</li>\n        <li><strong>Green Spaces:</strong> The preservation of canals and gardens.</li>\n      </ul>\n      \n      <p>By comparing Georgetown’s spatial metrics with other Caribbean capitals like Kingston and Port of Spain, we can better advocate for zoning policies that preserve its character while enabling growth.</p>\n    ",
+  "publishedDate": "2024-09-05T11:00:00Z",
+  "author": {
+    "id": "auth-1",
+    "name": "GuyNode Team",
+    "role": "Editorial Staff",
+    "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+  },
+  "categories": [
+    {
+      "id": "cat-3",
+      "slug": "urban-planning",
+      "name": "Urban Planning",
+      "description": "City planning, zoning, and infrastructure."
+    },
+    {
+      "id": "cat-1",
+      "slug": "gis-strategy",
+      "name": "GIS Strategy",
+      "description": "Strategic implementation of spatial technologies."
+    }
+  ],
+  "tags": [],
+  "heroImageUrl": "/images/blog-placeholder.jpg",
+  "readTimeMinutes": 6,
+  "isFeatured": true,
+  "isPublished": true
+}

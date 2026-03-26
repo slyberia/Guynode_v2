@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://basemaps.cartocdn.com https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://c.basemaps.cartocdn.com https://d.basemaps.cartocdn.com https://storage.googleapis.com; connect-src 'self' https://storage.googleapis.com; frame-src 'self' https://www.arcgis.com https://experience.arcgis.com https://storymaps.arcgis.com;">
+    <title>Guynode | Home</title>
+
+    <!-- Static Open Graph Tags -->
+    <meta property="og:title" content="Guynode | Spatial Data Archive" />
+    <meta property="og:description" content="Guynode is a static, zero-tracking spatial data archive. No accounts, no data harvesting, no AI runtime." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://guynode.com/og/guynode-og.png" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Guynode | Spatial Data Archive" />
+    <meta name="twitter:description" content="Guynode is a static, zero-tracking spatial data archive. No accounts, no data harvesting, no AI runtime." />
+    <meta name="twitter:image" content="https://guynode.com/og/guynode-og.png" />
+
+    <script src="https://cdn.tailwindcss.com/3.4.17" integrity="sha384-igm5BeiBt36UU4gqwWS7imYmelpTsZlQ45FZf+XBn9MuJbn4nQr7yx1yFydocC/K" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet GIS Dependencies -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              // =================================================================
+              // GUYNODE THEME TOKENS (Protocol v3)
+              // Use these tokens for all UI elements. Do NOT use raw hex values.
+              // =================================================================
+              gn: {
+                surface: {
+                  DEFAULT: '#FBF8F2', // cream-100
+                  dark: '#050608',    // nightBg-900
+                },
+                'surface-muted': {
+                  DEFAULT: '#F5EFE3', // cream-200
+                  dark: '#111317',    // nightBg-800
+                },
+                elevated: {
+                  DEFAULT: '#FFFFFF',
+                  dark: '#1e1e1e',    // bloom-card
+                },
+                border: {
+                  DEFAULT: '#E9E1D3', // cream-300
+                  dark: '#1F2933',    // nightBorder-600
+                },
+                foreground: {
+                  DEFAULT: '#1C1C1C', // ink-900
+                  dark: '#F9FAFB',    // nightInk-50
+                },
+                'foreground-muted': {
+                  DEFAULT: '#6C6C6C', // ink-500
+                  dark: '#9CA3AF',    // nightInk-500
+                },
+                accent: {
+                  DEFAULT: '#2F5F53', // brand-green-600
+                  dark: '#1D6B4C',    // nightAccent-green
+                }
+              },
+              // Legacy Semantic Palette (Ref for tokens above)
+              brand: {
+                green: {
+                  600: '#2F5F53',
+                  500: '#3D7D69',
+                  300: '#A9C7B7',
+                },
+                gold: {
+                  600: '#B8860B',
+                  500: '#D7A645',
+                }
+              },
+              cream: {
+                100: '#FBF8F2',
+                200: '#F5EFE3',
+                300: '#E9E1D3',
+              },
+              ink: {
+                900: '#1C1C1C',
+                700: '#4A4A4A',
+                500: '#6C6C6C',
+              },
+              nightBg: {
+                900: '#050608',
+                800: '#111317',
+              },
+              nightBorder: {
+                600: '#1F2933',
+              },
+              nightInk: {
+                50: '#F9FAFB',
+                300: '#D1D5DB',
+                500: '#9CA3AF',
+              },
+              nightAccent: {
+                gold: '#F9D648',
+                green: '#1D6B4C',
+                blue: '#0D2133',
+              },
+              // Legacy Compatibility
+              guyana: {
+                green: '#009739',
+                gold: '#FFC20E',
+                red: '#CE1126',
+                black: '#000000',
+                white: '#FFFFFF',
+              },
+              bloom: {
+                dark: '#121212',
+                card: '#1e1e1e',
+                accent: '#3b82f6',
+                text: '#e5e7eb',
+                muted: '#9ca3af'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom Scrollbar for professional feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6C6C6C; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4A4A4A; 
+      }
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Leaflet Overrides for Theme */
+      .leaflet-container {
+        background: #121212;
+      }
+      /* Dark Mode Leaflet overrides handled in CSS/JS logic */
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

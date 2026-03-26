@@ -1,0 +1,43 @@
+{
+  "id": "ana-003",
+  "slug": "forest-carbon-stock-2023",
+  "title": "Forest Carbon Stock Changes 2023",
+  "summary": "Updated calculations for Guyana's carbon credit monitoring based on 2023 deforestation rates.",
+  "tags": [
+    "Environment",
+    "LCDS",
+    "Forestry"
+  ],
+  "datasetsUsed": [
+    "d4"
+  ],
+  "publishedAt": "2024-08-10T11:00:00Z",
+  "author": "Guyana Forestry Commission",
+  "level": "overview",
+  "status": "published",
+  "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+  "mapConfig": {
+    "datasetIds": [
+      "d4"
+    ],
+    "zoom": 7,
+    "center": {
+      "lat": 5,
+      "lng": -59
+    }
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "type": "intro",
+      "title": "LCDS Context",
+      "body": "Guyana's Low Carbon Development Strategy (LCDS) 2030 relies on accurate monitoring of forest carbon stocks. This report summarizes the annual verification results."
+    },
+    {
+      "id": "s2",
+      "type": "results",
+      "title": "Deforestation Rate",
+      "body": "The national deforestation rate remains below 0.05%, one of the lowest globally. Mining remains the primary driver, though rehabilitation efforts have increased."
+    }
+  ]
+}

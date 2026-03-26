@@ -1,0 +1,47 @@
+
+# Deployment & SEO Configuration
+
+## Deployment Model
+- Type: Single Page Application (SPA)
+- Hosting: Static (Netlify/Vercel/S3)
+- Routing: Client-side via Query Parameters (Hash/History API fallback handled by App.tsx)
+
+## Environment Variables
+- NODE_ENV: Set to 'production' for builds to disable debug logging and hide error stack traces.
+- API_KEY: Required for AI features (Gemini).
+
+## Robots.txt Configuration
+User-agent: *
+Allow: /
+Disallow: /?view=ADMIN_ACCESS
+Disallow: /?view=INTERNAL_LOG
+Sitemap: https://guynode.com/sitemap.xml
+
+## Sitemap.xml Structure (Static Generation Recommended)
+- https://guynode.com/
+- https://guynode.com/?view=CATALOG
+- https://guynode.com/?view=MAP
+- https://guynode.com/?view=BLOG_INDEX
+- https://guynode.com/?view=ABOUT
+- https://guynode.com/?view=DOCS
+
+## Build Notes
+- External GeoJSON URLs in the catalog may require CORS proxies if they do not send Access-Control-Allow-Origin headers.
+- The Admin Console is hidden behind a client-side soft gate. Do not rely on it for securing sensitive data in production.
+
+## Migration & Redirect Strategy
+(Recommended for replacing legacy sites)
+
+If deploying this SPA to replace an existing multi-page site, configure your host (Netlify _redirects or Vercel config) to map old paths to new query params.
+
+Examples:
+- Old: /data/mining-concessions.html
+  New: /?view=CATALOG&category=Economy
+
+- Old: /maps/viewer.php
+  New: /?view=MAP
+
+- Old: /about-us
+  New: /?view=ABOUT
+
+Ensure "Beta" messaging is active in App.tsx during the transition period.

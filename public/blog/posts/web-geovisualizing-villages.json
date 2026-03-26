@@ -1,0 +1,43 @@
+{
+  "id": "post-2",
+  "slug": "web-geovisualizing-villages",
+  "title": "Web Geovisualizing the Role of Villages within Guyana’s Local Government System",
+  "excerpt": "Using web maps to tell the historical and administrative story of Guyana’s village movement and their modern-day boundaries.",
+  "content": "\n      <p>The village movement in Guyana is not just historical; it is structural. Villages remain a primary unit of social and administrative organization. However, the exact boundaries of these historic units are often contested or unclear in digital formats.</p>\n      \n      <p><strong>Geovisualization</strong> offers a bridge between the historical record and modern administration. By digitizing survey maps from the 19th and 20th centuries, we can reconstruct the spatial logic of the village movement.</p>\n      \n      <p>This project aims to overlay historic village grants with modern NDC boundaries, highlighting discrepancies and continuity in local governance.</p>\n    ",
+  "publishedDate": "2024-10-22T14:30:00Z",
+  "author": {
+    "id": "auth-1",
+    "name": "GuyNode Team",
+    "role": "Editorial Staff",
+    "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+  },
+  "categories": [
+    {
+      "id": "cat-1",
+      "slug": "gis-strategy",
+      "name": "GIS Strategy",
+      "description": "Strategic implementation of spatial technologies."
+    },
+    {
+      "id": "cat-2",
+      "slug": "local-government",
+      "name": "Local Government",
+      "description": "Administrative and municipal data insights."
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag-3",
+      "slug": "history",
+      "name": "History"
+    }
+  ],
+  "heroImageUrl": "/images/blog-placeholder.jpg",
+  "readTimeMinutes": 7,
+  "isFeatured": false,
+  "isPublished": true,
+  "relatedDatasets": [
+    "d1",
+    "d2"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ana-002",
+  "slug": "urban-expansion-georgetown",
+  "title": "Urban Expansion in Greater Georgetown",
+  "summary": "Spatial analysis of urban sprawl and infrastructure demands in the capital city over the last decade.",
+  "tags": [
+    "Urban Planning",
+    "Infrastructure",
+    "Housing"
+  ],
+  "datasetsUsed": [
+    "d2"
+  ],
+  "publishedAt": "2024-09-22T14:30:00Z",
+  "author": "Central Housing & Planning",
+  "level": "technical",
+  "status": "published",
+  "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+  "mapConfig": {
+    "datasetIds": [
+      "d2"
+    ],
+    "zoom": 12,
+    "center": {
+      "lat": 6.8,
+      "lng": -58.15
+    }
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "type": "intro",
+      "title": "Introduction",
+      "body": "Rapid urbanization in Georgetown has led to significant changes in land use patterns. This report utilizes satellite imagery and census data to quantify the rate of expansion into peri-urban areas."
+    },
+    {
+      "id": "s2",
+      "type": "methods",
+      "title": "Methodology",
+      "body": "We employed supervised classification on Sentinel-2 imagery from 2014 to 2024 to detect built-up areas. This was cross-referenced with CH&PA housing scheme allocations."
+    },
+    {
+      "id": "s3",
+      "type": "results",
+      "title": "Key Findings",
+      "body": "The East Bank corridor has seen a 200% increase in residential footprint. Infrastructure lag is evident in water distribution networks for new schemes."
+    }
+  ]
+}

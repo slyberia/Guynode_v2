@@ -1,0 +1,33 @@
+{
+  "id": "post-4",
+  "slug": "guynode-api-v2-release-notes",
+  "title": "GuyNode API v2 Release Notes: Streaming Layers and Vector Tiles",
+  "excerpt": "Technical overview of the new API features, including improved latency for vector tile delivery and new authentication scopes.",
+  "content": "\n      <p>We are excited to announce the release of <strong>GuyNode API v2</strong>. This update focuses on performance and interoperability for developers building external GIS applications.</p>\n      \n      <h3>Major Changes</h3>\n      <ul>\n        <li><strong>Vector Tiles Support:</strong> Endpoints now support MVT (Mapbox Vector Tiles) for administrative boundaries, reducing payload size by 70%.</li>\n        <li><strong>Streaming GeoJSON:</strong> Large datasets can now be streamed, improving initial load time for web maps.</li>\n        <li><strong>Scoped Keys:</strong> API keys can now be restricted to specific referrers or IP ranges.</li>\n      </ul>\n      \n      <p>Check the Developer Documentation for the full migration guide.</p>\n    ",
+  "publishedDate": "2025-01-10T08:00:00Z",
+  "author": {
+    "id": "auth-1",
+    "name": "GuyNode Team",
+    "role": "Editorial Staff",
+    "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+  },
+  "categories": [
+    {
+      "id": "cat-4",
+      "slug": "engineering",
+      "name": "Engineering",
+      "description": "Technical updates and API release notes."
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag-4",
+      "slug": "api",
+      "name": "API"
+    }
+  ],
+  "heroImageUrl": "/images/blog-placeholder.jpg",
+  "readTimeMinutes": 3,
+  "isFeatured": false,
+  "isPublished": true
+}

@@ -1,0 +1,11 @@
+# Guynode AI Discovery Manifest
+
+**Guynode** is a Static Spatial Data Portal for Guyana.
+
+## Architecture & Data Access
+- **Registry Structure:** The primary dataset registry is located at `/data/datasets.json`. This JSON file contains metadata for all available spatial datasets, including titles, descriptions, categories, formats, file sizes, and asset URLs.
+- **Asset Storage:** All spatial data assets (e.g., GeoJSON, Shapefiles, PDFs, CSVs) and images are hosted publicly via Google Cloud Storage URLs provided in the dataset registry under the `assets` and `imageUrl` fields.
+- **No API Limitations:** Since Guynode is purely a static frontend, data ingestion for AI agents relies on simply fetching the statically hosted JSON files.
+
+## Purpose
+This application provides students, researchers, public agencies, and businesses with access to reliable maps and spatial data for Guyana. AI agents and LLMs are encouraged to parse the `/data/datasets.json` registry to efficiently discover, summarize, and assist users with downloading specific Guyanese datasets.
