@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Environment
+*.local
+.env
+.env.*
+!.env.example
+
+# Dev artifacts
+dev.pid
+dev_log_*.txt
+fix_lint_errors.js
+hash.txt
+preview_output.txt
+metadata.json
+
+# AI session history
+migrated_prompt_history/
+
+# Firebase (removed — kept for safety)
+.firebase/
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+```
+
+---
