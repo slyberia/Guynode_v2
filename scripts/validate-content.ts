@@ -10,22 +10,18 @@ const DatasetSchema = z.object({
   lastUpdated: z.string(),
   format: z.string(),
   size: z.string(),
+  fileSize: z.string().optional(),
   source: z.string(),
   geojsonUrl: z.string().optional(),
   imageUrl: z.string(),
-  ingestionStatus: z.string().optional(),
+  ingestionStatus: z.enum(['PENDING', 'PROCESSING', 'COMPLETED', 'FAILED']),
   tags: z.array(z.string()).optional(),
-  isViewable: z.boolean().optional(),
   validationReport: z.object({
-    status: z.string(),
-    issues: z.array(z.string()).optional(),
-    timestamp: z.string().optional(),
-    warnings: z.array(z.string()).optional(),
-    errors: z.array(z.string()).optional(),
-    lastChecked: z.string().optional()
-  }).optional(),
+    status: z.enum(['VERIFIED', 'WARNING', 'ERROR', 'UNCHECKED']),
+    issues: z.array(z.string()),
+    timestamp: z.string()
+  }),
   style: z.unknown().optional(),
-  defaultStyles: z.unknown().optional(),
   temporalLayers: z.array(z.unknown()).optional(),
   assets: z.array(z.object({
     id: z.string(),
