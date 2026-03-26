@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "id": "ana-001",
+    "slug": "agricultural-output-q3-2024",
+    "title": "Q3 2024 Agricultural Output Report",
+    "summary": "Analysis of rice and sugar production yields across Regions 3, 5, and 6 combining satellite imagery and ground reports.",
+    "tags": [
+      "Agriculture",
+      "Economy",
+      "Yields"
+    ],
+    "datasetsUsed": [
+      "d1"
+    ],
+    "publishedAt": "2024-10-15T09:00:00Z",
+    "author": "Min. of Agriculture",
+    "level": "policy-brief",
+    "status": "published",
+    "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+    "mapConfig": {
+      "datasetIds": [
+        "d1"
+      ],
+      "zoom": 8,
+      "center": {
+        "lat": 6.5,
+        "lng": -58
+      }
+    },
+    "charts": [
+      {
+        "id": "chart-1",
+        "title": "Rice Yield by Region",
+        "type": "bar",
+        "description": "Comparison of metric tonnes per hectare across major cultivation zones.",
+        "note": "Data source: Guyana Rice Development Board"
+      }
+    ],
+    "sections": [
+      {
+        "id": "s1",
+        "type": "intro",
+        "title": "Executive Summary",
+        "body": "The third quarter of 2024 saw a 15% increase in rice production compared to the same period in 2023. Favorable weather conditions and improved drainage infrastructure in Region 5 contributed significantly to this growth."
+      },
+      {
+        "id": "s2",
+        "type": "results",
+        "title": "Regional Performance",
+        "body": "Region 5 (Mahaica-Berbice) outperformed all other regions, accounting for 42% of total national output. Region 3 maintained steady production levels despite localized flooding events in July."
+      },
+      {
+        "id": "s3",
+        "type": "conclusion",
+        "title": "Outlook",
+        "body": "Projections for Q4 remain positive, assuming the secondary rainy season follows historical averages. Continued investment in farm-to-market access roads is critical for sustaining this momentum."
+      }
+    ]
+  },
+  {
+    "id": "ana-002",
+    "slug": "urban-expansion-georgetown",
+    "title": "Urban Expansion in Greater Georgetown",
+    "summary": "Spatial analysis of urban sprawl and infrastructure demands in the capital city over the last decade.",
+    "tags": [
+      "Urban Planning",
+      "Infrastructure",
+      "Housing"
+    ],
+    "datasetsUsed": [
+      "d2"
+    ],
+    "publishedAt": "2024-09-22T14:30:00Z",
+    "author": "Central Housing & Planning",
+    "level": "technical",
+    "status": "published",
+    "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+    "mapConfig": {
+      "datasetIds": [
+        "d2"
+      ],
+      "zoom": 12,
+      "center": {
+        "lat": 6.8,
+        "lng": -58.15
+      }
+    },
+    "sections": [
+      {
+        "id": "s1",
+        "type": "intro",
+        "title": "Introduction",
+        "body": "Rapid urbanization in Georgetown has led to significant changes in land use patterns. This report utilizes satellite imagery and census data to quantify the rate of expansion into peri-urban areas."
+      },
+      {
+        "id": "s2",
+        "type": "methods",
+        "title": "Methodology",
+        "body": "We employed supervised classification on Sentinel-2 imagery from 2014 to 2024 to detect built-up areas. This was cross-referenced with CH&PA housing scheme allocations."
+      },
+      {
+        "id": "s3",
+        "type": "results",
+        "title": "Key Findings",
+        "body": "The East Bank corridor has seen a 200% increase in residential footprint. Infrastructure lag is evident in water distribution networks for new schemes."
+      }
+    ]
+  },
+  {
+    "id": "ana-003",
+    "slug": "forest-carbon-stock-2023",
+    "title": "Forest Carbon Stock Changes 2023",
+    "summary": "Updated calculations for Guyana's carbon credit monitoring based on 2023 deforestation rates.",
+    "tags": [
+      "Environment",
+      "LCDS",
+      "Forestry"
+    ],
+    "datasetsUsed": [
+      "d4"
+    ],
+    "publishedAt": "2024-08-10T11:00:00Z",
+    "author": "Guyana Forestry Commission",
+    "level": "overview",
+    "status": "published",
+    "heroImageUrl": "/images/feature-analysis-placeholder.jpg",
+    "mapConfig": {
+      "datasetIds": [
+        "d4"
+      ],
+      "zoom": 7,
+      "center": {
+        "lat": 5,
+        "lng": -59
+      }
+    },
+    "sections": [
+      {
+        "id": "s1",
+        "type": "intro",
+        "title": "LCDS Context",
+        "body": "Guyana's Low Carbon Development Strategy (LCDS) 2030 relies on accurate monitoring of forest carbon stocks. This report summarizes the annual verification results."
+      },
+      {
+        "id": "s2",
+        "type": "results",
+        "title": "Deforestation Rate",
+        "body": "The national deforestation rate remains below 0.05%, one of the lowest globally. Mining remains the primary driver, though rehabilitation efforts have increased."
+      }
+    ]
+  }
+]

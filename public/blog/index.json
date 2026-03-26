@@ -1,1 +1,191 @@
-[]
+[
+  {
+    "id": "post-4",
+    "slug": "guynode-api-v2-release-notes",
+    "title": "GuyNode API v2 Release Notes: Streaming Layers and Vector Tiles",
+    "excerpt": "Technical overview of the new API features, including improved latency for vector tile delivery and new authentication scopes.",
+    "content": "\n      <p>We are excited to announce the release of <strong>GuyNode API v2</strong>. This update focuses on performance and interoperability for developers building external GIS applications.</p>\n      \n      <h3>Major Changes</h3>\n      <ul>\n        <li><strong>Vector Tiles Support:</strong> Endpoints now support MVT (Mapbox Vector Tiles) for administrative boundaries, reducing payload size by 70%.</li>\n        <li><strong>Streaming GeoJSON:</strong> Large datasets can now be streamed, improving initial load time for web maps.</li>\n        <li><strong>Scoped Keys:</strong> API keys can now be restricted to specific referrers or IP ranges.</li>\n      </ul>\n      \n      <p>Check the Developer Documentation for the full migration guide.</p>\n    ",
+    "publishedDate": "2025-01-10T08:00:00Z",
+    "author": {
+      "id": "auth-1",
+      "name": "GuyNode Team",
+      "role": "Editorial Staff",
+      "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+    },
+    "categories": [
+      {
+        "id": "cat-4",
+        "slug": "engineering",
+        "name": "Engineering",
+        "description": "Technical updates and API release notes."
+      }
+    ],
+    "tags": [
+      {
+        "id": "tag-4",
+        "slug": "api",
+        "name": "API"
+      }
+    ],
+    "heroImageUrl": "/images/blog-placeholder.jpg",
+    "readTimeMinutes": 3,
+    "isFeatured": false,
+    "isPublished": true
+  },
+  {
+    "id": "post-1",
+    "slug": "local-geo-units-need-business-workflows",
+    "title": "Local Geo Units in Guyana Need Business Workflows",
+    "excerpt": "Neighborhood Democratic Councils (NDCs) struggle with revenue collection. Integrating simple GIS workflows can revolutionize how local properties are managed and taxed.",
+    "content": "\n      <p>Neighborhood Democratic Councils (NDCs) in Guyana form the backbone of local governance, yet many operate with outdated, paper-based workflows. One of the most critical challenges they face is <strong>revenue collection</strong>\u2014specifically, the ability to accurately track property rates and taxes.</p>\n      \n      <h2>The Spatial Gap in Revenue Collection</h2>\n      <p>Without a spatial view of their jurisdiction, NDCs rely on lists that may not reflect new construction, subdivisions, or changes in land use. A GIS-based approach allows councils to:</p>\n      <ul>\n        <li>Visualize tax compliance on a map.</li>\n        <li>Identify unregistered properties.</li>\n        <li>Plan collection routes efficiently.</li>\n      </ul>\n      \n      <p>At GuyNode, we are piloting a \"Business Workflow\" layer for NDCs that integrates property boundaries with simplified status codes (Paid, Arrears, Unregistered).</p>\n    ",
+    "publishedDate": "2024-11-15T09:00:00Z",
+    "author": {
+      "id": "auth-1",
+      "name": "GuyNode Team",
+      "role": "Editorial Staff",
+      "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+    },
+    "categories": [
+      {
+        "id": "cat-1",
+        "slug": "gis-strategy",
+        "name": "GIS Strategy",
+        "description": "Strategic implementation of spatial technologies."
+      },
+      {
+        "id": "cat-2",
+        "slug": "local-government",
+        "name": "Local Government",
+        "description": "Administrative and municipal data insights."
+      }
+    ],
+    "tags": [
+      {
+        "id": "tag-1",
+        "slug": "ndc",
+        "name": "NDC"
+      },
+      {
+        "id": "tag-2",
+        "slug": "revenue-collection",
+        "name": "Revenue Collection"
+      }
+    ],
+    "heroImageUrl": "/images/blog-placeholder.jpg",
+    "readTimeMinutes": 5,
+    "isFeatured": true,
+    "isPublished": true,
+    "relatedDatasets": [
+      "d1"
+    ]
+  },
+  {
+    "id": "post-2",
+    "slug": "web-geovisualizing-villages",
+    "title": "Web Geovisualizing the Role of Villages within Guyana\u2019s Local Government System",
+    "excerpt": "Using web maps to tell the historical and administrative story of Guyana\u2019s village movement and their modern-day boundaries.",
+    "content": "\n      <p>The village movement in Guyana is not just historical; it is structural. Villages remain a primary unit of social and administrative organization. However, the exact boundaries of these historic units are often contested or unclear in digital formats.</p>\n      \n      <p><strong>Geovisualization</strong> offers a bridge between the historical record and modern administration. By digitizing survey maps from the 19th and 20th centuries, we can reconstruct the spatial logic of the village movement.</p>\n      \n      <p>This project aims to overlay historic village grants with modern NDC boundaries, highlighting discrepancies and continuity in local governance.</p>\n    ",
+    "publishedDate": "2024-10-22T14:30:00Z",
+    "author": {
+      "id": "auth-1",
+      "name": "GuyNode Team",
+      "role": "Editorial Staff",
+      "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+    },
+    "categories": [
+      {
+        "id": "cat-1",
+        "slug": "gis-strategy",
+        "name": "GIS Strategy",
+        "description": "Strategic implementation of spatial technologies."
+      },
+      {
+        "id": "cat-2",
+        "slug": "local-government",
+        "name": "Local Government",
+        "description": "Administrative and municipal data insights."
+      }
+    ],
+    "tags": [
+      {
+        "id": "tag-3",
+        "slug": "history",
+        "name": "History"
+      }
+    ],
+    "heroImageUrl": "/images/blog-placeholder.jpg",
+    "readTimeMinutes": 7,
+    "isFeatured": false,
+    "isPublished": true,
+    "relatedDatasets": [
+      "d1",
+      "d2"
+    ]
+  },
+  {
+    "id": "post-3",
+    "slug": "thematic-mapping-georgetown",
+    "title": "Thematic Mapping: Georgetown, Guyana as a Top-Class Caribbean City",
+    "excerpt": "Visualizing urban density, zoning, and infrastructure to understand Georgetown\u2019s potential and challenges as a regional capital.",
+    "content": "\n      <p>Georgetown is transforming. With the oil and gas boom, the city is experiencing rapid verticalization and sprawl. Thematic mapping provides the lens through which we can understand this change.</p>\n      \n      <h3>Key Indicators Mapped</h3>\n      <ul>\n        <li><strong>Commercial Density:</strong> The shift of business districts southwards.</li>\n        <li><strong>Traffic Flow:</strong> Choke points in the classic grid layout.</li>\n        <li><strong>Green Spaces:</strong> The preservation of canals and gardens.</li>\n      </ul>\n      \n      <p>By comparing Georgetown\u2019s spatial metrics with other Caribbean capitals like Kingston and Port of Spain, we can better advocate for zoning policies that preserve its character while enabling growth.</p>\n    ",
+    "publishedDate": "2024-09-05T11:00:00Z",
+    "author": {
+      "id": "auth-1",
+      "name": "GuyNode Team",
+      "role": "Editorial Staff",
+      "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+    },
+    "categories": [
+      {
+        "id": "cat-3",
+        "slug": "urban-planning",
+        "name": "Urban Planning",
+        "description": "City planning, zoning, and infrastructure."
+      },
+      {
+        "id": "cat-1",
+        "slug": "gis-strategy",
+        "name": "GIS Strategy",
+        "description": "Strategic implementation of spatial technologies."
+      }
+    ],
+    "tags": [],
+    "heroImageUrl": "/images/blog-placeholder.jpg",
+    "readTimeMinutes": 6,
+    "isFeatured": true,
+    "isPublished": true
+  },
+  {
+    "id": "post-5",
+    "slug": "state-of-open-data-caribbean",
+    "title": "The State of Open Data in the Caribbean: A 2023 Retrospective",
+    "excerpt": "A comparative analysis of Spatial Data Infrastructure (SDI) implementations across CARICOM nations.",
+    "content": "\n      <p>Open data is a policy choice. In 2023, we conducted a review of national SDIs across the Caribbean Community (CARICOM). The results show a fragmented landscape but one full of potential.</p>\n      \n      <p>While Jamaica and Trinidad & Tobago have established mature portals, nations like Guyana and Suriname are rapidly catching up through grassroots initiatives like GuyNode.</p>\n      \n      <p>This report analyzes accessibility, licensing, and update frequency across 12 member states.</p>\n    ",
+    "publishedDate": "2023-12-12T10:15:00Z",
+    "author": {
+      "id": "auth-1",
+      "name": "GuyNode Team",
+      "role": "Editorial Staff",
+      "avatarUrl": "https://ui-avatars.com/api/?name=GuyNode+Team&background=0D8ABC&color=fff"
+    },
+    "categories": [
+      {
+        "id": "cat-5",
+        "slug": "open-data",
+        "name": "Open Data",
+        "description": "Research and advocacy for open spatial data."
+      }
+    ],
+    "tags": [
+      {
+        "id": "tag-5",
+        "slug": "caricom",
+        "name": "CARICOM"
+      }
+    ],
+    "heroImageUrl": "/images/blog-placeholder.jpg",
+    "readTimeMinutes": 10,
+    "isFeatured": false,
+    "isPublished": true
+  }
+]
