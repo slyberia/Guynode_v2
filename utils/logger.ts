@@ -13,7 +13,7 @@ class Logger {
     // In production, we might want to suppress info/debug to keep console clean
     // or pipe critical errors to a service (e.g. Sentry)
     
-    const args = [prefix, timestamp, message];
+    const args: unknown[] = [prefix, timestamp, message];
     if (data) args.push(data);
 
     switch (level) {

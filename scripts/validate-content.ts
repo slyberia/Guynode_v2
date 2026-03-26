@@ -79,7 +79,7 @@ const validateFile = (filePath: string, schema: z.ZodTypeAny, _typeName: string)
     if (error instanceof z.ZodError) {
       console.error(JSON.stringify(error.format(), null, 2));
     } else {
-      console.error(error.message);
+      console.error(error instanceof Error ? error.message : String(error));
     }
     process.exit(1);
   }

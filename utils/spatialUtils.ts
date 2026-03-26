@@ -54,7 +54,7 @@ export const clipToViewBounds = (geojson: GeoJSON.FeatureCollection, bounds: Bou
   const features = geojson.features.filter((f: GeoJSON.Feature) => {
     // Quick BBox check for each feature (simplified)
     // In a real app, we'd cache feature bboxes. Here we calculate on fly or check first coordinate.
-    const fBox = getBoundingBox({ features: [f] });
+    const fBox = getBoundingBox({ type: 'FeatureCollection' as const, features: [f] });
     if (!fBox) return false;
 
     // Check intersection

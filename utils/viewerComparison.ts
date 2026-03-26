@@ -11,7 +11,7 @@ const COMPARISON_STYLE = {
   fillOpacity: 0.1
 };
 
-export const getComparisonStyle = (_Dataset: import('../types').Dataset) => {
+export const getComparisonStyle = () => {
   return COMPARISON_STYLE;
 };
 

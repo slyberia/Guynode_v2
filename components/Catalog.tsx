@@ -71,7 +71,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
       
       // Clear existing layers
       map.eachLayer((layer: import('leaflet').Layer) => {
-        if (!layer._url) map.removeLayer(layer);
+        if (!(layer as { _url?: string })._url) map.removeLayer(layer);
       });
 
       const styleConfig = selectedDataset.style || {};

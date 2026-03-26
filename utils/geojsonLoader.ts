@@ -1,3 +1,4 @@
+import { Dataset } from '../types';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
 
 /**
@@ -32,7 +33,7 @@ export const loadGeojsonOnDemand = async (path: string): Promise<GeoJSON.GeoJSON
       const response = await fetch('/data/datasets.json');
       if (response.ok) {
         const datasets = await response.json();
-        const dataset = datasets.find((d: any) => d.geojsonUrl === path);
+        const dataset = datasets.find((d: Dataset) => d.geojsonUrl === path);
 
         if (dataset) {
            console.log(`[GeoJSON Loader] Fallback matched dataset: ${dataset.id} (Category: ${dataset.category})`);
