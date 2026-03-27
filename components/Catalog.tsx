@@ -292,10 +292,12 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                     )}
 
                     {/* Download Data Button */}
-                    {selectedDataset.geojsonUrl ? (
+                    {selectedDataset.downloadUrl && safeUrl(selectedDataset.downloadUrl) ? (
                       <a
-                        href={safeUrl(selectedDataset.geojsonUrl)}
+                        href={safeUrl(selectedDataset.downloadUrl)!}
                         download
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-blue dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center"
                       >
                         Download Data
