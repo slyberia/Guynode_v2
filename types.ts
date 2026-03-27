@@ -71,7 +71,7 @@ export interface Dataset {
   geojsonUrl?: string; // URL for map preview
   imageUrl: string;
   
-  viewerType?: 'leaflet' | 'arcgis' | 'none' | 'image';
+  viewerType?: 'leaflet' | 'arcgis' | 'none' | 'image' | 'pdf';
   arcGisEmbedUrl?: string;
 
   // Section 7: Pipeline Fields

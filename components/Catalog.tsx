@@ -6,6 +6,7 @@ import { SearchEngine } from '../services/searchEngine';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
 import { CatalogCard } from './CatalogCard';
 import { ImageViewer } from './viewer/ImageViewer';
+import { PdfViewer } from './viewer/PdfViewer';
 import { safeUrl } from '../utils/url';
 
 declare global {
@@ -268,7 +269,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                   <div className="flex gap-2">
                     
                     {/* Map Toggle Button */}
-                    {((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image') && selectedDataset.viewerType !== 'none') ? (
+                    {((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') ? (
                       <button 
                         onClick={() => setShowMap(!showMap)}
                         className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
@@ -406,10 +407,12 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
               </div>
 
               {/* Map Preview Module */}
-              {showMap && ((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image') && selectedDataset.viewerType !== 'none') && (
+              {showMap && ((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') && (
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
                   {selectedDataset.viewerType === 'image' ? (
                     <ImageViewer dataset={selectedDataset} />
+                  ) : selectedDataset.viewerType === 'pdf' ? (
+                    <PdfViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'arcgis' && selectedDataset.arcGisEmbedUrl ? (
                     <iframe
                       src={selectedDataset.arcGisEmbedUrl}
