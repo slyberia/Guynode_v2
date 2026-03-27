@@ -65,8 +65,14 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           >
             GIS Viewer
           </button>
-          <button 
-            onClick={() => setView('DOCS')} 
+          <button
+            onClick={() => setView('LOCATOR')}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LOCATOR' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+          >
+            Locator
+          </button>
+          <button
+            onClick={() => setView('DOCS')}
             className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'DOCS' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Developers

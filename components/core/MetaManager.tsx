@@ -83,6 +83,10 @@ export const MetaManager: React.FC<MetaManagerProps> = ({ view, params }) => {
         canonicalUrl = `${baseUrl}/?view=BLOG_INDEX`;
       }
       break;
+    case 'LOCATOR':
+      pageName = 'Locator';
+      canonicalUrl = `${baseUrl}/?view=LOCATOR`;
+      break;
     case 'INTERNAL_LOG':
       pageName = 'Internal Log';
       noIndex = true;

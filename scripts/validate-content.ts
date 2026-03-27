@@ -14,7 +14,7 @@ const DatasetSchema = z.object({
   source: z.string(),
   geojsonUrl: z.string().optional(),
   downloadUrl: z.string().optional(),
-  viewerType: z.enum(['leaflet', 'arcgis', 'none', 'image']).optional(),
+  viewerType: z.enum(['leaflet', 'arcgis', 'none', 'image', 'pdf']).optional(),
   imageUrl: z.string(),
   ingestionStatus: z.enum(['PENDING', 'PROCESSING', 'COMPLETED', 'FAILED']),
   tags: z.array(z.string()).optional(),
