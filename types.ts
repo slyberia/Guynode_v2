@@ -63,7 +63,7 @@ export interface Dataset {
   description: string;
   category: DataCategory;
   lastUpdated: string;
-  format: 'GeoJSON' | 'CSV' | 'Shapefile' | 'API' | 'Mixed';
+  format: 'GeoJSON' | 'CSV' | 'Shapefile' | 'API' | 'Mixed' | 'PDF' | 'Spreadsheet' | 'GeoTIFF' | 'Image';
   size: string;
   fileSize?: string;
   source: string; // e.g., "Bureau of Statistics"
@@ -71,7 +71,7 @@ export interface Dataset {
   geojsonUrl?: string; // URL for map preview
   imageUrl: string;
   
-  viewerType?: 'leaflet' | 'arcgis' | 'none';
+  viewerType?: 'leaflet' | 'arcgis' | 'none' | 'image';
   arcGisEmbedUrl?: string;
 
   // Section 7: Pipeline Fields
