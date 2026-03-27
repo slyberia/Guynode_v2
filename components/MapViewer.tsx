@@ -59,7 +59,7 @@ interface ViewerState {
   errorMessage: string | null;
 }
 
-export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) => {
+export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setView }) => {
   const { datasets } = useCatalog();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
@@ -169,8 +169,10 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
         const isGeoTiff = layer.id.toLowerCase().endsWith('.tif') || layer.id.toLowerCase().endsWith('.tiff');
 
         if (isGeoTiff) {
+          // fullData holds a GeoRaster at runtime when the layer URL ends in .tif/.tiff
+          const rasterData = fullData as unknown as import('georaster').GeoRaster;
           const rasterLayer = new GeoRasterLayer({
-            georaster: fullData,
+            georaster: rasterData,
             opacity: layer.opacity,
             resolution: 128
           });
@@ -179,8 +181,8 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
           // Fit bounds to raster data on first render
           if (mapInstanceRef.current && !layer.isComparison) {
              const bounds = L.latLngBounds(
-               [fullData.ymin, fullData.xmin],
-               [fullData.ymax, fullData.xmax]
+               [rasterData.ymin, rasterData.xmin],
+               [rasterData.ymax, rasterData.xmax]
              );
              mapInstanceRef.current.fitBounds(bounds);
           }
@@ -195,7 +197,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
 
           if (layer.isComparison) {
              style = {
-               ...getComparisonStyle({} as unknown as Dataset), // Passing a dummy to get the style
+               ...getComparisonStyle(),
                fillOpacity: 0.1 * layer.opacity,
                opacity: layer.opacity
              };

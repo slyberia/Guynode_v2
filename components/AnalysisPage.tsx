@@ -10,7 +10,7 @@ interface AnalysisPageProps {
 }
 
 export const AnalysisPage: React.FC<AnalysisPageProps> = ({ navigate }) => {
-  const { analyses } = useCatalog();
+  const { analyses, loading, error } = useCatalog();
   const [search, setSearch] = useState('');
   const [levelFilter, setLevelFilter] = useState<string>('ALL');
 
@@ -31,6 +31,34 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ navigate }) => {
       default: return 'text-gray-400';
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-4 border-brand-green-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="font-mono text-sm">Loading analyses...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark p-6">
+        <div className="bg-red-900/10 border border-red-500/30 rounded p-6 max-w-md text-center">
+          <h2 className="text-red-500 font-bold mb-2">Failed to Load Analyses</h2>
+          <p className="text-sm mb-4">{error}</p>
+          <button
+            onClick={() => navigate('HOME')}
+            className="bg-brand-green-600 hover:bg-brand-green-500 text-white font-bold py-2 px-6 rounded transition-colors"
+          >
+            Return to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (analyses.length === 0) {
     return (

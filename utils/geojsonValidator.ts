@@ -27,7 +27,7 @@ export const validateGeometry = (geojson: GeoJSON.FeatureCollection): string[] =
   }
 
   geojson.features.forEach((f: GeoJSON.Feature, i: number) => {
-    if (!f.geometry || !f.geometry.coordinates || f.geometry.coordinates.length === 0) {
+    if (!f.geometry || !('coordinates' in f.geometry) || f.geometry.coordinates.length === 0) {
       errors.push(`Feature [${i}] has empty or missing geometry`);
     }
   });

@@ -49,7 +49,7 @@ export const ingestDatasetFromGeojsonText = async (rawJson: string, metadata: Me
   try {
     geojson = JSON.parse(rawJson);
   } catch (e) {
-    parseError = e.message;
+    parseError = e instanceof Error ? e.message : String(e);
   }
 
   const now = new Date().toISOString();
@@ -86,10 +86,11 @@ export const ingestDatasetFromGeojsonText = async (rawJson: string, metadata: Me
   }
 
   // Run Tier 1 Validation
-  const stats: GeoStats = computeGeojsonStats(geojson);
-  
+  const geoData = geojson as GeoJSON.FeatureCollection;
+  const stats: GeoStats = computeGeojsonStats(geoData);
+
   // Run Spatial Analysis
-  const extent = getBoundingBox(geojson);
+  const extent = getBoundingBox(geoData);
 
   // Update Draft with Insights
   draft.featureCount = stats.featureCount;
