@@ -64,6 +64,7 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
       case 'REPORT_ISSUE': view = 'REPORT_ISSUE'; break;
       case 'INTERNAL_LOG': view = 'INTERNAL_LOG'; break;
       case 'CHANGELOG': view = 'CHANGELOG'; break;
+      case 'LOCATOR': view = 'LOCATOR'; break;
       
       // Blog / Resources Mapping
       case 'BLOG':
@@ -131,6 +132,7 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
     case 'REPORT_ISSUE': viewParam = 'report_issue'; break;
     case 'INTERNAL_LOG': viewParam = 'internal_log'; break;
     case 'CHANGELOG': viewParam = 'changelog'; break;
+    case 'LOCATOR': viewParam = 'locator'; break;
     
     case 'BLOG_INDEX': viewParam = 'resources'; break;
     case 'BLOG_POST': viewParam = 'resources_post'; break;

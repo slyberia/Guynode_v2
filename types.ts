@@ -221,6 +221,7 @@ export type ViewState =
   | 'BLOG_ARCHIVE'
   | 'BLOG_SEARCH'
   | 'PRIVACY'
+  | 'LOCATOR'
 
 // Section 8: Search Index Model
 export interface SearchResult {

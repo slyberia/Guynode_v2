@@ -23,6 +23,8 @@ const ChangelogPage = React.lazy(() => import('./components/ChangelogPage').then
 const SupportPage = React.lazy(() => import('./components/SupportPage').then(module => ({ default: module.SupportPage })));
 const ReportIssuePage = React.lazy(() => import('./components/ReportIssuePage').then(module => ({ default: module.ReportIssuePage })));
 
+const LocatorPage = React.lazy(() => import('./pages/LocatorPage').then(module => ({ default: module.LocatorPage })));
+
 // Lazy Load Blog Pages (Resources)
 const BlogIndexPage = React.lazy(() => import('./pages/blog/BlogIndexPage'));
 const BlogPostPage = React.lazy(() => import('./pages/blog/BlogPostPage'));
@@ -290,6 +292,12 @@ function App() {
         }
         return <React.Suspense fallback={<LoadingFallback />}><AnalysisPage navigate={handleNavigation} /></React.Suspense>;
         
+      case 'LOCATOR':
+        return (
+          <React.Suspense fallback={<LoadingFallback />}>
+            <LocatorPage theme={theme} navigate={handleNavigation} />
+          </React.Suspense>
+        );
       case 'ABOUT':
         return <React.Suspense fallback={<LoadingFallback />}><About /></React.Suspense>;
       case 'PRIVACY':
