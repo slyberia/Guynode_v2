@@ -298,6 +298,21 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                         download
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const url = safeUrl(selectedDataset.downloadUrl!);
+                          if (!url) return;
+                          if (window.confirm("By downloading this dataset, you agree to the Guynode Data License. Attribution is required. Proceed?")) {
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = '';
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                          }
+                        }}
                         className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-blue dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center"
                       >
                         Download Data
@@ -308,19 +323,6 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                         className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest opacity-50 cursor-not-allowed"
                       >
                         Download Data
-                      </button>
-                    )}
-                    
-                    {/* Fallback Legacy Button (if no assets array) */}
-                    {!selectedDataset.assets && (
-                      <button
-                        onClick={() => {
-                          if (window.confirm("By downloading this dataset, you agree to the Guynode Data License. Attribution is required. Proceed with download?")) {
-                            // Legacy download logic
-                          }
-                        }}
-                        className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-blue dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest">
-                        Download {selectedDataset.format}
                       </button>
                     )}
                   </div>
