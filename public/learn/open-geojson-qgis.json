@@ -1,0 +1,9 @@
+{
+  "slug": "open-geojson-qgis",
+  "title": "Open GeoJSON in QGIS",
+  "category": "tutorial",
+  "difficulty": "beginner",
+  "readTimeMinutes": 3,
+  "excerpt": "Work with lightweight web-friendly vector data and bring it into a desktop GIS workflow.",
+  "content": "## What GeoJSON is\n\nGeoJSON is a text-based format for vector geographic data. It is widely used for sharing spatial layers between platforms and tools. A GeoJSON file contains both geometry and attribute data in a single file, which makes it simpler to handle than a shapefile.\n\n## Steps\n\n1. Open **Data Source Manager** from the Layer menu or press Ctrl+L.\n2. Select **Vector** from the left panel.\n3. Click the browse button next to the File Name field.\n4. Navigate to your .geojson or .json file and select it.\n5. Click **Add**.\n\nThe layer will appear in the Layers panel and display in the map view.\n\n## After loading\n\n- Zoom to the layer using right-click → **Zoom to Layer**.\n- Open the attribute table to inspect the data fields.\n- GeoJSON files are typically in WGS 84 (EPSG:4326) by default. Confirm this in layer properties if the data appears misaligned.\n\n## Tip\n\nGeoJSON can be opened directly from a URL in some versions of QGIS using the Vector data source type and entering the URL instead of a local file path. This is useful for layers served from a web endpoint."
+}

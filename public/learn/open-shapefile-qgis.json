@@ -1,0 +1,9 @@
+{
+  "slug": "open-shapefile-qgis",
+  "title": "Open a Shapefile in QGIS",
+  "category": "tutorial",
+  "difficulty": "beginner",
+  "readTimeMinutes": 4,
+  "excerpt": "Learn how to load shapefiles correctly, keep file components organized, and verify that your data displays properly.",
+  "content": "## What a shapefile is\n\nA shapefile is a common vector format for GIS data. It is always distributed as a group of linked files with the same base name. The essential components are the .shp file (geometry), .shx file (index), .dbf file (attribute table), and .prj file (coordinate reference system).\n\n**Keep all components together in the same folder.** If you move only the .shp file, the layer will likely fail to load or display incorrectly.\n\n## Steps\n\n1. Open **Data Source Manager** from the Layer menu or press Ctrl+L.\n2. Select **Vector** from the left panel.\n3. Click the browse button next to the File Name field.\n4. Navigate to the folder containing your shapefile and select the **.shp** file.\n5. Click **Add**.\n6. Close the Data Source Manager.\n\nThe layer should now appear in the Layers panel and display in the map view.\n\n## After loading\n\n- Zoom to the layer by right-clicking it and choosing **Zoom to Layer**.\n- Open the attribute table by right-clicking and choosing **Open Attribute Table** to see the data fields.\n- Check the coordinate reference system in layer properties if the layer does not appear where expected.\n\n## Common issue\n\nIf the layer loads but appears in an unexpected location, the coordinate reference system may not match the rest of your project. Open the layer properties and check the CRS under the Information or Source tab."
+}

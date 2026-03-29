@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "getting-started-gis-guynode",
+    "title": "Getting Started with GIS for Guynode",
+    "category": "guide",
+    "difficulty": "beginner",
+    "readTimeMinutes": 8,
+    "excerpt": "Learn what GIS is, how spatial data works, and how to begin using Guynode datasets in practical mapping workflows."
+  },
+  {
+    "slug": "arcgis-vs-qgis",
+    "title": "ArcGIS vs QGIS",
+    "category": "comparison",
+    "difficulty": "beginner",
+    "readTimeMinutes": 5,
+    "excerpt": "Compare two major GIS environments and decide which platform makes the most sense for your workflow, budget, and experience level."
+  },
+  {
+    "slug": "beginner-gis-concepts",
+    "title": "Beginner GIS Concepts",
+    "category": "concept",
+    "difficulty": "beginner",
+    "readTimeMinutes": 6,
+    "excerpt": "Understand projections, coordinate systems, attribute tables, joins, metadata, and layer styling in plain language."
+  },
+  {
+    "slug": "open-shapefile-qgis",
+    "title": "Open a Shapefile in QGIS",
+    "category": "tutorial",
+    "difficulty": "beginner",
+    "readTimeMinutes": 4,
+    "excerpt": "Learn how to load shapefiles correctly, keep file components organized, and verify that your data displays properly."
+  },
+  {
+    "slug": "open-csv-qgis",
+    "title": "Open a CSV in QGIS",
+    "category": "tutorial",
+    "difficulty": "beginner",
+    "readTimeMinutes": 4,
+    "excerpt": "Import tabular data with coordinates and turn it into a mappable layer you can explore and style."
+  },
+  {
+    "slug": "open-geojson-qgis",
+    "title": "Open GeoJSON in QGIS",
+    "category": "tutorial",
+    "difficulty": "beginner",
+    "readTimeMinutes": 3,
+    "excerpt": "Work with lightweight web-friendly vector data and bring it into a desktop GIS workflow."
+  },
+  {
+    "slug": "open-raster-qgis",
+    "title": "Open Raster Data in QGIS",
+    "category": "tutorial",
+    "difficulty": "beginner",
+    "readTimeMinutes": 4,
+    "excerpt": "Load imagery and gridded datasets such as elevation or environmental layers, then inspect and compare them."
+  },
+  {
+    "slug": "how-to-use-guynode-datasets",
+    "title": "How to Use Guynode Datasets",
+    "category": "guide",
+    "difficulty": "beginner",
+    "readTimeMinutes": 10,
+    "excerpt": "Follow the full path from dataset page to download, inspection, layer styling, and combining data for analysis."
+  }
+]
