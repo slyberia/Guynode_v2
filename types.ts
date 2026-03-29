@@ -222,6 +222,9 @@ export type ViewState =
   | 'BLOG_SEARCH'
   | 'PRIVACY'
   | 'LOCATOR'
+  // Learn Module Routes
+  | 'LEARN_INDEX'
+  | 'LEARN_POST'
 
 // Section 8: Search Index Model
 export interface SearchResult {
