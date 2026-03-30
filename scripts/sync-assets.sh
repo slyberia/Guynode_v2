@@ -9,7 +9,7 @@ else
   echo "Running dry run (-n). Pass --force to execute actual sync."
 fi
 
-BUCKET_NAME="[YOUR_BUCKET_NAME]"
+BUCKET_NAME="guynode-public-assets"
 
 # Sync assets to Google Cloud Storage
 gsutil rsync -r -d $DRY_RUN public/data/ gs://$BUCKET_NAME/data/
