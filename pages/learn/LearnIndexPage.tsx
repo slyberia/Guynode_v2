@@ -63,6 +63,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
 
   const gettingStartedSlugs = ['getting-started-gis-guynode', 'beginner-gis-concepts', 'arcgis-vs-qgis'];
   const tutorialSlugs = ['open-shapefile-qgis', 'open-csv-qgis', 'open-geojson-qgis', 'open-raster-qgis', 'how-to-use-guynode-datasets'];
+  const webMappingSlugs = ['web-map-tutorials-examples', 'global-map-services', 'place-based-geocoding-guyana'];
 
   const postsBySlug = Object.fromEntries(posts.map(p => [p.slug, p]));
 
@@ -112,32 +113,38 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
       <section className="py-16 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-serif font-bold mb-10 text-center">Choose a learning path</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 heading: 'New to GIS',
                 body: 'Learn the core ideas behind spatial data, common file types, and the basic tools used to view and analyze them.',
                 cta: 'Begin Here',
-                slug: 'getting-started-gis-guynode',
+                action: () => goToPost('getting-started-gis-guynode'),
               },
               {
                 heading: 'Using Guynode Data',
                 body: 'Learn how to read a dataset page, download files, open them in GIS software, and understand what the data contains.',
                 cta: 'View Workflow',
-                slug: 'how-to-use-guynode-datasets',
+                action: () => goToPost('how-to-use-guynode-datasets'),
               },
               {
                 heading: 'Software & Setup',
                 body: 'Compare ArcGIS and QGIS, then follow step-by-step tutorials for opening common data formats.',
                 cta: 'Compare Tools',
-                slug: 'arcgis-vs-qgis',
+                action: () => goToPost('arcgis-vs-qgis'),
+              },
+              {
+                heading: 'Web Mapping & Services',
+                body: 'Connect to global tile services, embed interactive maps in web projects, and geocode Guyanese addresses using open tools.',
+                cta: 'Explore Web Mapping',
+                action: () => scrollTo('web-mapping'),
               },
             ].map(path => (
-              <div key={path.slug} className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-6 flex flex-col gap-4">
+              <div key={path.heading} className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-6 flex flex-col gap-4">
                 <h3 className="font-bold text-base text-gn-foreground dark:text-gn-foreground-dark">{path.heading}</h3>
                 <p className="text-sm text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed flex-1">{path.body}</p>
                 <button
-                  onClick={() => goToPost(path.slug)}
+                  onClick={path.action}
                   className="text-sm font-bold text-brand-green-600 dark:text-nightAccent-green hover:underline text-left"
                 >
                   {path.cta} →
@@ -194,8 +201,31 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
         </div>
       </section>
 
+      {/* WEB MAPPING & SERVICES */}
+      <section id="web-mapping" className="py-16 px-6 border-b border-gn-border dark:border-gn-border-dark">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-serif font-bold mb-3">Web Mapping and Services</h2>
+          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
+            Learn how to connect to global tile services, embed interactive maps in QGIS, ArcGIS Pro, and web applications, and geocode Guyanese place names using open tools.
+          </p>
+          {loadError ? (
+            <p className="text-red-500 font-mono text-sm">&gt; Failed to load posts.</p>
+          ) : posts.length === 0 ? (
+            <div className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono text-sm animate-pulse">&gt; Loading...</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {webMappingSlugs.map(slug =>
+                postsBySlug[slug] ? (
+                  <PostCard key={slug} post={postsBySlug[slug]} onClick={() => goToPost(slug)} />
+                ) : null
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* EXTERNAL RESOURCES */}
-      <section className="py-16 px-6 border-b border-gn-border dark:border-gn-border-dark">
+      <section className="py-16 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-serif font-bold mb-3">Go further with trusted resources</h2>
           <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
