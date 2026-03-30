@@ -66,6 +66,11 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
       case 'CHANGELOG': view = 'CHANGELOG'; break;
       case 'LOCATOR': view = 'LOCATOR'; break;
       
+      // Learn Module Mapping
+      case 'LEARN':
+      case 'LEARN_INDEX': view = 'LEARN_INDEX'; break;
+      case 'LEARN_POST': view = 'LEARN_POST'; break;
+
       // Blog / Resources Mapping
       case 'BLOG':
       case 'RESOURCES': view = 'BLOG_INDEX'; break;
@@ -106,6 +111,14 @@ export const sanitizeRoute = (view: ViewState, params: RouteParams): { view: Vie
      }
   }
 
+  // 3. Sanitize Learn Post
+  if (safeView === 'LEARN_POST') {
+    if (!safeParams.slug) {
+      safeView = 'LEARN_INDEX';
+      redirected = true;
+    }
+  }
+
   // 4. Sanitize Analysis Detail
   if (safeView === 'ANALYSIS' && safeParams.analysisId) {
       // With dynamic fetching, validation happens on component mount
@@ -134,6 +147,8 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
     case 'CHANGELOG': viewParam = 'changelog'; break;
     case 'LOCATOR': viewParam = 'locator'; break;
     
+    case 'LEARN_INDEX': viewParam = 'learn'; break;
+    case 'LEARN_POST': viewParam = 'learn_post'; break;
     case 'BLOG_INDEX': viewParam = 'resources'; break;
     case 'BLOG_POST': viewParam = 'resources_post'; break;
     case 'BLOG_CATEGORY': viewParam = 'resources_category'; break;

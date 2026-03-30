@@ -1,0 +1,9 @@
+{
+  "slug": "arcgis-vs-qgis",
+  "title": "ArcGIS vs QGIS",
+  "category": "comparison",
+  "difficulty": "beginner",
+  "readTimeMinutes": 5,
+  "excerpt": "Compare two major GIS environments and decide which platform makes the most sense for your workflow, budget, and experience level.",
+  "content": "## Overview\n\nBoth ArcGIS and QGIS are capable GIS environments, but they fit different users and institutions.\n\nArcGIS is Esri's professional geospatial platform, with ArcGIS Pro as its Windows desktop application and ArcGIS Online as its web GIS environment. It supports advanced mapping, data management, spatial analysis, and integrates with ArcGIS Enterprise.\n\nQGIS is an open-source desktop GIS that supports vector, raster, tabular, and standards-based workflows across a wide range of formats. It is free, cross-platform, and widely used in academic and independent GIS work.\n\n## Choose QGIS if you are\n- A student or independent researcher\n- A nonprofit or community user\n- Someone who needs a free entry point\n- Someone working mainly with downloaded local files\n\n## Choose ArcGIS if you are\n- Part of a government or enterprise environment\n- Working inside an Esri-based institutional stack\n- Collaborating through ArcGIS Online or Enterprise\n- Using advanced publishing or managed sharing workflows\n\n## Practical recommendation for Guynode users\n\n**Use QGIS when:**\n- You want a free tool to open Guynode downloads\n- You are learning GIS fundamentals\n- You are working locally with shapefiles, GeoJSON, CSV, or rasters\n\n**Use ArcGIS when:**\n- Your organization already uses Esri\n- You need deeper sharing and publishing workflows\n- You want to move from local data into a larger managed GIS ecosystem\n\n## Simple positioning\n\nQGIS is the easiest starting point for most Guynode visitors. ArcGIS is best for users already operating inside an Esri-based professional environment."
+}

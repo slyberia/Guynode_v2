@@ -1,0 +1,9 @@
+{
+  "slug": "beginner-gis-concepts",
+  "title": "Beginner GIS Concepts",
+  "category": "concept",
+  "difficulty": "beginner",
+  "readTimeMinutes": 6,
+  "excerpt": "Understand projections, coordinate systems, attribute tables, joins, metadata, and layer styling in plain language.",
+  "content": "## Projections and Coordinate Reference Systems\n\nA coordinate reference system, or CRS, tells GIS software how spatial data is positioned on the earth. If two layers do not line up correctly, the CRS is one of the first things to check.\n\n**Guynode-ready explanation:** A projection is the map's coordinate system. If the system is wrong or mismatched, your layer may appear in the wrong place or fail to align with other data.\n\n## Attribute Tables\n\nAn attribute table is the spreadsheet-like table attached to a vector layer. It stores the descriptive information for each feature.\n\n**Guynode-ready explanation:** The map shows you where something is. The attribute table tells you what it is.\n\n## Joins\n\nA join connects one table to another using a shared field such as an ID or name.\n\n**Guynode-ready explanation:** If you have a boundary layer and a separate spreadsheet of statistics, a join is how you connect the numbers to the mapped areas.\n\n## Metadata\n\nMetadata is information about the data itself, such as source, date, coverage, format, author, update status, and limitations.\n\n**Guynode-ready explanation:** Metadata helps you decide whether a dataset is trustworthy, current enough, and appropriate for your use case.\n\n## Layer Styling\n\nLayer styling changes how features appear on the map through colors, symbols, line weights, classifications, labels, and transparency.\n\n**Guynode-ready explanation:** Styling is how you turn raw GIS data into a readable map. Good styling makes patterns visible. Poor styling makes everything look like a disagreement between default settings."
+}

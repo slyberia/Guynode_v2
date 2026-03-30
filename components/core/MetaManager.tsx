@@ -107,6 +107,22 @@ export const MetaManager: React.FC<MetaManagerProps> = ({ view, params }) => {
       pageName = 'Resource Search';
       canonicalUrl = `${baseUrl}/?view=BLOG_INDEX`;
       break;
+    case 'LEARN_INDEX':
+      pageName = 'Learn';
+      canonicalUrl = `${baseUrl}/?view=LEARN`;
+      break;
+    case 'LEARN_POST':
+      if (params.slug) {
+        pageName = `Learn — ${params.slug
+          .split('-')
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' ')}`;
+        canonicalUrl = `${baseUrl}/?view=LEARN_POST&slug=${params.slug}`;
+      } else {
+        pageName = 'Learn';
+        canonicalUrl = `${baseUrl}/?view=LEARN`;
+      }
+      break;
     default:
       pageName = 'Page Not Found';
       noIndex = true;

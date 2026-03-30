@@ -1,0 +1,9 @@
+{
+  "slug": "open-raster-qgis",
+  "title": "Open Raster Data in QGIS",
+  "category": "tutorial",
+  "difficulty": "beginner",
+  "readTimeMinutes": 4,
+  "excerpt": "Load imagery and gridded datasets such as elevation or environmental layers, then inspect and compare them.",
+  "content": "## What raster data is\n\nRaster data stores geographic information as a grid of cells, where each cell holds a value. Common uses include satellite imagery, aerial photography, elevation models, and environmental surfaces such as temperature or rainfall distribution.\n\nThe most common raster format you will encounter in Guynode is GeoTIFF — a TIFF image file with embedded geographic location information.\n\n## Steps\n\n1. Open **Data Source Manager** from the Layer menu or press Ctrl+L.\n2. Select **Raster** from the left panel.\n3. Click the browse button next to the File Name field.\n4. Navigate to your raster file (.tif, .tiff, .geotiff) and select it.\n5. Click **Add**.\n\n## After loading\n\n- Zoom to the layer to confirm it appears in the correct location.\n- For reference maps and imagery, compare the raster against vector boundary layers to check alignment.\n- Check the layer CRS in properties if the raster appears offset or misaligned.\n\n## Common issue: grey or black display\n\nIf a raster loads but appears entirely grey or black, the display range may need adjustment.\n\n1. Open layer properties.\n2. Go to the **Symbology** tab.\n3. Click **Load** or manually reset the minimum and maximum values.\n4. Apply the changes.\n\nThis forces QGIS to recalculate the display range from the actual data values in the file."
+}

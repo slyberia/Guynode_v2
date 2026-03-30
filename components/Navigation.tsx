@@ -92,8 +92,14 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
             Resources
           </button>
           
-           <button 
-            onClick={() => setView('ABOUT')} 
+          <button
+            onClick={() => setView('LEARN_INDEX')}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LEARN_INDEX' || currentView === 'LEARN_POST' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+          >
+            Learn
+          </button>
+           <button
+            onClick={() => setView('ABOUT')}
             className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ABOUT' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             About
