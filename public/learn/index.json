@@ -62,5 +62,29 @@
     "difficulty": "beginner",
     "readTimeMinutes": 10,
     "excerpt": "Follow the full path from dataset page to download, inspection, layer styling, and combining data for analysis."
+  },
+  {
+    "slug": "web-map-tutorials-examples",
+    "title": "Web Map Service Tutorials",
+    "category": "tutorial",
+    "difficulty": "intermediate",
+    "readTimeMinutes": 12,
+    "excerpt": "Learn how to connect to global web mapping services and embed them in your projects. Step-by-step examples for QGIS, ArcGIS Pro, OpenLayers, and Leaflet."
+  },
+  {
+    "slug": "global-map-services",
+    "title": "Global Map Services",
+    "category": "reference",
+    "difficulty": "beginner",
+    "readTimeMinutes": 6,
+    "excerpt": "A curated directory of global web mapping services you can stream directly into QGIS, ArcGIS Pro, and web maps — organized by category."
+  },
+  {
+    "slug": "place-based-geocoding-guyana",
+    "title": "Place-Based Geocoding for Guyanese Addresses",
+    "category": "tutorial",
+    "difficulty": "intermediate",
+    "readTimeMinutes": 8,
+    "excerpt": "Convert place names — villages, communities, and districts — into map coordinates using QGIS, ArcGIS Pro, or Python. A Guyana-specific approach to address geocoding without street centerline data."
   }
 ]
