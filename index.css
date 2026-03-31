@@ -20,13 +20,15 @@
   --color-gn-foreground-dark: #F9FAFB;
   --color-gn-foreground-muted: #6C6C6C;
   --color-gn-foreground-muted-dark: #9CA3AF;
-  --color-gn-accent: #2F5F53;
   --color-gn-accent-dark: #1D6B4C;
+  --color-gn-accent-blue: #3b82f6;
+  --color-gn-accent-gold: #F9D648;
+  --color-gn-accent-secondary: #0D2133;
+  --color-gn-bg-deep: #121212;
 
   /* Brand palette */
   --color-brand-green-600: #2F5F53;
   --color-brand-green-500: #3D7D69;
-  --color-brand-green-300: #A9C7B7;
   --color-brand-gold-600: #B8860B;
   --color-brand-gold-500: #D7A645;
 
@@ -40,36 +42,10 @@
   --color-ink-700: #4A4A4A;
   --color-ink-500: #6C6C6C;
 
-  /* Night palette */
-  --color-nightBg-900: #050608;
-  --color-nightBg-800: #111317;
-  --color-nightBorder-600: #1F2933;
-  --color-nightInk-50: #F9FAFB;
-  --color-nightInk-300: #D1D5DB;
-  --color-nightInk-500: #9CA3AF;
-  --color-nightAccent-gold: #F9D648;
-  --color-nightAccent-green: #1D6B4C;
-  --color-nightAccent-blue: #0D2133;
-
   /* Guyana flag palette */
   --color-guyana-green: #009739;
   --color-guyana-gold: #FFC20E;
   --color-guyana-red: #CE1126;
-  --color-guyana-black: #000000;
-  --color-guyana-white: #FFFFFF;
-
-  /* Bloom dark theme */
-  --color-bloom-dark: #121212;
-  --color-bloom-card: #1e1e1e;
-  --color-bloom-accent: #3b82f6;
-  --color-bloom-text: #e5e7eb;
-  --color-bloom-muted: #9ca3af;
-
-  /* GN canonical equivalents for orphaned bloom/night tokens */
-  --color-gn-accent-blue: #3b82f6;
-  --color-gn-bg-deep: #121212;
-  --color-gn-accent-gold: #F9D648;
-  --color-gn-accent-secondary: #0D2133;
 }
 
 body {
