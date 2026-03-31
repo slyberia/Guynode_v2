@@ -218,13 +218,13 @@ function App() {
                    <div className="flex flex-col sm:flex-row gap-4">
                      <button
                        onClick={() => handleNavigation('CATALOG')}
-                       className="bg-brand-gold-500 dark:bg-nightAccent-gold hover:bg-brand-gold-600 text-ink-900 dark:text-nightInk-900 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center shadow-sm"
+                       className="bg-brand-gold-500 dark:bg-gn-accent-gold hover:bg-brand-gold-600 text-ink-900 dark:text-ink-900 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center shadow-sm"
                      >
                        View the Data Catalog →
                      </button>
                      <button
                        onClick={() => handleNavigation('MAP')}
-                       className="text-brand-green-600 dark:text-gn-accent-dark border border-brand-green-600 dark:border-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-nightInk-50 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
+                       className="text-brand-green-600 dark:text-gn-accent-dark border border-brand-green-600 dark:border-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
                      >
                        Open the GIS Viewer →
                      </button>

@@ -80,7 +80,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params, navigate, onOpenMap
             {relatedDatasets.length > 0 && (
                <div className="mt-16 pt-12 border-t border-gn-border dark:border-gn-border-dark">
                   <h3 className="text-lg font-bold text-gn-foreground dark:text-gn-foreground-dark mb-6 flex items-center gap-2">
-                     <span className="w-2 h-2 rounded-full bg-bloom-accent"></span>
+                     <span className="w-2 h-2 rounded-full bg-gn-accent-blue"></span>
                      Related Datasets
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -96,7 +96,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params, navigate, onOpenMap
                                  {onOpenMap && ds.geojsonUrl && (
                                     <button 
                                       onClick={() => onOpenMap(ds.id)}
-                                      className="text-[10px] font-bold bg-bloom-accent hover:bg-blue-600 text-white px-3 py-1.5 rounded transition-colors"
+                                      className="text-[10px] font-bold bg-gn-accent-blue hover:bg-blue-600 text-white px-3 py-1.5 rounded transition-colors"
                                     >
                                       View on Map
                                     </button>
@@ -121,7 +121,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params, navigate, onOpenMap
         <div className="text-center pt-12">
            <button 
              onClick={() => navigate('BLOG_INDEX')}
-             className="text-bloom-accent hover:text-gn-foreground dark:hover:text-white underline text-sm transition-colors"
+             className="text-gn-accent-blue hover:text-gn-foreground dark:hover:text-white underline text-sm transition-colors"
            >
              ← Back to Resources Index
            </button>

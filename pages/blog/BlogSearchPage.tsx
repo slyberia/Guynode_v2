@@ -32,7 +32,7 @@ const BlogSearchPage: React.FC<BlogSearchPageProps> = ({ navigate }) => {
         
         <button 
           onClick={() => navigate('BLOG_INDEX')}
-          className="mt-4 text-bloom-accent hover:text-gn-foreground dark:hover:text-white underline text-sm transition-colors"
+          className="mt-4 text-gn-accent-blue hover:text-gn-foreground dark:hover:text-white underline text-sm transition-colors"
         >
           ← Return to Index
         </button>

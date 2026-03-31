@@ -32,7 +32,7 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ dataset }) => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand-green-600 dark:text-nightAccent-gold underline hover:no-underline"
+                className="text-brand-green-600 dark:text-gn-accent-gold underline hover:no-underline"
               >
                 Open PDF directly →
               </a>
@@ -53,7 +53,7 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ dataset }) => {
             download
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-blue dark:hover:bg-blue-600 text-white transition-colors uppercase tracking-widest"
+            className="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-secondary dark:hover:bg-blue-600 text-white transition-colors uppercase tracking-widest"
           >
             Download PDF
           </a>

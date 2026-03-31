@@ -65,7 +65,7 @@ export const SupportPage: React.FC<SupportPageProps> = ({ navigate, section }) =
         {/* 2. Privacy Policy */}
         <section id="privacy-policy" className="scroll-mt-24">
           <h2 className="text-2xl font-bold text-gn-foreground dark:text-gn-foreground-dark mb-4 flex items-center gap-3">
-            <span className="w-8 h-1 bg-bloom-accent rounded-full"></span>
+            <span className="w-8 h-1 bg-gn-accent-blue rounded-full"></span>
             Privacy Policy
           </h2>
           <div className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-8 space-y-4 text-gn-foreground-muted dark:text-gray-300 leading-relaxed">
@@ -74,19 +74,19 @@ export const SupportPage: React.FC<SupportPageProps> = ({ navigate, section }) =
             </p>
             <ul className="space-y-4">
               <li className="flex gap-3">
-                <span className="text-bloom-accent font-bold min-w-[80px]">No Tracking:</span>
+                <span className="text-gn-accent-blue font-bold min-w-[80px]">No Tracking:</span>
                 <span>We do not use third-party advertising cookies or cross-site trackers.</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-bloom-accent font-bold min-w-[80px]">Local Data:</span>
+                <span className="text-gn-accent-blue font-bold min-w-[80px]">Local Data:</span>
                 <span>Preferences (such as Theme selection or Admin session tokens) are stored in your browser's `localStorage` and never transmitted to our servers except to maintain session state.</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-bloom-accent font-bold min-w-[80px]">AI Processing:</span>
+                <span className="text-gn-accent-blue font-bold min-w-[80px]">AI Processing:</span>
                 <span>When using the AI Assistant, your query is sent to Google Gemini APIs for processing. No personal identifiers are attached to these requests by GuyNode.</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-bloom-accent font-bold min-w-[80px]">Forms:</span>
+                <span className="text-gn-accent-blue font-bold min-w-[80px]">Forms:</span>
                 <span>Data submitted via the "Report an Issue" or "Request a Demo" forms is used solely for correspondence. <strong>Do not submit sensitive personal information (financial data, government IDs) through these channels.</strong></span>
               </li>
             </ul>
@@ -137,7 +137,7 @@ export const SupportPage: React.FC<SupportPageProps> = ({ navigate, section }) =
             </div>
             <button 
               onClick={() => navigate('REPORT_ISSUE')}
-              className="whitespace-nowrap bg-bloom-accent hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg shadow-blue-900/20 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
+              className="whitespace-nowrap bg-gn-accent-blue hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg shadow-blue-900/20 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white"
             >
               Open Issue Report Form
             </button>

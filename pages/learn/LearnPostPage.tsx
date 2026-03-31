@@ -20,14 +20,14 @@ interface LearnPostPageProps {
 
 const CATEGORY_COLORS: Record<string, string> = {
   guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark border-brand-green-600/20 dark:border-gn-accent-dark/20',
-  tutorial:   'bg-bloom-accent/10 text-bloom-accent border-bloom-accent/20',
-  concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-nightAccent-gold/10 dark:text-nightAccent-gold border-brand-gold-600/20 dark:border-nightAccent-gold/20',
+  tutorial:   'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20',
+  concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold border-brand-gold-600/20 dark:border-gn-accent-gold/20',
   comparison: 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
 };
 
 const DIFFICULTY_COLORS: Record<string, string> = {
   beginner:     'bg-guyana-green/10 text-guyana-green border-guyana-green/20',
-  intermediate: 'bg-brand-gold-600/10 text-brand-gold-600 dark:text-nightAccent-gold border-brand-gold-600/20',
+  intermediate: 'bg-brand-gold-600/10 text-brand-gold-600 dark:text-gn-accent-gold border-brand-gold-600/20',
 };
 
 export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) => {
@@ -122,7 +122,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           prose-li:text-gn-foreground dark:prose-li:text-gn-foreground-dark
           prose-strong:text-gn-foreground dark:prose-strong:text-gn-foreground-dark
           prose-a:text-brand-green-600 dark:prose-a:text-gn-accent-dark
-          prose-code:text-brand-green-600 dark:prose-code:text-nightAccent-gold prose-code:bg-gn-surface-muted dark:prose-code:bg-gn-surface-muted-dark prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
+          prose-code:text-brand-green-600 dark:prose-code:text-gn-accent-gold prose-code:bg-gn-surface-muted dark:prose-code:bg-gn-surface-muted-dark prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
           prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-gn-border dark:prose-h2:border-gn-border-dark prose-h2:pb-2
           prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
           prose-ul:my-4 prose-ol:my-4 prose-li:my-1

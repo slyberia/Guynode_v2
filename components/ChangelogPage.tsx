@@ -38,7 +38,7 @@ export const ChangelogPage: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <h2 className="text-lg font-bold text-gn-foreground dark:text-white group-hover:text-bloom-accent transition-colors">
+                  <h2 className="text-lg font-bold text-gn-foreground dark:text-white group-hover:text-gn-accent-blue transition-colors">
                     {entry.title}
                   </h2>
                 </div>

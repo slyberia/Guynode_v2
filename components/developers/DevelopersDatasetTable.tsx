@@ -33,7 +33,7 @@ export const DevelopersDatasetTable: React.FC = () => {
              <button 
                key={c}
                onClick={() => setCategory(c)}
-               className={`px-3 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${category === c ? 'bg-bloom-accent text-white border-bloom-accent' : 'text-gray-400 border-white/20'}`}
+               className={`px-3 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${category === c ? 'bg-gn-accent-blue text-white border-gn-accent-blue' : 'text-gray-400 border-white/20'}`}
              >
                {c}
              </button>
@@ -77,7 +77,7 @@ export const DevelopersDatasetTable: React.FC = () => {
                     <td className="px-6 py-4 text-right">
                       <button 
                         onClick={() => setExpandedId(expandedId === d.id ? null : d.id)}
-                        className={`text-xs font-bold px-3 py-1.5 rounded transition-colors border ${expandedId === d.id ? 'bg-bloom-accent border-bloom-accent text-white' : 'border-white/20 text-gray-400 hover:text-white hover:border-white'}`}
+                        className={`text-xs font-bold px-3 py-1.5 rounded transition-colors border ${expandedId === d.id ? 'bg-gn-accent-blue border-gn-accent-blue text-white' : 'border-white/20 text-gray-400 hover:text-white hover:border-white'}`}
                       >
                         {expandedId === d.id ? 'Hide Code' : 'View Code'}
                       </button>

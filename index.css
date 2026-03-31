@@ -64,6 +64,12 @@
   --color-bloom-accent: #3b82f6;
   --color-bloom-text: #e5e7eb;
   --color-bloom-muted: #9ca3af;
+
+  /* GN canonical equivalents for orphaned bloom/night tokens */
+  --color-gn-accent-blue: #3b82f6;
+  --color-gn-bg-deep: #121212;
+  --color-gn-accent-gold: #F9D648;
+  --color-gn-accent-secondary: #0D2133;
 }
 
 body {

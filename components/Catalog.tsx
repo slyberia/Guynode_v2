@@ -202,7 +202,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
               placeholder="> SEARCH DATASETS..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-nightAccent-gold font-mono focus:border-brand-green-500 dark:focus:border-bloom-accent outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600" 
+              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-gn-accent-gold font-mono focus:border-brand-green-500 dark:focus:border-gn-accent-blue outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600" 
             />
             {/* Place Finder Stub */}
             <div className="text-[9px] text-ink-500 dark:text-gray-600 font-mono flex items-center gap-1">
@@ -314,7 +314,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                             document.body.removeChild(link);
                           }
                         }}
-                        className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-blue dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center"
+                        className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-secondary dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center"
                       >
                         Download Data
                       </a>
@@ -344,7 +344,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                            </div>
                            <div className="flex gap-2">
                               {asset.type === 'shapefile' && !ENABLE_SHAPEFILE_PREVIEW ? (
-                                <span className="text-[10px] font-mono text-brand-gold-600 dark:text-nightAccent-gold border border-brand-gold-600/30 dark:border-nightAccent-gold/30 px-2 py-1 rounded bg-brand-gold-600/10 dark:bg-nightAccent-gold/10 cursor-help" title="Viewing requires offline GIS software. Conversion pipeline coming in v4.2.">
+                                <span className="text-[10px] font-mono text-brand-gold-600 dark:text-gn-accent-gold border border-brand-gold-600/30 dark:border-gn-accent-gold/30 px-2 py-1 rounded bg-brand-gold-600/10 dark:bg-gn-accent-gold/10 cursor-help" title="Viewing requires offline GIS software. Conversion pipeline coming in v4.2.">
                                   REQUIRES GIS SOFTWARE
                                 </span>
                               ) : asset.isViewable && (
@@ -389,7 +389,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 <div className="grid grid-cols-4 gap-4 text-xs font-mono border-t border-cream-300 dark:border-white/5 pt-4">
                   <div>
                     <div className="text-ink-500 dark:text-gray-500 mb-1">SOURCE AUTHORITY</div>
-                    <div className="text-brand-gold-600 dark:text-nightAccent-gold">{selectedDataset.source}</div>
+                    <div className="text-brand-gold-600 dark:text-gn-accent-gold">{selectedDataset.source}</div>
                   </div>
                   <div>
                     <div className="text-ink-500 dark:text-gray-500 mb-1">LAST UPDATED</div>
@@ -422,7 +422,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                   ) : selectedDataset.geojsonUrl && GLOBAL_GEOJSON_DB[selectedDataset.geojsonUrl] ? (
                     <>
                       <div className="absolute top-2 left-2 z-[400] bg-white/90 dark:bg-black/80 px-2 py-1 rounded border border-cream-300 dark:border-white/10">
-                        <span className="text-[10px] text-brand-green-600 dark:text-nightAccent-gold font-mono">LIVE PREVIEW • {selectedDataset.format}</span>
+                        <span className="text-[10px] text-brand-green-600 dark:text-gn-accent-gold font-mono">LIVE PREVIEW • {selectedDataset.format}</span>
                       </div>
                       <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
                     </>
@@ -449,7 +449,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 <div className="flex-1 overflow-auto p-6 bg-white dark:bg-black">
                   {loadingPreview ? (
                      <div className="h-full flex flex-col items-center justify-center text-ink-500 dark:text-gray-500 font-mono text-xs">
-                        <div className="w-8 h-8 border-2 border-brand-green-600 dark:border-bloom-accent border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <div className="w-8 h-8 border-2 border-brand-green-600 dark:border-gn-accent-blue border-t-transparent rounded-full animate-spin mb-4"></div>
                         &gt; DECRYPTING STREAM...<br/>
                         &gt; PARSING {selectedDataset.format}...
                      </div>
@@ -458,7 +458,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       {previewData && previewData.length > 0 ? (
                         <table className="w-full text-left border-collapse">
                           <thead>
-                            <tr className="border-b border-cream-300 dark:border-white/20 text-brand-green-600 dark:text-nightAccent-gold">
+                            <tr className="border-b border-cream-300 dark:border-white/20 text-brand-green-600 dark:text-gn-accent-gold">
                               {Object.keys(previewData[0]).map(key => (
                                 <th key={key} className="py-2 px-4 uppercase">{key}</th>
                               ))}

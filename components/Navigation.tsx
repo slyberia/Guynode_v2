@@ -28,11 +28,11 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           onClick={() => setView('HOME')}
           aria-label="GuyNode Home"
         >
-          <div className="w-8 h-8 bg-gradient-to-br from-brand-gold-500 to-brand-green-500 dark:from-nightAccent-gold dark:to-gn-accent-dark rounded flex items-center justify-center shadow-sm">
+          <div className="w-8 h-8 bg-gradient-to-br from-brand-gold-500 to-brand-green-500 dark:from-gn-accent-gold dark:to-gn-accent-dark rounded flex items-center justify-center shadow-sm">
              <span className="text-ink-900 font-bold text-lg">G</span>
           </div>
           <div className="flex flex-col items-start">
-            <span className="text-gn-foreground dark:text-gn-foreground-dark font-bold tracking-tight text-lg leading-none group-hover:text-brand-green-600 dark:group-hover:text-nightAccent-gold transition-colors">GuyNode</span>
+            <span className="text-gn-foreground dark:text-gn-foreground-dark font-bold tracking-tight text-lg leading-none group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-gold transition-colors">GuyNode</span>
             <span className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark uppercase tracking-widest leading-none mt-1">Data Portal</span>
           </div>
         </button>
@@ -46,7 +46,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-full py-1.5 pl-4 pr-10 text-sm text-gn-foreground dark:text-gn-foreground-dark focus:outline-none focus:border-brand-green-500 transition-colors"
           />
-          <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center text-gn-foreground-muted hover:text-brand-green-600 dark:hover:text-nightAccent-gold transition-colors">
+          <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center text-gn-foreground-muted hover:text-brand-green-600 dark:hover:text-gn-accent-gold transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </form>
@@ -55,31 +55,31 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
         <div className="hidden md:flex items-center gap-6">
           <button 
             onClick={() => setView('CATALOG')} 
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'CATALOG' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'CATALOG' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Catalog
           </button>
           <button 
             onClick={() => setView('MAP')} 
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'MAP' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'MAP' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             GIS Viewer
           </button>
           <button
             onClick={() => setView('LOCATOR')}
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LOCATOR' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LOCATOR' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Locator
           </button>
           <button
             onClick={() => setView('DOCS')}
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'DOCS' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'DOCS' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Developers
           </button>
           <button 
             onClick={() => setView('ANALYSIS')} 
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ANALYSIS' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ANALYSIS' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Analysis
           </button>
@@ -87,20 +87,20 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           
           <button 
             onClick={() => setView('BLOG_INDEX')} 
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView.toString().startsWith('BLOG_') ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView.toString().startsWith('BLOG_') ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Resources
           </button>
           
           <button
             onClick={() => setView('LEARN_INDEX')}
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LEARN_INDEX' || currentView === 'LEARN_POST' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LEARN_INDEX' || currentView === 'LEARN_POST' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             Learn
           </button>
            <button
             onClick={() => setView('ABOUT')}
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ABOUT' ? 'text-brand-green-600 dark:text-nightAccent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ABOUT' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
             About
           </button>

@@ -61,7 +61,7 @@ export const About: React.FC = () => {
                 "Climate Vulnerability Assessments"
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 bg-gn-elevated dark:bg-white/5 p-4 rounded border border-gn-border dark:border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-bloom-accent"></div>
+                  <div className="w-2 h-2 rounded-full bg-gn-accent-blue"></div>
                   <span className="text-sm font-semibold text-gn-foreground dark:text-gray-200">{item}</span>
                 </div>
               ))}
@@ -100,7 +100,7 @@ export const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 border-b border-gn-border dark:border-gn-border-dark pb-12">
            <div className="md:col-span-4">
             <h2 className="text-2xl font-bold text-gn-foreground dark:text-gn-foreground-dark mb-4">Stewardship</h2>
-            <div className="w-12 h-1 bg-bloom-accent mb-6"></div>
+            <div className="w-12 h-1 bg-gn-accent-blue mb-6"></div>
           </div>
           <div className="md:col-span-8 space-y-6 text-gn-foreground-muted dark:text-gray-300">
             <p>
@@ -109,7 +109,7 @@ export const About: React.FC = () => {
             <p>
               Updates are released incrementally to ensure stability. If you spot an error in the data or the platform, please help us improve by reporting it.
             </p>
-            <a href="/?view=REPORT_ISSUE" className="inline-block text-bloom-accent font-bold hover:underline">
+            <a href="/?view=REPORT_ISSUE" className="inline-block text-gn-accent-blue font-bold hover:underline">
               Report an Issue →
             </a>
           </div>
@@ -143,7 +143,7 @@ export const About: React.FC = () => {
             We are building a community. If you possess map layers pertaining to Guyana (Schools, Healthcare Facilities, Drainage, Rice Lands, etc.) and wish to share them with the public, we will host them with full attribution to you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-bloom-accent hover:bg-blue-600 text-white font-bold py-3 px-8 rounded transition-colors">
+            <button className="bg-gn-accent-blue hover:bg-blue-600 text-white font-bold py-3 px-8 rounded transition-colors">
               Submit a Dataset
             </button>
             <button className="bg-transparent border border-gn-border dark:border-white/20 hover:border-gn-foreground dark:hover:border-white text-gn-foreground dark:text-white font-bold py-3 px-8 rounded transition-colors">

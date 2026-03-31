@@ -17,7 +17,7 @@ export const Analysis: React.FC = () => {
              <h2 className="text-3xl font-serif font-bold text-gn-foreground dark:text-gn-foreground-dark mb-2">Research & Insights</h2>
              <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark">Official reports derived from the GuyNode Data Lake.</p>
           </div>
-          <button className="text-bloom-accent hover:text-gn-foreground dark:hover:text-gn-foreground-dark transition-colors text-sm font-semibold">View all Insights →</button>
+          <button className="text-gn-accent-blue hover:text-gn-foreground dark:hover:text-gn-foreground-dark transition-colors text-sm font-semibold">View all Insights →</button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -28,7 +28,7 @@ export const Analysis: React.FC = () => {
               </div>
               <div className="flex gap-2 mb-3">
                 {post.tags.map(tag => (
-                   <span key={tag} className="text-[10px] uppercase font-bold tracking-wider text-bloom-accent">{tag}</span>
+                   <span key={tag} className="text-[10px] uppercase font-bold tracking-wider text-gn-accent-blue">{tag}</span>
                 ))}
               </div>
               <h3 className="text-xl font-bold text-gn-foreground dark:text-gn-foreground-dark mb-3 group-hover:text-guyana-gold transition-colors">{post.title}</h3>

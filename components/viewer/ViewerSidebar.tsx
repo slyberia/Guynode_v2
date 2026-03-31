@@ -72,7 +72,7 @@ export const ViewerSidebar: React.FC<ViewerSidebarProps> = ({ dataset, quickStat
               <h4 className="text-[10px] font-bold text-gn-foreground-muted dark:text-gray-400 uppercase mb-2">Live Layer Stats</h4>
               <div className="flex gap-4">
                  <div className="text-center">
-                    <div className="text-lg font-mono text-brand-green-600 dark:text-bloom-accent font-bold">{quickStats.featureCount}</div>
+                    <div className="text-lg font-mono text-brand-green-600 dark:text-gn-accent-blue font-bold">{quickStats.featureCount}</div>
                     <div className="text-[9px] text-gn-foreground-muted dark:text-gray-500">FEATURES</div>
                  </div>
                  <div className="text-center">
