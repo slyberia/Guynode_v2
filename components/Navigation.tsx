@@ -28,7 +28,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           onClick={() => setView('HOME')}
           aria-label="GuyNode Home"
         >
-          <div className="w-8 h-8 bg-gradient-to-br from-brand-gold-500 to-brand-green-500 dark:from-nightAccent-gold dark:to-nightAccent-green rounded flex items-center justify-center shadow-sm">
+          <div className="w-8 h-8 bg-gradient-to-br from-brand-gold-500 to-brand-green-500 dark:from-nightAccent-gold dark:to-gn-accent-dark rounded flex items-center justify-center shadow-sm">
              <span className="text-ink-900 font-bold text-lg">G</span>
           </div>
           <div className="flex flex-col items-start">

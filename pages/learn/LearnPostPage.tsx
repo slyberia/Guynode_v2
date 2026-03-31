@@ -19,7 +19,7 @@ interface LearnPostPageProps {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-nightAccent-green/10 dark:text-nightAccent-green border-brand-green-600/20 dark:border-nightAccent-green/20',
+  guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark border-brand-green-600/20 dark:border-gn-accent-dark/20',
   tutorial:   'bg-bloom-accent/10 text-bloom-accent border-bloom-accent/20',
   concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-nightAccent-gold/10 dark:text-nightAccent-gold border-brand-gold-600/20 dark:border-nightAccent-gold/20',
   comparison: 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
@@ -90,7 +90,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           {/* Back link */}
           <button
             onClick={() => navigate('LEARN_INDEX')}
-            className="text-xs font-bold text-brand-green-600 dark:text-nightAccent-green hover:underline mb-6 inline-block uppercase tracking-widest"
+            className="text-xs font-bold text-brand-green-600 dark:text-gn-accent-dark hover:underline mb-6 inline-block uppercase tracking-widest"
           >
             ← Back to Learn
           </button>
@@ -121,7 +121,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           prose-p:text-gn-foreground dark:prose-p:text-gn-foreground-dark prose-p:leading-relaxed
           prose-li:text-gn-foreground dark:prose-li:text-gn-foreground-dark
           prose-strong:text-gn-foreground dark:prose-strong:text-gn-foreground-dark
-          prose-a:text-brand-green-600 dark:prose-a:text-nightAccent-green
+          prose-a:text-brand-green-600 dark:prose-a:text-gn-accent-dark
           prose-code:text-brand-green-600 dark:prose-code:text-nightAccent-gold prose-code:bg-gn-surface-muted dark:prose-code:bg-gn-surface-muted-dark prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
           prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-gn-border dark:prose-h2:border-gn-border-dark prose-h2:pb-2
           prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
@@ -141,13 +141,13 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={() => navigate('CATALOG')}
-              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-green dark:hover:bg-brand-green-500 text-white font-bold py-2.5 px-6 rounded transition-colors text-sm"
+              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-2.5 px-6 rounded transition-colors text-sm"
             >
               Browse Datasets
             </button>
             <button
               onClick={() => navigate('LEARN_INDEX')}
-              className="border border-brand-green-600 dark:border-nightAccent-green text-brand-green-600 dark:text-nightAccent-green hover:bg-brand-green-600 hover:text-white dark:hover:bg-nightAccent-green dark:hover:text-gn-foreground-dark font-bold py-2.5 px-6 rounded transition-colors text-sm"
+              className="border border-brand-green-600 dark:border-gn-accent-dark text-brand-green-600 dark:text-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-2.5 px-6 rounded transition-colors text-sm"
             >
               Back to Learning Center
             </button>

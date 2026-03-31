@@ -141,7 +141,7 @@ export const AnalysisDetailPage: React.FC<AnalysisDetailPageProps> = ({ analysis
               
               {/* Charts */}
               {analysis.charts && analysis.charts.map(chart => (
-                 <div key={chart.id} className="bg-bloom-card border border-white/10 rounded-lg p-6">
+                 <div key={chart.id} className="bg-gn-elevated-dark border border-white/10 rounded-lg p-6">
                     <h3 className="font-bold text-white mb-2">{chart.title}</h3>
                     <p className="text-xs text-gray-400 mb-4">{chart.description}</p>
                     

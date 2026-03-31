@@ -37,7 +37,7 @@ export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDat
     <div className="w-full min-h-[calc(100vh-64px)] bg-gn-surface dark:bg-black p-4 lg:p-8 flex flex-col items-center justify-center transition-colors duration-300">
       
       {/* Outer Frame Card */}
-      <div className="w-full max-w-[1600px] h-[85vh] min-h-[600px] bg-gn-elevated dark:bg-bloom-card border border-gn-border dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row ring-1 ring-black/5 dark:ring-white/5">
+      <div className="w-full max-w-[1600px] h-[85vh] min-h-[600px] bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row ring-1 ring-black/5 dark:ring-white/5">
         
         {/* Left Panel: Instructions */}
         <div className="w-full lg:w-80 bg-gn-surface dark:bg-bloom-dark border-b lg:border-b-0 lg:border-r border-gn-border dark:border-white/10 flex flex-col flex-shrink-0 transition-colors duration-300">

@@ -16,7 +16,7 @@ interface LearnIndexPageProps {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-nightAccent-green/10 dark:text-nightAccent-green border-brand-green-600/20 dark:border-nightAccent-green/20',
+  guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark border-brand-green-600/20 dark:border-gn-accent-dark/20',
   tutorial:   'bg-bloom-accent/10 text-bloom-accent border-bloom-accent/20',
   concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-nightAccent-gold/10 dark:text-nightAccent-gold border-brand-gold-600/20 dark:border-nightAccent-gold/20',
   comparison: 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
@@ -25,7 +25,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 const PostCard: React.FC<{ post: LearnPost; onClick: () => void }> = ({ post, onClick }) => (
   <button
     onClick={onClick}
-    className="text-left w-full bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-nightAccent-green transition-colors group"
+    className="text-left w-full bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-gn-accent-dark transition-colors group"
   >
     <div className="flex items-center gap-2 mb-3">
       <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${CATEGORY_COLORS[post.category] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted border-gn-border dark:border-gn-border-dark'}`}>
@@ -35,7 +35,7 @@ const PostCard: React.FC<{ post: LearnPost; onClick: () => void }> = ({ post, on
         {post.readTimeMinutes} min read
       </span>
     </div>
-    <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-nightAccent-green transition-colors">
+    <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-dark transition-colors">
       {post.title}
     </h3>
     <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed">
@@ -73,7 +73,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
       {/* HERO */}
       <section className="bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-green-600 dark:text-nightAccent-green mb-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-green-600 dark:text-gn-accent-dark mb-4">
             Guynode Learning Center
           </p>
           <h1 className="text-4xl font-serif font-bold text-gn-foreground dark:text-gn-foreground-dark mb-6 leading-tight">
@@ -85,13 +85,13 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollTo('getting-started')}
-              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-green dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
+              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
             >
               Start Learning
             </button>
             <button
               onClick={() => scrollTo('tutorials')}
-              className="border border-brand-green-600 dark:border-nightAccent-green text-brand-green-600 dark:text-nightAccent-green hover:bg-brand-green-600 hover:text-white dark:hover:bg-nightAccent-green dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
+              className="border border-brand-green-600 dark:border-gn-accent-dark text-brand-green-600 dark:text-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
             >
               Explore Tutorials
             </button>
@@ -145,7 +145,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
                 <p className="text-sm text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed flex-1">{path.body}</p>
                 <button
                   onClick={path.action}
-                  className="text-sm font-bold text-brand-green-600 dark:text-nightAccent-green hover:underline text-left"
+                  className="text-sm font-bold text-brand-green-600 dark:text-gn-accent-dark hover:underline text-left"
                 >
                   {path.cta} →
                 </button>
@@ -254,9 +254,9 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-nightAccent-green transition-colors group block"
+                className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-gn-accent-dark transition-colors group block"
               >
-                <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-nightAccent-green transition-colors">
+                <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-dark transition-colors">
                   {resource.title} ↗
                 </h3>
                 <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed">
@@ -278,13 +278,13 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('CATALOG')}
-              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-green dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
+              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
             >
               Browse Datasets
             </button>
             <button
               onClick={() => scrollTo('tutorials')}
-              className="border border-brand-green-600 dark:border-nightAccent-green text-brand-green-600 dark:text-nightAccent-green hover:bg-brand-green-600 hover:text-white dark:hover:bg-nightAccent-green dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
+              className="border border-brand-green-600 dark:border-gn-accent-dark text-brand-green-600 dark:text-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
             >
               Open Tutorials
             </button>

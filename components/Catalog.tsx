@@ -188,7 +188,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   return (
     <div className="min-h-screen bg-cream-100 dark:bg-black pt-4 pb-12 flex flex-col h-screen overflow-hidden transition-colors duration-300">
       {/* Header Bar */}
-      <div className="px-6 pb-4 border-b border-cream-300 dark:border-nightBorder-600 bg-cream-100 dark:bg-black z-10 space-y-4">
+      <div className="px-6 pb-4 border-b border-cream-300 dark:border-gn-border-dark bg-cream-100 dark:bg-black z-10 space-y-4">
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-serif font-bold text-ink-900 dark:text-white tracking-tight">Data Catalog</h2>
@@ -202,7 +202,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
               placeholder="> SEARCH DATASETS..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-cream-200 dark:bg-nightBg-800 border border-cream-300 dark:border-nightBorder-600 rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-nightAccent-gold font-mono focus:border-brand-green-500 dark:focus:border-bloom-accent outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600" 
+              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-nightAccent-gold font-mono focus:border-brand-green-500 dark:focus:border-bloom-accent outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600" 
             />
             {/* Place Finder Stub */}
             <div className="text-[9px] text-ink-500 dark:text-gray-600 font-mono flex items-center gap-1">
@@ -224,7 +224,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
              <button 
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${activeCategory === cat ? 'bg-brand-green-600 text-white border-brand-green-600 dark:bg-nightAccent-green dark:text-white dark:border-nightAccent-green' : 'text-ink-500 border-cream-300 hover:border-brand-green-600 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
+              className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${activeCategory === cat ? 'bg-brand-green-600 text-white border-brand-green-600 dark:bg-gn-accent-dark dark:text-white dark:border-gn-accent-dark' : 'text-ink-500 border-cream-300 hover:border-brand-green-600 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
             >
               {cat}
             </button>
@@ -235,7 +235,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
       <div className="flex flex-1 overflow-hidden">
         
         {/* Left Pane: Dataset List */}
-        <div className="w-1/3 border-r border-cream-300 dark:border-nightBorder-600 overflow-y-auto bg-cream-100 dark:bg-black custom-scrollbar transition-colors duration-300">
+        <div className="w-1/3 border-r border-cream-300 dark:border-gn-border-dark overflow-y-auto bg-cream-100 dark:bg-black custom-scrollbar transition-colors duration-300">
           {loading ? (
              <div className="p-8 text-center font-mono text-ink-500 dark:text-gray-500 animate-pulse">&gt; INITIALIZING PIPELINE...</div>
           ) : (
@@ -256,14 +256,14 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
         </div>
 
         {/* Right Pane: Detail & Extraction View */}
-        <div className="w-2/3 bg-cream-200 dark:bg-nightBg-800 flex flex-col overflow-hidden relative transition-colors duration-300">
+        <div className="w-2/3 bg-cream-200 dark:bg-gn-surface-muted-dark flex flex-col overflow-hidden relative transition-colors duration-300">
           {/* Background Grid Pattern */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
           
           {selectedDataset ? (
             <div className="flex flex-col h-full overflow-y-auto custom-scrollbar">
               {/* Dataset Metadata Header */}
-              <div className="p-6 border-b border-cream-300 dark:border-white/10 bg-cream-100/50 dark:bg-bloom-card/50">
+              <div className="p-6 border-b border-cream-300 dark:border-white/10 bg-cream-100/50 dark:bg-gn-elevated-dark/50">
                 <div className="flex justify-between items-start mb-4">
                   <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
                   <div className="flex gap-2">
@@ -427,7 +427,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-cream-200 dark:bg-nightBg-800 flex items-center justify-center text-red-500 font-mono text-xs p-4">
+                    <div className="w-full h-full bg-cream-200 dark:bg-gn-surface-muted-dark flex items-center justify-center text-red-500 font-mono text-xs p-4">
                       &gt; ERROR: DATA_SOURCE_MISSING ({selectedDataset.geojsonUrl})<br/>
                       &gt; PLEASE CONTACT ADMINISTRATOR
                     </div>

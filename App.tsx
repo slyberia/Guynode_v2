@@ -49,7 +49,7 @@ const LoadingFallback = () => (
   <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark p-6">
     <div className="flex flex-col items-center gap-4">
       <div className="w-8 h-8 border-4 border-brand-green-500 border-t-transparent rounded-full animate-spin"></div>
-      <p className="font-mono text-sm text-brand-green-600 dark:text-nightAccent-green">Loading GuyNode...</p>
+      <p className="font-mono text-sm text-brand-green-600 dark:text-gn-accent-dark">Loading GuyNode...</p>
     </div>
   </div>
 );
@@ -224,7 +224,7 @@ function App() {
                      </button>
                      <button
                        onClick={() => handleNavigation('MAP')}
-                       className="text-brand-green-600 dark:text-nightAccent-green border border-brand-green-600 dark:border-nightAccent-green hover:bg-brand-green-600 hover:text-white dark:hover:bg-nightAccent-green dark:hover:text-nightInk-50 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
+                       className="text-brand-green-600 dark:text-gn-accent-dark border border-brand-green-600 dark:border-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-nightInk-50 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
                      >
                        Open the GIS Viewer →
                      </button>
@@ -262,7 +262,7 @@ function App() {
                       <option>Mining</option>
                       <option>Government</option>
                     </select>
-                    <button className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-green dark:hover:bg-brand-green-500 text-white font-bold py-4 rounded w-full transition-colors">
+                    <button className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-4 rounded w-full transition-colors">
                       Submit Request
                     </button>
                     <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark mt-4">

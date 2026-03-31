@@ -49,7 +49,7 @@ export const DevelopersDatasetTable: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="border border-white/10 rounded-lg overflow-hidden bg-bloom-card">
+      <div className="border border-white/10 rounded-lg overflow-hidden bg-gn-elevated-dark">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead className="bg-white/5 border-b border-white/10 text-gray-400 text-xs uppercase font-bold">
