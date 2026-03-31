@@ -66,8 +66,6 @@ function App() {
 
   const [currentView, setCurrentView] = useState<ViewState>(initialSanitized.view);
   const [currentParams, setCurrentParams] = useState<RouteParams>(initialSanitized.params);
-  const [showBetaBanner, setShowBetaBanner] = useState(true);
-  
   // Theme State Management
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
@@ -370,21 +368,6 @@ function App() {
       >
         Skip to main content
       </a>
-
-      {showBetaBanner && (
-        <div className="bg-gradient-to-r from-brand-green-600 to-brand-green-500 text-white text-xs font-bold py-2 px-6 text-center flex justify-between items-center relative z-[100]">
-          <span className="mx-auto">
-            Welcome to the new Guynode Interface (Beta). We are actively migrating datasets.
-          </span>
-          <button 
-            onClick={() => setShowBetaBanner(false)} 
-            className="text-white/70 hover:text-white absolute right-4"
-            aria-label="Dismiss banner"
-          >
-            ✕
-          </button>
-        </div>
-      )}
 
       <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark selection:bg-brand-gold-500 selection:text-ink-900 relative transition-colors duration-300">
         <Navigation 
