@@ -134,7 +134,7 @@ export const LayerControlPanel: React.FC<LayerControlPanelProps> = ({
                type="checkbox" 
                checked={fullDatasetMode} 
                onChange={onToggleFullMode}
-               className="accent-brand-green-600 dark:accent-bloom-accent"
+               className="accent-brand-green-600 dark:accent-gn-accent-blue"
              />
              <span className="text-xs text-gn-foreground-muted dark:text-gray-300">Disable Spatial Clipping (Full Load)</span>
            </label>

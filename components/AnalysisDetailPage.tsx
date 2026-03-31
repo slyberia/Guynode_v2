@@ -52,7 +52,7 @@ export const AnalysisDetailPage: React.FC<AnalysisDetailPageProps> = ({ analysis
         {/* Header */}
         <header className="mb-12 border-b border-white/10 pb-8">
            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-3 py-1 rounded-full bg-bloom-accent/10 border border-bloom-accent/30 text-bloom-accent text-xs font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-gn-accent-blue/10 border border-gn-accent-blue/30 text-gn-accent-blue text-xs font-bold uppercase tracking-wider">
                 {analysis.level}
               </span>
               {analysis.tags.map(tag => (
@@ -166,7 +166,7 @@ export const AnalysisDetailPage: React.FC<AnalysisDetailPageProps> = ({ analysis
                           <li key={ds.id}>
                              <button 
                                onClick={() => navigate('MAP', { datasetId: ds.id })}
-                               className="text-sm font-bold text-bloom-accent hover:text-white text-left block"
+                               className="text-sm font-bold text-gn-accent-blue hover:text-white text-left block"
                              >
                                {ds.title}
                              </button>

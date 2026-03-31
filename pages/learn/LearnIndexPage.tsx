@@ -17,8 +17,8 @@ interface LearnIndexPageProps {
 
 const CATEGORY_COLORS: Record<string, string> = {
   guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark border-brand-green-600/20 dark:border-gn-accent-dark/20',
-  tutorial:   'bg-bloom-accent/10 text-bloom-accent border-bloom-accent/20',
-  concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-nightAccent-gold/10 dark:text-nightAccent-gold border-brand-gold-600/20 dark:border-nightAccent-gold/20',
+  tutorial:   'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20',
+  concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold border-brand-gold-600/20 dark:border-gn-accent-gold/20',
   comparison: 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
 };
 

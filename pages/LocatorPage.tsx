@@ -215,7 +215,7 @@ export const LocatorPage: React.FC<LocatorPageProps> = ({ theme }) => {
                     checked={layer.state === 'on'}
                     disabled={layer.state === 'loading'}
                     onChange={() => toggleLayer(layer.id)}
-                    className="accent-brand-green-600 dark:accent-nightAccent-gold w-3.5 h-3.5 flex-shrink-0"
+                    className="accent-brand-green-600 dark:accent-gn-accent-gold w-3.5 h-3.5 flex-shrink-0"
                   />
                   <span className="text-xs text-gn-foreground dark:text-gn-foreground-dark truncate leading-snug">
                     {layer.title}
@@ -225,7 +225,7 @@ export const LocatorPage: React.FC<LocatorPageProps> = ({ theme }) => {
                 {/* State indicator */}
                 <div className="flex-shrink-0 w-4 text-right">
                   {layer.state === 'loading' && (
-                    <div className="w-3 h-3 border border-brand-green-600 dark:border-nightAccent-gold border-t-transparent rounded-full animate-spin" />
+                    <div className="w-3 h-3 border border-brand-green-600 dark:border-gn-accent-gold border-t-transparent rounded-full animate-spin" />
                   )}
                   {layer.state === 'error' && (
                     <span className="text-red-500 text-[10px] font-bold" title="Load failed">✕</span>

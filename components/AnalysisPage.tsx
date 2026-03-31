@@ -26,7 +26,7 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ navigate }) => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'policy-brief': return 'text-guyana-gold border-guyana-gold/30 bg-guyana-gold/10';
-      case 'technical': return 'text-bloom-accent border-bloom-accent/30 bg-bloom-accent/10';
+      case 'technical': return 'text-gn-accent-blue border-gn-accent-blue/30 bg-gn-accent-blue/10';
       case 'overview': return 'text-green-400 border-green-500/30 bg-green-500/10';
       default: return 'text-gray-400';
     }
@@ -105,7 +105,7 @@ export const AnalysisPage: React.FC<AnalysisPageProps> = ({ navigate }) => {
                <button 
                  key={l}
                  onClick={() => setLevelFilter(l)}
-                 className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors uppercase ${levelFilter === l ? 'bg-bloom-accent text-white border-bloom-accent' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark border-gn-border dark:border-gn-border-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+                 className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors uppercase ${levelFilter === l ? 'bg-gn-accent-blue text-white border-gn-accent-blue' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark border-gn-border dark:border-gn-border-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
                >
                  {l}
                </button>

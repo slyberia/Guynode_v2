@@ -466,7 +466,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
   return (
-    <div className="relative w-full h-full flex flex-col bg-gn-surface dark:bg-bloom-dark transition-colors duration-300">
+    <div className="relative w-full h-full flex flex-col bg-gn-surface dark:bg-gn-bg-deep transition-colors duration-300">
       {/* Map Toolbar */}
       <div className="h-14 bg-gn-elevated dark:bg-black border-b border-gn-border dark:border-white/10 flex items-center justify-between px-6 z-10 transition-colors duration-300">
         <div className="flex items-center gap-4">
@@ -482,7 +482,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
           </button>
           <button 
             onClick={() => setView('HOME')}
-            className="text-xs bg-brand-green-600 dark:bg-bloom-accent hover:bg-brand-green-500 dark:hover:bg-blue-600 text-white px-3 py-1.5 rounded font-bold transition-colors"
+            className="text-xs bg-brand-green-600 dark:bg-gn-accent-blue hover:bg-brand-green-500 dark:hover:bg-blue-600 text-white px-3 py-1.5 rounded font-bold transition-colors"
           >
             Exit Viewer
           </button>
@@ -548,7 +548,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
                     setViewerState(p => ({ ...p, temporalYear: parseInt(e.target.value) }));
                     // Trigger layer sync will happen via useEffect dependency
                  }}
-                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-brand-green-600 dark:accent-bloom-accent"
+                 className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-brand-green-600 dark:accent-gn-accent-blue"
                />
             </div>
          )}

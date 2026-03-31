@@ -62,7 +62,7 @@ curl -L -o ${dataset.id}.${dataset.format.toLowerCase()} "${url}"`
             onClick={() => setActiveTab(tab)}
             className={`text-xs font-bold px-3 py-1 rounded transition-colors ${
               activeTab === tab 
-                ? 'bg-bloom-accent text-white' 
+                ? 'bg-gn-accent-blue text-white' 
                 : 'text-gray-500 hover:text-white hover:bg-white/5'
             }`}
           >

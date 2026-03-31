@@ -36,7 +36,7 @@ export const DevelopersPage: React.FC = () => {
                  <div className="flex-1 h-0.5 bg-gn-border dark:bg-white/20 relative">
                     <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[9px] bg-gn-surface-muted dark:bg-black px-1 text-gn-foreground-muted dark:text-gray-500">HTTP GET</div>
                  </div>
-                 <div className="w-12 h-12 bg-bloom-accent/20 border border-bloom-accent/50 rounded flex items-center justify-center font-mono text-xs text-bloom-accent">CDN</div>
+                 <div className="w-12 h-12 bg-gn-accent-blue/20 border border-gn-accent-blue/50 rounded flex items-center justify-center font-mono text-xs text-gn-accent-blue">CDN</div>
               </div>
               <div className="text-xs text-gn-foreground-muted dark:text-gray-500 text-center font-mono">
                  Direct File Access • No Auth Headers • CORS Enabled
@@ -191,7 +191,7 @@ export const DevelopersPage: React.FC = () => {
                  <li>• Accepted Formats: GeoJSON, Shapefile (zipped), KML</li>
                  <li>• Metadata Required: Source, Year, License</li>
                </ul>
-               <button className="text-bloom-accent hover:text-gn-foreground dark:hover:text-white font-bold text-sm">
+               <button className="text-gn-accent-blue hover:text-gn-foreground dark:hover:text-white font-bold text-sm">
                  View Submission Guidelines →
                </button>
              </div>

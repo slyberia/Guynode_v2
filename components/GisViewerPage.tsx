@@ -40,7 +40,7 @@ export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDat
       <div className="w-full max-w-[1600px] h-[85vh] min-h-[600px] bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row ring-1 ring-black/5 dark:ring-white/5">
         
         {/* Left Panel: Instructions */}
-        <div className="w-full lg:w-80 bg-gn-surface dark:bg-bloom-dark border-b lg:border-b-0 lg:border-r border-gn-border dark:border-white/10 flex flex-col flex-shrink-0 transition-colors duration-300">
+        <div className="w-full lg:w-80 bg-gn-surface dark:bg-gn-bg-deep border-b lg:border-b-0 lg:border-r border-gn-border dark:border-white/10 flex flex-col flex-shrink-0 transition-colors duration-300">
           
           <div className="p-6 border-b border-gn-border dark:border-white/5">
             <h2 className="text-xl font-serif font-bold text-gn-foreground dark:text-white mb-2">Interactive GIS Viewer</h2>
@@ -102,9 +102,9 @@ export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDat
           </div>
 
           <div className="p-6 border-t border-gn-border dark:border-white/10 bg-gn-surface-muted dark:bg-black/20">
-             <div className="bg-brand-green-50 dark:bg-bloom-accent/10 border border-brand-green-100 dark:border-bloom-accent/20 rounded-lg p-3">
+             <div className="bg-brand-green-50 dark:bg-gn-accent-blue/10 border border-brand-green-100 dark:border-gn-accent-blue/20 rounded-lg p-3">
                <div className="flex gap-2 items-start">
-                  <span className="text-brand-green-600 dark:text-bloom-accent mt-0.5">
+                  <span className="text-brand-green-600 dark:text-gn-accent-blue mt-0.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
                   </span>
                   <p className="text-[11px] text-gn-foreground-muted dark:text-gray-300 leading-relaxed">
