@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { ViewState } from '../types';
 import { RouteParams } from '../utils/routing';
 import { useCatalog } from '../context/CatalogContext';
@@ -62,9 +64,6 @@ export const LocatorPage: React.FC<LocatorPageProps> = ({ theme }) => {
     if (!mapContainerRef.current) return;
     if (mapRef.current) return; // already initialised
 
-    const L = (window as unknown as { L: typeof import('leaflet') }).L;
-    if (!L) return;
-
     const map = L.map(mapContainerRef.current, {
       center: [4.86, -58.93],
       zoom: 7,
@@ -91,19 +90,17 @@ export const LocatorPage: React.FC<LocatorPageProps> = ({ theme }) => {
 
   // Swap basemap when theme changes
   useEffect(() => {
-    const L = (window as unknown as { L: typeof import('leaflet') }).L;
     const map = mapRef.current;
     const tile = baseTileRef.current;
-    if (!map || !tile || !L) return;
+    if (!map || !tile) return;
 
     const newUrl = theme === 'dark' ? BASEMAP_DARK : BASEMAP_LIGHT;
     tile.setUrl(newUrl);
   }, [theme]);
 
   const toggleLayer = useCallback(async (layerId: string) => {
-    const L = (window as unknown as { L: typeof import('leaflet') }).L;
     const map = mapRef.current;
-    if (!map || !L) return;
+    if (!map) return;
 
     setLayers(prev => {
       const layer = prev.find(l => l.id === layerId);

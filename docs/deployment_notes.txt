@@ -1,47 +1,40 @@
+# Guynode — Deployment Notes
 
-# Deployment & SEO Configuration
+## Hosting
+- Platform: Cloudflare Pages
+- Build command: npm run build
+- Output directory: dist
+- Node version: 22+
 
-## Deployment Model
-- Type: Single Page Application (SPA)
-- Hosting: Static (Netlify/Vercel/S3)
-- Routing: Client-side via Query Parameters (Hash/History API fallback handled by App.tsx)
+## Routing
+- SPA routing via query parameters (?view=CATALOG etc.)
+- SPA fallback: public/_redirects (/* /index.html 200)
+- Legacy URL redirects: public/_redirects (301s for
+  all old .html pages — see file for full mapping)
 
-## Environment Variables
-- NODE_ENV: Set to 'production' for builds to disable debug logging and hide error stack traces.
-- API_KEY: Required for AI features (Gemini).
+## Build pipeline
+- Prebuild: scripts/validate-content.ts (Zod schema
+  validation on datasets.json and blog/index.json)
+- Prebuild: scripts/generate-sitemap.js (regenerates
+  public/sitemap.xml and public/robots.txt)
+- Build: vite build → dist/
 
-## Robots.txt Configuration
-User-agent: *
-Allow: /
-Disallow: /?view=ADMIN_ACCESS
-Disallow: /?view=INTERNAL_LOG
-Sitemap: https://guynode.com/sitemap.xml
+## Environment variables
+- NODE_ENV: set to 'production' automatically by
+  Cloudflare Pages on build
+- No API keys required — application has no runtime
+  backend or AI dependencies
 
-## Sitemap.xml Structure (Static Generation Recommended)
-- https://guynode.com/
-- https://guynode.com/?view=CATALOG
-- https://guynode.com/?view=MAP
-- https://guynode.com/?view=BLOG_INDEX
-- https://guynode.com/?view=ABOUT
-- https://guynode.com/?view=DOCS
+## GCS asset pipeline
+- Bucket: guynode-public-assets (public, wildcard CORS)
+- Conversion: scripts/convert-and-upload.py
+  (ogr2ogr shapefile → GeoJSON + gsutil upload)
+- Run with: python scripts/convert-and-upload.py
+  --assets-dir /path/to/assets --update-json
 
-## Build Notes
-- External GeoJSON URLs in the catalog may require CORS proxies if they do not send Access-Control-Allow-Origin headers.
-- The Admin Console is hidden behind a client-side soft gate. Do not rely on it for securing sensitive data in production.
-
-## Migration & Redirect Strategy
-(Recommended for replacing legacy sites)
-
-If deploying this SPA to replace an existing multi-page site, configure your host (Netlify _redirects or Vercel config) to map old paths to new query params.
-
-Examples:
-- Old: /data/mining-concessions.html
-  New: /?view=CATALOG&category=Economy
-
-- Old: /maps/viewer.php
-  New: /?view=MAP
-
-- Old: /about-us
-  New: /?view=ABOUT
-
-Ensure "Beta" messaging is active in App.tsx during the transition period.
+## Known limitations
+- MapViewer chunk: ~1.9MB (GeoRaster — pre-existing,
+  tracked for future code-splitting)
+- GeoJSON assets must be uploaded via
+  convert-and-upload.py before map viewer layers
+  display data
