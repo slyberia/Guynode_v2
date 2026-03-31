@@ -54,7 +54,7 @@ const InternalLogPage: React.FC = () => {
             return (
               <article
                 key={entry.id}
-                className="border border-white/10 rounded-xl bg-bloom-card/50 hover:border-white/20 transition-colors"
+                className="border border-white/10 rounded-xl bg-gn-elevated-dark/50 hover:border-white/20 transition-colors"
               >
                 <button
                   type="button"

@@ -7,7 +7,7 @@ interface FeaturesProps {
 }
 
 const FeatureCard = ({ title, description, action, onClick }: { title: string, description: string, action: string, onClick: () => void }) => (
-  <div className="group bg-cream-200 dark:bg-bloom-card hover:bg-cream-300 dark:hover:bg-white/5 border border-cream-300 dark:border-white/5 rounded-lg p-8 transition-all cursor-pointer flex flex-col justify-between min-h-[300px]" onClick={onClick}>
+  <div className="group bg-cream-200 dark:bg-gn-elevated-dark hover:bg-cream-300 dark:hover:bg-white/5 border border-cream-300 dark:border-white/5 rounded-lg p-8 transition-all cursor-pointer flex flex-col justify-between min-h-[300px]" onClick={onClick}>
     <div>
       <h3 className="text-xl font-bold text-ink-900 dark:text-white mb-4 group-hover:text-brand-green-600 dark:group-hover:text-nightAccent-gold transition-colors">{title}</h3>
       <p className="text-ink-700 dark:text-gray-400 text-sm leading-relaxed mb-6">{description}</p>

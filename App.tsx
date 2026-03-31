@@ -49,7 +49,7 @@ const LoadingFallback = () => (
   <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark p-6">
     <div className="flex flex-col items-center gap-4">
       <div className="w-8 h-8 border-4 border-brand-green-500 border-t-transparent rounded-full animate-spin"></div>
-      <p className="font-mono text-sm text-brand-green-600 dark:text-nightAccent-green">Loading GuyNode...</p>
+      <p className="font-mono text-sm text-brand-green-600 dark:text-gn-accent-dark">Loading GuyNode...</p>
     </div>
   </div>
 );
@@ -66,8 +66,6 @@ function App() {
 
   const [currentView, setCurrentView] = useState<ViewState>(initialSanitized.view);
   const [currentParams, setCurrentParams] = useState<RouteParams>(initialSanitized.params);
-  const [showBetaBanner, setShowBetaBanner] = useState(true);
-  
   // Theme State Management
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
@@ -226,7 +224,7 @@ function App() {
                      </button>
                      <button
                        onClick={() => handleNavigation('MAP')}
-                       className="text-brand-green-600 dark:text-nightAccent-green border border-brand-green-600 dark:border-nightAccent-green hover:bg-brand-green-600 hover:text-white dark:hover:bg-nightAccent-green dark:hover:text-nightInk-50 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
+                       className="text-brand-green-600 dark:text-gn-accent-dark border border-brand-green-600 dark:border-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-nightInk-50 font-bold py-3 px-6 rounded transition-colors flex items-center justify-center"
                      >
                        Open the GIS Viewer →
                      </button>
@@ -264,7 +262,7 @@ function App() {
                       <option>Mining</option>
                       <option>Government</option>
                     </select>
-                    <button className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-nightAccent-green dark:hover:bg-brand-green-500 text-white font-bold py-4 rounded w-full transition-colors">
+                    <button className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-4 rounded w-full transition-colors">
                       Submit Request
                     </button>
                     <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark mt-4">
@@ -370,21 +368,6 @@ function App() {
       >
         Skip to main content
       </a>
-
-      {showBetaBanner && (
-        <div className="bg-gradient-to-r from-brand-green-600 to-brand-green-500 text-white text-xs font-bold py-2 px-6 text-center flex justify-between items-center relative z-[100]">
-          <span className="mx-auto">
-            Welcome to the new Guynode Interface (Beta). We are actively migrating datasets.
-          </span>
-          <button 
-            onClick={() => setShowBetaBanner(false)} 
-            className="text-white/70 hover:text-white absolute right-4"
-            aria-label="Dismiss banner"
-          >
-            ✕
-          </button>
-        </div>
-      )}
 
       <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark selection:bg-brand-gold-500 selection:text-ink-900 relative transition-colors duration-300">
         <Navigation 
