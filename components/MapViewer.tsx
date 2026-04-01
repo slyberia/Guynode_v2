@@ -20,8 +20,6 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-import parseGeoraster from 'georaster';
-import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
 const DefaultIcon = L.icon({
     iconUrl: icon,
@@ -65,6 +63,10 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
   const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
   const layerGroupRef = useRef<import('leaflet').LayerGroup | null>(null);
   const tileLayerRef = useRef<import('leaflet').TileLayer | null>(null);
+  const georasterRef = useRef<{
+    parseGeoraster: typeof import('georaster').default;
+    GeoRasterLayer: typeof import('georaster-layer-for-leaflet').default;
+  } | null>(null);
 
   // 1. Consolidated Viewer State
   const [viewerState, setViewerState] = useState<ViewerState>({
@@ -169,7 +171,8 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
         const isGeoTiff = layer.id.toLowerCase().endsWith('.tif') || layer.id.toLowerCase().endsWith('.tiff');
 
         if (isGeoTiff) {
-          const rasterLayer = new GeoRasterLayer({
+          if (!georasterRef.current) return;
+          const rasterLayer = new georasterRef.current.GeoRasterLayer({
             georaster: fullData,
             opacity: layer.opacity,
             resolution: 128
@@ -345,7 +348,14 @@ export const MapViewer: React.FC<MapViewerProps> = ({  activeDataset, theme }) =
                const response = await fetch(layer.id);
                if (!response.ok) throw new Error(`Failed to fetch GeoTIFF from ${layer.id}`);
                const arrayBuffer = await response.arrayBuffer();
-               loadedData = await parseGeoraster(arrayBuffer);
+               if (!georasterRef.current) {
+                 const [{ default: pgr }, { default: GRL }] = await Promise.all([
+                   import('georaster'),
+                   import('georaster-layer-for-leaflet')
+                 ]);
+                 georasterRef.current = { parseGeoraster: pgr, GeoRasterLayer: GRL };
+               }
+               loadedData = await georasterRef.current.parseGeoraster(arrayBuffer);
              } else {
                // A. Timeline Handling (Intercept Primary URL)
                const pData = datasets.find(d => d.id === viewerState.primaryDatasetId);
