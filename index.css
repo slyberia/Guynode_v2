@@ -6,6 +6,7 @@
   /* Fonts */
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
   --font-code: 'JetBrains Mono', monospace;
 
   /* GN semantic tokens */
