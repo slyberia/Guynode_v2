@@ -1,8 +1,9 @@
 # Guynode — Guyana Spatial Data Archive
 
-Guynode is a static, zero-tracking spatial data archive for Guyana. It provides a unified catalog of geographic datasets — administrative boundaries, census data, electoral constituencies, marine zones, and historical maps — along with a built-in GIS viewer and a research blog. It is built for students, researchers, public agencies, and developers who need reliable, reusable spatial data on Guyana.
+Guynode is a static, zero-tracking spatial data archive for Guyana. It provides a unified catalog of geographic datasets — administrative boundaries, census data, electoral constituencies, marine zones, and historical maps — along with a built-in GIS viewer, analysis summaries, a research blog, and a learning center. It is built for students, researchers, public agencies, and developers who need reliable, reusable spatial data on Guyana without infrastructure friction.
 
-**Live site:** [https://www.guynode.com](https://www.guynode.com)
+**Live site:** [https://www.guynode.com](https://www.guynode.com)  
+**Repo:** [https://github.com/slyberia/Guynode_v2](https://github.com/slyberia/Guynode_v2)
 
 ---
 
@@ -10,18 +11,43 @@ Guynode is a static, zero-tracking spatial data archive for Guyana. It provides 
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | React 19 + Vite 6 | Fast HMR during development; optimized production bundles with code-splitting |
+| Framework | React 19 + TypeScript 5.8 + Vite 6 | Fast HMR during development; optimized production bundles with code-splitting |
 | Routing | Query-param SPA (`?view=CATALOG`) | No server-side routing required; works with Cloudflare Pages SPA fallback; deep-linkable without a backend |
 | Styling | Tailwind v4 via `@tailwindcss/vite` | Zero-runtime CSS; all tokens compiled at build time; no CDN dependency |
 | Data | Static JSON files in `public/data/` | No database or API server needed; data is versioned in git; prebuild validation catches schema drift |
-| Maps | Leaflet + react-leaflet | Open-source, lightweight, no API key required; GeoRaster plugin adds GeoTIFF raster support |
+| Maps | Leaflet 1.9 + react-leaflet 5 | Open-source, no API key required; GeoRaster plugin adds GeoTIFF raster support |
 | Hosting | Cloudflare Pages | Global CDN edge delivery; `public/_redirects` handles SPA fallback; zero cold-start latency |
+
+### Query-param routing
+
+All navigation state lives in the URL as `?view=<VIEW_STATE>`. The `ViewState` enum in `types.ts` drives the view renderer in `App.tsx`; all parsing and construction lives in `utils/routing.ts`. This eliminates server-side route configuration entirely — Cloudflare Pages only needs a single `/* /index.html 200` fallback rule.
+
+### Static JSON data layer
+
+All catalog, analysis, and blog content is served as static JSON fetched at runtime:
+
+| File | Purpose |
+|---|---|
+| `public/data/datasets.json` | 53 dataset catalog entries |
+| `public/data/analyses.json` | Analysis summaries |
+| `public/blog/index.json` | Blog post index |
+| `public/learn/index.json` | Learn center article index |
+
+Data changes infrequently and is authored directly in git. The prebuild step validates every file against Zod schemas (`scripts/validate-content.ts`) before `vite build` runs. This trades real-time editability for zero operational overhead — no CMS subscription, no webhook configuration, no auth surface.
+
+### GCS asset hosting
+
+Binary assets (GeoJSON files, GeoTIFFs, shapefiles) are hosted in the `guynode-public-assets` GCS bucket and served via public URLs. CORS is configured on the bucket with a wildcard origin rule to allow browser fetches from `guynode.com`.
+
+### Cloudflare Pages deployment
+
+`public/_redirects` contains `/* /index.html 200`. Without it, direct navigation to any `?view=` URL would return a 404 from Cloudflare's edge. The file is copied into `dist/` at build time.
 
 ---
 
 ## Local Setup
 
-**Prerequisites:** Node.js 22+, npm 10+
+**Prerequisites:** Node.js 18+, git
 
 ```bash
 git clone https://github.com/slyberia/Guynode_v2.git
@@ -29,6 +55,8 @@ cd Guynode_v2
 npm install
 npm run dev          # dev server on http://localhost:3000
 ```
+
+**Environment variables:** None. Guynode has no API keys and no runtime secrets. The only implicit variable is `NODE_ENV`, set automatically by Vite.
 
 ---
 
@@ -39,6 +67,10 @@ npm run build        # prebuild (validate + sitemap) → vite build → dist/
 npm run preview      # serve dist/ locally for smoke-testing
 ```
 
+The `prebuild` script runs two steps before Vite:
+1. `scripts/validate-content.ts` — Zod validates `datasets.json` and `blog/index.json`; exits non-zero on schema violation
+2. `scripts/generate-sitemap.js` — regenerates `public/sitemap.xml` and `public/robots.txt`
+
 **Cloudflare Pages config:**
 
 | Setting | Value |
@@ -47,53 +79,75 @@ npm run preview      # serve dist/ locally for smoke-testing
 | Output directory | `dist` |
 | Node version | `22` |
 
-The file `public/_redirects` contains `/* /index.html 200`, which instructs Cloudflare Pages to serve `index.html` for every path, enabling client-side routing to take over. Without this file, direct URL navigation (e.g. `https://www.guynode.com/?view=CATALOG`) would return a 404.
+**OG image generation** (run manually, not part of CI):
+
+```bash
+node scripts/generate-og-image.js
+```
+
+Outputs `public/og-image.png` (1200×630). Requires a local Chrome/Chromium install for Puppeteer.
 
 ---
 
 ## Data Pipeline
 
-### Dataset catalog
+### Shapefile → GeoJSON conversion
 
-All datasets are defined in `public/data/datasets.json` — an array of 53 entries conforming to the `Dataset` interface in `types.ts`. Each entry includes:
+The canonical pipeline tool is `scripts/convert-and-upload.py`. It accepts a `.zip` shapefile, reprojects to WGS-84, converts to GeoJSON with `geopandas`, and uploads the result to the `guynode-public-assets` GCS bucket under `spatial-data/`.
 
-- `id` — unique kebab-case identifier
-- `title`, `description`, `category`, `source`, `format`
-- `viewerType` — controls inline preview: `"none"` | `"image"` | `"arcgis"` | `"leaflet"`
-- `downloadUrl` — direct link to the file on GCS
-- `ingestionStatus` / `validationReport` — pipeline metadata
+```
+Input: .zip shapefile (any projection)
+       ↓ geopandas reproject → WGS-84
+       ↓ to_file(driver='GeoJSON')
+       ↓ gsutil cp → gs://guynode-public-assets/spatial-data/<slug>.geojson
+Output: public GCS URL added to datasets.json
+```
 
-**Prebuild validation** runs automatically on `npm run build` via `scripts/validate-content.ts`. It uses Zod to parse `datasets.json` and `public/blog/index.json` against their schemas and exits non-zero on any violation. This prevents deploying malformed data.
+`sync-assets.sh` was an earlier bulk-sync helper and has been superseded by the Python pipeline. It remains in the repo for reference but is not used in the current workflow.
 
-**Adding a new dataset:**
+**GCS bucket:** `guynode-public-assets`  
+**CORS:** wildcard origin configured at bucket level
 
-1. Add an entry to `public/data/datasets.json` following the existing schema.
-2. Set `viewerType: "none"` unless you have a verified public GeoJSON or image URL.
-3. Run `npm run build` — validation will catch missing required fields.
-4. Upload the asset to the GCS bucket under `gs://guynode-public-assets/spatial-data/`.
+### Adding a new dataset
 
-### Analyses and blog
-
-- `public/data/analyses.json` — array of `AnalysisEntry` objects (full content)
-- `public/blog/index.json` — array of `BlogPost` summaries (full content in `public/blog/posts/`)
-
-Both are populated manually and validated at build time.
+1. Run `scripts/convert-and-upload.py` to convert and upload the file.
+2. Add an entry to `public/data/datasets.json` following the existing schema.
+3. Set `viewerType: "none"` unless you have a verified public GeoJSON or image URL.
+4. Run `npm run build` — validation will catch missing required fields.
 
 ---
 
-## Environment Variables
+## Remediation History
 
-Guynode has **no API keys** and **no runtime secrets**. The only environment variable used is:
+Guynode was originally scaffolded in **Google AI Studio** and iteratively patched using **Jules** and **Gemini** over several months. The accumulated multi-tool drift (conflicting naming conventions, CDN anti-patterns, neutralized error boundaries, stale artifacts) eventually made incremental patching unsafe. A clean repository — **Guynode_v2** — was started to address the technical debt on a stable baseline, with a cleaner git history and explicit architectural decisions documented here.
 
-| Variable | Default | Purpose |
-|---|---|---|
-| `NODE_ENV` | `development` | Suppresses debug logs in production; set automatically by Vite/Node |
+A GPT-based audit of the original repo scored it **63/100**. The target for Guynode_v2 is **88+**.
+
+### Phase log
+
+| Phase | Scope |
+|---|---|
+| 1 | Removed Tailwind CDN conflict, fixed Leaflet double-load, added `_redirects` SPA fallback, restored `AppErrorBoundary` |
+| 2 | Verified GCS asset URLs, configured CORS for `guynode.com`, populated `analyses.json` and `blog/index.json` |
+| 3 | Resolved TypeScript drift from multi-model patching; added error states on data-dependent views |
+| 4 | Zod schema validation prebuild step; sitemap and robots.txt generation |
+| 5 | GIS viewer: GeoRaster dynamic import (MapViewer chunk 1,800 KB → 32 KB); Leaflet tile layer cleanup |
+| 6 | Blog system: index page, post page, category filtering, archive, search |
+| 7 | Analysis detail page; dataset detail modal; viewerType routing |
+| 8 | Learn center: index page, post page, difficulty/category filtering |
+| 9 | SEO: `react-helmet-async` per-page meta, canonical URLs, OG tags, sitemap entries |
+| 10 | Locator tool: coordinate lookup, region highlight, GeoJSON boundary overlay |
+| 11a | Design system: removed `night-*` / `bloom-*` token drift; unified `gn-*` semantic tokens |
+| 11b | Design system: dark mode audit; `prose-invert` cleanup; card elevation tokens |
+| 11c | Design system: component-level token sweep; removed raw hex values from components |
+| 11d | Design system: Libre Baskerville + JetBrains Mono typography; Learn post blueprint background; h1 signature underline; content cards; meta row |
+| 12 | Performance: code-splitting audit; lazy-loaded route chunks; image optimisation |
+| 13 | Accessibility: focus rings, ARIA labels, keyboard navigation, skip link |
 
 ---
 
-## Known Limitations
+## Known Issues
 
-- **Shapefiles require desktop GIS software.** Shapefile downloads (`.zip`) must be opened in QGIS, ArcGIS, or similar. There is no browser-based shapefile renderer.
-- **GeoTIFF preview is raster-only.** The `guyana-coastal-villages` GeoTIFF is displayed as a static image via `ImageViewer`. Band-level raster analysis is not supported in the browser.
-- **Blog content is stub data.** The five blog posts are representative placeholders. Real editorial content will replace them in a future update.
-- **No user accounts or data collection.** Guynode is fully static — no analytics, no cookies, no form submissions are processed server-side.
+- **15 npm audit advisories** — all build-time transitive dependencies in the webpack/chokidar legacy chain, not present in the production bundle. Forcing resolution with `npm audit fix --force` risks breaking Vite's build pipeline. These will clear when upstream packages release patched versions.
+- **`sync-assets.sh` is superseded** — the file remains in `scripts/` for reference but the Python pipeline (`convert-and-upload.py`) is the current standard.
+- **Blog content is stub data** — the blog posts are representative placeholders pending real editorial content.
