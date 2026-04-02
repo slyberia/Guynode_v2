@@ -174,7 +174,6 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
           if (!georasterRef.current) return;
           const rasterLayer = new georasterRef.current.GeoRasterLayer({
             georaster: fullData,
->>>>>>> d5436ef (12: dynamic import georaster + georaster-layer-for-leaflet)
             opacity: layer.opacity,
             resolution: 128
           });
