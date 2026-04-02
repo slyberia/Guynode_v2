@@ -5,7 +5,8 @@
 @theme {
   /* Fonts */
   --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-code: 'JetBrains Mono', monospace;
 
   /* GN semantic tokens */
   --color-gn-surface: #FBF8F2;
@@ -25,6 +26,7 @@
   --color-gn-accent-gold: #F9D648;
   --color-gn-accent-secondary: #0D2133;
   --color-gn-bg-deep: #121212;
+  --color-gn-accent-green: #10b981;
 
   /* Brand palette */
   --color-brand-green-600: #2F5F53;
@@ -53,4 +55,57 @@ body {
   color: #1a1a1a;
   margin: 0;
   padding: 0;
+}
+
+/* Global typography — Task 2 */
+h1, h2 {
+  font-family: var(--font-serif);
+}
+
+code, pre, kbd {
+  font-family: var(--font-code);
+}
+
+/* Learn Post Page — Blueprint background (Task 3) */
+.learn-post-blueprint {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-gn-border-dark) 8%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
+}
+
+/* Learn Post Page — h1 signature underline (Task 4) */
+.learn-post-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-gn-accent-green);
+  margin-top: 12px;
+}
+
+/* Learn Post Page — Content cards (Task 5) */
+.learn-post-content > p,
+.learn-post-content > ul,
+.learn-post-content > ol,
+.learn-post-content > pre,
+.learn-post-content > blockquote {
+  background: var(--color-gn-elevated-dark);
+  border: 1px solid var(--color-gn-border-dark);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  margin-bottom: 12px;
+}
+
+/* Learn Post Page — Read time pill (Task 6) */
+.learn-post-read-pill {
+  background: color-mix(in srgb, var(--color-gn-accent-green) 15%, transparent);
+  color: var(--color-gn-accent-green);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-family: var(--font-mono, var(--font-code));
+  font-size: 11px;
 }

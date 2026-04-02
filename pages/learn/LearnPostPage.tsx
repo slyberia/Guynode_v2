@@ -11,6 +11,8 @@ interface LearnPost {
   readTimeMinutes: number;
   excerpt: string;
   content: string;
+  author?: string;
+  date?: string;
 }
 
 interface LearnPostPageProps {
@@ -82,8 +84,14 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
     );
   }
 
+  const readTime = Math.ceil(post.content.split(/\s+/).length / 200);
+  const author = post.author ?? 'HPS Geospatial';
+  const dateDisplay = post.date
+    ? new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    : null;
+
   return (
-    <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">
+    <div className="learn-post-blueprint min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">
       {/* Article header */}
       <div className="bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark py-12 px-6">
         <div className="max-w-2xl mx-auto">
@@ -103,20 +111,30 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
             <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${DIFFICULTY_COLORS[post.difficulty] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted border-gn-border'}`}>
               {post.difficulty}
             </span>
-            <span className="text-[10px] text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono">
-              {post.readTimeMinutes} min read
-            </span>
           </div>
 
-          <h1 className="text-3xl font-serif font-bold text-gn-foreground dark:text-gn-foreground-dark leading-tight">
+          <h1 className="learn-post-title text-3xl font-serif font-bold text-gn-foreground dark:text-gn-foreground-dark leading-tight">
             {post.title}
           </h1>
+
+          {/* Meta row */}
+          <div className="flex flex-wrap items-center gap-2 mt-4 text-sm text-gn-foreground-muted dark:text-gn-foreground-muted-dark">
+            <span>{author}</span>
+            {dateDisplay && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>{dateDisplay}</span>
+              </>
+            )}
+            <span aria-hidden="true">·</span>
+            <span className="learn-post-read-pill">{readTime} min read</span>
+          </div>
         </div>
       </div>
 
       {/* Article body */}
       <div className="py-12 px-6">
-        <div className="max-w-2xl mx-auto prose prose-sm prose-gn dark:prose-invert
+        <div className="learn-post-content max-w-2xl mx-auto prose prose-sm prose-gn dark:prose-invert
           prose-headings:font-serif prose-headings:font-bold prose-headings:text-gn-foreground dark:prose-headings:text-gn-foreground-dark
           prose-p:text-gn-foreground dark:prose-p:text-gn-foreground-dark prose-p:leading-relaxed
           prose-li:text-gn-foreground dark:prose-li:text-gn-foreground-dark
