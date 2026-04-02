@@ -90,6 +90,17 @@ Do NOT use raw hex values or legacy night-* classes in components.
 - migrated_prompt_history/ — .gitignore only, do not delete contents
 - types.ts ViewState union — changes here break all routing
 
+## Context load awareness
+At the start of each response, briefly assess the current session's context load. If the conversation history is long, many files have been read, or significant tool output has accumulated, proactively flag this to the user with a short note like: "⚠️ Context notice: This session is getting large. Starting a new session for the next distinct task would be more token-efficient."
+
+Trigger this warning when any of the following are true:
+- The session has had more than ~15 back-and-forth exchanges
+- More than ~5 large files have been read into context
+- There have been many tool calls with verbose output (e.g., long bash results, test runs)
+- The current task feels meaningfully different from where the session started
+
+When flagging, briefly suggest what context the user should carry into the new session (e.g., which files are relevant, what the current goal is) so they can start fresh without losing progress. Don't flag this on every message — only when the threshold feels genuinely crossed. Never let this notice interrupt or delay the actual response; always complete the task first, then add the notice at the end.
+
 ## Session close format
 Every session must end with exactly:
 
