@@ -203,7 +203,7 @@ function App() {
               <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                  <div className="order-2 lg:order-1">
                    <div className="bg-ink-900 border border-ink-900/10 rounded-lg overflow-hidden relative h-[400px]">
-                     <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=800&auto=format&fit=crop" alt="Aerial view of Georgetown, Guyana, showing coastal city blocks and canals" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-all duration-700" />
+                     <img src="/images/Standardized & Ready.png" alt="Aerial view of Georgetown, Guyana, showing coastal city blocks and canals" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-all duration-700" />
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                      <div className="absolute bottom-8 left-8">
                        <div className="bg-brand-gold-500 text-ink-900 text-xs font-bold px-2 py-1 mb-2 inline-block">OPEN DATA</div>

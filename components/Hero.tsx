@@ -47,9 +47,9 @@ const Hero: React.FC<HeroProps> = () => {
           <div className="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
             
             {/* Image Placeholder */}
-            <div className="md:col-span-3 bg-gray-200 h-72 rounded-lg border border-gray-300 flex items-center justify-center text-gray-400 font-mono text-sm relative overflow-hidden">
-              [Hero Image Placeholder: 600x400]
-              
+            <div className="md:col-span-3 h-72 rounded-lg border border-gray-300 relative overflow-hidden">
+              <img src="/images/GuyNode_Analytics_Terminal.jpg" alt="GuyNode Analytics Terminal" className="w-full h-full object-cover" />
+
               {/* Terminal overlay box */}
               <div className="absolute bottom-4 left-4 bg-white/95 px-4 py-3 rounded border border-gray-200 text-xs font-mono text-gray-700 shadow-md">
                 &gt; RENDERING LAYERS...<br/>
