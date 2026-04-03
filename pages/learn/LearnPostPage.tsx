@@ -1,8 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import type { ExtraProps } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import type { Element, ElementContent } from 'hast';
 import { ViewState } from '../../types';
 import { RouteParams } from '../../utils/routing';
+
+// ─── Blockquote renderer with [!NOTE] / [!TIP] / [!WARNING] callout support ──
+
+const CALLOUT_MAP: Record<string, { label: string; variant: string }> = {
+  '[!NOTE]':    { label: 'Note',    variant: 'note' },
+  '[!TIP]':     { label: 'Tip',     variant: 'tip' },
+  '[!WARNING]': { label: 'Warning', variant: 'warning' },
+};
+
+function hastTextContent(nodes: ElementContent[]): string {
+  return nodes
+    .map(n => {
+      if (n.type === 'text') return n.value;
+      if (n.type === 'element') return hastTextContent((n as Element).children);
+      return '';
+    })
+    .join('');
+}
+
+type BlockquoteProps = React.ComponentPropsWithoutRef<'blockquote'> & ExtraProps;
+
+function BlockquoteRenderer({ children, node }: BlockquoteProps) {
+  const firstPara = node?.children.find(
+    (c): c is Element => c.type === 'element' && (c as Element).tagName === 'p',
+  );
+  if (firstPara) {
+    const text = hastTextContent(firstPara.children);
+    const match = text.match(/^\[!(NOTE|TIP|WARNING)\]/);
+    if (match) {
+      const callout = CALLOUT_MAP[match[0]];
+      const body = text.slice(match[0].length).replace(/^[\s\n]+/, '');
+      return (
+        <div className={`learn-callout learn-callout--${callout.variant}`} role="note">
+          <p className="learn-callout-label">{callout.label}</p>
+          <p className="learn-callout-body">{body}</p>
+        </div>
+      );
+    }
+  }
+  return <blockquote className="learn-blockquote">{children}</blockquote>;
+}
 
 interface LearnPost {
   slug: string;
@@ -146,7 +189,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
           prose-ul:my-4 prose-ol:my-4 prose-li:my-1
           max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ blockquote: BlockquoteRenderer }}>{post.content}</ReactMarkdown>
         </div>
       </div>
 
