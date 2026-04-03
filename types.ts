@@ -203,13 +203,12 @@ export interface AppError {
   context?: Record<string, unknown>;
 }
 
-export type ViewState = 
-  | 'HOME' 
-  | 'CATALOG' 
-  | 'MAP' 
-  | 'DOCS' 
-  | 'ANALYSIS' 
-  | 'ABOUT' 
+export type ViewState =
+  | 'HOME'
+  | 'CATALOG'
+  | 'MAP'
+  | 'DOCS'
+  | 'ABOUT'
   | 'INTERNAL_LOG' 
   | 'CHANGELOG'
   | 'SUPPORT'

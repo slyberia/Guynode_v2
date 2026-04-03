@@ -47,10 +47,6 @@ export const MetaManager: React.FC<MetaManagerProps> = ({ view, params }) => {
       pageName = 'Developers';
       canonicalUrl = `${baseUrl}/?view=DOCS`;
       break;
-    case 'ANALYSIS':
-      pageName = 'Analysis';
-      canonicalUrl = `${baseUrl}/?view=ANALYSIS`;
-      break;
     case 'ABOUT':
       pageName = 'About';
       canonicalUrl = `${baseUrl}/?view=ABOUT`;

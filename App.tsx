@@ -13,8 +13,6 @@ import { Footer } from './components/Footer';
 const GisViewerPage = React.lazy(() => import('./components/GisViewerPage').then(module => ({ default: module.GisViewerPage })));
 
 // Lazy Load Non-Critical Pages
-const AnalysisPage = React.lazy(() => import('./components/AnalysisPage').then(module => ({ default: module.AnalysisPage })));
-const AnalysisDetailPage = React.lazy(() => import('./components/AnalysisDetailPage').then(module => ({ default: module.AnalysisDetailPage })));
 const About = React.lazy(() => import('./pages/About').then(module => ({ default: module.About })));
 const Privacy = React.lazy(() => import('./pages/Privacy').then(module => ({ default: module.Privacy })));
 const DevelopersPage = React.lazy(() => import('./components/DevelopersPage').then(module => ({ default: module.DevelopersPage })));
@@ -285,13 +283,6 @@ function App() {
       case 'DOCS':
         return <React.Suspense fallback={<LoadingFallback />}><DevelopersPage /></React.Suspense>;
 
-      case 'ANALYSIS':
-        // If an ID is present, show detail view, else show index
-        if (currentParams.analysisId) {
-          return <React.Suspense fallback={<LoadingFallback />}><AnalysisDetailPage analysisId={currentParams.analysisId} navigate={handleNavigation} /></React.Suspense>;
-        }
-        return <React.Suspense fallback={<LoadingFallback />}><AnalysisPage navigate={handleNavigation} /></React.Suspense>;
-        
       case 'LOCATOR':
         return (
           <React.Suspense fallback={<LoadingFallback />}>
