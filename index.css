@@ -12,9 +12,9 @@
 
   /* GN semantic tokens */
   --color-gn-surface: #FBF8F2;
-  --color-gn-surface-dark: #050608;
+  --color-gn-surface-dark: #111318;
   --color-gn-surface-muted: #F5EFE3;
-  --color-gn-surface-muted-dark: #111317;
+  --color-gn-surface-muted-dark: #111318;
   --color-gn-elevated: #FFFFFF;
   --color-gn-elevated-dark: #1e1e1e;
   --color-gn-border: #E9E1D3;
@@ -88,12 +88,8 @@ code, pre, kbd {
   margin-top: 12px;
 }
 
-/* Learn Post Page — Content cards (Task 5) */
-.learn-post-content > p,
-.learn-post-content > ul,
-.learn-post-content > ol,
-.learn-post-content > pre,
-.learn-post-content > blockquote {
+/* Learn Post Page — Code block card (pre only) */
+.learn-post-content > pre {
   background: var(--color-gn-elevated);
   border: 1px solid var(--color-gn-border);
   border-radius: 8px;
@@ -102,14 +98,104 @@ code, pre, kbd {
   margin-bottom: 12px;
 }
 
-.dark .learn-post-content > p,
-.dark .learn-post-content > ul,
-.dark .learn-post-content > ol,
-.dark .learn-post-content > pre,
-.dark .learn-post-content > blockquote {
+.dark .learn-post-content > pre {
   background: var(--color-gn-elevated-dark);
   border-color: var(--color-gn-border-dark);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Learn Post Page — Standard blockquote */
+.learn-blockquote {
+  border-left: 3px solid var(--color-brand-green-600);
+  padding: 4px 0 4px 16px;
+  margin: 16px 0;
+  color: var(--color-gn-foreground-muted);
+  font-style: italic;
+}
+
+.dark .learn-blockquote {
+  border-color: var(--color-gn-accent-dark);
+  color: var(--color-gn-foreground-muted-dark);
+}
+
+/* Learn Post Page — Callout boxes */
+.learn-callout {
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-left: 4px solid;
+}
+
+.learn-callout-label {
+  font-weight: 700;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px 0;
+}
+
+.learn-callout-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Note variant */
+.learn-callout--note {
+  border-color: var(--color-gn-accent-blue);
+  background: color-mix(in srgb, var(--color-gn-accent-blue) 8%, transparent);
+}
+
+.learn-callout--note .learn-callout-label {
+  color: var(--color-gn-accent-blue);
+}
+
+.learn-callout--note .learn-callout-body {
+  color: var(--color-gn-foreground);
+}
+
+.dark .learn-callout--note .learn-callout-body {
+  color: var(--color-gn-foreground-dark);
+}
+
+/* Tip variant */
+.learn-callout--tip {
+  border-color: var(--color-gn-accent-green);
+  background: color-mix(in srgb, var(--color-gn-accent-green) 8%, transparent);
+}
+
+.learn-callout--tip .learn-callout-label {
+  color: var(--color-gn-accent-green);
+}
+
+.learn-callout--tip .learn-callout-body {
+  color: var(--color-gn-foreground);
+}
+
+.dark .learn-callout--tip .learn-callout-body {
+  color: var(--color-gn-foreground-dark);
+}
+
+/* Warning variant */
+.learn-callout--warning {
+  border-color: var(--color-brand-gold-600);
+  background: color-mix(in srgb, var(--color-brand-gold-600) 8%, transparent);
+}
+
+.learn-callout--warning .learn-callout-label {
+  color: var(--color-brand-gold-600);
+}
+
+.dark .learn-callout--warning .learn-callout-label {
+  color: var(--color-gn-accent-gold);
+}
+
+.learn-callout--warning .learn-callout-body {
+  color: var(--color-gn-foreground);
+}
+
+.dark .learn-callout--warning .learn-callout-body {
+  color: var(--color-gn-foreground-dark);
 }
 
 /* Learn Post Page — Table styling */

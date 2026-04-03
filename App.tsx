@@ -69,8 +69,8 @@ function App() {
   // Theme State Management
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
-      const stored = window.localStorage.getItem('guynode_theme');
-      if (stored === 'dark' || stored === 'light') return stored;
+      const saved = window.localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
     } catch {
       // Access denied or not available
     }
@@ -88,7 +88,7 @@ function App() {
         root.classList.remove('dark');
         root.classList.add('light');
       }
-      window.localStorage.setItem('guynode_theme', theme);
+      window.localStorage.setItem('theme', theme);
     } catch {
       // Access denied
     }
