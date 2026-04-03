@@ -13,8 +13,6 @@ import { Footer } from './components/Footer';
 const GisViewerPage = React.lazy(() => import('./components/GisViewerPage').then(module => ({ default: module.GisViewerPage })));
 
 // Lazy Load Non-Critical Pages
-const AnalysisPage = React.lazy(() => import('./components/AnalysisPage').then(module => ({ default: module.AnalysisPage })));
-const AnalysisDetailPage = React.lazy(() => import('./components/AnalysisDetailPage').then(module => ({ default: module.AnalysisDetailPage })));
 const About = React.lazy(() => import('./pages/About').then(module => ({ default: module.About })));
 const Privacy = React.lazy(() => import('./pages/Privacy').then(module => ({ default: module.Privacy })));
 const DevelopersPage = React.lazy(() => import('./components/DevelopersPage').then(module => ({ default: module.DevelopersPage })));
@@ -34,8 +32,11 @@ const BlogCategoryPage = React.lazy(() => import('./pages/blog/BlogCategoryPage'
 const BlogArchivePage = React.lazy(() => import('./pages/blog/BlogArchivePage'));
 const BlogSearchPage = React.lazy(() => import('./pages/blog/BlogSearchPage'));
 
+const AttributionPage = React.lazy(() => import('./pages/AttributionPage').then(module => ({ default: module.AttributionPage })));
+
 // Core & Utils
 import { getViewFromUrl, getUrlForView, sanitizeRoute, RouteParams } from './utils/routing';
+import { FEATURE_FLAGS } from './config';
 import { MetaManager } from './components/core/MetaManager';
 import { safeHistoryAvailable } from './utils/env';
 
@@ -285,13 +286,14 @@ function App() {
       case 'DOCS':
         return <React.Suspense fallback={<LoadingFallback />}><DevelopersPage /></React.Suspense>;
 
-      case 'ANALYSIS':
-        // If an ID is present, show detail view, else show index
-        if (currentParams.analysisId) {
-          return <React.Suspense fallback={<LoadingFallback />}><AnalysisDetailPage analysisId={currentParams.analysisId} navigate={handleNavigation} /></React.Suspense>;
-        }
-        return <React.Suspense fallback={<LoadingFallback />}><AnalysisPage navigate={handleNavigation} /></React.Suspense>;
-        
+      case 'ATTRIBUTION':
+        if (!FEATURE_FLAGS.showAttribution) break;
+        return (
+          <React.Suspense fallback={<LoadingFallback />}>
+            <AttributionPage theme={theme} navigate={handleNavigation} />
+          </React.Suspense>
+        );
+
       case 'LOCATOR':
         return (
           <React.Suspense fallback={<LoadingFallback />}>

@@ -18,9 +18,7 @@ const LEGACY_PATHS: Record<string, ViewState> = {
   '/map.html': 'MAP',
   '/about.html': 'ABOUT',
   '/blog.html': 'BLOG_INDEX',
-  '/resources.html': 'BLOG_INDEX',
   '/developers.html': 'DOCS',
-  '/analysis.html': 'ANALYSIS',
   '/support.html': 'SUPPORT',
   '/report.html': 'REPORT_ISSUE'
 };
@@ -58,7 +56,7 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
       case 'CATALOG': view = 'CATALOG'; break;
       case 'MAP': view = 'MAP'; break;
       case 'DOCS': view = 'DOCS'; break;
-      case 'ANALYSIS': view = 'ANALYSIS'; break;
+      case 'ATTRIBUTION': view = 'ATTRIBUTION'; break;
       case 'ABOUT': view = 'ABOUT'; break;
       case 'SUPPORT': view = 'SUPPORT'; break;
       case 'REPORT_ISSUE': view = 'REPORT_ISSUE'; break;
@@ -71,17 +69,13 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
       case 'LEARN_INDEX': view = 'LEARN_INDEX'; break;
       case 'LEARN_POST': view = 'LEARN_POST'; break;
 
-      // Blog / Resources Mapping
+      // Blog Module Mapping
       case 'BLOG':
-      case 'RESOURCES': view = 'BLOG_INDEX'; break;
-      case 'BLOG_POST':
-      case 'RESOURCES_POST': view = 'BLOG_POST'; break;
-      case 'BLOG_CATEGORY':
-      case 'RESOURCES_CATEGORY': view = 'BLOG_CATEGORY'; break;
-      case 'BLOG_ARCHIVE':
-      case 'RESOURCES_ARCHIVE': view = 'BLOG_ARCHIVE'; break;
-      case 'BLOG_SEARCH':
-      case 'RESOURCES_SEARCH': view = 'BLOG_SEARCH'; break;
+      case 'BLOG_INDEX': view = 'BLOG_INDEX'; break;
+      case 'BLOG_POST': view = 'BLOG_POST'; break;
+      case 'BLOG_CATEGORY': view = 'BLOG_CATEGORY'; break;
+      case 'BLOG_ARCHIVE': view = 'BLOG_ARCHIVE'; break;
+      case 'BLOG_SEARCH': view = 'BLOG_SEARCH'; break;
       
       default: view = 'HOME';
     }
@@ -119,11 +113,6 @@ export const sanitizeRoute = (view: ViewState, params: RouteParams): { view: Vie
     }
   }
 
-  // 4. Sanitize Analysis Detail
-  if (safeView === 'ANALYSIS' && safeParams.analysisId) {
-      // With dynamic fetching, validation happens on component mount
-  }
-
   return { view: safeView, params: safeParams, redirected };
 };
 
@@ -139,7 +128,7 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
     case 'CATALOG': viewParam = 'catalog'; break;
     case 'MAP': viewParam = 'map'; break;
     case 'DOCS': viewParam = 'docs'; break;
-    case 'ANALYSIS': viewParam = 'analysis'; break;
+    case 'ATTRIBUTION': viewParam = 'attribution'; break;
     case 'ABOUT': viewParam = 'about'; break;
     case 'SUPPORT': viewParam = 'support'; break;
     case 'REPORT_ISSUE': viewParam = 'report_issue'; break;
