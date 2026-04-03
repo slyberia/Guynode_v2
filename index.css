@@ -94,12 +94,65 @@ code, pre, kbd {
 .learn-post-content > ol,
 .learn-post-content > pre,
 .learn-post-content > blockquote {
-  background: var(--color-gn-elevated-dark);
-  border: 1px solid var(--color-gn-border-dark);
+  background: var(--color-gn-elevated);
+  border: 1px solid var(--color-gn-border);
   border-radius: 8px;
   padding: 16px 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   margin-bottom: 12px;
+}
+
+.dark .learn-post-content > p,
+.dark .learn-post-content > ul,
+.dark .learn-post-content > ol,
+.dark .learn-post-content > pre,
+.dark .learn-post-content > blockquote {
+  background: var(--color-gn-elevated-dark);
+  border-color: var(--color-gn-border-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Learn Post Page — Table styling */
+.learn-post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  margin-bottom: 16px;
+}
+
+.learn-post-content th {
+  background: var(--color-gn-surface-muted);
+  color: var(--color-gn-foreground);
+  font-weight: 700;
+  text-align: left;
+  padding: 8px 12px;
+  border: 1px solid var(--color-gn-border);
+}
+
+.learn-post-content td {
+  padding: 8px 12px;
+  border: 1px solid var(--color-gn-border);
+  color: var(--color-gn-foreground);
+  vertical-align: top;
+}
+
+.learn-post-content tr:nth-child(even) td {
+  background: var(--color-gn-surface-muted);
+}
+
+.dark .learn-post-content th {
+  background: var(--color-gn-surface-muted-dark);
+  color: var(--color-gn-foreground-dark);
+  border-color: var(--color-gn-border-dark);
+}
+
+.dark .learn-post-content td {
+  color: var(--color-gn-foreground-dark);
+  border-color: var(--color-gn-border-dark);
+}
+
+.dark .learn-post-content tr:nth-child(even) td {
+  background: var(--color-gn-surface-muted-dark);
 }
 
 /* Learn Post Page — Read time pill (Task 6) */

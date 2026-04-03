@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ViewState } from '../../types';
 import { RouteParams } from '../../utils/routing';
 
@@ -134,7 +135,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
 
       {/* Article body */}
       <div className="py-12 px-6">
-        <div className="learn-post-content max-w-2xl mx-auto prose prose-sm prose-gn dark:prose-invert
+        <div className="learn-post-content max-w-2xl mx-auto prose prose-sm dark:prose-invert
           prose-headings:font-serif prose-headings:font-bold prose-headings:text-gn-foreground dark:prose-headings:text-gn-foreground-dark
           prose-p:text-gn-foreground dark:prose-p:text-gn-foreground-dark prose-p:leading-relaxed
           prose-li:text-gn-foreground dark:prose-li:text-gn-foreground-dark
@@ -145,7 +146,7 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
           prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
           prose-ul:my-4 prose-ol:my-4 prose-li:my-1
           max-w-none">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
       </div>
 
