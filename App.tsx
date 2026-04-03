@@ -32,8 +32,11 @@ const BlogCategoryPage = React.lazy(() => import('./pages/blog/BlogCategoryPage'
 const BlogArchivePage = React.lazy(() => import('./pages/blog/BlogArchivePage'));
 const BlogSearchPage = React.lazy(() => import('./pages/blog/BlogSearchPage'));
 
+const AttributionPage = React.lazy(() => import('./pages/AttributionPage').then(module => ({ default: module.AttributionPage })));
+
 // Core & Utils
 import { getViewFromUrl, getUrlForView, sanitizeRoute, RouteParams } from './utils/routing';
+import { FEATURE_FLAGS } from './config';
 import { MetaManager } from './components/core/MetaManager';
 import { safeHistoryAvailable } from './utils/env';
 
@@ -282,6 +285,14 @@ function App() {
         );
       case 'DOCS':
         return <React.Suspense fallback={<LoadingFallback />}><DevelopersPage /></React.Suspense>;
+
+      case 'ATTRIBUTION':
+        if (!FEATURE_FLAGS.showAttribution) break;
+        return (
+          <React.Suspense fallback={<LoadingFallback />}>
+            <AttributionPage theme={theme} navigate={handleNavigation} />
+          </React.Suspense>
+        );
 
       case 'LOCATOR':
         return (

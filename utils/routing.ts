@@ -56,6 +56,7 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
       case 'CATALOG': view = 'CATALOG'; break;
       case 'MAP': view = 'MAP'; break;
       case 'DOCS': view = 'DOCS'; break;
+      case 'ATTRIBUTION': view = 'ATTRIBUTION'; break;
       case 'ABOUT': view = 'ABOUT'; break;
       case 'SUPPORT': view = 'SUPPORT'; break;
       case 'REPORT_ISSUE': view = 'REPORT_ISSUE'; break;
@@ -127,6 +128,7 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
     case 'CATALOG': viewParam = 'catalog'; break;
     case 'MAP': viewParam = 'map'; break;
     case 'DOCS': viewParam = 'docs'; break;
+    case 'ATTRIBUTION': viewParam = 'attribution'; break;
     case 'ABOUT': viewParam = 'about'; break;
     case 'SUPPORT': viewParam = 'support'; break;
     case 'REPORT_ISSUE': viewParam = 'report_issue'; break;

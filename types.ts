@@ -208,6 +208,7 @@ export type ViewState =
   | 'CATALOG'
   | 'MAP'
   | 'DOCS'
+  | 'ATTRIBUTION'
   | 'ABOUT'
   | 'INTERNAL_LOG' 
   | 'CHANGELOG'

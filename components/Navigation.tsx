@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ViewState } from '../types';
+import { FEATURE_FLAGS } from '../config';
 
 interface NavigationProps {
   currentView: ViewState;
@@ -77,6 +78,14 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           >
             Developers
           </button>
+          {FEATURE_FLAGS.showAttribution && (
+            <button
+              onClick={() => setView('ATTRIBUTION')}
+              className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ATTRIBUTION' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
+            >
+              Attribution
+            </button>
+          )}
           <button
             onClick={() => setView('LEARN_INDEX')}
             className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LEARN_INDEX' || currentView === 'LEARN_POST' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
