@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import type { GeoRaster } from 'georaster-layer-for-leaflet';
 import { ViewState, Dataset } from '../types';
 import { useCatalog } from '../context/CatalogContext';
 import { loadGeojsonOnDemand, loadWithWorker } from '../utils/geojsonLoader';
@@ -81,7 +82,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
   // Layer Configuration State
   const [layers, setLayers] = useState<ViewerLayerConfig[]>([]);
   // Cached Data Storage (Ref to avoid re-renders on massive data)
-  const dataCacheRef = useRef<Map<string, GeoJSON.FeatureCollection>>(new Map());
+  const dataCacheRef = useRef<Map<string, GeoJSON.FeatureCollection | GeoRaster>>(new Map());
   
   // Refs for Event Handlers (Fixes Stale Closures)
   const viewerStateRef = useRef(viewerState);
@@ -159,10 +160,6 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
         const fullData = dataCacheRef.current.get(key);
         if (!fullData) return;
 
-        // Progressive Clipping
-        const bounds = getMapBounds(mapInstanceRef.current);
-        const dataToRender = currentState.fullDatasetMode ? fullData : clipToViewBounds(fullData, bounds);
-
         // Styling
         // Resolve dataset to get style config from Central Contract
         const dataset = datasetUrlMap.get(layer.id);
@@ -172,8 +169,9 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
 
         if (isGeoTiff) {
           if (!georasterRef.current) return;
+          const rasterData = fullData as GeoRaster;
           const rasterLayer = new georasterRef.current.GeoRasterLayer({
-            georaster: fullData,
+            georaster: rasterData,
             opacity: layer.opacity,
             resolution: 128
           });
@@ -188,6 +186,11 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
              mapInstanceRef.current.fitBounds(bounds);
           }
         } else {
+          // Progressive Clipping (vector only)
+          const geoData = fullData as GeoJSON.FeatureCollection;
+          const clippedBounds = getMapBounds(mapInstanceRef.current);
+          const dataToRender = currentState.fullDatasetMode ? geoData : clipToViewBounds(geoData, clippedBounds);
+
           let style: import('leaflet').PathOptions = {
             color: configStyle.color || "#3b82f6",
             weight: configStyle.weight || 2,

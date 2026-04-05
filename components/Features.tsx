@@ -50,12 +50,6 @@ export const Features: React.FC<FeaturesProps> = ({ setView }) => {
             action="View Docs"
             onClick={() => setView('DOCS')}
           />
-          <FeatureCard 
-            title="Official Analysis"
-            description="Data-driven insights and reports released by ministries and approved agencies. Turn knowledge into action."
-            action="Read Reports"
-            onClick={() => setView('ANALYSIS')}
-          />
         </div>
       </div>
     </section>

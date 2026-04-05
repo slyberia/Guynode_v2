@@ -5,7 +5,6 @@ import { Navigation } from './components/Navigation';
 import { useCatalog } from './context/CatalogContext';
 import Hero from './components/Hero';
 import { Features } from './components/Features';
-import { Analysis } from './components/Analysis'; // Kept for Home Page widget
 import { Catalog } from './components/Catalog';
 import { Footer } from './components/Footer';
 
@@ -234,8 +233,6 @@ function App() {
               </div>
             </section>
 
-            <Analysis /> {/* Widget for Home Page */}
-            
             <section className="bg-gn-surface dark:bg-gn-surface-dark py-24 text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">
               <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
                  <div>

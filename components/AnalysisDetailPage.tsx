@@ -44,7 +44,7 @@ export const AnalysisDetailPage: React.FC<AnalysisDetailPageProps> = ({ analysis
         
         {/* Navigation Breadcrumb */}
         <div className="flex items-center gap-2 text-xs font-mono text-gray-500 mb-8">
-           <button onClick={() => navigate('ANALYSIS')} className="hover:text-white">ANALYSIS</button>
+           <button onClick={() => navigate('HOME')} className="hover:text-white">HOME</button>
            <span>/</span>
            <span className="text-guyana-gold uppercase">{analysis.id}</span>
         </div>
@@ -183,7 +183,7 @@ export const AnalysisDetailPage: React.FC<AnalysisDetailPageProps> = ({ analysis
         {/* Footer Navigation */}
         <div className="mt-20 pt-12 border-t border-white/10 flex justify-between items-center">
            <button 
-             onClick={() => navigate('ANALYSIS')}
+             onClick={() => navigate('HOME')}
              className="text-sm font-bold text-gray-400 hover:text-white flex items-center gap-2"
            >
              ← Back to Index
