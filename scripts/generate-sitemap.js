@@ -11,7 +11,7 @@ async function generateSitemap() {
   try {
     let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-    const views = ['', '?view=CATALOG', '?view=MAP', '?view=DOCS', '?view=ANALYSIS', '?view=BLOG_INDEX', '?view=ABOUT', '?view=SUPPORT'];
+    const views = ['', '?view=CATALOG', '?view=MAP', '?view=DOCS', '?view=BLOG_INDEX', '?view=ABOUT', '?view=SUPPORT'];
 
     views.forEach(view => {
         const priority = view === '' ? '1.0' : '0.8';
@@ -37,17 +37,6 @@ async function generateSitemap() {
       for (const post of learnPosts) {
         if (post.slug) {
           sitemapContent += `  <url>\n    <loc>${BASE_URL}/?view=LEARN_POST&amp;slug=${encodeURIComponent(post.slug)}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
-        }
-      }
-    }
-
-    // Analyses
-    const analysesPath = path.join(PUBLIC_DIR, 'data', 'analyses.json');
-    if (fs.existsSync(analysesPath)) {
-      const analyses = JSON.parse(fs.readFileSync(analysesPath, 'utf8'));
-      for (const analysis of analyses) {
-        if (analysis.id) {
-          sitemapContent += `  <url>\n    <loc>${BASE_URL}/?view=ANALYSIS&amp;analysisId=${encodeURIComponent(analysis.id)}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
         }
       }
     }
