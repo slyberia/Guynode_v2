@@ -76,16 +76,14 @@ const DIFFICULTY_COLORS: Record<string, string> = {
   intermediate: 'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold border-brand-gold-600/20 dark:border-gn-accent-gold/20',
 };
 
-export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) => {
+// Inner component re-mounts when slug changes via key prop, eliminating the need
+// to reset state synchronously inside an effect.
+const LearnPostPageInner: React.FC<LearnPostPageProps> = ({ slug, navigate }) => {
   const [post, setPost] = useState<LearnPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    setNotFound(false);
-    setPost(null);
-
     fetch(`/learn/${slug}.json`)
       .then(r => {
         if (r.status === 404 || !r.ok) { setNotFound(true); setLoading(false); return null; }
@@ -218,4 +216,8 @@ export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) 
       </div>
     </div>
   );
+};
+
+export const LearnPostPage: React.FC<LearnPostPageProps> = ({ slug, navigate }) => {
+  return <LearnPostPageInner key={slug} slug={slug} navigate={navigate} />;
 };

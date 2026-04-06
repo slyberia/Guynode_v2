@@ -7,7 +7,6 @@ export interface RouteParams {
   year?: string;
   month?: string;
   datasetId?: string;
-  analysisId?: string;
   searchQuery?: string;
   adminSection?: string;
   supportSection?: string; // New param for Support page anchors
@@ -42,7 +41,6 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
     year: params.get('year') || undefined,
     month: params.get('month') || undefined,
     datasetId: params.get('datasetId') || undefined,
-    analysisId: params.get('analysisId') || undefined,
     searchQuery: params.get('q') || undefined,
     adminSection: params.get('section') || undefined,
     supportSection: params.get('section') || undefined // Map generic 'section' param to supportSection as well
@@ -153,7 +151,6 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
   if (params?.year) sp.set('year', params.year);
   if (params?.month) sp.set('month', params.month);
   if (params?.datasetId) sp.set('datasetId', params.datasetId);
-  if (params?.analysisId) sp.set('analysisId', params.analysisId);
   if (params?.searchQuery) sp.set('q', params.searchQuery);
   if (params?.adminSection) sp.set('section', params.adminSection);
   if (params?.supportSection) sp.set('section', params.supportSection);

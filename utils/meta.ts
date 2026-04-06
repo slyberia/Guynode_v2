@@ -53,9 +53,6 @@ export const updateMetadata = (view: ViewState, params: RouteParams, datasets: D
     case 'DOCS':
       title = 'Developer Documentation — GuyNode API';
       break;
-    case 'ANALYSIS':
-      title = 'Research & Insights — GuyNode';
-      break;
   }
 
   // Update DOM Title
