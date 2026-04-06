@@ -1,87 +1,168 @@
 # Architectural Decision Records — Guynode
 
-This document records the four key architectural decisions made for the Guynode spatial data archive. Each record explains the context, the choice made, why it was preferred, and what was accepted as a consequence.
+This document records key architectural decisions made during the design
+and remediation of Guynode. Each entry follows the ADR format: context,
+decision, rationale, and tradeoffs accepted.
 
 ---
 
 ## Decision: Query-param routing over React Router
 
-**Context:** Guynode is a single-page application with multiple distinct views (Home, Catalog, Map Viewer, Blog, Analysis, etc.). A routing mechanism was needed that could deep-link to specific views and datasets without requiring a backend or server-side configuration.
+**Context:** Guynode is a single-page application hosted on Cloudflare
+Pages with no server-side rendering. A routing strategy was needed that
+works reliably with static hosting and a `_redirects` SPA fallback.
 
-**Decision:** All routing is implemented via URL query parameters (`?view=CATALOG`, `?view=MAP&datasetId=all-ndcs`) parsed in `utils/routing.ts`. A `ViewState` enum drives the view renderer in `App.tsx`. No routing library is used.
+**Decision:** All navigation is driven by URL query parameters
+(`?view=CATALOG`, `?view=MAP`, etc.) resolved through `utils/routing.ts`.
+The `ViewState` union in `types.ts` is the single source of truth for all
+valid application states.
 
-**Rationale:** Query-param routing works correctly on any static host without path-based rewrites beyond a single SPA fallback rule. React Router (or any history-API router) requires either server-side wildcard routing or careful configuration to avoid 404s on direct navigation — complexity that a static CDN host like Cloudflare Pages makes unnecessary. The query-param approach is also simpler to reason about: the entire routing contract fits in one file.
+**Rationale:** React Router requires either a server or hash-based routing
+to avoid 404s on direct URL access. Query params work natively with the
+Cloudflare Pages `/* /index.html 200` fallback rule. Keeping all routing
+logic in a single file (`utils/routing.ts`) makes the navigation model
+auditable and testable without a router library.
 
-**Tradeoffs:** URLs are slightly less clean (`?view=CATALOG` vs `/catalog`). Deep-linking requires callers to use the routing utilities rather than constructing URLs manually. The `ViewState` enum is a single point of change — adding a new view requires updating both the enum and the router switch.
+**Tradeoffs:** Browser back/forward history requires manual management.
+Deep linking to nested states (e.g., a specific dataset) requires
+composing multiple query params. The ViewState union must be updated
+whenever a new view is added.
 
 ---
 
 ## Decision: Static JSON over a CMS or database
 
-**Context:** The catalog, blog, and analysis data needed to be served to end users without a backend API, a CMS subscription, or a database instance. The data changes infrequently (datasets are added or corrected, not streamed in real time).
+**Context:** Guynode serves curated spatial datasets for Guyana. Content
+updates are infrequent and performed by a single maintainer. A data
+storage strategy was needed that minimized infrastructure cost and
+operational complexity.
 
-**Decision:** All content lives as static JSON files in `public/data/` and `public/blog/`, versioned in git and validated at build time with Zod schemas in `scripts/validate-content.ts`.
+**Decision:** All dataset metadata, blog posts, and content are stored as
+static JSON files in `public/data/` and `public/blog/`, validated at
+build time via Zod schemas in `scripts/validate-content.ts`.
 
-**Rationale:** A static JSON approach eliminates infrastructure cost, cold-start latency, and database management entirely. For a catalog of 53 datasets that changes on a weekly-or-slower cadence, the operational overhead of a CMS (authentication, content modeling, webhooks) or a database (provisioning, backups, connection pooling) is not justified. The prebuild validation step provides the same correctness guarantees a CMS would without the operational burden.
+**Rationale:** A CMS or database adds backend infrastructure, auth
+complexity, and ongoing cost. Static JSON is version-controlled, free to
+host, and validated automatically on every build — content errors are
+caught before deployment, not after. The Zod prebuild step provides the
+same data integrity guarantees a schema-enforced database would, without
+the operational overhead.
 
-**Tradeoffs:** Updating content requires a git commit and a redeploy rather than an in-browser edit. Large catalog growth (thousands of entries) would require pagination or an index layer that static JSON cannot provide efficiently. Real-time data (live sensor feeds, daily-updated statistics) cannot be served this way.
-
----
-
-## Decision: Custom HTML sanitizer over DOMPurify
-
-**Context:** Blog post content is stored as HTML strings and rendered via `dangerouslySetInnerHTML`. An XSS sanitizer is required to strip dangerous tags and attributes before rendering.
-
-**Decision:** A custom whitelist-based sanitizer was written in `utils/sanitize.ts`. It uses the browser's DOM parser to parse the input, walks the node tree, and removes any element or attribute not in an explicit allowlist.
-
-**Rationale:** DOMPurify is the de-facto standard, but it adds ~45 KB to the bundle (minified) and requires careful version pinning because its bypass history is non-trivial. For a static site whose HTML content is authored in-house (not user-generated), a narrow allowlist sanitizer covers the actual risk surface without the dependency weight. The custom sanitizer is also fully auditable in a single file — there is no transitive dependency chain to track.
-
-**Tradeoffs:** The custom sanitizer is less battle-tested than DOMPurify. If the blog ever accepts user-submitted HTML or embeds third-party content, switching to DOMPurify or a server-side sanitizer (e.g. `sanitize-html` at build time) would be strongly advisable. The current implementation must be manually updated if new allowed tags are needed.
+**Tradeoffs:** Content updates require a code commit and redeploy.
+Real-time or user-generated content is not possible without a backend.
+Large datasets (hundreds of entries) would require pagination logic
+implemented entirely client-side.
 
 ---
 
 ## Decision: Leaflet over MapboxGL / Google Maps
 
-**Context:** The GIS viewer needs to render vector GeoJSON layers and (optionally) raster GeoTIFF layers on an interactive tile-based map. Several map libraries were considered.
+**Context:** Guynode requires an interactive map viewer capable of
+rendering GeoJSON vector layers and GeoTIFF raster layers. A mapping
+library was needed that could handle both formats without API key
+dependencies or usage-based billing.
 
-**Decision:** Leaflet 1.9 is used as the map engine, with `react-leaflet` for React integration and `georaster-layer-for-leaflet` for raster support. CartoCDN basemap tiles are used (no API key required).
+**Decision:** Leaflet (via react-leaflet) is used for all map rendering.
+GeoRaster and georaster-layer-for-leaflet handle GeoTIFF raster display.
 
-**Rationale:** Leaflet is fully open-source and requires no API key for either the library itself or the CartoCDN basemap tiles used as the default basemap. MapboxGL requires a Mapbox access token (and incurs per-tile billing above the free tier); Google Maps requires a billing-enabled Google Cloud project. For a zero-budget public-good project, a no-key-required stack is essential. Leaflet's plugin ecosystem (especially `georaster-layer-for-leaflet`) covers the GeoTIFF raster use case without additional licensing.
+**Rationale:** Mapbox GL JS and Google Maps both require API keys and
+impose usage-based pricing that is inappropriate for a public-access
+archive with unpredictable traffic. Leaflet is open source, has no
+billing model, and has mature ecosystem support for both GeoJSON
+(`L.geoJSON()`) and raster formats (via georaster plugins). react-leaflet
+provides a stable React integration layer compatible with React 19.
 
-**Tradeoffs:** Leaflet does not support WebGL-accelerated vector tile rendering. At very high feature counts, vector layer performance degrades more than MapboxGL would. The `georaster-layer-for-leaflet` plugin adds ~1.9 MB to the MapViewer chunk (the largest single contributor to bundle size). If Guynode ever needs smooth rendering of dense vector tile layers at zoom levels below 8, a migration to MapboxGL or Deck.gl should be evaluated.
-
----
-
-## Decision: GeoRaster dynamic import
-
-**Context:** `georaster` and `georaster-layer-for-leaflet` are large libraries required only when a user opens a GeoTIFF dataset in the map viewer. Initially they were statically imported alongside the rest of the MapViewer component.
-
-**Decision:** Both libraries are loaded via `import()` dynamic import, triggered only when a GeoTIFF layer is actually needed.
-
-**Rationale:** Static import produced a MapViewer chunk of approximately 1,800 KB — the single largest chunk in the bundle. Lazy-loading reduced the initial MapViewer chunk to 32 KB (-98%). Users who never open a GeoTIFF dataset never download either library. The trade-off is a brief loading pause on first GeoTIFF open, which is acceptable given the interaction pattern.
-
-**Tradeoffs:** A loading state must be managed while the dynamic import resolves. The first GeoTIFF open on a slow connection will have a perceivable delay. Error handling must cover import failures in addition to fetch/parsing failures.
-
----
-
-## Decision: Remediation via clean repository
-
-**Context:** Guynode was originally scaffolded in Google AI Studio and iteratively patched using Jules and Gemini. Over time, accumulated multi-tool drift produced conflicting naming conventions, CDN anti-patterns, a neutralized `AppErrorBoundary`, stale build artifacts, and TypeScript that had drifted from its own type definitions.
-
-**Decision:** A new repository (Guynode_v2) was started from a clean baseline rather than continuing to patch the original.
-
-**Rationale:** The original codebase had reached a state where each incremental patch introduced as many inconsistencies as it resolved. The multi-model patching history made it difficult to reason about what any given file was authoritative for. A clean repo provided a stable baseline, a coherent git history readable as a portfolio artifact, and the ability to document architectural decisions explicitly from the start. A GPT audit of the original repo scored it 63/100; the target for Guynode_v2 is 88+.
-
-**Tradeoffs:** All historical git blame was lost. Content and data files were migrated manually, introducing a migration window where both repos existed simultaneously. The clean-repo decision is not always the right call — it was appropriate here because the original had no test coverage, no schema validation, and no documented architecture to preserve.
+**Tradeoffs:** Leaflet's 2D rendering model does not support 3D
+visualization or vector tile streaming. WebGL-accelerated rendering
+available in MapboxGL is not available. The georaster chunk
+(georaster-layer-for-leaflet, ~1,186KB uncompressed) is large — mitigated
+via dynamic imports so it only loads when a GeoTIFF dataset is opened.
 
 ---
 
-## Decision: npm audit fix without --force
+## Decision: Custom HTML sanitizer over DOMPurify
 
-**Context:** `npm audit` reports 15 advisories in the installed dependency tree. All are in build-time transitive dependencies within the webpack/chokidar legacy chain — none are present in the production bundle served to users.
+**Context:** Blog post content and dataset descriptions are stored as
+HTML strings in JSON files. A sanitization strategy was needed to prevent
+XSS when rendering this content via `dangerouslySetInnerHTML`.
 
-**Decision:** The advisories are accepted as-is. `npm audit fix --force` is not run.
+**Decision:** A custom whitelist-based HTML sanitizer in
+`utils/sanitize.ts` is used instead of DOMPurify.
 
-**Rationale:** All 15 advisories affect packages that are only used during local development (file watching, build tooling). The production bundle shipped to Cloudflare Pages does not include them. Forcing resolution would upgrade major versions of build-tool internals that Vite depends on, with a meaningful risk of breaking the build pipeline. The correct resolution is to wait for upstream maintainers to release patched versions.
+**Rationale:** The content corpus is small, controlled, and authored by a
+single maintainer — not user-generated. A whitelist sanitizer covering
+the known tag set (headings, paragraphs, lists, links, emphasis) is
+sufficient for this threat model and avoids adding a dependency for a
+problem that is adequately solved in-house. DOMPurify is the correct
+choice for user-generated content at scale; it is not necessary here.
 
-**Tradeoffs:** The `npm audit` output will continue to show advisories until upstream packages release fixes. Any new developer cloning the repo will see the audit warnings and may be confused. This ADR exists to document the conscious decision so it is not re-litigated.
+**Tradeoffs:** The custom sanitizer must be manually updated if new HTML
+tags are needed in content. It has not been independently audited. If
+content authorship is ever opened to external contributors, replacing it
+with DOMPurify should be evaluated.
+
+---
+
+## Decision: Dynamic imports for GeoRaster
+
+**Context:** The initial build produced a MapViewer chunk of ~1,800KB,
+dominated by the georaster and georaster-layer-for-leaflet packages. This
+chunk was loaded eagerly on every map view regardless of whether a
+GeoTIFF dataset was actually opened.
+
+**Decision:** GeoRaster packages are loaded via dynamic `import()` inside
+the map viewer, triggered only when a GeoTIFF dataset is selected.
+
+**Rationale:** The majority of datasets are GeoJSON vector layers. Loading
+a 1,800KB raster processing library for every map view imposed unnecessary
+parse and execution cost on users who never open a GeoTIFF. Dynamic
+imports reduce the initial MapViewer chunk to ~32KB and defer the raster
+library load to the moment it is actually needed.
+
+**Tradeoffs:** First open of a GeoTIFF dataset incurs a network fetch for
+the deferred chunk. This is a UX tradeoff (slight delay on first raster
+load) accepted in exchange for significantly faster initial map view load.
+
+---
+
+## Decision: Shapefile → GeoJSON conversion pipeline
+
+**Context:** Source datasets are distributed as ESRI Shapefiles. Leaflet
+cannot render shapefiles natively — a conversion step was required to make
+the data usable in the map viewer.
+
+**Decision:** A Python pipeline using `ogr2ogr` (GDAL) and `gsutil`
+converts all shapefiles to GeoJSON and uploads them to Google Cloud
+Storage. The resulting URLs are referenced in `datasets.json` via the
+`geojsonUrl` field.
+
+**Rationale:** Server-side conversion produces smaller, cleaner GeoJSON
+than browser-side parsing and avoids shipping a shapefile parser
+(e.g., shpjs) to every client. `ogr2ogr` is the industry-standard tool
+for this conversion and handles projection normalization (→ EPSG:4326)
+automatically. GCS provides reliable public CDN delivery with CORS
+support.
+
+**Tradeoffs:** Adding or updating a dataset requires running the pipeline
+manually and redeploying `datasets.json`. The pipeline depends on GDAL
+being installed in the build environment.
+
+---
+
+## Decision: Cloudflare Pages over Vercel / Netlify
+
+**Context:** Guynode is a static SPA with no server-side functions. A
+hosting platform was needed that could serve the built output reliably
+with SPA routing support.
+
+**Decision:** Cloudflare Pages is used for all hosting and deployment.
+
+**Rationale:** Cloudflare Pages is free for static sites with no
+function invocations, has no bandwidth caps on the free tier, and
+deploys directly from GitHub. The global CDN provides low-latency access
+appropriate for an audience in Guyana and the broader Caribbean. The
+`_redirects` file convention for SPA fallback is simple and well-documented.
+
+**Tradeoffs:** Cloudflare Pages has less mature support for server-side
+rendering and edge functions compared to Vercel. If Guynode ever adds
+server-side features, migration would be required.
