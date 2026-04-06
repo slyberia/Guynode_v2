@@ -2,7 +2,7 @@
 
 **A spatial data archive for Guyana.**  
 Built by Kyle Semple — [HPS Geospatial](https://hpsgeospatial.com)  
-Live at [guynode.com](https://www.guynode.com)
+
 
 ---
 
