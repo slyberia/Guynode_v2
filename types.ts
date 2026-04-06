@@ -90,48 +90,6 @@ export interface Dataset {
   tags?: string[];
 }
 
-export interface AnalysisSection {
-  id: string;
-  type: string;
-  title: string;
-  body: string;
-}
-
-export interface AnalysisMapConfig {
-  datasetIds?: string[];
-  center?: { lat: number; lng: number };
-  zoom?: number;
-}
-
-export interface AnalysisChartConfig {
-  id: string;
-  title: string;
-  description?: string;
-  type: string;
-  note?: string;
-}
-
-export interface AnalysisSummary {
-  id: string;
-  slug: string;
-  title: string;
-  summary: string;
-  tags: string[];
-  datasetsUsed: string[];
-  publishedAt: string;
-  updatedAt?: string;
-  author?: string;
-  level: string;
-  status: string;
-  mapConfig?: AnalysisMapConfig;
-  charts?: AnalysisChartConfig[];
-  heroImageUrl?: string;
-}
-
-export interface AnalysisEntry extends AnalysisSummary {
-  sections: AnalysisSection[];
-}
-
 export interface BlogCategory {
   id: string;
   slug: string;
