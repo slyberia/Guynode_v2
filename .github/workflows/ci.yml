@@ -1,0 +1,82 @@
+name: CI
+
+# Protects the repo and the Google Cloud Run deployment: every PR to main (and
+# every push to main) must lint, test, build, AND successfully build + serve the
+# exact container image Cloud Run runs. If the Docker build or build step breaks,
+# CI fails before the change can be merged/deployed.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs on the same ref to save minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Lint, test & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # Runs the same prebuild (content + dataset validation + sitemap) the
+      # Dockerfile runs, then `vite build`.
+      - name: Build
+        run: npm run build
+
+  docker-build:
+    name: Docker build & serve (Cloud Run parity)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Build the identical multi-stage image Cloud Run deploys (no push).
+      - name: Build container image
+        run: docker build -t guynode:ci .
+
+      # Smoke test: the nginx image must actually serve the built SPA on :8080
+      # (the port Cloud Run expects). Catches Dockerfile/nginx/build-context
+      # regressions that a plain `npm run build` would miss.
+      - name: Serve smoke test
+        run: |
+          docker run -d --name guynode_ci -p 8080:8080 guynode:ci
+          ok=0
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:8080/ >/dev/null; then
+              echo "Container served index on :8080 (attempt $i)."
+              ok=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ok" -ne 1 ]; then
+            echo "::error::Container did not serve on :8080"
+            docker logs guynode_ci || true
+            exit 1
+          fi
+
+      - name: Tear down
+        if: always()
+        run: docker rm -f guynode_ci || true

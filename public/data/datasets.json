@@ -21,7 +21,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "PDF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/pdf/1860Plns_Villages_byPlnName.pdf",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:191f8da642a32865a1cffe505414ddf39f7c4f5b74b70d39cfe83f8d71715b32",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "all-ndcs",
@@ -46,7 +59,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/All_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:d31ce2b0605e675576fafcdfc17b9502c3f3cc9cfc3c610dbaf1e5445cbb98fa",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "amerindian-areas",
@@ -71,7 +97,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Amerindian%20Areas.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:e934186094110fb6519fb8a68dd8c1ab2d5cb001ff0ca1746dbde3636e57ce9f",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "amerindian-villages",
@@ -96,7 +135,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Spreadsheet",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/xlsx/Amerindian_Villages.xlsx",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:a56e93dc75ea3dd89b3c84c386c706760e9dbd8ac4ed5e57383bf7fbdc55e343",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "anna-regina-boundary",
@@ -121,7 +173,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Anna_Regina.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:4616fdb4abb2178c677aafca727dad56524dbd91856fb37506030086f963ffbc",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "corriverton-constituencies",
@@ -146,7 +211,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Corriverton.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:ac6da7c07f8bf47c788543583ce975174eba8802a766d594c17828c8556a3efc",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "gazetteer-places",
@@ -171,7 +249,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "CSV",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/Gazeteer_Places.csv",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:dd01adbba9e97a146578c14f844d02e3ba3ad97221b74e644a343cd06eaf32f6",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "geoname-places",
@@ -196,7 +287,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "CSV",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/GeoName_Places.csv",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:023819e66da0834c033eaffc6bc8adae8788686bd802f09dcb37020238949976",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "georgetown-constituencies",
@@ -221,7 +325,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Georgetown%20Constituencies.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:a791f6de6fffdc84797bb2a152109bacd7e2327a2358518708d9a01b2c5e6d05",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "georgetown-census-districts",
@@ -246,7 +363,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/Georgetown_Districts.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:38725bd66a64599101fdfc402fe051f27d5d8e84ec83dbb7377e7267d1d9b838",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "guyana-coastal-villages",
@@ -271,7 +401,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "GeoTIFF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/geotiff/Guyana%27s%20Coastal%20Villages.tif",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "md5:cee761fb50436c545c974a2776d3dfad",
+        "checksumStatus": "verified-via-origin-hash",
+        "checksumSource": "origin-md5"
+      }
+    ]
   },
   {
     "id": "guyana-national-boundary",
@@ -296,7 +439,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Guyana.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:fc9ccd4a974f16a630c9b3fb562e8655491642feb4ad3000c7f0bef2a6e2cda2",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "village-household-tables-2012",
@@ -321,7 +477,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/pdf/Household_by_Village_2012.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:ec056b561913bd4e49d6e637e6c9bafce4474d9acb825ea0527c41ce8d1fbcbb",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "lethem-constituencies",
@@ -346,7 +515,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/LethemConstituencies.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:59ed447dca9924ab39c0f7a662a350a8e9616e6cea219b6548e84544e7432a7c",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "linden-census-districts",
@@ -371,7 +553,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/Linden_Census_Districts.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:0a194402c593237a05621234e96c7db95db8bbec560dc2d9825a6aa5aa304a9e",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "list-of-ndcs",
@@ -396,7 +591,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Spreadsheet",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/xlsx/List_of_NDCs.xlsx",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:74f913c1f9e7584f13f52b334686e5f4615561c2ff72dc9571eefcdd9caba1c7",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "local-government-areas",
@@ -421,7 +629,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Local_Govt_Areas_Guyana.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:d37e44adcdbc86a3f05ab98768bf1f805605dbaa00cae18c0202525ac61ff98e",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "mabaruma-constituencies",
@@ -446,7 +667,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Maburama_Constituencies.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:71336e285b971a211362dfb4d666a1f72021b1fdee87cf98ce6538f0b36bd957",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "mahdia-boundary",
@@ -471,7 +705,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Mahdia.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:9542f73a00626a55f8a607121a177d8cb47dba277df67b40749da88ac61eaed4",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "guyana-exclusive-economic-zone",
@@ -496,7 +743,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Maritime%20Boundary.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:65f703491f6aa4e27358f0f0c3b2a24256d7e0d9926dc32ed96eb7bf7db1bd39",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "bartica-municipality",
@@ -521,7 +781,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Municipality%20of%20Bartica.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:1235eff750bddbde78870d7eb48f03615045de27bc26c97032182056738b319c",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "new-amsterdam-census-districts",
@@ -546,7 +819,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/New_Amsterdam_Census_Districts.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:79e78c6b2082f1c4b366ac7658441f3b572402a91ba930f7d98a3a7b23f16c6b",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "georgetown-census-population-2012",
@@ -571,7 +857,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Spreadsheet",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/xlsx/Population%20by%20Census%20Districts_Georgetown.xlsx",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:cace1366b32e03bc063f1fe1daa931a79c9848209d6612fbb939e08ab5efe205",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "village-population-tables-2012",
@@ -596,7 +895,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/pdf/Population_by_Village_2012.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:92ee3b4f8dd561a7837c64f11a9a32da71a9f2164c6b371da56d5b8338e5e309",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-1-reference-map",
@@ -621,7 +933,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region1.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:b181ed4636e5c321635783c9fa9f1201659d3c198041bc7b432d81b0172cf64b",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-2-reference-map",
@@ -646,7 +971,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region2.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:4f72000fdec4871b3a2a79f0dc065e7345651a627cdd99f41eee3498f7bad013",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-3-reference-map",
@@ -671,7 +1009,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region3.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:fddfaa768c8fb17266ebff57744b848f45060cbc945b38f8e5a955305a0bde11",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-4-reference-map",
@@ -696,7 +1047,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region4.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:8ed46f67b507793722cf508aa7f8d76e9c9e139d2b710c4237521f25c3d404ce",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-6-reference-map",
@@ -721,7 +1085,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region6.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:97fa2cfb14f00d4a7563810d692a145b1e8929d0de8db0ea9be285229fc08ca9",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-7-reference-map",
@@ -746,7 +1123,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region7.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:b44ff0c21e6f469a238141094d16873420faeeba067ecd23e4c1a45163200a70",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-8-reference-map",
@@ -771,7 +1161,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region8.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:fcbf574f68a43ebcac94dd3c3f2a73c3b45383a69fd7060312cee62b841cb8c7",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-9-reference-map",
@@ -796,7 +1199,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region9.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:951f4a4978a43ad934bacd4c0f098fcaf2b6edcbd96073afadde01ba9e23ee6a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-10-reference-map",
@@ -821,7 +1237,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region10.png",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:af91f9918c5fa21a5de025093cbec378cee6064630cb4e06f9da264e055ec498",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-10-ndcs",
@@ -846,7 +1275,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region10_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:ce8213d3a8c82a237c9169ad0369b42735593fae609496c615d3a772821c86e0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-1-ndcs",
@@ -871,7 +1313,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region1_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:f578a8dda83d656f9544520becf747ebe515a3cd3b1e8c86235993b708c913b2",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-2-ndcs",
@@ -896,7 +1351,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region2_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:26f2b2642f2358d20ae3084c96f22e656ec6f4e4c8d16572f44225de55d902e4",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-3-ndcs",
@@ -921,7 +1389,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region3_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:3ab87bc7561093da5567c44c46a3f0ce2597df84814f8fcf415d7ca266732071",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-4-ndcs",
@@ -946,7 +1427,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region4_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:3f06bc1716cfe26b935d0f3245baf3491c8406b577d3d511ff4115a22d15e668",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-5-villages",
@@ -971,7 +1465,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region5Villages.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:3ae77102e4cafb2043ae040e16e34a8608a93bbf9fcb17d29ca39c7eeabe6159",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-5-ndcs",
@@ -996,7 +1503,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region5_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:e70a391bf21fe8ac289112dd4198a26e680b94d0618d168952ffb9e86dd96926",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-6-ndcs",
@@ -1021,7 +1541,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region6_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:2b3a588d2059b88debfef36d4ac7e97bf7f31df94f866504a7f88a32e74a3c6e",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-7-ndcs",
@@ -1046,7 +1579,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region7_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:cc0b06ad0ba7329baaa038e7d4e1e3656b8adade1d12890e88fe27044ab3ab30",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-8-ndcs",
@@ -1071,7 +1617,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region8_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:780c8f6b28b2356c1c9dfbcb6c785c48a1aef6a3eaaebae88eb7d1beab4217c9",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-9-ndcs",
@@ -1096,7 +1655,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region9_NDCs.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:5f015bbc7bed5eaa94ad06a8fea4970fe6b7a482f17621fb3ed7f38b972282e6",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-9-boundary",
@@ -1121,7 +1693,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region_Nine_Boundary.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:c9db911e3f8b0e0b93b68636deb4f8e5cecbbbe2dc26808c5bef31a60cdb0d68",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "region-1-boundary",
@@ -1146,7 +1731,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region_One_Guyana.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:27ffde46f2c42ff53806e30234e3f7524422f43c5ae288c4d406f18549f6e990",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "rose-hall-constituencies",
@@ -1171,7 +1769,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Rosehall.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:bcf9bf2289523e771ed384859e4a3219184d78b9b0a869fb6f6b7ee7bad4a70a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "silica-city-boundary",
@@ -1196,7 +1807,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/planning-and-development/shapefile/Silica%20City.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:7785e926d831bde1873fc1c46e72cf645b2f68e249422a630b4de70886d28ebb",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "guyana-suriname-maritime-boundary-dispute",
@@ -1221,7 +1845,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "PDF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/pdf/THE_GUYANA-SURINAME_MARITIME_BOUNDARY_DISPUTE.pdf",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:3f0d7ca5cf9f2005247a365aae31a11f2b017cef1347b1acef26931c404a5e17",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "linden-town-constituencies",
@@ -1246,7 +1883,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Town%20of%20Linden_Constituencies.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:b1de0ee92bdeba351ddb7229ffcbf40529dff3f3596d485ea394fb3787cbc346",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "georgetown-vintage-town-map-1914",
@@ -1271,7 +1921,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/jpg/Vintage%20Town%20Map%2C%20Georgetown%2C%201914%20.jpg",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:00e20857c15763eb88f935c58cc16c44e7d46d709b2c6e89194df0b34fc3f4e0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "guyana-regional-reference-map",
@@ -1296,7 +1959,20 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Image",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/jpg/color_regional_map.jpg",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:ad9c9d3078e593f62674a6a0ebca28853bceb24f98ab9b342421756421186912",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   },
   {
     "id": "guyana-admin-regions-population",
@@ -1321,6 +1997,19 @@
       "status": "VERIFIED",
       "issues": [],
       "timestamp": "2026-03-26T00:00:00Z"
-    }
+    },
+    "lastVerified": "2026-06-22",
+    "distributions": [
+      {
+        "label": "Download",
+        "format": "Shapefile",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/guyana_admin_regions_population.zip",
+        "downloadable": true,
+        "status": "available",
+        "checksum": "sha256:7def0476b7887a0ac24c9ffe3dac8d4c66cb774e254476150f557124126176ed",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256"
+      }
+    ]
   }
 ]

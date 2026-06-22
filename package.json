@@ -3,9 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "vite",
-    "prebuild": "tsx scripts/validate-content.ts && tsx scripts/generate-sitemap.js",
+    "validate:datasets": "tsx scripts/validate-datasets.ts",
+    "check:links": "tsx scripts/check-dataset-links.ts",
+    "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",
     "test": "tsx --test",
