@@ -117,7 +117,7 @@ const looksLikePlaceholderChecksum = (checksum: string): boolean => {
   return false;
 };
 
-const isCaveatSensitive = (record: DatasetRecord): boolean => {
+const matchedSensitiveKeywords = (record: DatasetRecord): string[] => {
   const haystack = [
     record.category ?? '',
     record.title ?? '',
@@ -125,8 +125,11 @@ const isCaveatSensitive = (record: DatasetRecord): boolean => {
   ]
     .join(' ')
     .toLowerCase();
-  return CAVEAT_SENSITIVE_KEYWORDS.some((k) => haystack.includes(k));
+  return CAVEAT_SENSITIVE_KEYWORDS.filter((k) => haystack.includes(k));
 };
+
+const isCaveatSensitive = (record: DatasetRecord): boolean =>
+  matchedSensitiveKeywords(record).length > 0;
 
 const claimsDownloadable = (record: DatasetRecord): boolean => {
   if (record.downloadUrl !== undefined) return true;
@@ -275,3 +278,66 @@ export const validateDatasets = (records: DatasetRecord[]): ValidationSummary =>
     infoCount: issues.filter((i) => i.level === 'info').length,
   };
 };
+
+// --- Triage classification (Prompt 1 triage pass) ---------------------------
+// Two orthogonal dimensions per rule:
+//   priority — urgency/impact: High | Medium | Low | Technical
+//   track    — how it gets resolved: Automatable | Semi-automatable
+//              | Manual / evidence-required
+// The "Manual review required" bucket requested in triage == every rule whose
+// track is 'Manual / evidence-required'. See
+// docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md.
+
+export type WarningPriority = 'High' | 'Medium' | 'Low' | 'Technical';
+export type ResolutionTrack =
+  | 'Automatable'
+  | 'Semi-automatable'
+  | 'Manual / evidence-required';
+
+export interface RuleClassification {
+  priority: WarningPriority;
+  track: ResolutionTrack;
+  // Fields a script could populate to clear the rule (when automatable).
+  scriptTargets?: string[];
+  summary: string;
+}
+
+export const RULE_CLASSIFICATION: Record<string, RuleClassification> = {
+  // Errors (blocking) — listed for completeness.
+  'required-field': { priority: 'High', track: 'Manual / evidence-required', summary: 'Required schema field missing' },
+  'duplicate-id': { priority: 'High', track: 'Manual / evidence-required', summary: 'Duplicate dataset id' },
+  'download-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims downloadable but no URL' },
+  'preview-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims previewable but no URL' },
+
+  // Warnings / info.
+  'format-mismatch': { priority: 'Technical', track: 'Semi-automatable', scriptTargets: ['format'], summary: 'Declared format vs file extension' },
+  'placeholder-thumbnail': { priority: 'Low', track: 'Semi-automatable', scriptTargets: ['imageUrl'], summary: 'Uses placeholder thumbnail' },
+  'missing-source': { priority: 'High', track: 'Manual / evidence-required', summary: 'No source recorded' },
+  'missing-license': { priority: 'High', track: 'Manual / evidence-required', summary: 'No license recorded (legal exposure)' },
+  'missing-citation': { priority: 'Medium', track: 'Manual / evidence-required', summary: 'No citation/attribution' },
+  'missing-caveats': { priority: 'Medium', track: 'Manual / evidence-required', summary: 'No caveats recorded' },
+  'missing-last-verified': { priority: 'Technical', track: 'Automatable', scriptTargets: ['lastVerified'], summary: 'No lastVerified timestamp' },
+  'missing-checksum': { priority: 'Technical', track: 'Automatable', scriptTargets: ['distributions[].checksum'], summary: 'No real checksum' },
+  'sensitive-missing-caveats': { priority: 'High', track: 'Manual / evidence-required', summary: 'Sensitive dataset lacks caveats' },
+  'sensitive-missing-authority': { priority: 'High', track: 'Manual / evidence-required', summary: 'Sensitive dataset lacks authorityLevel' },
+};
+
+export const classifyRule = (rule: string): RuleClassification =>
+  RULE_CLASSIFICATION[rule] ?? {
+    priority: 'Medium',
+    track: 'Manual / evidence-required',
+    summary: rule,
+  };
+
+export interface SensitiveDataset {
+  id: string;
+  title?: string;
+  category?: string;
+  matched: string[];
+}
+
+/** Datasets matching caveat-sensitive keywords (boundaries, Amerindian, etc.). */
+export const getSensitiveDatasets = (records: DatasetRecord[]): SensitiveDataset[] =>
+  records
+    .map((r) => ({ id: r.id || 'UNKNOWN', title: r.title, category: r.category, matched: matchedSensitiveKeywords(r) }))
+    .filter((r) => r.matched.length > 0);

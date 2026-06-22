@@ -131,6 +131,49 @@ are defined here so future prompts use them consistently.
 - Any validation script should produce **clear output that a human administrator
   can act on** (separated errors / warnings / info).
 
+## Interpreting validation output (Prompt 1 triage)
+
+When the validation script runs against the current data it reports a large
+number of warnings (329 at the time of the triage pass). This is expected and
+must not be misread:
+
+- **The warnings are expected after adding the new contract.** Every new
+  trust/provenance field (`license`, `caveats`, `citationText`, `lastVerified`,
+  `checksum`, `authorityLevel`, …) is checked on every record, and those fields
+  are not populated yet.
+- **Warnings represent enrichment backlog, not regressions.** No existing data
+  was changed or broken; the count measures how much metadata still needs to be
+  filled in.
+- **0 validation errors only means no blocking schema failures were detected** —
+  no missing required fields, no duplicate IDs, no broken preview/download
+  claims, no format/extension contradictions. It does **not** mean the metadata
+  is complete.
+- **Live URL health and CORS checks may still require deeper testing.**
+  `utils/linkChecker.ts` is a client-side mock (`no-cors`, assumes local paths
+  are OK); there is currently **no** script that performs real HEAD/GET checks
+  against the remote GCS URLs, and **no** checksum generation exists. Both are
+  needed before download UX can be trusted.
+
+The triage classification (priority levels, automatable vs manual tracks,
+script-resolvable vs evidence-required fields, and the list of sensitive
+datasets) lives in the generated worklist at `docs/DATASET_METADATA_AUDIT.md`.
+
+### Warning triage model
+
+Each warning rule is classified on two independent axes:
+
+- **Priority** — urgency/impact: `High` (legal/sensitive), `Medium`,
+  `Low`, `Technical` (scriptable hygiene).
+- **Resolution track** — `Automatable`, `Semi-automatable`, or
+  `Manual / evidence-required`. The "manual review required" bucket equals every
+  rule whose track is `Manual / evidence-required`.
+
+Script-resolvable fields (`lastVerified`, `checksum`, URL status, content type,
+file size, extension/format mismatch) are deferred to a future enrichment
+script. Evidence-required fields (`license`, `citationText`, `attribution`,
+`caveats`, `authorityLevel`, `sourceType`, `lineage`, `legalUseWarning`) must
+never be auto-filled — they require source confirmation.
+
 ## Future prompt reference
 
 Future Claude Code CLI prompts should **read this document before making
