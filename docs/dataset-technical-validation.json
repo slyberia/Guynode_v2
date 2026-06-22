@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T20:01:22.446Z",
+  "generatedAt": "2026-06-22T20:27:47.603Z",
   "checkedDate": "2026-06-22",
   "checksumEnabled": true,
   "maxChecksumBytes": 52428800,
@@ -15,7 +15,8 @@
     "unknown": 0,
     "skipped": 0,
     "checksumsGenerated": 52,
-    "checksumsSkippedLarge": 1,
+    "checksumsViaOrigin": 1,
+    "checksumsSkippedLarge": 0,
     "checksumsUnavailable": 0
   },
   "results": [
@@ -30,8 +31,12 @@
       "contentLength": 39910,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:f391e98599cad64671be6ff44cf83f1a",
+      "originCrc32c": "crc32c:i8Cn0Q==",
+      "etag": "\"f391e98599cad64671be6ff44cf83f1a\"",
       "checksum": "sha256:191f8da642a32865a1cffe505414ddf39f7c4f5b74b70d39cfe83f8d71715b32",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "plantations-and-negro-villages-1860",
@@ -54,8 +59,12 @@
       "contentLength": 822432,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:7149b75228b6ce285ebd02d6bd540783",
+      "originCrc32c": "crc32c:8K69mQ==",
+      "etag": "\"7149b75228b6ce285ebd02d6bd540783\"",
       "checksum": "sha256:d31ce2b0605e675576fafcdfc17b9502c3f3cc9cfc3c610dbaf1e5445cbb98fa",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "all-ndcs",
@@ -78,8 +87,12 @@
       "contentLength": 1990912,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:a5e4b1ae7588bc78863a405774d509b9",
+      "originCrc32c": "crc32c:RLxYTg==",
+      "etag": "\"a5e4b1ae7588bc78863a405774d509b9\"",
       "checksum": "sha256:e934186094110fb6519fb8a68dd8c1ab2d5cb001ff0ca1746dbde3636e57ce9f",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "amerindian-areas",
@@ -102,8 +115,12 @@
       "contentLength": 12064,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:ec48cdbd437f4e86b946311c47ab9c12",
+      "originCrc32c": "crc32c:QFrs7Q==",
+      "etag": "\"ec48cdbd437f4e86b946311c47ab9c12\"",
       "checksum": "sha256:a56e93dc75ea3dd89b3c84c386c706760e9dbd8ac4ed5e57383bf7fbdc55e343",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "amerindian-villages",
@@ -126,8 +143,12 @@
       "contentLength": 3131,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:b61c3b79061e3e537ae91f799896f7d8",
+      "originCrc32c": "crc32c:bgreGw==",
+      "etag": "\"b61c3b79061e3e537ae91f799896f7d8\"",
       "checksum": "sha256:4616fdb4abb2178c677aafca727dad56524dbd91856fb37506030086f963ffbc",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "anna-regina-boundary",
@@ -150,8 +171,12 @@
       "contentLength": 5154,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:a5680f7e24d1a8d95c3b72740c310473",
+      "originCrc32c": "crc32c:j3zUWA==",
+      "etag": "\"a5680f7e24d1a8d95c3b72740c310473\"",
       "checksum": "sha256:ac6da7c07f8bf47c788543583ce975174eba8802a766d594c17828c8556a3efc",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "corriverton-constituencies",
@@ -174,8 +199,12 @@
       "contentLength": 104122,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:35d529557549b9c858fd0a2a9a8fa35a",
+      "originCrc32c": "crc32c:lcJZdQ==",
+      "etag": "\"35d529557549b9c858fd0a2a9a8fa35a\"",
       "checksum": "sha256:dd01adbba9e97a146578c14f844d02e3ba3ad97221b74e644a343cd06eaf32f6",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "gazetteer-places",
@@ -198,8 +227,12 @@
       "contentLength": 674246,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:69b8816c651a4a7e1e75138d8e1946fc",
+      "originCrc32c": "crc32c:5zfxCA==",
+      "etag": "\"69b8816c651a4a7e1e75138d8e1946fc\"",
       "checksum": "sha256:023819e66da0834c033eaffc6bc8adae8788686bd802f09dcb37020238949976",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "geoname-places",
@@ -222,8 +255,12 @@
       "contentLength": 9947,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:260a02bfe2d56f80c83cc70c8595459a",
+      "originCrc32c": "crc32c:6Fs8GQ==",
+      "etag": "\"260a02bfe2d56f80c83cc70c8595459a\"",
       "checksum": "sha256:a791f6de6fffdc84797bb2a152109bacd7e2327a2358518708d9a01b2c5e6d05",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "georgetown-constituencies",
@@ -246,8 +283,12 @@
       "contentLength": 31411,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:113cf21a08d82cd29cfd20e862dd2e6f",
+      "originCrc32c": "crc32c:SM9laQ==",
+      "etag": "\"113cf21a08d82cd29cfd20e862dd2e6f\"",
       "checksum": "sha256:38725bd66a64599101fdfc402fe051f27d5d8e84ec83dbb7377e7267d1d9b838",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "georgetown-census-districts",
@@ -270,7 +311,12 @@
       "contentLength": 59861305,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
-      "checksumStatus": "skipped-large-file"
+      "originMd5": "md5:cee761fb50436c545c974a2776d3dfad",
+      "originCrc32c": "crc32c:mCNKJg==",
+      "etag": "\"cee761fb50436c545c974a2776d3dfad\"",
+      "checksum": "md5:cee761fb50436c545c974a2776d3dfad",
+      "checksumStatus": "verified-via-origin-hash",
+      "checksumSource": "origin-md5"
     },
     {
       "datasetId": "guyana-coastal-villages",
@@ -293,8 +339,12 @@
       "contentLength": 161413,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:19bb6c65dae1c83f1769662dce5776de",
+      "originCrc32c": "crc32c:UTSLrw==",
+      "etag": "\"19bb6c65dae1c83f1769662dce5776de\"",
       "checksum": "sha256:fc9ccd4a974f16a630c9b3fb562e8655491642feb4ad3000c7f0bef2a6e2cda2",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "guyana-national-boundary",
@@ -317,8 +367,12 @@
       "contentLength": 28164784,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:535a855f144da3821089e041b42df242",
+      "originCrc32c": "crc32c:m5e4xA==",
+      "etag": "\"535a855f144da3821089e041b42df242\"",
       "checksum": "sha256:ec056b561913bd4e49d6e637e6c9bafce4474d9acb825ea0527c41ce8d1fbcbb",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "village-household-tables-2012",
@@ -341,8 +395,12 @@
       "contentLength": 14554,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:bb8f0dc14d9ade2b94dad92bfec4978f",
+      "originCrc32c": "crc32c:kwzl4w==",
+      "etag": "\"bb8f0dc14d9ade2b94dad92bfec4978f\"",
       "checksum": "sha256:59ed447dca9924ab39c0f7a662a350a8e9616e6cea219b6548e84544e7432a7c",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "lethem-constituencies",
@@ -365,8 +423,12 @@
       "contentLength": 41247,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:08a858dec09ddc3515bfeac00ed821e2",
+      "originCrc32c": "crc32c:UIa/+Q==",
+      "etag": "\"08a858dec09ddc3515bfeac00ed821e2\"",
       "checksum": "sha256:0a194402c593237a05621234e96c7db95db8bbec560dc2d9825a6aa5aa304a9e",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "linden-census-districts",
@@ -389,8 +451,12 @@
       "contentLength": 14414,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:2072539b1677c541d39323e14cfd5a90",
+      "originCrc32c": "crc32c:0hqmVw==",
+      "etag": "\"2072539b1677c541d39323e14cfd5a90\"",
       "checksum": "sha256:74f913c1f9e7584f13f52b334686e5f4615561c2ff72dc9571eefcdd9caba1c7",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "list-of-ndcs",
@@ -413,8 +479,12 @@
       "contentLength": 3801961,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:aa20dbb92ac5f5d660d3906f75ed0fe4",
+      "originCrc32c": "crc32c:Y1805g==",
+      "etag": "\"aa20dbb92ac5f5d660d3906f75ed0fe4\"",
       "checksum": "sha256:d37e44adcdbc86a3f05ab98768bf1f805605dbaa00cae18c0202525ac61ff98e",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "local-government-areas",
@@ -437,8 +507,12 @@
       "contentLength": 8137,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:d589541c2b34ae39946ac2935b1cc0ad",
+      "originCrc32c": "crc32c:LPcjIw==",
+      "etag": "\"d589541c2b34ae39946ac2935b1cc0ad\"",
       "checksum": "sha256:71336e285b971a211362dfb4d666a1f72021b1fdee87cf98ce6538f0b36bd957",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "mabaruma-constituencies",
@@ -461,8 +535,12 @@
       "contentLength": 6169,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:9684f7a5fbd6bf6989de07553a302bf3",
+      "originCrc32c": "crc32c:44sayw==",
+      "etag": "\"9684f7a5fbd6bf6989de07553a302bf3\"",
       "checksum": "sha256:9542f73a00626a55f8a607121a177d8cb47dba277df67b40749da88ac61eaed4",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "mahdia-boundary",
@@ -485,8 +563,12 @@
       "contentLength": 11027,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:508243ca5e610059dafb9e4d23b23430",
+      "originCrc32c": "crc32c:KT4C+w==",
+      "etag": "\"508243ca5e610059dafb9e4d23b23430\"",
       "checksum": "sha256:65f703491f6aa4e27358f0f0c3b2a24256d7e0d9926dc32ed96eb7bf7db1bd39",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "guyana-exclusive-economic-zone",
@@ -509,8 +591,12 @@
       "contentLength": 7096,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:c16f005eae048b4ed650faf966941e04",
+      "originCrc32c": "crc32c:fs9EAg==",
+      "etag": "\"c16f005eae048b4ed650faf966941e04\"",
       "checksum": "sha256:1235eff750bddbde78870d7eb48f03615045de27bc26c97032182056738b319c",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "bartica-municipality",
@@ -533,8 +619,12 @@
       "contentLength": 6385,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:6e8b35df039970327488aa99830c69e4",
+      "originCrc32c": "crc32c:CNuv7w==",
+      "etag": "\"6e8b35df039970327488aa99830c69e4\"",
       "checksum": "sha256:79e78c6b2082f1c4b366ac7658441f3b572402a91ba930f7d98a3a7b23f16c6b",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "new-amsterdam-census-districts",
@@ -557,8 +647,12 @@
       "contentLength": 13044,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:a0f7cdd8d2ed3ca7ca2dfdce3e6163ba",
+      "originCrc32c": "crc32c:EG9d+g==",
+      "etag": "\"a0f7cdd8d2ed3ca7ca2dfdce3e6163ba\"",
       "checksum": "sha256:cace1366b32e03bc063f1fe1daa931a79c9848209d6612fbb939e08ab5efe205",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "georgetown-census-population-2012",
@@ -581,8 +675,12 @@
       "contentLength": 19204994,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:134baa0454afa286f39e84054b2c3fbf",
+      "originCrc32c": "crc32c:wswXWg==",
+      "etag": "\"134baa0454afa286f39e84054b2c3fbf\"",
       "checksum": "sha256:92ee3b4f8dd561a7837c64f11a9a32da71a9f2164c6b371da56d5b8338e5e309",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "village-population-tables-2012",
@@ -605,8 +703,12 @@
       "contentLength": 263939,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:9dc462ee52e88f9e73d0f2c45fddca05",
+      "originCrc32c": "crc32c:i1/ihA==",
+      "etag": "\"9dc462ee52e88f9e73d0f2c45fddca05\"",
       "checksum": "sha256:b181ed4636e5c321635783c9fa9f1201659d3c198041bc7b432d81b0172cf64b",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-1-reference-map",
@@ -629,8 +731,12 @@
       "contentLength": 238398,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:80c093dbfac1a4734a74ab1adff166f9",
+      "originCrc32c": "crc32c:eBii5g==",
+      "etag": "\"80c093dbfac1a4734a74ab1adff166f9\"",
       "checksum": "sha256:4f72000fdec4871b3a2a79f0dc065e7345651a627cdd99f41eee3498f7bad013",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-2-reference-map",
@@ -653,8 +759,12 @@
       "contentLength": 438466,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:d4f58ae2e121e9eb5d3c55946cfc368c",
+      "originCrc32c": "crc32c:SnCh1w==",
+      "etag": "\"d4f58ae2e121e9eb5d3c55946cfc368c\"",
       "checksum": "sha256:fddfaa768c8fb17266ebff57744b848f45060cbc945b38f8e5a955305a0bde11",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-3-reference-map",
@@ -677,8 +787,12 @@
       "contentLength": 448855,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:f144fd6aa3cc3bc4ef6147896ff058b1",
+      "originCrc32c": "crc32c:7TiKqQ==",
+      "etag": "\"f144fd6aa3cc3bc4ef6147896ff058b1\"",
       "checksum": "sha256:8ed46f67b507793722cf508aa7f8d76e9c9e139d2b710c4237521f25c3d404ce",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-4-reference-map",
@@ -701,8 +815,12 @@
       "contentLength": 416206,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:0c2c06c3394fa9bfc1f8c6bee97fc64a",
+      "originCrc32c": "crc32c:bpdexQ==",
+      "etag": "\"0c2c06c3394fa9bfc1f8c6bee97fc64a\"",
       "checksum": "sha256:97fa2cfb14f00d4a7563810d692a145b1e8929d0de8db0ea9be285229fc08ca9",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-6-reference-map",
@@ -725,8 +843,12 @@
       "contentLength": 266748,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:2f78884ae6219fc8ec534bf5550285c2",
+      "originCrc32c": "crc32c:GYLLfQ==",
+      "etag": "\"2f78884ae6219fc8ec534bf5550285c2\"",
       "checksum": "sha256:b44ff0c21e6f469a238141094d16873420faeeba067ecd23e4c1a45163200a70",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-7-reference-map",
@@ -749,8 +871,12 @@
       "contentLength": 256716,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:cc28a36ab0d099497736228f952bb257",
+      "originCrc32c": "crc32c:BpX1Tw==",
+      "etag": "\"cc28a36ab0d099497736228f952bb257\"",
       "checksum": "sha256:fcbf574f68a43ebcac94dd3c3f2a73c3b45383a69fd7060312cee62b841cb8c7",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-8-reference-map",
@@ -773,8 +899,12 @@
       "contentLength": 457758,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:31f429dde231eb6d59fb0c007d052874",
+      "originCrc32c": "crc32c:8rRUJg==",
+      "etag": "\"31f429dde231eb6d59fb0c007d052874\"",
       "checksum": "sha256:951f4a4978a43ad934bacd4c0f098fcaf2b6edcbd96073afadde01ba9e23ee6a",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-9-reference-map",
@@ -797,8 +927,12 @@
       "contentLength": 424320,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:838800361b7b761172edd8bc6106b650",
+      "originCrc32c": "crc32c:rx5D0A==",
+      "etag": "\"838800361b7b761172edd8bc6106b650\"",
       "checksum": "sha256:af91f9918c5fa21a5de025093cbec378cee6064630cb4e06f9da264e055ec498",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-10-reference-map",
@@ -821,8 +955,12 @@
       "contentLength": 22960,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:b947ec66e1e9ae2e993f8714ba6952e5",
+      "originCrc32c": "crc32c:LAkRyg==",
+      "etag": "\"b947ec66e1e9ae2e993f8714ba6952e5\"",
       "checksum": "sha256:ce8213d3a8c82a237c9169ad0369b42735593fae609496c615d3a772821c86e0",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-10-ndcs",
@@ -845,8 +983,12 @@
       "contentLength": 152005,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:722a1bb4890da8b48dd80282dc1aa70b",
+      "originCrc32c": "crc32c:Zf25QQ==",
+      "etag": "\"722a1bb4890da8b48dd80282dc1aa70b\"",
       "checksum": "sha256:f578a8dda83d656f9544520becf747ebe515a3cd3b1e8c86235993b708c913b2",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-1-ndcs",
@@ -869,8 +1011,12 @@
       "contentLength": 20860,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:dc9d682627116ef364c3e93961b94d46",
+      "originCrc32c": "crc32c:3ECDUA==",
+      "etag": "\"dc9d682627116ef364c3e93961b94d46\"",
       "checksum": "sha256:26f2b2642f2358d20ae3084c96f22e656ec6f4e4c8d16572f44225de55d902e4",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-2-ndcs",
@@ -893,8 +1039,12 @@
       "contentLength": 84406,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:dc71b17a7e05a409f6a4c72ab8d30655",
+      "originCrc32c": "crc32c:XeujdQ==",
+      "etag": "\"dc71b17a7e05a409f6a4c72ab8d30655\"",
       "checksum": "sha256:3ab87bc7561093da5567c44c46a3f0ce2597df84814f8fcf415d7ca266732071",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-3-ndcs",
@@ -917,8 +1067,12 @@
       "contentLength": 85243,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:63f5a753823af99469da5f0035926ca9",
+      "originCrc32c": "crc32c:f1eQ9Q==",
+      "etag": "\"63f5a753823af99469da5f0035926ca9\"",
       "checksum": "sha256:3f06bc1716cfe26b935d0f3245baf3491c8406b577d3d511ff4115a22d15e668",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-4-ndcs",
@@ -941,8 +1095,12 @@
       "contentLength": 108683,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:8839889b64915b2709a497201334eea4",
+      "originCrc32c": "crc32c:ldTA2w==",
+      "etag": "\"8839889b64915b2709a497201334eea4\"",
       "checksum": "sha256:3ae77102e4cafb2043ae040e16e34a8608a93bbf9fcb17d29ca39c7eeabe6159",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-5-villages",
@@ -965,8 +1123,12 @@
       "contentLength": 212502,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:e39c92fbe0d7820cef1b64a98c48e187",
+      "originCrc32c": "crc32c:SFR2Jw==",
+      "etag": "\"e39c92fbe0d7820cef1b64a98c48e187\"",
       "checksum": "sha256:e70a391bf21fe8ac289112dd4198a26e680b94d0618d168952ffb9e86dd96926",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-5-ndcs",
@@ -989,8 +1151,12 @@
       "contentLength": 45585,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:3e36baf3cdcfd3b7d4153253e1ff6551",
+      "originCrc32c": "crc32c:uuZjVg==",
+      "etag": "\"3e36baf3cdcfd3b7d4153253e1ff6551\"",
       "checksum": "sha256:2b3a588d2059b88debfef36d4ac7e97bf7f31df94f866504a7f88a32e74a3c6e",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-6-ndcs",
@@ -1013,8 +1179,12 @@
       "contentLength": 131534,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:daa82f1d31bc5545087795da69c0688f",
+      "originCrc32c": "crc32c:oZ3gzA==",
+      "etag": "\"daa82f1d31bc5545087795da69c0688f\"",
       "checksum": "sha256:cc0b06ad0ba7329baaa038e7d4e1e3656b8adade1d12890e88fe27044ab3ab30",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-7-ndcs",
@@ -1037,8 +1207,12 @@
       "contentLength": 32344,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:c0c4e5b5040f97a10825200def090f96",
+      "originCrc32c": "crc32c:3+TXTA==",
+      "etag": "\"c0c4e5b5040f97a10825200def090f96\"",
       "checksum": "sha256:780c8f6b28b2356c1c9dfbcb6c785c48a1aef6a3eaaebae88eb7d1beab4217c9",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-8-ndcs",
@@ -1061,8 +1235,12 @@
       "contentLength": 53231,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:81cf63fc2eab2aaa21c0c6a64cd990c9",
+      "originCrc32c": "crc32c:E/B4Pg==",
+      "etag": "\"81cf63fc2eab2aaa21c0c6a64cd990c9\"",
       "checksum": "sha256:5f015bbc7bed5eaa94ad06a8fea4970fe6b7a482f17621fb3ed7f38b972282e6",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-9-ndcs",
@@ -1085,8 +1263,12 @@
       "contentLength": 37268,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:410532cd1f26dfa99a82d275e952f25d",
+      "originCrc32c": "crc32c:idRcWA==",
+      "etag": "\"410532cd1f26dfa99a82d275e952f25d\"",
       "checksum": "sha256:c9db911e3f8b0e0b93b68636deb4f8e5cecbbbe2dc26808c5bef31a60cdb0d68",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-9-boundary",
@@ -1109,8 +1291,12 @@
       "contentLength": 55731,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:fe1ac756a574e8f374a77d0b57110339",
+      "originCrc32c": "crc32c:/uTw4Q==",
+      "etag": "\"fe1ac756a574e8f374a77d0b57110339\"",
       "checksum": "sha256:27ffde46f2c42ff53806e30234e3f7524422f43c5ae288c4d406f18549f6e990",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "region-1-boundary",
@@ -1133,8 +1319,12 @@
       "contentLength": 4290,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:077360ff85d91dc03362934b1999b65c",
+      "originCrc32c": "crc32c:0ATmCw==",
+      "etag": "\"077360ff85d91dc03362934b1999b65c\"",
       "checksum": "sha256:bcf9bf2289523e771ed384859e4a3219184d78b9b0a869fb6f6b7ee7bad4a70a",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "rose-hall-constituencies",
@@ -1157,8 +1347,12 @@
       "contentLength": 7761,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:bb577ee77a3f241c2e43dfd4871b2e1a",
+      "originCrc32c": "crc32c:W/KQjA==",
+      "etag": "\"bb577ee77a3f241c2e43dfd4871b2e1a\"",
       "checksum": "sha256:7785e926d831bde1873fc1c46e72cf645b2f68e249422a630b4de70886d28ebb",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "silica-city-boundary",
@@ -1181,8 +1375,12 @@
       "contentLength": 1576948,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:9838ff54c225b394c985be931d5912fa",
+      "originCrc32c": "crc32c:XhFmVQ==",
+      "etag": "\"9838ff54c225b394c985be931d5912fa\"",
       "checksum": "sha256:3f0d7ca5cf9f2005247a365aae31a11f2b017cef1347b1acef26931c404a5e17",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "guyana-suriname-maritime-boundary-dispute",
@@ -1205,8 +1403,12 @@
       "contentLength": 20622,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:fa16c81f2cb7d70774a069d2d1740e1f",
+      "originCrc32c": "crc32c:QS3UyA==",
+      "etag": "\"fa16c81f2cb7d70774a069d2d1740e1f\"",
       "checksum": "sha256:b1de0ee92bdeba351ddb7229ffcbf40529dff3f3596d485ea394fb3787cbc346",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "linden-town-constituencies",
@@ -1229,8 +1431,12 @@
       "contentLength": 126619,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:51d14259b5471b8fef423dec1ef1c6c7",
+      "originCrc32c": "crc32c:uOH0LA==",
+      "etag": "\"51d14259b5471b8fef423dec1ef1c6c7\"",
       "checksum": "sha256:00e20857c15763eb88f935c58cc16c44e7d46d709b2c6e89194df0b34fc3f4e0",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "georgetown-vintage-town-map-1914",
@@ -1253,8 +1459,12 @@
       "contentLength": 1083779,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:8b85360accfe5c7a13776c6d851c4764",
+      "originCrc32c": "crc32c:m6nTVA==",
+      "etag": "\"8b85360accfe5c7a13776c6d851c4764\"",
       "checksum": "sha256:ad9c9d3078e593f62674a6a0ebca28853bceb24f98ab9b342421756421186912",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "guyana-regional-reference-map",
@@ -1277,8 +1487,12 @@
       "contentLength": 194459,
       "corsAllowOrigin": null,
       "checkedAt": "2026-06-22",
+      "originMd5": "md5:d6d7d06e0b45a4002f306436ec0dc225",
+      "originCrc32c": "crc32c:48FXdQ==",
+      "etag": "\"d6d7d06e0b45a4002f306436ec0dc225\"",
       "checksum": "sha256:7def0476b7887a0ac24c9ffe3dac8d4c66cb774e254476150f557124126176ed",
-      "checksumStatus": "generated"
+      "checksumStatus": "generated",
+      "checksumSource": "self-sha256"
     },
     {
       "datasetId": "guyana-admin-regions-population",

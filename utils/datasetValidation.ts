@@ -50,6 +50,7 @@ export interface DatasetRecord {
     downloadable?: boolean;
     checksum?: string;
     checksumStatus?: string;
+    checksumSource?: string;
     status?: string;
   }>;
   [key: string]: unknown;

@@ -199,8 +199,9 @@ ${statusLine('Available', 'available')}
 - **Not found:** ${t.notFound}${idsByStatus('not-found').length ? ` — ${mdList(idsByStatus('not-found'))}` : ''}
 - **CORS-limited:** ${t.corsLimited}${idsByStatus('cors-limited').length ? ` — ${mdList(idsByStatus('cors-limited'))}` : ''}
 - **Unknown / skipped:** ${t.unknown + t.skipped}${idsByStatus('unknown').length ? ` — ${mdList(idsByStatus('unknown'))}` : ''}
-- **Checksums generated:** ${t.checksumsGenerated}
-- **Checksums skipped:** ${t.checksumsSkippedLarge} (large file) + ${t.checksumsUnavailable} (unavailable)
+- **Checksums (self SHA-256):** ${t.checksumsGenerated}
+- **Checksums (origin MD5/CRC32C, any size):** ${t.checksumsViaOrigin ?? 0}
+- **Checksums skipped:** ${t.checksumsSkippedLarge} (large file, no origin hash) + ${t.checksumsUnavailable} (unavailable)
 - **Records needing admin review (URL):** ${adminReview.length === 0 ? '_none_' : mdList(adminReview)}
 
 `;

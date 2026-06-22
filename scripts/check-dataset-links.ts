@@ -31,6 +31,10 @@ const withChecksum = args.includes('--checksum');
 const doWrite = args.includes('--write');
 const limitArg = args.find((a) => a.startsWith('--limit'));
 const limit = limitArg ? Number(limitArg.split('=')[1] ?? args[args.indexOf(limitArg) + 1]) : undefined;
+const maxArg = args.find((a) => a.startsWith('--max-checksum-bytes'));
+const maxChecksumBytes = maxArg
+  ? Number(maxArg.split('=')[1] ?? args[args.indexOf(maxArg) + 1])
+  : DEFAULT_MAX_CHECKSUM_BYTES;
 
 type Role = 'download' | 'geojson' | 'image' | 'distribution';
 interface RoleResult extends UrlHealthResult {
@@ -58,7 +62,7 @@ const checkLocal = (url: string): UrlHealthResult => {
 
 const checkOne = async (url: string): Promise<UrlHealthResult> => {
   if (url.startsWith('/')) return checkLocal(url);
-  return checkUrlHealth(url, { generateChecksum: withChecksum });
+  return checkUrlHealth(url, { generateChecksum: withChecksum, maxChecksumBytes });
 };
 
 const collect = (record: DatasetRecord): Array<{ role: Role; url: string }> => {
@@ -98,6 +102,7 @@ const run = async () => {
     unknown: tally('unknown'),
     skipped: tally('skipped'),
     checksumsGenerated: results.filter((r) => r.checksumStatus === 'generated').length,
+    checksumsViaOrigin: results.filter((r) => r.checksumStatus === 'verified-via-origin-hash').length,
     checksumsSkippedLarge: results.filter((r) => r.checksumStatus === 'skipped-large-file').length,
     checksumsUnavailable: results.filter((r) => r.checksumStatus === 'unavailable').length,
   };
@@ -121,8 +126,9 @@ const run = async () => {
   console.log(`  not-found:           ${totals.notFound}`);
   console.log(`  cors-limited:        ${totals.corsLimited}`);
   console.log(`  unknown:             ${totals.unknown}`);
-  console.log(`  checksums generated: ${totals.checksumsGenerated}`);
-  console.log(`  checksums skipped:   ${totals.checksumsSkippedLarge} (large) + ${totals.checksumsUnavailable} (unavailable)`);
+  console.log(`  checksums (self sha256): ${totals.checksumsGenerated}`);
+  console.log(`  checksums (origin hash): ${totals.checksumsViaOrigin}`);
+  console.log(`  checksums skipped:       ${totals.checksumsSkippedLarge} (large) + ${totals.checksumsUnavailable} (unavailable)`);
   console.log(`\nReport written to ${path.relative(process.cwd(), SIDECAR_PATH)}`);
   console.log('Re-run `npm run validate:datasets` to refresh the audit markdown.');
 
@@ -147,20 +153,23 @@ const applyToDatasets = (results: RoleResult[]) => {
     const download = rs.find((r) => r.role === 'download');
     if (download && download.status === 'available') {
       record.lastVerified = download.checkedAt;
-      if (download.checksum) {
-        record.distributions = record.distributions ?? [];
-        const existing = record.distributions.find((d) => d.url === download.url);
-        if (existing) {
-          existing.checksum = download.checksum;
-        } else {
-          record.distributions.push({
-            label: 'Download',
-            format: record.format,
-            url: download.url,
-            downloadable: true,
-            checksum: download.checksum,
-          });
-        }
+      record.distributions = record.distributions ?? [];
+      const existing = record.distributions.find((d) => d.url === download.url);
+      const patch = {
+        label: 'Download',
+        format: record.format,
+        url: download.url,
+        downloadable: true,
+        status: download.status,
+        // Either a real checksum (sha256/origin md5) or an honest status marker.
+        ...(download.checksum ? { checksum: download.checksum } : {}),
+        ...(download.checksumStatus ? { checksumStatus: download.checksumStatus } : {}),
+        ...(download.checksumSource ? { checksumSource: download.checksumSource } : {}),
+      };
+      if (existing) {
+        Object.assign(existing, patch);
+      } else {
+        record.distributions.push(patch);
       }
       updated += 1;
     }

@@ -7,8 +7,23 @@ import {
   isRealChecksum,
   shouldSkipChecksumForSize,
   checkUrlHealth,
+  parseGoogHash,
   MinimalResponse,
 } from '../utils/urlHealth.js';
+
+// Build a streaming (body) response from chunks, for constant-memory checksum tests.
+const streamResp = (
+  status: number,
+  headers: Record<string, string>,
+  chunks: Uint8Array[]
+): MinimalResponse => ({
+  status,
+  url: 'https://example.com/file',
+  headers: { get: (k: string) => headers[k.toLowerCase()] ?? null },
+  body: (async function* () {
+    for (const c of chunks) yield c;
+  })(),
+});
 
 // Build a mock response.
 const resp = (
@@ -117,7 +132,46 @@ test('checkUrlHealth — checksum generated for small reachable file', async () 
   assert.strictEqual(r.checksum, sha256(body));
 });
 
-test('checkUrlHealth — checksum skipped for large file', async () => {
+test('parseGoogHash decodes md5 (base64 -> hex) and crc32c', () => {
+  const { md5Hex, crc32cBase64 } = parseGoogHash('crc32c=mCNKJg==,md5=zudh+1BDbFRcl0ondtPfrQ==');
+  assert.strictEqual(md5Hex, 'cee761fb50436c545c974a2776d3dfad');
+  assert.strictEqual(crc32cBase64, 'mCNKJg==');
+  assert.deepStrictEqual(parseGoogHash(null), {});
+});
+
+test('checkUrlHealth captures origin md5/crc32c + etag from headers', async () => {
+  const fetchImpl = async () =>
+    resp(200, {
+      'content-length': '100',
+      'x-goog-hash': 'crc32c=mCNKJg==,md5=zudh+1BDbFRcl0ondtPfrQ==',
+      etag: '"cee761fb50436c545c974a2776d3dfad"',
+    });
+  const r = await checkUrlHealth('https://example.com/file', { fetchImpl });
+  assert.strictEqual(r.originMd5, 'md5:cee761fb50436c545c974a2776d3dfad');
+  assert.strictEqual(r.originCrc32c, 'crc32c:mCNKJg==');
+});
+
+test('checkUrlHealth — large file falls back to origin md5 (no download)', async () => {
+  let getCalls = 0;
+  const fetchImpl = async (_url: string, init?: { method?: string }) => {
+    if (init?.method !== 'HEAD') getCalls += 1;
+    return resp(200, {
+      'content-length': String(100 * 1024 * 1024),
+      'x-goog-hash': 'md5=zudh+1BDbFRcl0ondtPfrQ==',
+    });
+  };
+  const r = await checkUrlHealth('https://example.com/file', {
+    fetchImpl,
+    generateChecksum: true,
+    maxChecksumBytes: 1024,
+  });
+  assert.strictEqual(r.checksumStatus, 'verified-via-origin-hash');
+  assert.strictEqual(r.checksumSource, 'origin-md5');
+  assert.strictEqual(r.checksum, 'md5:cee761fb50436c545c974a2776d3dfad');
+  assert.strictEqual(getCalls, 0, 'must not download an over-cap file');
+});
+
+test('checkUrlHealth — large file with no origin hash is skipped', async () => {
   const fetchImpl = async () => resp(200, { 'content-length': String(100 * 1024 * 1024) });
   const r = await checkUrlHealth('https://example.com/file', {
     fetchImpl,
@@ -126,4 +180,32 @@ test('checkUrlHealth — checksum skipped for large file', async () => {
   });
   assert.strictEqual(r.checksumStatus, 'skipped-large-file');
   assert.strictEqual(r.checksum, undefined);
+});
+
+test('checkUrlHealth — streams a SHA-256 from the response body', async () => {
+  const body = Buffer.from('the quick brown fox');
+  const fetchImpl = async (_url: string, init?: { method?: string }) => {
+    if (init?.method === 'HEAD') return resp(200, { 'content-length': String(body.length) });
+    return streamResp(200, { 'content-length': String(body.length) }, [body.subarray(0, 9), body.subarray(9)]);
+  };
+  const r = await checkUrlHealth('https://example.com/file', { fetchImpl, generateChecksum: true });
+  assert.strictEqual(r.checksumStatus, 'generated');
+  assert.strictEqual(r.checksumSource, 'self-sha256');
+  assert.strictEqual(r.checksum, sha256(body));
+});
+
+test('checkUrlHealth — unknown-length giant overflows stream then uses origin hash', async () => {
+  const big = new Uint8Array(4096);
+  const fetchImpl = async (_url: string, init?: { method?: string }) => {
+    // No content-length (chunked); origin advertises md5.
+    if (init?.method === 'HEAD') return resp(200, { 'x-goog-hash': 'md5=zudh+1BDbFRcl0ondtPfrQ==' });
+    return streamResp(200, { 'x-goog-hash': 'md5=zudh+1BDbFRcl0ondtPfrQ==' }, [big, big, big]);
+  };
+  const r = await checkUrlHealth('https://example.com/file', {
+    fetchImpl,
+    generateChecksum: true,
+    maxChecksumBytes: 1024,
+  });
+  assert.strictEqual(r.checksumStatus, 'verified-via-origin-hash');
+  assert.strictEqual(r.checksum, 'md5:cee761fb50436c545c974a2776d3dfad');
 });

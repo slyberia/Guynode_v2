@@ -102,10 +102,12 @@ export interface Distribution {
   previewable?: boolean;
   downloadable?: boolean;
   requiresSoftware?: boolean;
-  // Only populate with a REAL file checksum (e.g. "sha256:..."). Never a placeholder.
+  // Only populate with a REAL file checksum (e.g. "sha256:..." or origin "md5:..."). Never a placeholder.
   checksum?: string;
-  // Outcome of attempting to checksum the file (e.g. 'generated', 'skipped-large-file').
+  // Outcome of attempting to checksum the file (e.g. 'generated', 'verified-via-origin-hash', 'skipped-large-file').
   checksumStatus?: string;
+  // Provenance of the checksum: 'self-sha256' | 'origin-md5' | 'origin-crc32c'.
+  checksumSource?: string;
   status?: AvailabilityStatus;
   lastVerified?: string;
 }
