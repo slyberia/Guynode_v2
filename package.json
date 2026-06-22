@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "tsx scripts/validate-content.ts && tsx scripts/generate-sitemap.js",
+    "validate:datasets": "tsx scripts/validate-datasets.ts",
+    "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",
     "test": "tsx --test",

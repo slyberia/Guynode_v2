@@ -57,6 +57,52 @@ export interface DatasetAsset {
   storagePath?: string | null;
 }
 
+// --- Metadata Contract (Prompt 1: Dataset Metadata Contract and Validation) ---
+// See docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md for terminology.
+// All fields below are additive and optional to preserve backward compatibility
+// with existing pages that read downloadUrl / geojsonUrl / format / size / viewerType.
+
+// How the source relates to the underlying authority.
+export type SourceType =
+  | 'official'
+  | 'digitized'
+  | 'derived'
+  | 'external'
+  | 'historical'
+  | 'unknown';
+
+// How authoritative the record should be treated as.
+export type AuthorityLevel =
+  | 'official'
+  | 'reference-only'
+  | 'indicative-only'
+  | 'needs-review'
+  | 'unknown';
+
+// Verified availability of a record or distribution link.
+export type AvailabilityStatus =
+  | 'available'
+  | 'broken'
+  | 'unknown'
+  | 'needs-review';
+
+// A single downloadable/previewable representation of a dataset.
+// Prefer this over the legacy top-level downloadUrl/geojsonUrl going forward.
+export interface Distribution {
+  label: string;
+  format: string;
+  url: string;
+  size?: string;
+  contentType?: string;
+  previewable?: boolean;
+  downloadable?: boolean;
+  requiresSoftware?: boolean;
+  // Only populate with a REAL file checksum (e.g. "sha256:..."). Never a placeholder.
+  checksum?: string;
+  status?: AvailabilityStatus;
+  lastVerified?: string;
+}
+
 export interface Dataset {
   id: string;
   title: string;
@@ -77,8 +123,37 @@ export interface Dataset {
   // Section 7: Pipeline Fields
   ingestionStatus?: IngestionStatus;
   validationReport?: ValidationReport;
-  metadataHash?: string; // For integrity
-  
+  // NOTE: legacy integrity placeholder. Do NOT display this as a trust signal.
+  // It is not backed by a real file checksum. Real checksums belong on
+  // Distribution.checksum and must only be shown when genuinely computed.
+  metadataHash?: string;
+
+  // --- Source and trust (additive, optional) ---
+  sourceUrl?: string;
+  sourceType?: SourceType;
+  authorityLevel?: AuthorityLevel;
+  lineage?: string;
+  caveats?: string[];
+  knownLimitations?: string[];
+  legalUseWarning?: string;
+
+  // --- Temporal and spatial context (additive, optional) ---
+  lastVerified?: string;
+  geographicCoverage?: string;
+  temporalCoverage?: string;
+  spatialReference?: string;
+
+  // --- License and citation (additive, optional) ---
+  license?: string;
+  attribution?: string;
+  citationText?: string;
+
+  // --- File access and distributions (additive, optional) ---
+  // Preferred structure for download/preview metadata. Legacy fields above
+  // (downloadUrl, geojsonUrl, format, size, viewerType) remain authoritative
+  // until consumers migrate to distributions.
+  distributions?: Distribution[];
+
   // Tier 3: Temporal Support
   temporalLayers?: TemporalLayer[];
   
