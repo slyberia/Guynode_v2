@@ -80,10 +80,15 @@ export type AuthorityLevel =
   | 'unknown';
 
 // Verified availability of a record or distribution link.
+// Aligned with the URL-health classifications produced by scripts/check-dataset-links.ts.
 export type AvailabilityStatus =
   | 'available'
   | 'broken'
+  | 'forbidden'
+  | 'not-found'
+  | 'cors-limited'
   | 'unknown'
+  | 'skipped'
   | 'needs-review';
 
 // A single downloadable/previewable representation of a dataset.
@@ -99,6 +104,8 @@ export interface Distribution {
   requiresSoftware?: boolean;
   // Only populate with a REAL file checksum (e.g. "sha256:..."). Never a placeholder.
   checksum?: string;
+  // Outcome of attempting to checksum the file (e.g. 'generated', 'skipped-large-file').
+  checksumStatus?: string;
   status?: AvailabilityStatus;
   lastVerified?: string;
 }

@@ -174,10 +174,54 @@ script. Evidence-required fields (`license`, `citationText`, `attribution`,
 `caveats`, `authorityLevel`, `sourceType`, `lineage`, `legalUseWarning`) must
 never be auto-filled — they require source confirmation.
 
+## Prompt 1.5 split: technical vs evidence-based metadata
+
+Step 1 (Dataset Metadata Contract and Validation) is implemented across a split
+sequence before Prompt 2:
+
+- **Prompt 1.5A — Automatable Technical Metadata Validation (implemented).**
+  Real, server-side URL health and file-integrity checks:
+  - `utils/urlHealth.ts` — pure, dependency-injected helpers (HTTP status
+    classification, `YYYY-MM-DD` verification dates, SHA-256, placeholder
+    rejection, size-gated checksum) plus a `checkUrlHealth` orchestrator that
+    tries `HEAD` then falls back to a ranged `GET` (`Range: bytes=0-0`).
+  - `scripts/check-dataset-links.ts` (`npm run check:links`, add `-- --checksum`)
+    — checks every `downloadUrl` / `geojsonUrl` / distribution / image URL,
+    classifies each as `available` / `broken` / `forbidden` / `not-found` /
+    `cors-limited` / `unknown` / `skipped`, and writes
+    `docs/dataset-technical-validation.json`.
+  - The audit generator folds that sidecar into a **Technical validation**
+    section of `docs/DATASET_METADATA_AUDIT.md`.
+  - By default `datasets.json` is **not** mutated (the script writes a report;
+    `-- --write` is an explicit opt-in to apply `lastVerified` / `checksum`).
+
+- **Prompt 1.6 — Legacy Metadata Extraction From Current Guynode (next).**
+  Manual / evidence-based fields that must come from the old Guynode site or
+  other confirmed source text — `caveats`, `lineage`, `sourceType`,
+  `authorityLevel`, `legalUseWarning`, `attribution`, `citationText`, and
+  specialized category context. These must **never** be auto-filled or invented.
+
+These are split deliberately: URL/file validation is technical and automatable,
+whereas caveats, legal warnings, authority levels, lineage, license
+interpretation, and citations require human-confirmed evidence.
+
+### User-facing vs admin-facing
+
+- **URL health is user-facing.** It determines whether download buttons,
+  previewable files, and developer endpoint URLs actually work, and lets the
+  Catalog eventually show accurate status cues (`Available`, `Broken`,
+  `Download only`, `Needs review`).
+- **Checksums are mostly admin/developer-facing.** They support file-integrity
+  verification, change/version tracking, migration QA, and provenance. They must
+  **not** be a prominent regular-user UI signal — at most an advanced technical
+  metadata section or a simple `File verified on YYYY-MM-DD` message derived from
+  `lastVerified`.
+
 ## Future prompt reference
 
 Future Claude Code CLI prompts should **read this document before making
 changes.** Each future implementation step should **update this document** when
 assumptions, field names, validation rules, or implementation status change.
 
-The next planned step is **Prompt 2: Catalog UX Pipeline**.
+The next planned step is **Prompt 1.6: Legacy Metadata Extraction From Current
+Guynode**, then **Prompt 2: Catalog UX Pipeline**.

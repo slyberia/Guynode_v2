@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "validate:datasets": "tsx scripts/validate-datasets.ts",
+    "check:links": "tsx scripts/check-dataset-links.ts",
     "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",

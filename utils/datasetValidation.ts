@@ -49,6 +49,8 @@ export interface DatasetRecord {
     previewable?: boolean;
     downloadable?: boolean;
     checksum?: string;
+    checksumStatus?: string;
+    status?: string;
   }>;
   [key: string]: unknown;
 }
@@ -218,11 +220,31 @@ export const validateDatasetRecord = (record: DatasetRecord): ValidationIssue[] 
   // Verification + checksum warnings.
   if (!record.lastVerified) add('warning', 'missing-last-verified', 'Missing lastVerified');
 
+  // Surface recorded distribution availability (populated by the link checker).
+  for (const d of record.distributions ?? []) {
+    const s = (d.status ?? '').toLowerCase();
+    if (s === 'broken' || s === 'not-found') {
+      add('error', 'distribution-broken', `Distribution recorded as ${s}: ${d.url ?? d.label ?? ''}`);
+    } else if (s === 'forbidden') {
+      add('error', 'distribution-forbidden', `Distribution recorded as forbidden: ${d.url ?? d.label ?? ''}`);
+    } else if (s === 'cors-limited') {
+      add('warning', 'distribution-cors-limited', `Distribution may be CORS-limited for browser preview: ${d.url ?? d.label ?? ''}`);
+    } else if (s === 'unknown') {
+      add('warning', 'distribution-unverified', `Distribution availability unverified: ${d.url ?? d.label ?? ''}`);
+    }
+  }
+
+  // Missing checksum is a warning ONLY when no real checksum AND no checksum
+  // status has been recorded (a recorded status means an admin/script already
+  // assessed it, e.g. skipped-large-file).
   const checksums: string[] = [];
   if (record.metadataHash) checksums.push(record.metadataHash);
   (record.distributions ?? []).forEach((d) => d.checksum && checksums.push(d.checksum));
   const realChecksum = checksums.find((c) => !looksLikePlaceholderChecksum(c));
-  if (!realChecksum) {
+  const hasChecksumStatus = (record.distributions ?? []).some(
+    (d) => typeof d.checksumStatus === 'string' && d.checksumStatus.trim() !== ''
+  );
+  if (!realChecksum && !hasChecksumStatus) {
     add('warning', 'missing-checksum', 'Missing or placeholder checksum (not a real trust signal)');
   }
 
@@ -308,6 +330,12 @@ export const RULE_CLASSIFICATION: Record<string, RuleClassification> = {
   'duplicate-id': { priority: 'High', track: 'Manual / evidence-required', summary: 'Duplicate dataset id' },
   'download-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims downloadable but no URL' },
   'preview-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims previewable but no URL' },
+  'distribution-broken': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as broken/not-found' },
+  'distribution-forbidden': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as forbidden' },
+
+  // URL-health-derived warnings (populated by the link checker).
+  'distribution-cors-limited': { priority: 'Technical', track: 'Semi-automatable', summary: 'Distribution may be CORS-limited for browser preview' },
+  'distribution-unverified': { priority: 'Technical', track: 'Automatable', scriptTargets: ['distributions[].status'], summary: 'Distribution availability unverified' },
 
   // Warnings / info.
   'format-mismatch': { priority: 'Technical', track: 'Semi-automatable', scriptTargets: ['format'], summary: 'Declared format vs file extension' },
