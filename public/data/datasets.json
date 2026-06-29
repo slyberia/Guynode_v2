@@ -34,7 +34,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "historical",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Historical document; not georeferenced."
+    ],
+    "knownLimitations": [
+      "Low spatial accuracy; for reference only."
+    ],
+    "attribution": "Historical blog and pdf",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "all-ndcs",
@@ -72,7 +83,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "authorityLevel": "needs-review"
   },
   {
     "id": "amerindian-areas",
@@ -110,7 +122,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "external",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Indicative; not legal."
+    ],
+    "knownLimitations": [
+      "May not reflect official boundaries."
+    ],
+    "attribution": "Amerindian Land Titling Project; LandMark",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "amerindian-villages",
@@ -148,7 +171,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "List only; boundaries not provided."
+    ],
+    "knownLimitations": [
+      "Need to verify with official sources."
+    ],
+    "attribution": "Ministry of Amerindian Affairs",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "anna-regina-boundary",
@@ -186,7 +219,19 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized from GECOM; may not align with official boundary."
+    ],
+    "knownLimitations": [
+      "Constituency vs municipal boundary mismatch; requires review.",
+      "Source evidence references digitized constituency boundaries; confirm whether this matches the town administrative boundary layer before authoritative use."
+    ],
+    "attribution": "GECOM",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "corriverton-constituencies",
@@ -224,7 +269,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; boundaries may need editing."
+    ],
+    "knownLimitations": [
+      "Official shapefile not available."
+    ],
+    "attribution": "GECOM",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "gazetteer-places",
@@ -338,7 +394,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; some boundaries may need editing."
+    ],
+    "knownLimitations": [
+      "Official shapefile unavailable."
+    ],
+    "attribution": "GECOM",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "georgetown-census-districts",
@@ -452,7 +519,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "external",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Derived from OpenStreetMap; may differ from official boundaries."
+    ],
+    "knownLimitations": [
+      "Not an official legal boundary; use for reference only."
+    ],
+    "attribution": "OpenStreetMap",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "village-household-tables-2012",
@@ -528,7 +606,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; boundaries may need editing."
+    ],
+    "knownLimitations": [
+      "Ungeoreferenced map; official shapefile not available."
+    ],
+    "attribution": "GECOM; Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "linden-census-districts",
@@ -642,7 +731,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "authorityLevel": "needs-review"
   },
   {
     "id": "mabaruma-constituencies",
@@ -680,7 +770,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; may need editing."
+    ],
+    "knownLimitations": [
+      "Official shapefile not available."
+    ],
+    "attribution": "GECOM; Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "mahdia-boundary",
@@ -718,7 +819,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Ungeoreferenced map; boundaries may not be accurate."
+    ],
+    "knownLimitations": [
+      "Official shapefile may not be available."
+    ],
+    "attribution": "Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "guyana-exclusive-economic-zone",
@@ -756,7 +868,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized from external shapefile; precision not guaranteed."
+    ],
+    "knownLimitations": [
+      "Indicative; not legally authoritative."
+    ],
+    "attribution": "Flanders Marine Institute",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "bartica-municipality",
@@ -794,7 +917,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Map is ungeoreferenced; boundaries may need editing."
+    ],
+    "knownLimitations": [
+      "Not official; may not reflect municipal boundary accurately."
+    ],
+    "attribution": "GECOM; Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "new-amsterdam-census-districts",
@@ -1288,7 +1422,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-1-ndcs",
@@ -1326,7 +1470,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Population data included; may not reflect recent administrative changes."
+    ],
+    "knownLimitations": [
+      "Mabaruma is now a town; dataset may be outdated."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-2-ndcs",
@@ -1364,7 +1518,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-3-ndcs",
@@ -1402,7 +1566,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-4-ndcs",
@@ -1440,7 +1614,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-5-villages",
@@ -1478,7 +1662,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "historical",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized from historical map; editing necessary."
+    ],
+    "knownLimitations": [
+      "Incomplete population data; may need editing."
+    ],
+    "attribution": "Directorate of Colonial Surveys; GuyNode",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "region-5-ndcs",
@@ -1516,7 +1711,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-6-ndcs",
@@ -1554,7 +1759,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-7-ndcs",
@@ -1592,7 +1807,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-8-ndcs",
@@ -1630,7 +1855,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-9-ndcs",
@@ -1668,7 +1903,17 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "official",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Contains population data; may require updating."
+    ],
+    "knownLimitations": [
+      "May not reflect recent administrative changes."
+    ],
+    "attribution": "Bureau of Statistics",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html"
   },
   {
     "id": "region-9-boundary",
@@ -1706,7 +1951,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "external",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Derived from OpenStreetMap; may differ from official boundaries."
+    ],
+    "knownLimitations": [
+      "Indicative; not legal boundary."
+    ],
+    "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "region-1-boundary",
@@ -1744,7 +2000,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "external",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Derived from OpenStreetMap; may differ from official boundaries."
+    ],
+    "knownLimitations": [
+      "Indicative; not legal boundary."
+    ],
+    "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "rose-hall-constituencies",
@@ -1782,7 +2049,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; boundaries may need editing."
+    ],
+    "knownLimitations": [
+      "Official shapefile not available."
+    ],
+    "attribution": "GECOM",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "silica-city-boundary",
@@ -1820,7 +2098,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized; may not reflect official boundary."
+    ],
+    "knownLimitations": [
+      "Official shapefile not available."
+    ],
+    "attribution": "Ministry of Housing and Water via Stabroek News",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "guyana-suriname-maritime-boundary-dispute",
@@ -1858,7 +2147,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "external",
+    "authorityLevel": "needs-review",
+    "caveats": [
+      "No GIS data; only descriptive paper."
+    ],
+    "knownLimitations": [
+      "Cannot be mapped; dataset requires review."
+    ],
+    "attribution": "Conference paper by Peggy Hoyle (2001)",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "linden-town-constituencies",
@@ -1896,7 +2196,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "digitized",
+    "authorityLevel": "indicative-only",
+    "caveats": [
+      "Digitized boundaries; may need editing."
+    ],
+    "knownLimitations": [
+      "Official shapefile not located."
+    ],
+    "attribution": "GECOM",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "georgetown-vintage-town-map-1914",
@@ -1934,7 +2245,18 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "sourceType": "historical",
+    "authorityLevel": "reference-only",
+    "caveats": [
+      "Historical scan; may not match modern boundaries."
+    ],
+    "knownLimitations": [
+      "Low spatial accuracy; for historical reference only."
+    ],
+    "attribution": "Historical archives",
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
   },
   {
     "id": "guyana-regional-reference-map",
