@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Dataset, ValidationStatus } from '../types';
-import { getCategoryColor, computeQuickStats, } from '../utils/contextCardUtils';
+import { getCategoryColor, computeQuickStats, deriveValidationStatus } from '../utils/contextCardUtils';
 
 interface CatalogCardProps {
   dataset: Dataset;
@@ -9,7 +9,7 @@ interface CatalogCardProps {
   onClick: () => void;
 }
 
-const ValidationBadge: React.FC<{ status: ValidationStatus }> = ({ status }) => {
+const ValidationBadge: React.FC<{ status: ValidationStatus; title?: string }> = ({ status, title }) => {
   const colors = {
     [ValidationStatus.VERIFIED]: 'text-green-600 bg-green-600/10 border-green-600/30 dark:text-green-400 dark:bg-green-400/10 dark:border-green-400/30',
     [ValidationStatus.WARNING]: 'text-yellow-600 bg-yellow-600/10 border-yellow-600/30 dark:text-yellow-400 dark:bg-yellow-400/10 dark:border-yellow-400/30',
@@ -18,15 +18,24 @@ const ValidationBadge: React.FC<{ status: ValidationStatus }> = ({ status }) => 
   };
 
   return (
-    <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${colors[status]} uppercase tracking-wider`}>
+    <span title={title} className={`text-[10px] font-mono px-2 py-0.5 rounded border ${colors[status]} uppercase tracking-wider`}>
       {status}
     </span>
   );
 };
 
+// Honest badge: derived from the real metadata validator, not the static
+// validationReport.status (hardcoded VERIFIED for every record).
+const validationTooltip = (status: ValidationStatus, errors: number, warnings: number): string => {
+  if (status === ValidationStatus.ERROR) return `${errors} validation error${errors === 1 ? '' : 's'}`;
+  if (status === ValidationStatus.WARNING) return `${warnings} metadata warning${warnings === 1 ? '' : 's'} (e.g. missing license/caveats)`;
+  return 'Metadata complete: no validation warnings';
+};
+
 export const CatalogCard: React.FC<CatalogCardProps> = ({ dataset, isSelected, onClick }) => {
   const stats = computeQuickStats(dataset);
   const categoryColor = getCategoryColor(dataset.category);
+  const validation = deriveValidationStatus(dataset);
 
   return (
     <div 
@@ -41,7 +50,7 @@ export const CatalogCard: React.FC<CatalogCardProps> = ({ dataset, isSelected, o
 
       <div className="flex justify-between items-start mb-2 pr-4">
         <span className="text-xs font-mono text-gray-500 dark:text-gray-500">{dataset.id.toUpperCase()}</span>
-        <ValidationBadge status={dataset.validationReport?.status || ValidationStatus.UNCHECKED} />
+        <ValidationBadge status={validation.status} title={validationTooltip(validation.status, validation.errorCount, validation.warningCount)} />
       </div>
 
       <div className="flex gap-4">
