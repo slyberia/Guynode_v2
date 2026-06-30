@@ -4,7 +4,7 @@
 > Do not invent missing values. Items are flagged `needs-review` for a human
 > administrator. See `docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md`.
 
-- **Generated:** 2026-06-29T23:41:10.616Z
+- **Generated:** 2026-06-30T01:42:43.442Z
 - **Records inspected:** 53
 - **Errors:** 0
 - **Warnings:** 101
@@ -24,25 +24,27 @@ This repo has two unrelated mechanisms that both use the word "validation":
    `utils/datasetValidation.ts` via `npm run validate:datasets`. It is a
    build-time/CLI check that counts whether specific provenance/trust **fields
    are present** on each record in `public/data/datasets.json` (`license`,
-   `citationText`/`attribution`, `caveats`, `authorityLevel`, …). The warnings
-   below (`missing-license`, `missing-citation`, `missing-caveats`,
+   `citationText`/`attribution`, `caveats`, `authorityLevel`, …). The
+   warnings below (`missing-license`, `missing-citation`, `missing-caveats`,
    `sensitive-missing-caveats`, `sensitive-missing-authority`) are these
    field-presence checks. **They are not shown in the catalog UI.**
 
 2. **The `VERIFIED` / `WARNING` badge in the catalog UI.** A different field —
    `dataset.validationReport.status` (enum `VERIFIED | WARNING | ERROR |
-   UNCHECKED`) — rendered by `components/CatalogCard.tsx`. All 53 records are
-   currently hardcoded `"VERIFIED"`.
+   UNCHECKED`) — rendered by `components/CatalogCard.tsx`.
 
 **These two are not wired together.** The catalog badge is **not** computed from
 the audit warnings, so a card can display green `VERIFIED` while this audit
-flags the same record for `missing-license`, `missing-caveats`, etc. Today the
-badge is effectively a static placeholder, not a real trust signal. Prompt 1.6
-enrichment changed System 1 only; it did **not** touch `validationReport`.
+flags the same record for `missing-license`, `missing-caveats`, etc. Until the
+badge is wired to real validation it is effectively a static signal, not a
+trustworthy one.
 
 > **[OPEN — Catalog UX / trust-signal phase]** Wire the catalog badge to real
 > validation (or stop presenting a hardcoded `VERIFIED`), so trust signals
 > reflect actual metadata quality. Out of scope for metadata enrichment.
+
+> This section is emitted by the generator (`scripts/validate-datasets.ts`) so
+> it survives regeneration. Edit it there, not in this generated file.
 
 ## How to use this document
 
@@ -204,45 +206,3 @@ _No records claim preview/download without a backing URL._
   yet. Both are needed before download UX can be trusted.
 - All values above are derived from current repo content only. Fields that could
   not be confirmed are intentionally left unset and surfaced here as warnings.
-
-## Prompt 1.6 run — legacy metadata enrichment (2026-06-29)
-
-Enriched the manual/evidence-required backlog from current-Guynode evidence,
-captured via a browsing agent into `docs/guynode_metadata_evidence_matrix.json`
-(the system-of-record for provenance) and `docs/guynode_metadata_evidence_bank.md`.
-Applied only `apply-now` rows whose `datasetId` validated against
-`datasets.json`. Site-level license evidence is preserved in the matrix; per the
-metadata contract, dataset-level `license` remains `needs-review` (not applied).
-
-- **Warnings:** 223 → **101** (122 cleared). **Errors:** 0.
-- **Sensitive `sensitive-missing-authority`:** 32 → **0**.
-- **Sensitive `sensitive-missing-caveats`:** 32 → **2** (`all-ndcs`,
-  `local-government-areas` — no evidence captured this round).
-- **Records enriched:** 30 sensitive records received `sourceType`,
-  `authorityLevel`, `caveats`, `knownLimitations`, `attribution`, `sourceUrl`,
-  and (where evidence-supported) `legalUseWarning`.
-- **Left `needs-review`:** `all-ndcs`, `local-government-areas` (authorityLevel
-  marked `needs-review`; caveats pending evidence).
-- **Not applied (no catalog record):** `petroleum-blocks-guyana`,
-  `exxon-tullow-oil-wells-guyana`, `linden-boundary` — evidence retained in the
-  matrix's `evidenceNotInCatalog` for possible future records.
-
-### Decisions
-- `legalUseWarning` was **omitted** on records typed `sourceType: official`
-  (the ten regional NDC layers + `amerindian-villages`): asserting "indicative
-  only; not for legal use" overreaches official Bureau-of-Statistics provenance.
-  Left `needs-review` for those.
-- `guyana-suriname-maritime-boundary-dispute` applied with
-  `authorityLevel: needs-review` (it is a reference paper, not a GIS dataset).
-- `anna-regina-boundary`: captured evidence describes *constituency* geometry
-  but the record is a town administrative boundary — applied with an explicit
-  provenance-mismatch limitation pending live-page confirmation.
-
-### Old-site pages inspected
-`/`, `/about.html`, `/admin_boundaries.html`, `/environmental.html`.
-
-### Still manual / evidence-required
-- `license` for all 53 records (site-level evidence only; needs dataset-level
-  confirmation).
-- `citationText`/`caveats` for the 23 non-enriched records.
-- Caveats/authority for `all-ndcs` and `local-government-areas`.
