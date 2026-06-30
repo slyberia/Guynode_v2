@@ -1,0 +1,1467 @@
+{
+  "coverageReport": {
+    "totalSensitiveRecords": 32,
+    "recordsWithApplyableEvidence": 30,
+    "recordsWithDerivedOnlyEvidence": 0,
+    "recordsNeedingHumanReview": 1,
+    "recordsNotFound": 1,
+    "recordsWithConflictingEvidence": 0,
+    "datasetIdsValidatedAgainstAllowlist": true,
+    "rowsMovedToEvidenceNotInCatalog": 3
+  },
+  "idValidation": {
+    "datasetIdsUsed": [
+      "guyana-national-boundary",
+      "guyana-exclusive-economic-zone",
+      "guyana-suriname-maritime-boundary-dispute",
+      "amerindian-areas",
+      "amerindian-villages",
+      "anna-regina-boundary",
+      "bartica-municipality",
+      "corriverton-constituencies",
+      "georgetown-constituencies",
+      "georgetown-vintage-town-map-1914",
+      "lethem-constituencies",
+      "linden-town-constituencies",
+      "mabaruma-constituencies",
+      "mahdia-boundary",
+      "plantations-and-negro-villages-1860",
+      "region-1-boundary",
+      "region-9-boundary",
+      "region-1-ndcs",
+      "region-10-ndcs",
+      "region-2-ndcs",
+      "region-3-ndcs",
+      "region-4-ndcs",
+      "region-5-ndcs",
+      "region-5-villages",
+      "region-6-ndcs",
+      "region-7-ndcs",
+      "region-8-ndcs",
+      "region-9-ndcs",
+      "rose-hall-constituencies",
+      "silica-city-boundary",
+      "local-government-areas"
+    ],
+    "invalidDatasetIds": [],
+    "allDatasetIdsInAllowlist": true,
+    "allSensitiveIdsPresent": false,
+    "missingSensitiveIds": [
+      "all-ndcs"
+    ],
+    "duplicateSensitiveIds": []
+  },
+  "matrix": [
+    {
+      "datasetId": "guyana-national-boundary",
+      "currentTitle": "Guyana National Boundary",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile of the boundaries of Guyana as they appear in OpenStreetMap. Source: OpenStreetMap.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "external",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Derived from OpenStreetMap; may differ from official boundaries."
+      ],
+      "recommendedKnownLimitations": [
+        "Not an official legal boundary; use for reference only."
+      ],
+      "recommendedAttribution": "OpenStreetMap",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "no legal use specified",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "guyana-exclusive-economic-zone",
+      "currentTitle": "Guyana's Exclusive Economic Zone (200NM)",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Exclusive Economic Zone shapefile digitized by GuyNode from Flanders Marine Institute shapefile; precision not guaranteed.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized from external shapefile; precision not guaranteed."
+      ],
+      "recommendedKnownLimitations": [
+        "Indicative; not legally authoritative."
+      ],
+      "recommendedAttribution": "Flanders Marine Institute",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Precision not guaranteed",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "guyana-suriname-maritime-boundary-dispute",
+      "currentTitle": "Background to Guyana / Suriname Boundary Dispute",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Short, informative conference paper on the topic.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "external",
+      "normalizedAuthorityLevel": "needs-review",
+      "recommendedCaveats": [
+        "No GIS data; only descriptive paper."
+      ],
+      "recommendedKnownLimitations": [
+        "Cannot be mapped; dataset requires review."
+      ],
+      "recommendedAttribution": "Conference paper by Peggy Hoyle (2001)",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "No shapefile; only reference paper",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "amerindian-areas",
+      "currentTitle": "Amerindian Areas",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "This map is an indicative geographic product and not a legal document. Data are the output of the Amerindian Land Titling Project and Landmark.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "external",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Indicative; not legal."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect official boundaries."
+      ],
+      "recommendedAttribution": "Amerindian Land Titling Project; LandMark",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "This map is an indicative geographic product and not a legal document",
+        "isDerived": false
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "amerindian-villages",
+      "currentTitle": "Amerindian Villages",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "List of Amerindian villages from Ministry of Amerindian Affairs (xls).",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "List only; boundaries not provided."
+      ],
+      "recommendedKnownLimitations": [
+        "Need to verify with official sources."
+      ],
+      "recommendedAttribution": "Ministry of Amerindian Affairs",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "List only; may not include boundaries",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "anna-regina-boundary",
+      "currentTitle": "Town of Anna Regina Boundary",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Shapefile of constituency boundaries for Town of Anna Regina. Digitized by GuyNode from GECOM.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized from GECOM; may not align with official boundary."
+      ],
+      "recommendedKnownLimitations": [
+        "Constituency vs municipal boundary mismatch; requires review."
+      ],
+      "recommendedAttribution": "GECOM",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Boundaries digitized; some may need editing.",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "bartica-municipality",
+      "currentTitle": "Town of Bartica Municipality",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Ungeoreferenced map of Bartica; shapefile of constituency boundaries digitized by GuyNode from GECOM.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Map is ungeoreferenced; boundaries may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Not official; may not reflect municipal boundary accurately."
+      ],
+      "recommendedAttribution": "GECOM; Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized from GECOM; map is ungeoreferenced.",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "corriverton-constituencies",
+      "currentTitle": "Town of Corriverton Constituencies",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile of constituency boundaries for Corriverton; digitized by GuyNode from GECOM documentation.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; boundaries may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile not available."
+      ],
+      "recommendedAttribution": "GECOM",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized from GECOM; may need editing",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "georgetown-constituencies",
+      "currentTitle": "Georgetown Constituencies and Local Govt Results, 2023",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Constituency boundaries digitized from GECOM documentation. Some boundaries may need editing; official shapefile not located.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; some boundaries may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile unavailable."
+      ],
+      "recommendedAttribution": "GECOM",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized from GECOM; may need editing",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "georgetown-vintage-town-map-1914",
+      "currentTitle": "Vintage Town Map, Georgetown, 1914",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Scanned map of Georgetown town plan, 1914 (pdf/jpg). Source: historical archives via Amazon/other sites.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "historical",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Historical scan; may not match modern boundaries."
+      ],
+      "recommendedKnownLimitations": [
+        "Low spatial accuracy; for historical reference only."
+      ],
+      "recommendedAttribution": "Historical archives",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Historical map; not official boundary",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "lethem-constituencies",
+      "currentTitle": "Town of Lethem Constituencies",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Shapefile of constituency boundaries for Lethem. Digitized by GuyNode from GECOM documentation.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; boundaries may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Ungeoreferenced map; official shapefile not available."
+      ],
+      "recommendedAttribution": "GECOM; Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized; map is ungeoreferenced",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "linden-town-constituencies",
+      "currentTitle": "Town of Linden Constituencies and Local Govt Election Results, 2023",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Constituency boundaries digitized from GECOM documentation; some boundaries may need editing; official shapefile could not be located.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized boundaries; may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile not located."
+      ],
+      "recommendedAttribution": "GECOM",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized from GECOM; may need editing",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "mabaruma-constituencies",
+      "currentTitle": "Town of Mabaruma Constituencies",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Shapefile for Mabaruma constituencies digitized by GuyNode (2016) with map from Guyana Lands and Surveys Commission.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile not available."
+      ],
+      "recommendedAttribution": "GECOM; Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized; boundaries may need editing",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "mahdia-boundary",
+      "currentTitle": "Town of Mahdia Boundary",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Web Map and Shapefile of the new Town of Mahdia; map scale 1:90,000; data source: Guyana Lands and Surveys Commission.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Ungeoreferenced map; boundaries may not be accurate."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile may not be available."
+      ],
+      "recommendedAttribution": "Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Ungeoreferenced map; scale 1:90,000",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "plantations-and-negro-villages-1860",
+      "currentTitle": "Plantations and Negro Villages, British Guiana (1860)",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Historical map and pdf from blog; interactive list from 1860; shows plantations and villages.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "historical",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Historical document; not georeferenced."
+      ],
+      "recommendedKnownLimitations": [
+        "Low spatial accuracy; for reference only."
+      ],
+      "recommendedAttribution": "Historical blog and pdf",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Historical map",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-1-boundary",
+      "currentTitle": "Region 1 Boundary",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Region 1 (Barima-Waini) boundary web map and shapefile; source: OpenStreetMap; map from Guyana Lands and Surveys Commission.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "external",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Derived from OpenStreetMap; may differ from official boundaries."
+      ],
+      "recommendedKnownLimitations": [
+        "Indicative; not legal boundary."
+      ],
+      "recommendedAttribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Boundary derived from OSM; may not be official",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-9-boundary",
+      "currentTitle": "Region 9 Boundary",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "paraphrase",
+      "capturedExcerpt": null,
+      "paraphrase": "Region 9 boundary web map and shapefile; source: OpenStreetMap; map from Guyana Lands and Surveys Commission.",
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "external",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Derived from OpenStreetMap; may differ from official boundaries."
+      ],
+      "recommendedKnownLimitations": [
+        "Indicative; not legal boundary."
+      ],
+      "recommendedAttribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Boundary derived from OSM; may not be official",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-1-ndcs",
+      "currentTitle": "NDC Boundaries - Region 1",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundary of the single NDC in Region 1; Mabaruma is no longer a NDC; source: Bureau of Statistics",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Population data included; may not reflect recent administrative changes."
+      ],
+      "recommendedKnownLimitations": [
+        "Mabaruma is now a town; dataset may be outdated."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Single NDC; source Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-10-ndcs",
+      "currentTitle": "NDC Boundaries - Region 10",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 10; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-2-ndcs",
+      "currentTitle": "NDC Boundaries - Region 2",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 2; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-3-ndcs",
+      "currentTitle": "NDC Boundaries - Region 3",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 3; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-4-ndcs",
+      "currentTitle": "NDC Boundaries - Region 4",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 4; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-5-ndcs",
+      "currentTitle": "NDC Boundaries - Region 5",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 5; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-5-villages",
+      "currentTitle": "Villages - Region 5, Mahaica-Berbice",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Village polygons for NDCs in Region 5. Source: 1949 map from Directorate of Colonial Surveys; digitized by GuyNode.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "historical",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized from historical map; editing necessary."
+      ],
+      "recommendedKnownLimitations": [
+        "Incomplete population data; may need editing."
+      ],
+      "recommendedAttribution": "Directorate of Colonial Surveys; GuyNode",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Derived from 1949 map; digitized",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-6-ndcs",
+      "currentTitle": "NDC Boundaries - Region 6",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 6; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-7-ndcs",
+      "currentTitle": "NDC Boundaries - Region 7",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 7; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-8-ndcs",
+      "currentTitle": "NDC Boundaries - Region 8",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 8; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "region-9-ndcs",
+      "currentTitle": "NDC Boundaries - Region 9",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile showing boundaries of NDCs in Region 9; contains population of NDCs.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "official",
+      "normalizedAuthorityLevel": "reference-only",
+      "recommendedCaveats": [
+        "Contains population data; may require updating."
+      ],
+      "recommendedKnownLimitations": [
+        "May not reflect recent administrative changes."
+      ],
+      "recommendedAttribution": "Bureau of Statistics",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Population data from Bureau of Statistics",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "rose-hall-constituencies",
+      "currentTitle": "Town of Rose Hall Constituencies",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile of constituency boundaries for Rose Hall; digitized by GuyNode. Source: GECOM.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; boundaries may need editing."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile not available."
+      ],
+      "recommendedAttribution": "GECOM",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized; boundaries may need editing",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "silica-city-boundary",
+      "currentTitle": "Silica City",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "sourcePageTitle": "Administrative Layers and Maps",
+      "sourcePageCategory": "Admin Boundaries",
+      "capturedAt": "2026-06-29",
+      "captureMethod": "live-page",
+      "evidenceStatus": "verified-live",
+      "evidenceType": "verbatim",
+      "capturedExcerpt": "Shapefile for Silica City digitized by GuyNode; source: Ministry of Housing and Water via Stabroek News.",
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only",
+      "recommendedCaveats": [
+        "Digitized; may not reflect official boundary."
+      ],
+      "recommendedKnownLimitations": [
+        "Official shapefile not available."
+      ],
+      "recommendedAttribution": "Ministry of Housing and Water via Stabroek News",
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+        "basis": "Digitized; not official boundary",
+        "isDerived": true
+      },
+      "applyability": "apply-now",
+      "needsReviewReasons": [],
+      "notes": ""
+    },
+    {
+      "datasetId": "local-government-areas",
+      "currentTitle": "Local Government Areas",
+      "legacyTitle": null,
+      "matchConfidence": "exact",
+      "matchBasis": [
+        "id"
+      ],
+      "sourceUrl": null,
+      "sourcePageTitle": null,
+      "sourcePageCategory": null,
+      "capturedAt": "2026-06-29",
+      "captureMethod": null,
+      "evidenceStatus": "not-found",
+      "evidenceType": null,
+      "capturedExcerpt": null,
+      "paraphrase": null,
+      "sourceOrganizations": [],
+      "sourceUrlsMentioned": [],
+      "downloadUrlsMentioned": [],
+      "normalizedSourceType": "unknown",
+      "normalizedAuthorityLevel": "needs-review",
+      "recommendedCaveats": [],
+      "recommendedKnownLimitations": [],
+      "recommendedAttribution": null,
+      "licenseEvidence": {
+        "scope": "site-level",
+        "value": "open data license / public domain",
+        "sourceUrl": "https://guynode.com/",
+        "capturedExcerpt": "All datasets are licensed under open data licenses and are in the public domain."
+      },
+      "legalUseWarning": {
+        "value": null,
+        "basis": null,
+        "isDerived": false
+      },
+      "applyability": "needs-human-review",
+      "needsReviewReasons": [
+        "No textual evidence found on current site."
+      ],
+      "notes": "Dataset accessible only via interactive map; no textual description available."
+    }
+  ],
+  "evidenceNotInCatalog": [
+    {
+      "datasetId": "petroleum-blocks-guyana",
+      "reason": "not in catalog",
+      "applyability": "do-not-apply",
+      "sourceUrl": "https://guynode.com/environmental.html",
+      "capturedExcerpt": "Interactive map and shapefile created by GuyNode using data from OilNow and public domain maps.",
+      "normalizedSourceType": "digitized"
+    },
+    {
+      "datasetId": "exxon-tullow-oil-wells-guyana",
+      "reason": "not in catalog",
+      "applyability": "do-not-apply",
+      "sourceUrl": "https://guynode.com/environmental.html",
+      "capturedExcerpt": "Interactive map and shapefile of proven wells; digitized by GuyNode from maps obtained from ExxonMobil and other public domain maps.",
+      "normalizedSourceType": "digitized"
+    },
+    {
+      "datasetId": "linden-boundary",
+      "reason": "not in catalog",
+      "applyability": "do-not-apply",
+      "sourceUrl": "https://guynode.com/admin_boundaries.html",
+      "capturedExcerpt": "Map outlines the official boundary of Linden; boundary differs from Google/OSM/Bing; data source: Guyana Lands and Surveys Commission.",
+      "normalizedSourceType": "official"
+    }
+  ],
+  "supplementalEvidence": [
+    {
+      "datasetId": "georgetown-census-districts",
+      "applyability": "apply-now",
+      "capturedExcerpt": "Layer developed by GuyNode due to lack of official map; names from Bureau of Statistics; boundaries digitized from GECOM and OpenStreetMap.",
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only"
+    },
+    {
+      "datasetId": "linden-census-districts",
+      "applyability": "apply-now",
+      "capturedExcerpt": "Boundaries digitized from OpenStreetMap, Google Map, Bing; some boundaries may need editing; official shapefile not located.",
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only"
+    },
+    {
+      "datasetId": "new-amsterdam-census-districts",
+      "applyability": "apply-now",
+      "capturedExcerpt": "Layer developed by GuyNode; names from national census; boundaries digitized using administrative map, Google Map, and OpenStreet Layer; official shapefile unavailable.",
+      "normalizedSourceType": "digitized",
+      "normalizedAuthorityLevel": "indicative-only"
+    }
+  ]
+}

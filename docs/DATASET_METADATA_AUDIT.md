@@ -4,17 +4,45 @@
 > Do not invent missing values. Items are flagged `needs-review` for a human
 > administrator. See `docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md`.
 
-- **Generated:** 2026-06-22T20:58:31.324Z
+- **Generated:** 2026-06-29T23:41:10.616Z
 - **Records inspected:** 53
 - **Errors:** 0
-- **Warnings:** 223
+- **Warnings:** 101
 - **Info:** 53
 
-> **Reading the warning count:** the 223 warnings are the
+> **Reading the warning count:** the 101 warnings are the
 > _expected enrichment backlog_ created by introducing the new metadata contract
 > in Prompt 1 — they flag fields that are not populated yet, **not** regressions
 > or corrupted data. `0` errors means no blocking schema
 > failures were found.
+
+## Two separate "validation" systems (do not confuse them)
+
+This repo has two unrelated mechanisms that both use the word "validation":
+
+1. **This audit (metadata-quality warnings).** Produced by
+   `utils/datasetValidation.ts` via `npm run validate:datasets`. It is a
+   build-time/CLI check that counts whether specific provenance/trust **fields
+   are present** on each record in `public/data/datasets.json` (`license`,
+   `citationText`/`attribution`, `caveats`, `authorityLevel`, …). The warnings
+   below (`missing-license`, `missing-citation`, `missing-caveats`,
+   `sensitive-missing-caveats`, `sensitive-missing-authority`) are these
+   field-presence checks. **They are not shown in the catalog UI.**
+
+2. **The `VERIFIED` / `WARNING` badge in the catalog UI.** A different field —
+   `dataset.validationReport.status` (enum `VERIFIED | WARNING | ERROR |
+   UNCHECKED`) — rendered by `components/CatalogCard.tsx`. All 53 records are
+   currently hardcoded `"VERIFIED"`.
+
+**These two are not wired together.** The catalog badge is **not** computed from
+the audit warnings, so a card can display green `VERIFIED` while this audit
+flags the same record for `missing-license`, `missing-caveats`, etc. Today the
+badge is effectively a static placeholder, not a real trust signal. Prompt 1.6
+enrichment changed System 1 only; it did **not** touch `validationReport`.
+
+> **[OPEN — Catalog UX / trust-signal phase]** Wire the catalog badge to real
+> validation (or stop presenting a hardcoded `VERIFIED`), so trust signals
+> reflect actual metadata quality. Out of scope for metadata enrichment.
 
 ## How to use this document
 
@@ -31,14 +59,13 @@ _No errors._
 
 Counts are total warning occurrences for each rule.
 
-### High (117)
+### High (55)
 - `missing-license` (53) — No license recorded (legal exposure)
-- `sensitive-missing-caveats` (32) — Sensitive dataset lacks caveats
-- `sensitive-missing-authority` (32) — Sensitive dataset lacks authorityLevel
+- `sensitive-missing-caveats` (2) — Sensitive dataset lacks caveats
 
-### Medium (106)
-- `missing-citation` (53) — No citation/attribution
-- `missing-caveats` (53) — No caveats recorded
+### Medium (46)
+- `missing-citation` (23) — No citation/attribution
+- `missing-caveats` (23) — No caveats recorded
 
 ### Low (0)
 _none_
@@ -56,13 +83,12 @@ _none_
 A script can detect/prepare these, but a human confirms the fix.
 _none_
 
-### Manual / evidence-required (223)
+### Manual / evidence-required (101)
 Require human or source review — **do not invent values**.
 - `missing-license` (53) — No license recorded (legal exposure)
-- `missing-citation` (53) — No citation/attribution
-- `missing-caveats` (53) — No caveats recorded
-- `sensitive-missing-caveats` (32) — Sensitive dataset lacks caveats
-- `sensitive-missing-authority` (32) — Sensitive dataset lacks authorityLevel
+- `missing-citation` (23) — No citation/attribution
+- `missing-caveats` (23) — No caveats recorded
+- `sensitive-missing-caveats` (2) — Sensitive dataset lacks caveats
 
 ## Script-resolvable fields (target for a future enrichment script)
 
@@ -132,7 +158,7 @@ _none_
 _none_
 
 ### Records with missing caveats
-`plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
+`all-ndcs`, `gazetteer-places`, `geoname-places`, `georgetown-census-districts`, `guyana-coastal-villages`, `village-household-tables-2012`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
 
 ### Records with placeholder thumbnails
 `plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
@@ -178,3 +204,45 @@ _No records claim preview/download without a backing URL._
   yet. Both are needed before download UX can be trusted.
 - All values above are derived from current repo content only. Fields that could
   not be confirmed are intentionally left unset and surfaced here as warnings.
+
+## Prompt 1.6 run — legacy metadata enrichment (2026-06-29)
+
+Enriched the manual/evidence-required backlog from current-Guynode evidence,
+captured via a browsing agent into `docs/guynode_metadata_evidence_matrix.json`
+(the system-of-record for provenance) and `docs/guynode_metadata_evidence_bank.md`.
+Applied only `apply-now` rows whose `datasetId` validated against
+`datasets.json`. Site-level license evidence is preserved in the matrix; per the
+metadata contract, dataset-level `license` remains `needs-review` (not applied).
+
+- **Warnings:** 223 → **101** (122 cleared). **Errors:** 0.
+- **Sensitive `sensitive-missing-authority`:** 32 → **0**.
+- **Sensitive `sensitive-missing-caveats`:** 32 → **2** (`all-ndcs`,
+  `local-government-areas` — no evidence captured this round).
+- **Records enriched:** 30 sensitive records received `sourceType`,
+  `authorityLevel`, `caveats`, `knownLimitations`, `attribution`, `sourceUrl`,
+  and (where evidence-supported) `legalUseWarning`.
+- **Left `needs-review`:** `all-ndcs`, `local-government-areas` (authorityLevel
+  marked `needs-review`; caveats pending evidence).
+- **Not applied (no catalog record):** `petroleum-blocks-guyana`,
+  `exxon-tullow-oil-wells-guyana`, `linden-boundary` — evidence retained in the
+  matrix's `evidenceNotInCatalog` for possible future records.
+
+### Decisions
+- `legalUseWarning` was **omitted** on records typed `sourceType: official`
+  (the ten regional NDC layers + `amerindian-villages`): asserting "indicative
+  only; not for legal use" overreaches official Bureau-of-Statistics provenance.
+  Left `needs-review` for those.
+- `guyana-suriname-maritime-boundary-dispute` applied with
+  `authorityLevel: needs-review` (it is a reference paper, not a GIS dataset).
+- `anna-regina-boundary`: captured evidence describes *constituency* geometry
+  but the record is a town administrative boundary — applied with an explicit
+  provenance-mismatch limitation pending live-page confirmation.
+
+### Old-site pages inspected
+`/`, `/about.html`, `/admin_boundaries.html`, `/environmental.html`.
+
+### Still manual / evidence-required
+- `license` for all 53 records (site-level evidence only; needs dataset-level
+  confirmation).
+- `citationText`/`caveats` for the 23 non-enriched records.
+- Caveats/authority for `all-ndcs` and `local-government-areas`.

@@ -225,3 +225,24 @@ assumptions, field names, validation rules, or implementation status change.
 
 The next planned step is **Prompt 1.6: Legacy Metadata Extraction From Current
 Guynode**, then **Prompt 2: Catalog UX Pipeline**.
+
+## Status update — Prompt 1.6 (2026-06-29)
+
+Legacy metadata enrichment from current-Guynode evidence is **partially complete**.
+30 of 32 sensitive records now carry `sourceType`, `authorityLevel`, `caveats`,
+`knownLimitations`, `attribution`, `sourceUrl`, and evidence-supported
+`legalUseWarning`. Dataset validation warnings dropped 223 → 101 (0 errors);
+`sensitive-missing-authority` is fully cleared (32 → 0).
+
+Provenance is preserved in `docs/guynode_metadata_evidence_matrix.json` (machine
+source-of-truth) and `docs/guynode_metadata_evidence_bank.md`. Site-level license
+evidence was **not** promoted to dataset-level `license` (stays `needs-review`).
+
+**Still open:** dataset-level `license` confirmation (all records),
+`citationText`/`caveats` for the 23 non-enriched records, and evidence for
+`all-ndcs` + `local-government-areas`.
+
+**Recommended next prompt:** `Prompt 1.5A: Automatable Technical Metadata
+Validation` — technical URL/checksum validation is not yet implemented, and the
+remaining `missing-license`/citation backlog needs source-level confirmation
+rather than further old-site extraction.
