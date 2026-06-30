@@ -16,6 +16,34 @@
 > or corrupted data. `0` errors means no blocking schema
 > failures were found.
 
+## Two separate "validation" systems (do not confuse them)
+
+This repo has two unrelated mechanisms that both use the word "validation":
+
+1. **This audit (metadata-quality warnings).** Produced by
+   `utils/datasetValidation.ts` via `npm run validate:datasets`. It is a
+   build-time/CLI check that counts whether specific provenance/trust **fields
+   are present** on each record in `public/data/datasets.json` (`license`,
+   `citationText`/`attribution`, `caveats`, `authorityLevel`, …). The warnings
+   below (`missing-license`, `missing-citation`, `missing-caveats`,
+   `sensitive-missing-caveats`, `sensitive-missing-authority`) are these
+   field-presence checks. **They are not shown in the catalog UI.**
+
+2. **The `VERIFIED` / `WARNING` badge in the catalog UI.** A different field —
+   `dataset.validationReport.status` (enum `VERIFIED | WARNING | ERROR |
+   UNCHECKED`) — rendered by `components/CatalogCard.tsx`. All 53 records are
+   currently hardcoded `"VERIFIED"`.
+
+**These two are not wired together.** The catalog badge is **not** computed from
+the audit warnings, so a card can display green `VERIFIED` while this audit
+flags the same record for `missing-license`, `missing-caveats`, etc. Today the
+badge is effectively a static placeholder, not a real trust signal. Prompt 1.6
+enrichment changed System 1 only; it did **not** touch `validationReport`.
+
+> **[OPEN — Catalog UX / trust-signal phase]** Wire the catalog badge to real
+> validation (or stop presenting a hardcoded `VERIFIED`), so trust signals
+> reflect actual metadata quality. Out of scope for metadata enrichment.
+
 ## How to use this document
 
 Work top-down: clear **errors** first (blocking), then **High** priority
