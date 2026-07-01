@@ -1,5 +1,6 @@
 import { Dataset } from '../types';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
+import { GEOJSON_MANIFEST } from '../data/geojsonManifest';
 import { safeUrl } from './url';
 
 /**
@@ -7,17 +8,23 @@ import { safeUrl } from './url';
  *
  * A record is only "GIS-previewable" if it actually carries something we can
  * render in-browser right now:
- *   - a `geojsonUrl` whose data is present in GLOBAL_GEOJSON_DB, or
+ *   - a `geojsonUrl` present in GLOBAL_GEOJSON_DB (small inline demo geometry) or
+ *     in GEOJSON_MANIFEST (a real converted file fetched from /public/data), or
  *   - an `arcGisEmbedUrl` (safe http/https), or
  *   - a `viewerType` of `image`/`pdf` with a usable asset (`downloadUrl`).
  *
- * `viewerType: 'none'` records — and shapefiles awaiting a conversion pipeline —
+ * `viewerType: 'none'` records — and shapefiles that could not be converted —
  * are honestly non-previewable. We never fabricate preview data to change that.
  */
 
-/** True only when the record has real GeoJSON keyed in the client-side DB. */
+/**
+ * True only when the record's geojsonUrl resolves to real geometry: either
+ * inline demo data (GLOBAL_GEOJSON_DB) or a converted file listed in the
+ * manifest (GEOJSON_MANIFEST). The manifest entry proves a file was produced by
+ * the conversion pipeline; MapViewer/catalog fetch it at runtime.
+ */
 export const hasRenderableGeojson = (dataset: Dataset | null | undefined): boolean =>
-  Boolean(dataset?.geojsonUrl && GLOBAL_GEOJSON_DB[dataset.geojsonUrl]);
+  Boolean(dataset?.geojsonUrl && (GLOBAL_GEOJSON_DB[dataset.geojsonUrl] || GEOJSON_MANIFEST[dataset.geojsonUrl]));
 
 /** True only when the record carries a safe ArcGIS embed URL. */
 export const hasRenderableArcGis = (dataset: Dataset | null | undefined): boolean =>

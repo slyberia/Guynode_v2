@@ -1,8 +1,16 @@
-import { Dataset } from '../types';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
+import { safeUrl } from './url';
 
 /**
  * GeoJSON Loader with Lazy Loading, Caching, and Worker Support.
+ *
+ * Resolution order (honest — no fabricated fallback):
+ *   1. in-memory cache
+ *   2. GLOBAL_GEOJSON_DB (small inline demo geometry, bundled)
+ *   3. real network fetch of the file at `path` (converted files under
+ *      /public/data, served at that path)
+ * A path that resolves to nothing throws, so the caller (wrapped in
+ * ViewerErrorBoundary) shows an honest error instead of the wrong dataset.
  */
 
 interface CacheEntry {
@@ -14,57 +22,28 @@ const geojsonCache = new Map<string, CacheEntry>();
 
 export const loadGeojsonOnDemand = async (path: string): Promise<GeoJSON.GeoJSON> => {
   // 1. Check Cache
-  if (geojsonCache.has(path)) {
-    console.log(`[GeoJSON Loader] Cache Hit: ${path}`);
-    return geojsonCache.get(path)?.data;
+  const cached = geojsonCache.get(path);
+  if (cached) return cached.data;
+
+  // 2. Inline demo geometry takes precedence (small, bundled).
+  const inline = GLOBAL_GEOJSON_DB[path];
+  if (inline) {
+    geojsonCache.set(path, { data: inline, timestamp: Date.now() });
+    return inline;
   }
 
-  // 2. Simulate Network Fetch (using mock DB)
-  // In real app: const response = await fetch(path);
-  console.log(`[GeoJSON Loader] Fetching: ${path}`);
-  await new Promise(r => setTimeout(r, 500)); // Simulate latency
-  
-  let rawData = GLOBAL_GEOJSON_DB[path];
+  // 3. Fetch the real converted file. safeUrl allows local /data paths.
+  const url = safeUrl(path);
+  if (!url) throw new Error(`Refusing to fetch unsafe GeoJSON path: ${path}`);
 
-  if (!rawData) {
-    try {
-      console.log(`[GeoJSON Loader] Path not in GLOBAL_GEOJSON_DB, attempting fallback mapping for: ${path}`);
-      // Fetch datasets.json to resolve the URL to a Category or ID
-      const response = await fetch('/data/datasets.json');
-      if (response.ok) {
-        const datasets = await response.json();
-        const dataset = datasets.find((d: Dataset) => d.geojsonUrl === path);
-
-        if (dataset) {
-           console.log(`[GeoJSON Loader] Fallback matched dataset: ${dataset.id} (Category: ${dataset.category})`);
-           // Map by Category
-           if (dataset.category === 'Economy') {
-              rawData = GLOBAL_GEOJSON_DB["/data/economy/mining_blocks.geojson"];
-           } else {
-              // Default to boundaries/regions for Administrative Boundaries, Demographics, etc.
-              rawData = GLOBAL_GEOJSON_DB["/data/boundaries/regions.geojson"];
-           }
-        }
-      }
-    } catch (err) {
-      console.warn("[GeoJSON Loader] Failed to fetch datasets.json for fallback mapping", err);
-    }
-
-    // Ultimate fallback if mapping fails, use default mock data
-    if (!rawData) {
-      console.warn(`[GeoJSON Loader] Using safe ultimate fallback for unknown path: ${path}`);
-      rawData = GLOBAL_GEOJSON_DB["/data/boundaries/regions.geojson"];
-    }
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch GeoJSON (${response.status}): ${path}`);
   }
-  
-  if (!rawData) {
-    throw new Error(`GeoJSON not found: ${path}`);
-  }
+  const data = (await response.json()) as GeoJSON.GeoJSON;
 
-  // 3. Cache Result
-  geojsonCache.set(path, { data: rawData, timestamp: Date.now() });
-  
-  return rawData;
+  geojsonCache.set(path, { data, timestamp: Date.now() });
+  return data;
 };
 
 // Worker Factory Helper (to deal with build environments)

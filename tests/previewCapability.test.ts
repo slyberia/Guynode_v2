@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert';
 import { Dataset } from '../types.js';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData.js';
+import { GEOJSON_MANIFEST } from '../data/geojsonManifest.js';
 import {
   isGisPreviewable,
   hasRenderableGeojson,
@@ -41,6 +42,16 @@ test('preview capability', async (t) => {
     const d = { ...base, viewerType: 'leaflet', geojsonUrl: '/data/does/not/exist.geojson' } as Dataset;
     assert.strictEqual(hasRenderableGeojson(d), false);
     assert.strictEqual(isGisPreviewable(d), false);
+  });
+
+  await t.test('a converted record listed in the manifest is previewable (fetched at runtime)', () => {
+    const manifestUrls = Object.keys(GEOJSON_MANIFEST);
+    assert.ok(manifestUrls.length > 0, 'manifest should list converted files — run npm run convert:shapefiles');
+    const d = { ...base, viewerType: 'leaflet', geojsonUrl: manifestUrls[0] } as Dataset;
+    assert.strictEqual(hasRenderableGeojson(d), true);
+    assert.strictEqual(isGisPreviewable(d), true);
+    // Not bundled inline — proves the manifest path (runtime fetch), not GLOBAL_GEOJSON_DB.
+    assert.strictEqual(Boolean(GLOBAL_GEOJSON_DB[manifestUrls[0]]), false);
   });
 
   await t.test('an arcGisEmbedUrl (safe) is previewable', () => {

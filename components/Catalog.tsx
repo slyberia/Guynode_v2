@@ -3,13 +3,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dataset, SearchResult, DataCategory, DatasetAsset } from '../types';
 import { MockDatasetPreviewService } from '../services/dataPipeline';
 import { SearchEngine } from '../services/searchEngine';
-import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
+import { loadGeojsonOnDemand } from '../utils/geojsonLoader';
 import { CatalogCard } from './CatalogCard';
 import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
 import { safeUrl } from '../utils/url';
-import { isGisPreviewable } from '../utils/previewCapability';
+import { isGisPreviewable, hasRenderableGeojson } from '../utils/previewCapability';
 
 declare global {
   interface Window {
@@ -47,9 +47,11 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
 
-  // Leaflet Map Logic
+  // Leaflet Map Logic — fetches real GeoJSON on demand (inline demo or a
+  // converted file from /public/data); renders nothing if the record has no
+  // resolvable geometry.
   useEffect(() => {
-    if (!showMap || !selectedDataset) {
+    if (!showMap || !selectedDataset || !hasRenderableGeojson(selectedDataset) || !selectedDataset.geojsonUrl) {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -57,41 +59,48 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
       return;
     }
 
-    const geoJsonData = selectedDataset.geojsonUrl ? GLOBAL_GEOJSON_DB[selectedDataset.geojsonUrl] : null;
+    let cancelled = false;
+    const dataset = selectedDataset;
 
-    if (mapContainerRef.current && geoJsonData && window.L) {
-      if (!mapInstanceRef.current) {
+    loadGeojsonOnDemand(dataset.geojsonUrl!)
+      .then((geoJsonData) => {
+        if (cancelled || !mapContainerRef.current || !geoJsonData || !window.L) return;
         const L = window.L;
-        mapInstanceRef.current = L.map(mapContainerRef.current, {
-          attributionControl: false,
-          zoomControl: false
+
+        if (!mapInstanceRef.current) {
+          mapInstanceRef.current = L.map(mapContainerRef.current, {
+            attributionControl: false,
+            zoomControl: false
+          });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+          }).addTo(mapInstanceRef.current);
+        }
+
+        const map = mapInstanceRef.current;
+
+        // Clear existing vector layers (keep the tile basemap).
+        map.eachLayer((layer: import('leaflet').Layer) => {
+          if (!(layer as { _url?: string })._url) map.removeLayer(layer);
         });
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          maxZoom: 19
-        }).addTo(mapInstanceRef.current);
-      }
 
-      const map = mapInstanceRef.current;
-      
-      // Clear existing layers
-      map.eachLayer((layer: import('leaflet').Layer) => {
-        if (!(layer as { _url?: string })._url) map.removeLayer(layer);
-      });
+        const styleConfig = dataset.style || {};
+        const defaultStyle = { color: "#FFC20E", weight: 2, fillOpacity: 0.2 };
 
-      const styleConfig = selectedDataset.style || {};
-      const defaultStyle = { color: "#FFC20E", weight: 2, fillOpacity: 0.2 };
+        try {
+          const layer = L.geoJSON(geoJsonData, {
+            style: { ...defaultStyle, ...styleConfig }
+          }).addTo(map);
+          map.fitBounds(layer.getBounds(), { padding: [20, 20] });
+        } catch (e) {
+          console.error("Map Render Error", e);
+        }
 
-      try {
-        const layer = window.L.geoJSON(geoJsonData, {
-          style: { ...defaultStyle, ...styleConfig }
-        }).addTo(map);
-        map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-      } catch (e) {
-        console.error("Map Render Error", e);
-      }
-      
-      setTimeout(() => { map.invalidateSize() }, 100);
-    }
+        setTimeout(() => { map.invalidateSize() }, 100);
+      })
+      .catch((e) => console.error("Inline preview load failed", e));
+
+    return () => { cancelled = true; };
   }, [showMap, selectedDataset]);
   
   // Initial Data Ingestion (Section 7)
@@ -444,7 +453,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       className="w-full h-full border-none"
                       title="ArcGIS Web Map Preview"
                     />
-                  ) : selectedDataset.geojsonUrl && GLOBAL_GEOJSON_DB[selectedDataset.geojsonUrl] ? (
+                  ) : hasRenderableGeojson(selectedDataset) ? (
                     <>
                       <div className="absolute top-2 left-2 z-[400] bg-white/90 dark:bg-black/80 px-2 py-1 rounded border border-cream-300 dark:border-white/10">
                         <span className="text-[10px] text-brand-green-600 dark:text-gn-accent-gold font-mono">LIVE PREVIEW • {selectedDataset.format}</span>
