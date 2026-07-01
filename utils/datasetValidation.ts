@@ -18,6 +18,21 @@ export interface ValidationIssue {
   message: string;
 }
 
+// Per-file raw size budget for a browser-renderable GeoJSON preview. Shared
+// single source of truth: the conversion pipeline (scripts/convert-shapefiles.ts)
+// keeps generated files under this, and validation enforces it here.
+export const PREVIEW_GEOJSON_MAX_BYTES = 1_500_000;
+
+/**
+ * Resolves a local geojsonUrl to proof-of-existence (+ byte size). Injected by
+ * the validation runner from the generated manifest / inline DB so this module
+ * stays dependency-free. `null` => the URL resolves to nothing (error).
+ */
+export interface GeojsonResolver {
+  maxBytes: number;
+  resolve: (url: string) => { bytes?: number } | null;
+}
+
 // Permissive shape: the JSON may carry legacy + new fields, so validate loosely
 // rather than assuming the full Dataset interface is present.
 export interface DatasetRecord {
@@ -149,7 +164,10 @@ const claimsMapPreview = (record: DatasetRecord): boolean => {
  * Validate a single dataset record. ID-uniqueness is handled at the collection
  * level (see validateDatasets) because it requires the full set.
  */
-export const validateDatasetRecord = (record: DatasetRecord): ValidationIssue[] => {
+export const validateDatasetRecord = (
+  record: DatasetRecord,
+  geojsonResolver?: GeojsonResolver
+): ValidationIssue[] => {
   const issues: ValidationIssue[] = [];
   const id = record.id || 'UNKNOWN';
   const add = (level: IssueLevel, rule: string, message: string) =>
@@ -182,6 +200,23 @@ export const validateDatasetRecord = (record: DatasetRecord): ValidationIssue[] 
     );
     if (!hasGeojson && !hasPreviewDist) {
       add('error', 'preview-url-missing', 'Record claims to be map-previewable but has no geojsonUrl/previewable distribution URL');
+    }
+  }
+
+  // A leaflet record pointing at a LOCAL geojson file must resolve to a real,
+  // budget-compliant file (manifest or inline DB). Guards against a "previewable"
+  // record whose file is missing (would fail to load) or too large (would jank).
+  if (
+    geojsonResolver &&
+    record.viewerType === 'leaflet' &&
+    typeof record.geojsonUrl === 'string' &&
+    record.geojsonUrl.startsWith('/')
+  ) {
+    const resolved = geojsonResolver.resolve(record.geojsonUrl);
+    if (!resolved) {
+      add('error', 'preview-url-unresolvable', `leaflet geojsonUrl not found in manifest/inline DB: ${record.geojsonUrl}`);
+    } else if (typeof resolved.bytes === 'number' && resolved.bytes > geojsonResolver.maxBytes) {
+      add('error', 'preview-oversize', `preview GeoJSON is ${resolved.bytes} bytes, exceeds budget ${geojsonResolver.maxBytes}`);
     }
   }
 
@@ -274,7 +309,10 @@ export interface ValidationSummary {
  * Validate a collection of dataset records, including cross-record checks
  * (currently: unique IDs).
  */
-export const validateDatasets = (records: DatasetRecord[]): ValidationSummary => {
+export const validateDatasets = (
+  records: DatasetRecord[],
+  geojsonResolver?: GeojsonResolver
+): ValidationSummary => {
   const issues: ValidationIssue[] = [];
 
   // Duplicate ID detection (error).
@@ -290,7 +328,7 @@ export const validateDatasets = (records: DatasetRecord[]): ValidationSummary =>
   }
 
   for (const record of records) {
-    issues.push(...validateDatasetRecord(record));
+    issues.push(...validateDatasetRecord(record, geojsonResolver));
   }
 
   return {
@@ -331,6 +369,8 @@ export const RULE_CLASSIFICATION: Record<string, RuleClassification> = {
   'duplicate-id': { priority: 'High', track: 'Manual / evidence-required', summary: 'Duplicate dataset id' },
   'download-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims downloadable but no URL' },
   'preview-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims previewable but no URL' },
+  'preview-url-unresolvable': { priority: 'High', track: 'Automatable', scriptTargets: ['geojsonUrl'], summary: 'leaflet geojsonUrl not in manifest/inline DB (run convert:shapefiles)' },
+  'preview-oversize': { priority: 'High', track: 'Automatable', scriptTargets: ['geojsonUrl'], summary: 'Preview GeoJSON exceeds size budget' },
   'distribution-broken': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as broken/not-found' },
   'distribution-forbidden': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as forbidden' },
 

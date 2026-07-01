@@ -14,11 +14,15 @@ import {
   validateDatasets,
   ValidationIssue,
   DatasetRecord,
+  GeojsonResolver,
+  PREVIEW_GEOJSON_MAX_BYTES,
   classifyRule,
   getSensitiveDatasets,
   WarningPriority,
   ResolutionTrack,
 } from '../utils/datasetValidation.js';
+import { GEOJSON_MANIFEST } from '../data/geojsonManifest.js';
+import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData.js';
 
 const DATA_PATH = path.resolve(process.cwd(), 'public/data/datasets.json');
 const AUDIT_PATH = path.resolve(process.cwd(), 'docs/DATASET_METADATA_AUDIT.md');
@@ -26,7 +30,20 @@ const SIDECAR_PATH = path.resolve(process.cwd(), 'docs/dataset-technical-validat
 const PLACEHOLDER_IMAGE = '/images/dataset-placeholder.jpg';
 
 const records: DatasetRecord[] = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
-const summary = validateDatasets(records);
+
+// Resolve local leaflet geojsonUrls against the generated manifest (converted
+// files, with byte sizes) and the inline demo DB (no budget). This lets
+// validation flag a leaflet record whose file is missing or over-budget.
+const geojsonResolver: GeojsonResolver = {
+  maxBytes: PREVIEW_GEOJSON_MAX_BYTES,
+  resolve: (url) => {
+    if (GEOJSON_MANIFEST[url]) return { bytes: GEOJSON_MANIFEST[url].bytes };
+    if (GLOBAL_GEOJSON_DB[url]) return {}; // inline demo geometry — no size gate
+    return null;
+  },
+};
+
+const summary = validateDatasets(records, geojsonResolver);
 
 // Optional technical-validation sidecar produced by scripts/check-dataset-links.ts.
 interface TechResult {

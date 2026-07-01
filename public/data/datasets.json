@@ -59,7 +59,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "803.2 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/All_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -84,7 +84,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "authorityLevel": "needs-review"
+    "authorityLevel": "needs-review",
+    "geojsonUrl": "/data/administrative-boundaries/all-ndcs.geojson"
   },
   {
     "id": "amerindian-areas",
@@ -98,7 +99,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "1.9 MB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Amerindian%20Areas.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -133,7 +134,8 @@
     ],
     "attribution": "Amerindian Land Titling Project; LandMark",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/amerindian-areas.geojson"
   },
   {
     "id": "amerindian-villages",
@@ -195,7 +197,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "3.1 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Anna_Regina.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -231,7 +233,8 @@
     ],
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/anna-regina-boundary.geojson"
   },
   {
     "id": "corriverton-constituencies",
@@ -245,7 +248,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.0 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Corriverton.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -280,7 +283,8 @@
     ],
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/corriverton-constituencies.geojson"
   },
   {
     "id": "gazetteer-places",
@@ -370,7 +374,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "9.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Georgetown%20Constituencies.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -405,7 +409,8 @@
     ],
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/georgetown-constituencies.geojson"
   },
   {
     "id": "georgetown-census-districts",
@@ -419,7 +424,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "30.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/Georgetown_Districts.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -443,7 +448,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "geojsonUrl": "/data/demographics/georgetown-census-districts.geojson"
   },
   {
     "id": "guyana-coastal-villages",
@@ -495,7 +501,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "3.2 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Guyana.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Flanders Marine Institute (VLIZ) / OpenStreetMap",
@@ -530,7 +536,8 @@
     ],
     "attribution": "OpenStreetMap",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/guyana-national-boundary.geojson"
   },
   {
     "id": "village-household-tables-2012",
@@ -582,7 +589,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.2 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/LethemConstituencies.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -617,7 +624,8 @@
     ],
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/lethem-constituencies.geojson"
   },
   {
     "id": "linden-census-districts",
@@ -631,7 +639,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "19.5 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/Linden_Census_Districts.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -655,7 +663,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "geojsonUrl": "/data/demographics/linden-census-districts.geojson"
   },
   {
     "id": "list-of-ndcs",
@@ -707,7 +716,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "1.1 MB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Local_Govt_Areas_Guyana.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -732,7 +741,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "authorityLevel": "needs-review"
+    "authorityLevel": "needs-review",
+    "geojsonUrl": "/data/administrative-boundaries/local-government-areas.geojson"
   },
   {
     "id": "mabaruma-constituencies",
@@ -746,7 +756,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.5 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Maburama_Constituencies.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -781,7 +791,8 @@
     ],
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/mabaruma-constituencies.geojson"
   },
   {
     "id": "mahdia-boundary",
@@ -795,7 +806,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "2.4 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Mahdia.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -830,7 +841,8 @@
     ],
     "attribution": "Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/mahdia-boundary.geojson"
   },
   {
     "id": "guyana-exclusive-economic-zone",
@@ -844,7 +856,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "4.8 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Maritime%20Boundary.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Flanders Marine Institute (VLIZ)",
@@ -879,7 +891,8 @@
     ],
     "attribution": "Flanders Marine Institute",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/guyana-exclusive-economic-zone.geojson"
   },
   {
     "id": "bartica-municipality",
@@ -893,7 +906,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.2 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Municipality%20of%20Bartica.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -928,7 +941,8 @@
     ],
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/bartica-municipality.geojson"
   },
   {
     "id": "new-amsterdam-census-districts",
@@ -942,7 +956,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.9 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/New_Amsterdam_Census_Districts.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -966,7 +980,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "geojsonUrl": "/data/demographics/new-amsterdam-census-districts.geojson"
   },
   {
     "id": "georgetown-census-population-2012",
@@ -1398,7 +1413,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "85.8 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region10_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1432,7 +1447,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-10-ndcs.geojson"
   },
   {
     "id": "region-1-ndcs",
@@ -1446,7 +1462,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "22.6 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region1_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1480,7 +1496,8 @@
       "Mabaruma is now a town; dataset may be outdated."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-1-ndcs.geojson"
   },
   {
     "id": "region-2-ndcs",
@@ -1494,7 +1511,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "25.6 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region2_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1528,7 +1545,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-2-ndcs.geojson"
   },
   {
     "id": "region-3-ndcs",
@@ -1542,7 +1560,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "11.4 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region3_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1576,7 +1594,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-3-ndcs.geojson"
   },
   {
     "id": "region-4-ndcs",
@@ -1590,7 +1609,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "87.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region4_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1624,7 +1643,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-4-ndcs.geojson"
   },
   {
     "id": "region-5-villages",
@@ -1638,7 +1658,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "289.3 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region5Villages.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -1673,7 +1693,8 @@
     ],
     "attribution": "Directorate of Colonial Surveys; GuyNode",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/region-5-villages.geojson"
   },
   {
     "id": "region-5-ndcs",
@@ -1687,7 +1708,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "73.8 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region5_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1721,7 +1742,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-5-ndcs.geojson"
   },
   {
     "id": "region-6-ndcs",
@@ -1735,7 +1757,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "92.4 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region6_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1769,7 +1791,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-6-ndcs.geojson"
   },
   {
     "id": "region-7-ndcs",
@@ -1783,7 +1806,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "84.3 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region7_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1817,7 +1840,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-7-ndcs.geojson"
   },
   {
     "id": "region-8-ndcs",
@@ -1831,7 +1855,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "13.6 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region8_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1865,7 +1889,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-8-ndcs.geojson"
   },
   {
     "id": "region-9-ndcs",
@@ -1879,7 +1904,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "84.1 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region9_NDCs.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics / Diva-GIS",
@@ -1913,7 +1938,8 @@
       "May not reflect recent administrative changes."
     ],
     "attribution": "Bureau of Statistics",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "geojsonUrl": "/data/administrative-boundaries/region-9-ndcs.geojson"
   },
   {
     "id": "region-9-boundary",
@@ -1927,7 +1953,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "6.3 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region_Nine_Boundary.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1962,7 +1988,8 @@
     ],
     "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/region-9-boundary.geojson"
   },
   {
     "id": "region-1-boundary",
@@ -1976,7 +2003,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "6.1 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Region_One_Guyana.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -2011,7 +2038,8 @@
     ],
     "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/region-1-boundary.geojson"
   },
   {
     "id": "rose-hall-constituencies",
@@ -2025,7 +2053,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "4.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Rosehall.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -2060,7 +2088,8 @@
     ],
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/rose-hall-constituencies.geojson"
   },
   {
     "id": "silica-city-boundary",
@@ -2074,7 +2103,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "5.1 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/planning-and-development/shapefile/Silica%20City.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -2109,7 +2138,8 @@
     ],
     "attribution": "Ministry of Housing and Water via Stabroek News",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/planning-and-development/silica-city-boundary.geojson"
   },
   {
     "id": "guyana-suriname-maritime-boundary-dispute",
@@ -2172,7 +2202,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "6.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/administrative-boundaries/shapefile/Town%20of%20Linden_Constituencies.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Elections Commission (GECOM)",
@@ -2207,7 +2237,8 @@
     ],
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "geojsonUrl": "/data/administrative-boundaries/linden-town-constituencies.geojson"
   },
   {
     "id": "georgetown-vintage-town-map-1914",
@@ -2308,7 +2339,7 @@
     ],
     "format": "Shapefile",
     "fileSize": "31.7 KB",
-    "viewerType": "none",
+    "viewerType": "leaflet",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/shapefile/guyana_admin_regions_population.zip",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -2332,6 +2363,7 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "geojsonUrl": "/data/demographics/guyana-admin-regions-population.geojson"
   }
 ]

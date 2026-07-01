@@ -58,6 +58,40 @@ test('dataset validation', async (t) => {
     assert.ok(hasRule(issues, 'preview-url-missing'));
   });
 
+  await t.test('leaflet record with an unresolvable local geojsonUrl is an error', () => {
+    const resolver = { maxBytes: 1_500_000, resolve: () => null };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/missing/x.geojson' },
+      resolver
+    );
+    assert.ok(hasRule(issues, 'preview-url-unresolvable'));
+  });
+
+  await t.test('leaflet record with an over-budget geojsonUrl is an error', () => {
+    const resolver = {
+      maxBytes: 1_500_000,
+      resolve: (url: string) => (url === '/data/big/x.geojson' ? { bytes: 2_000_000 } : null),
+    };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/big/x.geojson' },
+      resolver
+    );
+    assert.ok(hasRule(issues, 'preview-oversize'));
+  });
+
+  await t.test('leaflet record with a resolvable, in-budget geojsonUrl passes', () => {
+    const resolver = {
+      maxBytes: 1_500_000,
+      resolve: (url: string) => (url === '/data/ok/x.geojson' ? { bytes: 100_000 } : null),
+    };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/ok/x.geojson' },
+      resolver
+    );
+    assert.strictEqual(hasRule(issues, 'preview-url-unresolvable'), false);
+    assert.strictEqual(hasRule(issues, 'preview-oversize'), false);
+  });
+
   await t.test('a PDF mislabeled as Shapefile is an error', () => {
     const issues = validateDatasetRecord({ ...base, format: 'Shapefile' });
     assert.ok(issues.some((i) => i.rule === 'format-mismatch' && i.level === 'error'));
