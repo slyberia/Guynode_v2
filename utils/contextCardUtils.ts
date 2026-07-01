@@ -1,10 +1,36 @@
 
-import { Dataset, DataCategory } from '../types';
+import { Dataset, DataCategory, ValidationStatus } from '../types';
+import { validateDatasetRecord } from './datasetValidation';
 
 /**
  * Utility: Context Card Helpers
  * Generates quick stats, color codes, and previews for dataset cards.
  */
+
+export interface DerivedValidation {
+  status: ValidationStatus;
+  errorCount: number;
+  warningCount: number;
+}
+
+/**
+ * Derive an honest catalog badge from the real metadata-quality validator
+ * (utils/datasetValidation.ts) instead of the static `validationReport.status`,
+ * which is hardcoded `VERIFIED` for every record. A record reads `VERIFIED`
+ * only when it has zero validation errors AND zero warnings.
+ */
+export const deriveValidationStatus = (dataset: Dataset): DerivedValidation => {
+  const issues = validateDatasetRecord(dataset);
+  const errorCount = issues.filter((i) => i.level === 'error').length;
+  const warningCount = issues.filter((i) => i.level === 'warning').length;
+  const status =
+    errorCount > 0
+      ? ValidationStatus.ERROR
+      : warningCount > 0
+        ? ValidationStatus.WARNING
+        : ValidationStatus.VERIFIED;
+  return { status, errorCount, warningCount };
+};
 
 export const getCategoryColor = (category: DataCategory): string => {
   switch (category) {

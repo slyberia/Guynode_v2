@@ -5,6 +5,7 @@ import { MockDatasetPreviewService } from '../services/dataPipeline';
 import { SearchEngine } from '../services/searchEngine';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
 import { CatalogCard } from './CatalogCard';
+import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
 import { safeUrl } from '../utils/url';
@@ -375,7 +376,10 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 )}
                 
                 <p className="text-ink-700 dark:text-gray-300 text-sm mb-6 max-w-3xl leading-relaxed">{selectedDataset.description}</p>
-                
+
+                {/* Provenance & usage — surfaces enriched trust metadata (Prompt 1.6). */}
+                <DatasetTrustPanel dataset={selectedDataset} />
+
                 {selectedDataset.tags && (
                   <div className="flex gap-2 mb-6">
                     {selectedDataset.tags.map(tag => (
@@ -400,8 +404,18 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                     <div className="text-ink-900 dark:text-white">{selectedDataset.size}</div>
                   </div>
                   <div>
-                    <div className="text-ink-500 dark:text-gray-500 mb-1">INTEGRITY HASH</div>
-                    <div className="text-ink-700 dark:text-gray-600 truncate">a1b2-c3d4-e5f6</div>
+                    <div className="text-ink-500 dark:text-gray-500 mb-1">FILE CHECKSUM</div>
+                    {(() => {
+                      // Show a REAL computed checksum only; never a placeholder trust signal.
+                      const dist = (selectedDataset.distributions || []).find(
+                        (d) => d.checksum && !/^0+$/.test(d.checksum.replace(/^[a-z0-9]+:/i, ''))
+                      );
+                      return dist?.checksum ? (
+                        <div className="text-ink-700 dark:text-gray-400 truncate" title={dist.checksum}>{dist.checksum.slice(0, 20)}…</div>
+                      ) : (
+                        <div className="text-ink-500 dark:text-gray-600 italic">Not computed</div>
+                      );
+                    })()}
                   </div>
                 </div>
               </div>
