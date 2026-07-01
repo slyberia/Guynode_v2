@@ -9,6 +9,7 @@ import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
 import { safeUrl } from '../utils/url';
+import { isGisPreviewable } from '../utils/previewCapability';
 
 declare global {
   interface Window {
@@ -269,28 +270,38 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                   <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
                   <div className="flex gap-2">
                     
-                    {/* Map Toggle Button */}
-                    {((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') ? (
-                      <button 
+                    {/* Inline Preview Toggle — only when the record is actually renderable */}
+                    {isGisPreviewable(selectedDataset) ? (
+                      <button
                         onClick={() => setShowMap(!showMap)}
                         className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
                       >
                         {showMap ? 'Hide Preview' : 'Preview'}
                       </button>
                     ) : (
-                      <button disabled className="text-xs font-bold px-4 py-2 rounded border border-cream-300 text-ink-500 dark:border-white/5 dark:text-gray-600 uppercase tracking-widest cursor-not-allowed">
-                        No Map Preview
+                      <button disabled title="No inline preview available for this dataset" className="text-xs font-bold px-4 py-2 rounded border border-cream-300 text-ink-500 dark:border-white/5 dark:text-gray-600 uppercase tracking-widest cursor-not-allowed">
+                        No Preview
                       </button>
                     )}
 
-                    {/* Preview in GIS Viewer */}
-                     {(selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl) && selectedDataset.viewerType !== 'none' && onOpenMap && (
-                      <button 
-                        disabled
-                        className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest opacity-50 cursor-not-allowed"
-                      >
-                        Preview in GIS Viewer (Coming Soon)
-                      </button>
+                    {/* Preview in GIS Viewer — enabled only when the handoff can render something */}
+                    {onOpenMap && (
+                      isGisPreviewable(selectedDataset) ? (
+                        <button
+                          onClick={() => onOpenMap(selectedDataset)}
+                          className="bg-ink-900 hover:bg-ink-700 text-white border border-ink-900 dark:bg-white dark:text-black dark:border-white dark:hover:bg-gray-200 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest"
+                        >
+                          Preview in GIS Viewer
+                        </button>
+                      ) : (
+                        <button
+                          disabled
+                          title="No interactive preview — download to use in GIS software"
+                          className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded uppercase tracking-widest cursor-not-allowed"
+                        >
+                          No Interactive Preview
+                        </button>
+                      )
                     )}
 
                     {/* Download Data Button */}
@@ -420,8 +431,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 </div>
               </div>
 
-              {/* Map Preview Module */}
-              {showMap && ((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') && (
+              {/* Map Preview Module — only renders for capability-checked records */}
+              {showMap && isGisPreviewable(selectedDataset) && (
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
                   {selectedDataset.viewerType === 'image' ? (
                     <ImageViewer dataset={selectedDataset} />
@@ -441,9 +452,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-cream-200 dark:bg-gn-surface-muted-dark flex items-center justify-center text-red-500 font-mono text-xs p-4">
-                      &gt; ERROR: DATA_SOURCE_MISSING ({selectedDataset.geojsonUrl})<br/>
-                      &gt; PLEASE CONTACT ADMINISTRATOR
+                    <div className="w-full h-full bg-cream-200 dark:bg-gn-surface-muted-dark flex items-center justify-center text-ink-500 dark:text-gray-400 font-mono text-xs p-4 text-center">
+                      No inline preview available for this dataset.
                     </div>
                   )}
                 </div>
