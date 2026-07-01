@@ -2,6 +2,11 @@
 import React from 'react';
 import { ViewState, Dataset } from '../types';
 import { MapViewer } from './MapViewer';
+import { ImageViewer } from './viewer/ImageViewer';
+import { PdfViewer } from './viewer/PdfViewer';
+import { ViewerErrorBoundary } from './viewer/ViewerErrorBoundary';
+import { hasRenderableGeojson } from '../utils/previewCapability';
+import { safeUrl } from '../utils/url';
 
 interface GisViewerPageProps {
   setView: (view: ViewState, params?: import("../utils/routing").RouteParams) => void;
@@ -11,26 +16,54 @@ interface GisViewerPageProps {
 
 export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDataset, theme }) => {
 
-  const renderMapContent = () => {
-    const viewerType = activeDataset?.viewerType || 'leaflet';
+  const honestUnavailable = (
+    <div className="flex items-center justify-center w-full h-full text-gn-foreground dark:text-gn-foreground-dark">
+      <div className="text-center p-8 bg-gn-surface-muted dark:bg-white/5 rounded border border-gn-border dark:border-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-12 w-12 text-gn-foreground-muted mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <h3 className="text-xl font-bold mb-2">Interactive Map Not Available</h3>
+        <p className="text-sm text-gn-foreground-muted">No interactive map is available for this dataset type. You can still download the asset from the Catalog.</p>
+        <button onClick={() => setView('CATALOG')} className="mt-6 px-4 py-2 bg-brand-green-600 hover:bg-brand-green-500 text-white rounded transition-colors font-bold">Return to Catalog</button>
+      </div>
+    </div>
+  );
 
-    if (viewerType === 'none') {
+  const renderMapContent = () => {
+    // No dataset selected: fall through to the general map explorer (users can
+    // still browse the Catalog via "Add Data Layer").
+    if (!activeDataset) {
       return (
-        <div className="flex items-center justify-center w-full h-full text-gn-foreground dark:text-gn-foreground-dark">
-          <div className="text-center p-8 bg-gn-surface-muted dark:bg-white/5 rounded border border-gn-border dark:border-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-12 w-12 text-gn-foreground-muted mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-            <h3 className="text-xl font-bold mb-2">Interactive Map Not Available</h3>
-            <p className="text-sm text-gn-foreground-muted">No interactive map is available for this dataset type. You can still download the asset from the Catalog.</p>
-            <button onClick={() => setView('CATALOG')} className="mt-6 px-4 py-2 bg-brand-green-600 hover:bg-brand-green-500 text-white rounded transition-colors font-bold">Return to Catalog</button>
-          </div>
-        </div>
+        <ViewerErrorBoundary onReset={() => setView('CATALOG')}>
+          <MapViewer setView={setView} activeDataset={activeDataset} theme={theme} />
+        </ViewerErrorBoundary>
       );
     }
 
-    // Default to Leaflet MapViewer
-    return <MapViewer setView={setView} activeDataset={activeDataset} theme={theme} />;
+    const viewerType = activeDataset.viewerType || 'leaflet';
+    let content: React.ReactNode = null;
+
+    if (viewerType === 'image' && safeUrl(activeDataset.downloadUrl)) {
+      content = <ImageViewer dataset={activeDataset} />;
+    } else if (viewerType === 'pdf' && safeUrl(activeDataset.downloadUrl)) {
+      content = <PdfViewer dataset={activeDataset} />;
+    } else if (viewerType === 'arcgis' && activeDataset.arcGisEmbedUrl && safeUrl(activeDataset.arcGisEmbedUrl)) {
+      content = (
+        <iframe
+          src={safeUrl(activeDataset.arcGisEmbedUrl)!}
+          className="w-full h-full border-none"
+          title={`ArcGIS Web Map — ${activeDataset.title}`}
+        />
+      );
+    } else if (viewerType === 'leaflet' && hasRenderableGeojson(activeDataset)) {
+      content = <MapViewer setView={setView} activeDataset={activeDataset} theme={theme} />;
+    }
+
+    // Everything unrenderable (viewerType 'none', shapefiles awaiting
+    // conversion, missing assets) falls through to the honest state.
+    if (!content) return honestUnavailable;
+
+    return <ViewerErrorBoundary onReset={() => setView('CATALOG')}>{content}</ViewerErrorBoundary>;
   };
 
   return (
