@@ -227,6 +227,36 @@ const md = `# Dataset Metadata Audit — Admin Worklist
 > or corrupted data. \`${summary.errorCount}\` errors means no blocking schema
 > failures were found.
 
+## Two separate "validation" systems (do not confuse them)
+
+This repo has two unrelated mechanisms that both use the word "validation":
+
+1. **This audit (metadata-quality warnings).** Produced by
+   \`utils/datasetValidation.ts\` via \`npm run validate:datasets\`. It is a
+   build-time/CLI check that counts whether specific provenance/trust **fields
+   are present** on each record in \`public/data/datasets.json\` (\`license\`,
+   \`citationText\`/\`attribution\`, \`caveats\`, \`authorityLevel\`, …). The
+   warnings below (\`missing-license\`, \`missing-citation\`, \`missing-caveats\`,
+   \`sensitive-missing-caveats\`, \`sensitive-missing-authority\`) are these
+   field-presence checks. **They are not shown in the catalog UI.**
+
+2. **The \`VERIFIED\` / \`WARNING\` badge in the catalog UI.** A different field —
+   \`dataset.validationReport.status\` (enum \`VERIFIED | WARNING | ERROR |
+   UNCHECKED\`) — rendered by \`components/CatalogCard.tsx\`.
+
+**These two are not wired together.** The catalog badge is **not** computed from
+the audit warnings, so a card can display green \`VERIFIED\` while this audit
+flags the same record for \`missing-license\`, \`missing-caveats\`, etc. Until the
+badge is wired to real validation it is effectively a static signal, not a
+trustworthy one.
+
+> **[OPEN — Catalog UX / trust-signal phase]** Wire the catalog badge to real
+> validation (or stop presenting a hardcoded \`VERIFIED\`), so trust signals
+> reflect actual metadata quality. Out of scope for metadata enrichment.
+
+> This section is emitted by the generator (\`scripts/validate-datasets.ts\`) so
+> it survives regeneration. Edit it there, not in this generated file.
+
 ## How to use this document
 
 Work top-down: clear **errors** first (blocking), then **High** priority
