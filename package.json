@@ -10,6 +10,9 @@
     "dev": "vite",
     "validate:datasets": "tsx scripts/validate-datasets.ts",
     "check:links": "tsx scripts/check-dataset-links.ts",
+    "convert:shapefiles": "tsx scripts/convert-shapefiles.ts",
+    "extract:tables": "tsx scripts/extract-table-previews.ts",
+    "extract:points": "tsx scripts/extract-table-points.ts",
     "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",
@@ -44,11 +47,13 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "mapshaper": "^0.7.33",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.1",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.56.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "xlsx": "^0.18.5"
   }
 }

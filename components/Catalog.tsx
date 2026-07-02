@@ -3,12 +3,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dataset, SearchResult, DataCategory, DatasetAsset } from '../types';
 import { MockDatasetPreviewService } from '../services/dataPipeline';
 import { SearchEngine } from '../services/searchEngine';
-import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
+import { loadGeojsonOnDemand } from '../utils/geojsonLoader';
 import { CatalogCard } from './CatalogCard';
 import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
+import { TableViewer } from './viewer/TableViewer';
+import { RasterOverlayViewer } from './viewer/RasterOverlayViewer';
 import { safeUrl } from '../utils/url';
+import { isGisPreviewable, isInlinePreviewable, hasRenderableGeojson } from '../utils/previewCapability';
 
 declare global {
   interface Window {
@@ -43,12 +46,17 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   
   // Map State
   const [showMap, setShowMap] = useState(false);
+  // For map-table records, which face of the inline preview is showing.
+  const [mapTableView, setMapTableView] = useState<'map' | 'table'>('map');
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
 
-  // Leaflet Map Logic
+  // Leaflet Map Logic — fetches real GeoJSON on demand (inline demo or a
+  // converted file from /public/data); renders nothing if the record has no
+  // resolvable geometry.
   useEffect(() => {
-    if (!showMap || !selectedDataset) {
+    const tableFace = selectedDataset?.viewerType === 'map-table' && mapTableView === 'table';
+    if (!showMap || tableFace || !selectedDataset || !hasRenderableGeojson(selectedDataset) || !selectedDataset.geojsonUrl) {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -56,42 +64,58 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
       return;
     }
 
-    const geoJsonData = selectedDataset.geojsonUrl ? GLOBAL_GEOJSON_DB[selectedDataset.geojsonUrl] : null;
+    let cancelled = false;
+    const dataset = selectedDataset;
 
-    if (mapContainerRef.current && geoJsonData && window.L) {
-      if (!mapInstanceRef.current) {
+    loadGeojsonOnDemand(dataset.geojsonUrl!)
+      .then((geoJsonData) => {
+        if (cancelled || !mapContainerRef.current || !geoJsonData || !window.L) return;
         const L = window.L;
-        mapInstanceRef.current = L.map(mapContainerRef.current, {
-          attributionControl: false,
-          zoomControl: false
+
+        if (!mapInstanceRef.current) {
+          mapInstanceRef.current = L.map(mapContainerRef.current, {
+            attributionControl: false,
+            zoomControl: false
+          });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+          }).addTo(mapInstanceRef.current);
+        }
+
+        const map = mapInstanceRef.current;
+
+        // Clear existing vector layers (keep the tile basemap).
+        map.eachLayer((layer: import('leaflet').Layer) => {
+          if (!(layer as { _url?: string })._url) map.removeLayer(layer);
         });
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          maxZoom: 19
-        }).addTo(mapInstanceRef.current);
-      }
 
-      const map = mapInstanceRef.current;
-      
-      // Clear existing layers
-      map.eachLayer((layer: import('leaflet').Layer) => {
-        if (!(layer as { _url?: string })._url) map.removeLayer(layer);
-      });
+        const styleConfig = dataset.style || {};
+        const defaultStyle = { color: "#FFC20E", weight: 2, fillOpacity: 0.2 };
 
-      const styleConfig = selectedDataset.style || {};
-      const defaultStyle = { color: "#FFC20E", weight: 2, fillOpacity: 0.2 };
+        try {
+          const mergedStyle = { ...defaultStyle, ...styleConfig };
+          const layer = L.geoJSON(geoJsonData, {
+            style: mergedStyle,
+            pointToLayer: (_f, latlng) =>
+              L.circleMarker(latlng, {
+                radius: 4,
+                color: mergedStyle.color,
+                weight: 1,
+                fillColor: mergedStyle.color,
+                fillOpacity: 0.7,
+              }),
+          }).addTo(map);
+          map.fitBounds(layer.getBounds(), { padding: [20, 20] });
+        } catch (e) {
+          console.error("Map Render Error", e);
+        }
 
-      try {
-        const layer = window.L.geoJSON(geoJsonData, {
-          style: { ...defaultStyle, ...styleConfig }
-        }).addTo(map);
-        map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-      } catch (e) {
-        console.error("Map Render Error", e);
-      }
-      
-      setTimeout(() => { map.invalidateSize() }, 100);
-    }
-  }, [showMap, selectedDataset]);
+        setTimeout(() => { map.invalidateSize() }, 100);
+      })
+      .catch((e) => console.error("Inline preview load failed", e));
+
+    return () => { cancelled = true; };
+  }, [showMap, selectedDataset, mapTableView]);
   
   // Initial Data Ingestion (Section 7)
   useEffect(() => {
@@ -127,6 +151,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   // Extraction Logic on Selection
   useEffect(() => {
     setShowMap(false);
+    setMapTableView('map');
     if (selectedDataset) {
       const fetchPreview = async () => {
         setLoadingPreview(true);
@@ -269,28 +294,38 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                   <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
                   <div className="flex gap-2">
                     
-                    {/* Map Toggle Button */}
-                    {((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') ? (
-                      <button 
+                    {/* Inline Preview Toggle — GIS previews plus tabular previews */}
+                    {isInlinePreviewable(selectedDataset) ? (
+                      <button
                         onClick={() => setShowMap(!showMap)}
                         className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
                       >
                         {showMap ? 'Hide Preview' : 'Preview'}
                       </button>
                     ) : (
-                      <button disabled className="text-xs font-bold px-4 py-2 rounded border border-cream-300 text-ink-500 dark:border-white/5 dark:text-gray-600 uppercase tracking-widest cursor-not-allowed">
-                        No Map Preview
+                      <button disabled title="No inline preview available for this dataset" className="text-xs font-bold px-4 py-2 rounded border border-cream-300 text-ink-500 dark:border-white/5 dark:text-gray-600 uppercase tracking-widest cursor-not-allowed">
+                        No Preview
                       </button>
                     )}
 
-                    {/* Preview in GIS Viewer */}
-                     {(selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl) && selectedDataset.viewerType !== 'none' && onOpenMap && (
-                      <button 
-                        disabled
-                        className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest opacity-50 cursor-not-allowed"
-                      >
-                        Preview in GIS Viewer (Coming Soon)
-                      </button>
+                    {/* Preview in GIS Viewer — enabled only when the handoff can render something */}
+                    {onOpenMap && (
+                      isGisPreviewable(selectedDataset) ? (
+                        <button
+                          onClick={() => onOpenMap(selectedDataset)}
+                          className="bg-ink-900 hover:bg-ink-700 text-white border border-ink-900 dark:bg-white dark:text-black dark:border-white dark:hover:bg-gray-200 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest"
+                        >
+                          Preview in GIS Viewer
+                        </button>
+                      ) : (
+                        <button
+                          disabled
+                          title="No interactive preview — download to use in GIS software"
+                          className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded uppercase tracking-widest cursor-not-allowed"
+                        >
+                          No Interactive Preview
+                        </button>
+                      )
                     )}
 
                     {/* Download Data Button */}
@@ -420,10 +455,43 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 </div>
               </div>
 
-              {/* Map Preview Module */}
-              {showMap && ((selectedDataset.geojsonUrl || selectedDataset.arcGisEmbedUrl || selectedDataset.viewerType === 'image' || selectedDataset.viewerType === 'pdf') && selectedDataset.viewerType !== 'none') && (
+              {/* Inline Preview Module — renders for capability-checked records */}
+              {showMap && isInlinePreviewable(selectedDataset) && (
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
-                  {selectedDataset.viewerType === 'image' ? (
+                  {selectedDataset.viewerType === 'map-table' ? (
+                    <div className="relative w-full h-full">
+                      {/* Map / Table face toggle (points + tabular preview) */}
+                      <div className="absolute top-2 right-2 z-[500] flex rounded overflow-hidden border border-cream-300 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest">
+                        {(['map', 'table'] as const).map((face) => (
+                          <button
+                            key={face}
+                            onClick={() => setMapTableView(face)}
+                            className={`px-3 py-1 transition-colors ${mapTableView === face ? 'bg-ink-900 text-white dark:bg-white dark:text-black' : 'bg-white/90 text-ink-700 dark:bg-black/80 dark:text-gray-300 hover:text-brand-green-600 dark:hover:text-white'}`}
+                          >
+                            {face}
+                          </button>
+                        ))}
+                      </div>
+                      {mapTableView === 'table' ? (
+                        selectedDataset.tablePreviewUrl ? (
+                          <TableViewer dataset={selectedDataset} />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-ink-500 dark:text-gray-400 font-mono text-xs">No table preview available.</div>
+                        )
+                      ) : (
+                        <>
+                          <div className="absolute top-2 left-2 z-[400] bg-white/90 dark:bg-black/80 px-2 py-1 rounded border border-cream-300 dark:border-white/10">
+                            <span className="text-[10px] text-brand-green-600 dark:text-gn-accent-gold font-mono">LIVE PREVIEW • POINTS</span>
+                          </div>
+                          <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
+                        </>
+                      )}
+                    </div>
+                  ) : selectedDataset.viewerType === 'table' ? (
+                    <TableViewer dataset={selectedDataset} />
+                  ) : selectedDataset.viewerType === 'map-raster' ? (
+                    <RasterOverlayViewer dataset={selectedDataset} />
+                  ) : selectedDataset.viewerType === 'image' ? (
                     <ImageViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'pdf' ? (
                     <PdfViewer dataset={selectedDataset} />
@@ -433,7 +501,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       className="w-full h-full border-none"
                       title="ArcGIS Web Map Preview"
                     />
-                  ) : selectedDataset.geojsonUrl && GLOBAL_GEOJSON_DB[selectedDataset.geojsonUrl] ? (
+                  ) : hasRenderableGeojson(selectedDataset) ? (
                     <>
                       <div className="absolute top-2 left-2 z-[400] bg-white/90 dark:bg-black/80 px-2 py-1 rounded border border-cream-300 dark:border-white/10">
                         <span className="text-[10px] text-brand-green-600 dark:text-gn-accent-gold font-mono">LIVE PREVIEW • {selectedDataset.format}</span>
@@ -441,9 +509,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                       <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-cream-200 dark:bg-gn-surface-muted-dark flex items-center justify-center text-red-500 font-mono text-xs p-4">
-                      &gt; ERROR: DATA_SOURCE_MISSING ({selectedDataset.geojsonUrl})<br/>
-                      &gt; PLEASE CONTACT ADMINISTRATOR
+                    <div className="w-full h-full bg-cream-200 dark:bg-gn-surface-muted-dark flex items-center justify-center text-ink-500 dark:text-gray-400 font-mono text-xs p-4 text-center">
+                      No inline preview available for this dataset.
                     </div>
                   )}
                 </div>

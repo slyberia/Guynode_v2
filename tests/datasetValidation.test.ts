@@ -58,6 +58,81 @@ test('dataset validation', async (t) => {
     assert.ok(hasRule(issues, 'preview-url-missing'));
   });
 
+  await t.test('leaflet record with an unresolvable local geojsonUrl is an error', () => {
+    const geojsonResolver = { maxBytes: 1_500_000, resolve: () => null };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/missing/x.geojson' },
+      { geojsonResolver }
+    );
+    assert.ok(hasRule(issues, 'preview-url-unresolvable'));
+  });
+
+  await t.test('leaflet record with an over-budget geojsonUrl is an error', () => {
+    const geojsonResolver = {
+      maxBytes: 1_500_000,
+      resolve: (url: string) => (url === '/data/big/x.geojson' ? { bytes: 2_000_000 } : null),
+    };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/big/x.geojson' },
+      { geojsonResolver }
+    );
+    assert.ok(hasRule(issues, 'preview-oversize'));
+  });
+
+  await t.test('leaflet record with a resolvable, in-budget geojsonUrl passes', () => {
+    const geojsonResolver = {
+      maxBytes: 1_500_000,
+      resolve: (url: string) => (url === '/data/ok/x.geojson' ? { bytes: 100_000 } : null),
+    };
+    const issues = validateDatasetRecord(
+      { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/ok/x.geojson' },
+      { geojsonResolver }
+    );
+    assert.strictEqual(hasRule(issues, 'preview-url-unresolvable'), false);
+    assert.strictEqual(hasRule(issues, 'preview-oversize'), false);
+  });
+
+  await t.test('table record without a tablePreviewUrl is an error', () => {
+    const issues = validateDatasetRecord({ ...base, format: 'CSV', viewerType: 'table' });
+    assert.ok(hasRule(issues, 'table-preview-missing'));
+  });
+
+  await t.test('table record with an unresolvable tablePreviewUrl is an error', () => {
+    const tablePreviewResolver = (url: string) => url === '/data/tables/ok.preview.json';
+    const issues = validateDatasetRecord(
+      { ...base, format: 'CSV', viewerType: 'table', tablePreviewUrl: '/data/tables/missing.preview.json' },
+      { tablePreviewResolver }
+    );
+    assert.ok(hasRule(issues, 'table-preview-unresolvable'));
+  });
+
+  await t.test('table record with a resolvable tablePreviewUrl passes', () => {
+    const tablePreviewResolver = (url: string) => url === '/data/tables/ok.preview.json';
+    const issues = validateDatasetRecord(
+      { ...base, format: 'CSV', viewerType: 'table', tablePreviewUrl: '/data/tables/ok.preview.json' },
+      { tablePreviewResolver }
+    );
+    assert.strictEqual(hasRule(issues, 'table-preview-missing'), false);
+    assert.strictEqual(hasRule(issues, 'table-preview-unresolvable'), false);
+  });
+
+  await t.test('map-raster without georeference is an error (no bbox-drape allowed)', () => {
+    const issues = validateDatasetRecord({ ...base, format: 'Image', viewerType: 'map-raster', downloadUrl: 'https://example.com/a.png' });
+    assert.ok(hasRule(issues, 'georeference-invalid'));
+  });
+
+  await t.test('map-raster with valid georeference + image passes', () => {
+    const issues = validateDatasetRecord({
+      ...base,
+      format: 'Image',
+      viewerType: 'map-raster',
+      downloadUrl: 'https://example.com/a.png',
+      georeference: { bounds: [[1, -61], [9, -56.5]], georeferenceStatus: 'verified' },
+    });
+    assert.strictEqual(hasRule(issues, 'georeference-invalid'), false);
+    assert.strictEqual(hasRule(issues, 'georeference-missing-image'), false);
+  });
+
   await t.test('a PDF mislabeled as Shapefile is an error', () => {
     const issues = validateDatasetRecord({ ...base, format: 'Shapefile' });
     assert.ok(issues.some((i) => i.rule === 'format-mismatch' && i.level === 'error'));
