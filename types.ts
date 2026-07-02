@@ -92,6 +92,23 @@ export type AvailabilityStatus =
   | 'skipped'
   | 'needs-review';
 
+export interface SourceReference {
+  label: string;
+  url: string;
+  relationship:
+    | 'primary-source'
+    | 'provenance-source'
+    | 'reference-source'
+    | 'portal-source'
+    | 'app-reference'
+    | 'tutorial-context'
+    | 'commercial-reference'
+    | 'needs-review';
+  status?: AvailabilityStatus;
+  confidence?: 'high' | 'medium' | 'low';
+  notes?: string;
+}
+
 // A single downloadable/previewable representation of a dataset.
 // Prefer this over the legacy top-level downloadUrl/geojsonUrl going forward.
 export interface Distribution {
@@ -118,6 +135,8 @@ export interface Dataset {
   title: string;
   description: string;
   category: DataCategory;
+  legacyHomepageCategory?: string;
+  tags: string[];
   lastUpdated: string;
   format: 'GeoJSON' | 'CSV' | 'Shapefile' | 'API' | 'Mixed' | 'PDF' | 'Spreadsheet' | 'GeoTIFF' | 'Image';
   size: string;
@@ -170,6 +189,7 @@ export interface Dataset {
   // (downloadUrl, geojsonUrl, format, size, viewerType) remain authoritative
   // until consumers migrate to distributions.
   distributions?: Distribution[];
+  sourceReferences?: SourceReference[];
 
   // Tier 3: Temporal Support
   temporalLayers?: TemporalLayer[];

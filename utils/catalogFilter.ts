@@ -1,5 +1,6 @@
 import { Dataset, SearchResult } from '../types';
 import { SearchEngine } from '../services/searchEngine';
+import { getCatalogFacetCategory, LEGACY_HOMEPAGE_CATEGORY_ORDER } from './legacyCategoryTaxonomy';
 
 /**
  * Pure catalog discovery logic: derive honest facets from the loaded data and
@@ -74,19 +75,30 @@ export const FORMAT_DUPLICATE_TAGS = new Set([
 
 /**
  * Category chips derived from the loaded datasets, each with a real count.
- * Sorted by frequency (desc), then alphabetically. Never returns a category
+ * Sorted by legacy homepage category order. Never returns a category
  * that matches zero records — by construction.
  */
 export function deriveCategoryFacets(datasets: Dataset[]): Facet[] {
   const counts = new Map<string, number>();
   for (const d of datasets) {
-    const c = d.category;
+    const c = getCatalogFacetCategory(d);
     if (!c) continue;
+    // Keep resource-only categories out of the catalog unless they have real data
+    // (This naturally happens because if they are in the dataset, they get counted)
     counts.set(c, (counts.get(c) || 0) + 1);
   }
   return [...counts.entries()]
     .map(([value, count]) => ({ value, count }))
-    .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+    .sort((a, b) => {
+      const idxA = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(a.value as any);
+      const idxB = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(b.value as any);
+      
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      
+      return b.count - a.count || a.value.localeCompare(b.value);
+    });
 }
 
 export interface TagFacetOptions {
@@ -160,7 +172,7 @@ export function applyCatalogFilters(datasets: Dataset[], state: CatalogFilterSta
   let results = SearchEngine.search(datasets, state.searchQuery);
 
   if (state.category && state.category !== 'ALL') {
-    results = results.filter((r) => r.item.category === state.category);
+    results = results.filter((r) => getCatalogFacetCategory(r.item) === state.category);
   }
 
   if (state.tags.length > 0) {
@@ -182,7 +194,7 @@ export function applyCatalogFilters(datasets: Dataset[], state: CatalogFilterSta
 export function reconcileFilterState(state: CatalogFilterState, datasets: Dataset[]): CatalogFilterState {
   if (datasets.length === 0) return state;
 
-  const categories = new Set(datasets.map((d) => d.category));
+  const categories = new Set(datasets.map((d) => getCatalogFacetCategory(d)));
   const allTags = deriveAllTags(datasets);
 
   const category = state.category !== 'ALL' && categories.has(state.category) ? state.category : 'ALL';
