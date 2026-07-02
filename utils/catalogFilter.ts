@@ -90,8 +90,8 @@ export function deriveCategoryFacets(datasets: Dataset[]): Facet[] {
   return [...counts.entries()]
     .map(([value, count]) => ({ value, count }))
     .sort((a, b) => {
-      const idxA = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(a.value as any);
-      const idxB = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(b.value as any);
+      const idxA = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(a.value);
+      const idxB = LEGACY_HOMEPAGE_CATEGORY_ORDER.indexOf(b.value);
       
       if (idxA !== -1 && idxB !== -1) return idxA - idxB;
       if (idxA !== -1) return -1;
