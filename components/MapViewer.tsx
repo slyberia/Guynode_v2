@@ -209,6 +209,17 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
 
           L.geoJSON(dataToRender, {
             style: style,
+            // Render Point features (e.g. gazetteer places) as lightweight
+            // circle markers rather than default image pins.
+            pointToLayer: (_f: GeoJSON.Feature, latlng: import('leaflet').LatLng) =>
+              L.circleMarker(latlng, {
+                radius: 4,
+                color: style.color,
+                weight: 1,
+                fillColor: style.color,
+                fillOpacity: 0.7,
+                opacity: layer.opacity,
+              }),
             onEachFeature: (f: GeoJSON.Feature, l: import('leaflet').Layer) => {
                if (f.properties) {
                  l.bindPopup(`<b>${layer.name}</b><br/>${Object.keys(f.properties).map(k => `${k}: ${f.properties![k]}`).join('<br/>')}`);

@@ -53,13 +53,49 @@ export const hasTablePreview = (dataset: Dataset | null | undefined): boolean =>
   );
 
 /**
+ * Valid WGS84 overlay bounds [[south, west],[north, east]]: finite, in range,
+ * south < north, west < east, and not the degenerate 0,0 box. Bounds must come
+ * from real control points — this only checks numeric sanity, not provenance.
+ */
+export const isValidGeoBounds = (b: unknown): b is [[number, number], [number, number]] => {
+  if (!Array.isArray(b) || b.length !== 2 || !Array.isArray(b[0]) || !Array.isArray(b[1])) return false;
+  const [[s, w], [n, e]] = b as number[][];
+  if (![s, w, n, e].every((v) => typeof v === 'number' && Number.isFinite(v))) return false;
+  if (s < -90 || n > 90 || w < -180 || e > 180) return false;
+  if (s >= n || w >= e) return false;
+  if (s === 0 && w === 0 && n === 0 && e === 0) return false;
+  return true;
+};
+
+/**
+ * True only when a record carries a real georeference (valid bounds + status) and
+ * an image asset to overlay. Records without control-point data stay 'image'; we
+ * never derive overlay bounds from a vector bbox.
+ */
+export const hasRasterOverlay = (dataset: Dataset | null | undefined): boolean =>
+  Boolean(
+    dataset &&
+    dataset.viewerType === 'map-raster' &&
+    dataset.georeference &&
+    isValidGeoBounds(dataset.georeference.bounds) &&
+    dataset.downloadUrl &&
+    safeUrl(dataset.downloadUrl)
+  );
+
+/**
  * GIS-previewable == can be shown in the interactive map viewer (leaflet vector,
- * ArcGIS embed, or an image/pdf asset the viewer page renders). Tables are NOT
- * GIS-previewable — see isInlinePreviewable.
+ * CSV points, a georeferenced raster overlay, an ArcGIS embed, or an image/pdf
+ * asset the viewer page renders). Tables are NOT GIS-previewable — see
+ * isInlinePreviewable.
  */
 export const isGisPreviewable = (dataset: Dataset | null | undefined): boolean => {
   if (!dataset || dataset.viewerType === 'none') return false;
-  return hasRenderableGeojson(dataset) || hasRenderableArcGis(dataset) || hasRenderableAsset(dataset);
+  return (
+    hasRenderableGeojson(dataset) ||
+    hasRenderableArcGis(dataset) ||
+    hasRenderableAsset(dataset) ||
+    hasRasterOverlay(dataset)
+  );
 };
 
 /**

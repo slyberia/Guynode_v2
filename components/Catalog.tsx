@@ -9,6 +9,7 @@ import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
 import { TableViewer } from './viewer/TableViewer';
+import { RasterOverlayViewer } from './viewer/RasterOverlayViewer';
 import { safeUrl } from '../utils/url';
 import { isGisPreviewable, isInlinePreviewable, hasRenderableGeojson } from '../utils/previewCapability';
 
@@ -89,8 +90,17 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
         const defaultStyle = { color: "#FFC20E", weight: 2, fillOpacity: 0.2 };
 
         try {
+          const mergedStyle = { ...defaultStyle, ...styleConfig };
           const layer = L.geoJSON(geoJsonData, {
-            style: { ...defaultStyle, ...styleConfig }
+            style: mergedStyle,
+            pointToLayer: (_f, latlng) =>
+              L.circleMarker(latlng, {
+                radius: 4,
+                color: mergedStyle.color,
+                weight: 1,
+                fillColor: mergedStyle.color,
+                fillOpacity: 0.7,
+              }),
           }).addTo(map);
           map.fitBounds(layer.getBounds(), { padding: [20, 20] });
         } catch (e) {
@@ -446,6 +456,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
                   {selectedDataset.viewerType === 'table' ? (
                     <TableViewer dataset={selectedDataset} />
+                  ) : selectedDataset.viewerType === 'map-raster' ? (
+                    <RasterOverlayViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'image' ? (
                     <ImageViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'pdf' ? (

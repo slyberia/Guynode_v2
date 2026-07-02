@@ -4,8 +4,9 @@ import { ViewState, Dataset } from '../types';
 import { MapViewer } from './MapViewer';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
+import { RasterOverlayViewer } from './viewer/RasterOverlayViewer';
 import { ViewerErrorBoundary } from './viewer/ViewerErrorBoundary';
-import { hasRenderableGeojson } from '../utils/previewCapability';
+import { hasRenderableGeojson, hasRasterOverlay } from '../utils/previewCapability';
 import { safeUrl } from '../utils/url';
 
 interface GisViewerPageProps {
@@ -55,8 +56,10 @@ export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDat
           title={`ArcGIS Web Map — ${activeDataset.title}`}
         />
       );
-    } else if (viewerType === 'leaflet' && hasRenderableGeojson(activeDataset)) {
+    } else if ((viewerType === 'leaflet' || viewerType === 'map-table') && hasRenderableGeojson(activeDataset)) {
       content = <MapViewer setView={setView} activeDataset={activeDataset} theme={theme} />;
+    } else if (viewerType === 'map-raster' && hasRasterOverlay(activeDataset)) {
+      content = <RasterOverlayViewer dataset={activeDataset} />;
     }
 
     // Everything unrenderable (viewerType 'none', shapefiles awaiting

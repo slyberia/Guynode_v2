@@ -116,6 +116,23 @@ test('dataset validation', async (t) => {
     assert.strictEqual(hasRule(issues, 'table-preview-unresolvable'), false);
   });
 
+  await t.test('map-raster without georeference is an error (no bbox-drape allowed)', () => {
+    const issues = validateDatasetRecord({ ...base, format: 'Image', viewerType: 'map-raster', downloadUrl: 'https://example.com/a.png' });
+    assert.ok(hasRule(issues, 'georeference-invalid'));
+  });
+
+  await t.test('map-raster with valid georeference + image passes', () => {
+    const issues = validateDatasetRecord({
+      ...base,
+      format: 'Image',
+      viewerType: 'map-raster',
+      downloadUrl: 'https://example.com/a.png',
+      georeference: { bounds: [[1, -61], [9, -56.5]], georeferenceStatus: 'verified' },
+    });
+    assert.strictEqual(hasRule(issues, 'georeference-invalid'), false);
+    assert.strictEqual(hasRule(issues, 'georeference-missing-image'), false);
+  });
+
   await t.test('a PDF mislabeled as Shapefile is an error', () => {
     const issues = validateDatasetRecord({ ...base, format: 'Shapefile' });
     assert.ok(issues.some((i) => i.rule === 'format-mismatch' && i.level === 'error'));

@@ -299,7 +299,7 @@
     ],
     "format": "CSV",
     "fileSize": "101.7 KB",
-    "viewerType": "table",
+    "viewerType": "map-table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/Gazeteer_Places.csv",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "GeoNames.org",
@@ -324,7 +324,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "tablePreviewUrl": "/data/tables/gazetteer-places.preview.json"
+    "tablePreviewUrl": "/data/tables/gazetteer-places.preview.json",
+    "geojsonUrl": "/data/points/gazetteer-places.geojson"
   },
   {
     "id": "geoname-places",
@@ -338,7 +339,7 @@
     ],
     "format": "CSV",
     "fileSize": "658.4 KB",
-    "viewerType": "table",
+    "viewerType": "map-table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/GeoName_Places.csv",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "GeoNames.org",
@@ -363,7 +364,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "tablePreviewUrl": "/data/tables/geoname-places.preview.json"
+    "tablePreviewUrl": "/data/tables/geoname-places.preview.json",
+    "geojsonUrl": "/data/points/geoname-places.geojson"
   },
   {
     "id": "georgetown-constituencies",

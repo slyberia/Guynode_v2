@@ -12,6 +12,7 @@
     "check:links": "tsx scripts/check-dataset-links.ts",
     "convert:shapefiles": "tsx scripts/convert-shapefiles.ts",
     "extract:tables": "tsx scripts/extract-table-previews.ts",
+    "extract:points": "tsx scripts/extract-table-points.ts",
     "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",

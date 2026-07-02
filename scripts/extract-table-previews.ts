@@ -14,7 +14,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import * as XLSX from 'xlsx';
+import { parseTable } from './lib/tableParse.js';
 
 const ROOT = process.cwd();
 const DATA_PATH = path.resolve(ROOT, 'public/data/datasets.json');
@@ -40,67 +40,9 @@ interface ManifestEntry {
   sourceFormat: string;
 }
 
-type Cell = string | number | null;
-
 type Outcome =
   | { id: string; status: 'extracted'; url: string; entry: ManifestEntry }
   | { id: string; status: 'skipped'; reason: string };
-
-const normalizeCell = (v: unknown): Cell => {
-  if (v === null || v === undefined || v === '') return null;
-  if (typeof v === 'number' || typeof v === 'string') return v;
-  return String(v);
-};
-
-// Parse a fetched CSV/XLSX buffer into { columns, rows, totalRows }. Drops
-// columns whose header is blank (these source files carry noise/spacer columns),
-// unless every header is blank (headerless — then synthesize col1..colN).
-const parseTable = (buf: Buffer): { columns: string[]; rows: Cell[][]; totalRows: number } => {
-  const wb = XLSX.read(buf, { type: 'buffer', codepage: 1252 });
-  const sheetName = wb.SheetNames[0];
-  if (!sheetName) throw new Error('workbook has no sheets');
-  const sheet = wb.Sheets[sheetName];
-  const matrix = XLSX.utils.sheet_to_json<unknown[]>(sheet, { header: 1, blankrows: false, defval: null });
-  if (matrix.length === 0) throw new Error('sheet is empty');
-
-  // Skip leading title/blank rows (a merged title cell reads as a single
-  // non-blank value). The candidate header is the first row with >= 2 non-blank
-  // cells.
-  const cellStr = (c: unknown) => (c === null || c === undefined ? '' : String(c).trim());
-  const nonBlank = (row: unknown[]) => row.filter((c) => cellStr(c) !== '').length;
-  const looksNumeric = (c: unknown) => {
-    const s = cellStr(c);
-    return s !== '' && !Number.isNaN(Number(s));
-  };
-  let candidateIdx = matrix.findIndex((row) => nonBlank(row) >= 2);
-  if (candidateIdx < 0) candidateIdx = 0; // genuinely single-column table
-
-  // A real header row is all-text; if the candidate contains numeric cells the
-  // file is headerless (e.g. GeoNames export) — synthesize names and keep the
-  // candidate row as data so no row is lost.
-  const candidate = matrix[candidateIdx];
-  const candidateCells = candidate.filter((c) => cellStr(c) !== '');
-  const isHeader = candidateCells.length > 0 && candidateCells.every((c) => !looksNumeric(c));
-
-  let columns: string[];
-  let keepIdx: number[];
-  let dataRows: unknown[][];
-
-  if (isHeader) {
-    const headerRow = candidate.map(cellStr);
-    keepIdx = headerRow.map((h, i) => (h !== '' ? i : -1)).filter((i) => i >= 0);
-    columns = keepIdx.map((i) => headerRow[i]);
-    dataRows = matrix.slice(candidateIdx + 1);
-  } else {
-    const width = matrix.slice(candidateIdx).reduce((w, r) => Math.max(w, r.length), 0);
-    keepIdx = Array.from({ length: width }, (_, i) => i);
-    columns = keepIdx.map((i) => `col${i + 1}`);
-    dataRows = matrix.slice(candidateIdx);
-  }
-
-  const rows: Cell[][] = dataRows.map((r) => keepIdx.map((i) => normalizeCell(r[i])));
-  return { columns, rows, totalRows: dataRows.length };
-};
 
 const extractRecord = async (record: DatasetRecord): Promise<Outcome> => {
   const { id, downloadUrl } = record;

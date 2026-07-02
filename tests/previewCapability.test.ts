@@ -8,6 +8,7 @@ import {
   isGisPreviewable,
   isInlinePreviewable,
   hasTablePreview,
+  hasRasterOverlay,
   hasRenderableGeojson,
   hasRenderableArcGis,
   hasRenderableAsset,
@@ -97,9 +98,44 @@ test('preview capability', async (t) => {
     assert.strictEqual(isGisPreviewable(d), false);
   });
 
+  await t.test('a map-table record (points in the geojson manifest) is GIS-previewable', () => {
+    const manifestUrls = Object.keys(GEOJSON_MANIFEST);
+    const d = { ...base, viewerType: 'map-table', geojsonUrl: manifestUrls[0] } as Dataset;
+    assert.strictEqual(hasRenderableGeojson(d), true);
+    assert.strictEqual(isGisPreviewable(d), true);
+    assert.strictEqual(isInlinePreviewable(d), true);
+  });
+
   await t.test('a table record with an unlisted tablePreviewUrl is not previewable', () => {
     const d = { ...base, viewerType: 'table', tablePreviewUrl: '/data/tables/nope.preview.json' } as Dataset;
     assert.strictEqual(hasTablePreview(d), false);
     assert.strictEqual(isInlinePreviewable(d), false);
+  });
+
+  await t.test('a map-raster record with valid georeference + image is overlay-capable', () => {
+    const d = {
+      ...base,
+      viewerType: 'map-raster',
+      downloadUrl: 'https://example.com/region1.png',
+      georeference: { bounds: [[1, -61], [9, -56.5]], georeferenceStatus: 'verified', method: 'gcp' },
+    } as unknown as Dataset;
+    assert.strictEqual(hasRasterOverlay(d), true);
+    assert.strictEqual(isGisPreviewable(d), true);
+  });
+
+  await t.test('a map-raster record without georeference is NOT overlay-capable (no bbox-drape)', () => {
+    const d = { ...base, viewerType: 'map-raster', downloadUrl: 'https://example.com/region1.png' } as unknown as Dataset;
+    assert.strictEqual(hasRasterOverlay(d), false);
+    assert.strictEqual(isGisPreviewable(d), false);
+  });
+
+  await t.test('a map-raster record with degenerate 0,0 bounds is rejected', () => {
+    const d = {
+      ...base,
+      viewerType: 'map-raster',
+      downloadUrl: 'https://example.com/region1.png',
+      georeference: { bounds: [[0, 0], [0, 0]], georeferenceStatus: 'verified', method: 'gcp' },
+    } as unknown as Dataset;
+    assert.strictEqual(hasRasterOverlay(d), false);
   });
 });

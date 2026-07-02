@@ -61,6 +61,8 @@ export interface DatasetRecord {
   downloadUrl?: string;
   geojsonUrl?: string;
   viewerType?: string;
+  tablePreviewUrl?: string;
+  georeference?: { bounds?: unknown; georeferenceStatus?: string };
   imageUrl?: string;
   lastVerified?: string;
   metadataHash?: string;
@@ -162,7 +164,7 @@ const claimsDownloadable = (record: DatasetRecord): boolean => {
 };
 
 const claimsMapPreview = (record: DatasetRecord): boolean => {
-  if (record.viewerType === 'leaflet') return true;
+  if (record.viewerType === 'leaflet' || record.viewerType === 'map-table') return true;
   if ((record.format ?? '').toLowerCase() === 'geojson') return true;
   return (record.distributions ?? []).some((d) => d.previewable === true);
 };
@@ -216,7 +218,7 @@ export const validateDatasetRecord = (
   // record whose file is missing (would fail to load) or too large (would jank).
   if (
     geojsonResolver &&
-    record.viewerType === 'leaflet' &&
+    (record.viewerType === 'leaflet' || record.viewerType === 'map-table') &&
     typeof record.geojsonUrl === 'string' &&
     record.geojsonUrl.startsWith('/')
   ) {
@@ -228,12 +230,31 @@ export const validateDatasetRecord = (
     }
   }
 
-  // A table record must carry a tablePreviewUrl that resolves to a generated
-  // preview (otherwise the "Preview" toggle would render an empty/broken table).
-  if (record.viewerType === 'table') {
+  // A map-raster record must carry a real georeference (valid numeric bounds) and
+  // an image to overlay. Bounds must come from control points, never a vector bbox.
+  if (record.viewerType === 'map-raster') {
+    const b = record.georeference?.bounds;
+    const validBounds =
+      Array.isArray(b) && b.length === 2 && Array.isArray(b[0]) && Array.isArray(b[1]) &&
+      [b[0][0], b[0][1], b[1][0], b[1][1]].every((v) => typeof v === 'number' && Number.isFinite(v)) &&
+      b[0][0] < b[1][0] && b[0][1] < b[1][1] &&
+      !(b[0][0] === 0 && b[0][1] === 0 && b[1][0] === 0 && b[1][1] === 0);
+    if (!record.georeference || !validBounds) {
+      add('error', 'georeference-invalid', 'map-raster record has missing or invalid georeference bounds');
+    }
+    if (!record.downloadUrl) {
+      add('error', 'georeference-missing-image', 'map-raster record has no image URL to overlay');
+    }
+  }
+
+  // A table (or map-table) record must carry a tablePreviewUrl that resolves to a
+  // generated preview; otherwise the table view would be empty/broken.
+  if (record.viewerType === 'table' || typeof record.tablePreviewUrl === 'string') {
     const url = typeof record.tablePreviewUrl === 'string' ? record.tablePreviewUrl.trim() : '';
     if (!url) {
-      add('error', 'table-preview-missing', 'Record is viewerType "table" but has no tablePreviewUrl');
+      if (record.viewerType === 'table') {
+        add('error', 'table-preview-missing', 'Record is viewerType "table" but has no tablePreviewUrl');
+      }
     } else if (tablePreviewResolver && !tablePreviewResolver(url)) {
       add('error', 'table-preview-unresolvable', `table preview not found in manifest: ${url}`);
     }
@@ -392,6 +413,8 @@ export const RULE_CLASSIFICATION: Record<string, RuleClassification> = {
   'preview-oversize': { priority: 'High', track: 'Automatable', scriptTargets: ['geojsonUrl'], summary: 'Preview GeoJSON exceeds size budget' },
   'table-preview-missing': { priority: 'High', track: 'Automatable', scriptTargets: ['tablePreviewUrl'], summary: 'viewerType table without tablePreviewUrl (run extract:tables)' },
   'table-preview-unresolvable': { priority: 'High', track: 'Automatable', scriptTargets: ['tablePreviewUrl'], summary: 'table preview not in manifest (run extract:tables)' },
+  'georeference-invalid': { priority: 'High', track: 'Manual / evidence-required', scriptTargets: ['georeference.bounds'], summary: 'map-raster without valid control-point bounds' },
+  'georeference-missing-image': { priority: 'High', track: 'Semi-automatable', scriptTargets: ['downloadUrl'], summary: 'map-raster without an image to overlay' },
   'distribution-broken': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as broken/not-found' },
   'distribution-forbidden': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as forbidden' },
 
