@@ -1,0 +1,392 @@
+[
+  {
+    "id": "res-494148",
+    "title": "30-Meter SRTM Tile Downloader",
+    "resourceType": "data-portal",
+    "url": "http://dwtkns.com/srtm30m/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-006",
+      "legacy-demtopo-008",
+      "legacy-demtopo-010",
+      "legacy-demtopo-001",
+      "legacy-demtopo-007",
+      "legacy-demtopo-011",
+      "legacy-demtopo-005",
+      "legacy-demtopo-004",
+      "legacy-demtopo-002",
+      "legacy-demtopo-003",
+      "legacy-demtopo-009"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-143245",
+    "title": "External Resource on health.gov.gy",
+    "resourceType": "source-reference",
+    "url": "http://www.health.gov.gy/index.php",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-socio-009"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-276677",
+    "title": "USGS National Map Downloader",
+    "resourceType": "source-reference",
+    "url": "https://apps.nationalmap.gov/downloader/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-25551",
+    "title": "External Resource on coast.noaa.gov",
+    "resourceType": "source-reference",
+    "url": "https://coast.noaa.gov/dataviewer/#/lidar/search/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-586161",
+    "title": "External Resource on covid19.health.gov.gy",
+    "resourceType": "source-reference",
+    "url": "https://covid19.health.gov.gy/apps/moph/r/outbreak/localstats?session=10031270832794",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-socio-008"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-497770",
+    "title": "External Resource on data.humdata.org",
+    "resourceType": "source-reference",
+    "url": "https://data.humdata.org/dataset/ourairports-guy",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-socio-016"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-530083",
+    "title": "Copernicus Open Access Hub",
+    "resourceType": "data-portal",
+    "url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-014"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-596016",
+    "title": "External Resource on drive.google.com",
+    "resourceType": "manual-review",
+    "url": "https://drive.google.com/file/d/1A2GmWkzsXejCW4U_wDbWAI9xbJi2Oe1Y/view?usp=drive_link",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-012",
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-489283",
+    "title": "External Resource on drive.google.com",
+    "resourceType": "manual-review",
+    "url": "https://drive.google.com/file/d/1cndwLLmxqEcmvUfsehHBNV7kvYYI4vpa/view?usp=share_link",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-268323",
+    "title": "External Resource on en-us.topographic-map.com",
+    "resourceType": "source-reference",
+    "url": "https://en-us.topographic-map.com/maps/rq4w/Georgetown/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-858244",
+    "title": "GADM Data Download Portal",
+    "resourceType": "data-portal",
+    "url": "https://gadm.org/download_country.html",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-admin-045"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-436428",
+    "title": "External Resource on gee-community-catalog.org",
+    "resourceType": "source-reference",
+    "url": "https://gee-community-catalog.org/projects/fabdem/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-015"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-518820",
+    "title": "External Resource on learn.arcgis.com",
+    "resourceType": "tutorial",
+    "url": "https://learn.arcgis.com/en/gallery/#?q=lidar",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-211322",
+    "title": "External Resource on learn.arcgis.com",
+    "resourceType": "tutorial",
+    "url": "https://learn.arcgis.com/en/projects/classify-a-lidar-point-cloud/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-264764",
+    "title": "External Resource on learn.arcgis.com",
+    "resourceType": "tutorial",
+    "url": "https://learn.arcgis.com/en/projects/create-and-visualize-a-lidar-point-cloud/",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-62393",
+    "title": "External Resource on maps.princeton.edu",
+    "resourceType": "source-reference",
+    "url": "https://maps.princeton.edu/catalog/princeton-cf95jf105",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-admin-061"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-746628",
+    "title": "External Resource on portal.opentopography.org",
+    "resourceType": "source-reference",
+    "url": "https://portal.opentopography.org/datasets?minX=-62.5341796875&minY=0.09558114446562627&maxX=-55.12939453125&maxY=9.543333212684416",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-716828",
+    "title": "External Resource on portal.opentopography.org",
+    "resourceType": "source-reference",
+    "url": "https://portal.opentopography.org/raster?opentopoID=OTALOS.112016.4326.2",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-957518",
+    "title": "External Resource on portal.opentopography.org",
+    "resourceType": "source-reference",
+    "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.2",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-985319",
+    "title": "External Resource on portal.opentopography.org",
+    "resourceType": "source-reference",
+    "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.3",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-014",
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-541716",
+    "title": "NASA EarthData Search Portal",
+    "resourceType": "data-portal",
+    "url": "https://search.earthdata.nasa.gov/search?fi=ASTER&fdc=Land%2BProcess%2BDistributed%2BActive%2BArchive%2BCenter%2B%2528LPDAAC%2529",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-012",
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-811665",
+    "title": "Guyana Topographic Maps (Commercial)",
+    "resourceType": "commercial-reference",
+    "url": "https://shop.geospatial.com/publication/FVR52TZAFRKAMSTG151P6Y6W25/Guyana-1-to-50000-Scale-Topographic-Maps-GDLS",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-033"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-390427",
+    "title": "External Resource on statisticsguyana.gov.gy",
+    "resourceType": "source-reference",
+    "url": "https://statisticsguyana.gov.gy/publications/#elementor-tab-content-1465%20%3E%20ul:nth-child(3)%20%3E%20li:nth-child(1)%20%3E%20span",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-socio-020",
+      "legacy-socio-021"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-385921",
+    "title": "External Resource on storymaps.arcgis.com",
+    "resourceType": "source-reference",
+    "url": "https://storymaps.arcgis.com/stories/b15de933757b4ddb80c133a3b7759329",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-854561",
+    "title": "Interactive Web Map (ArcGIS)",
+    "resourceType": "web-map-app",
+    "url": "https://www.arcgis.com/apps/View/index.html?appid=76b2cd9845744904bf65c2fc2e5f46e3",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-033"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-300673",
+    "title": "External Resource on education.gov.gy",
+    "resourceType": "source-reference",
+    "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-socio-005",
+      "legacy-socio-001",
+      "legacy-socio-003",
+      "legacy-socio-004",
+      "legacy-socio-002"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-792083",
+    "title": "External Resource on eorc.jaxa.jp",
+    "resourceType": "source-reference",
+    "url": "https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d30/aw3d30_e.htm",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-977476",
+    "title": "External Resource on google.com",
+    "resourceType": "source-reference",
+    "url": "https://www.google.com/maps/place/Potaro-Siparuni,+Guyana/@4.861365,-59.7785712,9z/data=!3m1!4b1!4m5!3m4!1s0x8dbc7dbb39e173a7:0xd1fed35ae7c9497d!8m2!3d4.7855853!4d-59.2879977!5m1!1e4",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-145286",
+    "title": "External Resource on google.com",
+    "resourceType": "source-reference",
+    "url": "https://www.google.com/maps/place/Upper+Demerara-Berbice,+Guyana/@5.4860764,-58.773019,9z/data=!4m5!3m4!1s0x8da356a8db70ae11:0xd83b34d3ce72b090!8m2!3d5.3064879!4d-58.1892921!5m1!1e4",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-232428",
+    "title": "External Resource on google.com",
+    "resourceType": "source-reference",
+    "url": "https://www.google.com/maps/search/CuyREgion+9,+Guyana/@2.5898085,-59.9781035,8z/data=!5m1!1e4",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  },
+  {
+    "id": "res-683556",
+    "title": "External Resource on usgs.gov",
+    "resourceType": "data-portal",
+    "url": "https://www.usgs.gov/core-science-systems/ngp/3dep",
+    "description": "External resource or data portal referenced by legacy Guynode.",
+    "relatedDatasets": [
+      "legacy-demtopo-007"
+    ],
+    "status": "external",
+    "migrationDecision": "moved-to-resources"
+  }
+]
