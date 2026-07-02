@@ -8,9 +8,32 @@ export interface RouteParams {
   month?: string;
   datasetId?: string;
   searchQuery?: string;
+  tags?: string[];
   adminSection?: string;
   supportSection?: string; // New param for Support page anchors
 }
+
+/**
+ * Parse a comma-separated `tags` query value into a de-duplicated, trimmed list.
+ * Returns undefined when there are no usable tags so the param stays absent from
+ * clean URLs. Data-aware validation (dropping tags no dataset carries) happens in
+ * utils/catalogFilter.reconcileFilterState, which — unlike this route layer — has
+ * the loaded catalog to check against.
+ */
+const parseTags = (raw: string | null): string[] | undefined => {
+  if (!raw) return undefined;
+  const seen = new Set<string>();
+  const tags: string[] = [];
+  for (const part of raw.split(',')) {
+    const tag = part.trim();
+    const key = tag.toLowerCase();
+    if (tag && !seen.has(key)) {
+      seen.add(key);
+      tags.push(tag);
+    }
+  }
+  return tags.length ? tags : undefined;
+};
 
 const LEGACY_PATHS: Record<string, ViewState> = {
   '/catalog.html': 'CATALOG',
@@ -42,6 +65,7 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
     month: params.get('month') || undefined,
     datasetId: params.get('datasetId') || undefined,
     searchQuery: params.get('q') || undefined,
+    tags: parseTags(params.get('tags')),
     adminSection: params.get('section') || undefined,
     supportSection: params.get('section') || undefined // Map generic 'section' param to supportSection as well
   };
@@ -152,6 +176,7 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
   if (params?.month) sp.set('month', params.month);
   if (params?.datasetId) sp.set('datasetId', params.datasetId);
   if (params?.searchQuery) sp.set('q', params.searchQuery);
+  if (params?.tags && params.tags.length) sp.set('tags', params.tags.join(','));
   if (params?.adminSection) sp.set('section', params.adminSection);
   if (params?.supportSection) sp.set('section', params.supportSection);
 
