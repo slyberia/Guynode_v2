@@ -64,24 +64,38 @@ const parseTable = (buf: Buffer): { columns: string[]; rows: Cell[][]; totalRows
   if (matrix.length === 0) throw new Error('sheet is empty');
 
   // Skip leading title/blank rows (a merged title cell reads as a single
-  // non-blank value). The header is the first row with >= 2 non-blank cells.
-  const nonBlank = (row: unknown[]) =>
-    row.filter((c) => c !== null && c !== undefined && String(c).trim() !== '').length;
-  let headerIdx = matrix.findIndex((row) => nonBlank(row) >= 2);
-  if (headerIdx < 0) headerIdx = 0; // genuinely single-column table
+  // non-blank value). The candidate header is the first row with >= 2 non-blank
+  // cells.
+  const cellStr = (c: unknown) => (c === null || c === undefined ? '' : String(c).trim());
+  const nonBlank = (row: unknown[]) => row.filter((c) => cellStr(c) !== '').length;
+  const looksNumeric = (c: unknown) => {
+    const s = cellStr(c);
+    return s !== '' && !Number.isNaN(Number(s));
+  };
+  let candidateIdx = matrix.findIndex((row) => nonBlank(row) >= 2);
+  if (candidateIdx < 0) candidateIdx = 0; // genuinely single-column table
 
-  const headerRow = matrix[headerIdx].map((c) => (c === null || c === undefined ? '' : String(c).trim()));
-  const dataRows = matrix.slice(headerIdx + 1);
+  // A real header row is all-text; if the candidate contains numeric cells the
+  // file is headerless (e.g. GeoNames export) — synthesize names and keep the
+  // candidate row as data so no row is lost.
+  const candidate = matrix[candidateIdx];
+  const candidateCells = candidate.filter((c) => cellStr(c) !== '');
+  const isHeader = candidateCells.length > 0 && candidateCells.every((c) => !looksNumeric(c));
 
-  let keepIdx = headerRow.map((h, i) => (h !== '' ? i : -1)).filter((i) => i >= 0);
   let columns: string[];
-  if (keepIdx.length === 0) {
-    // Headerless: keep all columns, synthesize names.
-    const width = matrix.reduce((w, r) => Math.max(w, r.length), 0);
+  let keepIdx: number[];
+  let dataRows: unknown[][];
+
+  if (isHeader) {
+    const headerRow = candidate.map(cellStr);
+    keepIdx = headerRow.map((h, i) => (h !== '' ? i : -1)).filter((i) => i >= 0);
+    columns = keepIdx.map((i) => headerRow[i]);
+    dataRows = matrix.slice(candidateIdx + 1);
+  } else {
+    const width = matrix.slice(candidateIdx).reduce((w, r) => Math.max(w, r.length), 0);
     keepIdx = Array.from({ length: width }, (_, i) => i);
     columns = keepIdx.map((i) => `col${i + 1}`);
-  } else {
-    columns = keepIdx.map((i) => headerRow[i]);
+    dataRows = matrix.slice(candidateIdx);
   }
 
   const rows: Cell[][] = dataRows.map((r) => keepIdx.map((i) => normalizeCell(r[i])));

@@ -13,7 +13,7 @@ export interface TablePreviewManifestEntry {
 export const TABLE_PREVIEW_MANIFEST: Record<string, TablePreviewManifestEntry> = {
   "/data/tables/amerindian-villages.preview.json": { columns: 3, previewRows: 100, totalRows: 112, sourceFormat: "Spreadsheet" },
   "/data/tables/gazetteer-places.preview.json": { columns: 7, previewRows: 100, totalRows: 1380, sourceFormat: "CSV" },
-  "/data/tables/geoname-places.preview.json": { columns: 15, previewRows: 100, totalRows: 5980, sourceFormat: "CSV" },
+  "/data/tables/geoname-places.preview.json": { columns: 19, previewRows: 100, totalRows: 5981, sourceFormat: "CSV" },
   "/data/tables/georgetown-census-population-2012.preview.json": { columns: 3, previewRows: 63, totalRows: 63, sourceFormat: "Spreadsheet" },
   "/data/tables/list-of-ndcs.preview.json": { columns: 4, previewRows: 100, totalRows: 119, sourceFormat: "Spreadsheet" },
 };
