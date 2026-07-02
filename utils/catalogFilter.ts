@@ -34,6 +34,23 @@ export const EMPTY_FILTER_STATE: CatalogFilterState = {
  * of duplicating the format column. They remain real tags — a deep-linked
  * `tags=vector` still filters — they're just not surfaced as suggested chips.
  */
+/**
+ * Curated synonym merges, applied at derivation time so equivalent tags collapse
+ * into one facet / one filter without editing the source data. Keys and values
+ * are lowercase. Kept deliberately small and unambiguous — only genuine synonyms
+ * belong here; specificity variants (census / census 2012, boundary / town
+ * boundary, region 1 … region 10) are distinct tags and are NOT merged.
+ */
+export const TAG_SYNONYMS: Record<string, string> = {
+  'regional map': 'region map',
+};
+
+/** Normalize a tag to its canonical, lowercased form (applies synonym merges). */
+export function canonicalizeTag(tag: string): string {
+  const key = tag.trim().toLowerCase();
+  return TAG_SYNONYMS[key] || key;
+}
+
 export const FORMAT_DUPLICATE_TAGS = new Set([
   'vector',
   'raster',
@@ -89,15 +106,19 @@ export interface TagFacetOptions {
  */
 export function deriveTagFacets(datasets: Dataset[], options: TagFacetOptions = {}): Facet[] {
   const { limit, excludeFormatDuplicates = true, include = [] } = options;
-  const includeLower = new Set(include.map((t) => t.toLowerCase()));
+  const includeLower = new Set(include.map((t) => canonicalizeTag(t)));
 
   const counts = new Map<string, number>();
   for (const d of datasets) {
+    // Count each canonical tag at most once per record so synonym merges (and a
+    // record that carries both a synonym and its canonical form) don't inflate.
+    const seenInRecord = new Set<string>();
     for (const raw of d.tags || []) {
-      const tag = raw.trim();
-      if (!tag) continue;
-      if (excludeFormatDuplicates && FORMAT_DUPLICATE_TAGS.has(tag.toLowerCase())) continue;
-      counts.set(tag, (counts.get(tag) || 0) + 1);
+      const canon = canonicalizeTag(raw);
+      if (!canon || seenInRecord.has(canon)) continue;
+      seenInRecord.add(canon);
+      if (excludeFormatDuplicates && FORMAT_DUPLICATE_TAGS.has(canon)) continue;
+      counts.set(canon, (counts.get(canon) || 0) + 1);
     }
   }
 
@@ -119,12 +140,12 @@ export function deriveTagFacets(datasets: Dataset[], options: TagFacetOptions = 
   return top;
 }
 
-/** Every distinct tag present in the data (lowercased), for validation/reconciliation. */
+/** Every distinct canonical tag present in the data, for validation/reconciliation. */
 export function deriveAllTags(datasets: Dataset[]): Set<string> {
   const all = new Set<string>();
   for (const d of datasets) {
     for (const raw of d.tags || []) {
-      const tag = raw.trim().toLowerCase();
+      const tag = canonicalizeTag(raw);
       if (tag) all.add(tag);
     }
   }
@@ -143,10 +164,10 @@ export function applyCatalogFilters(datasets: Dataset[], state: CatalogFilterSta
   }
 
   if (state.tags.length > 0) {
-    const wanted = state.tags.map((t) => t.toLowerCase());
+    const wanted = new Set(state.tags.map((t) => canonicalizeTag(t)));
     results = results.filter((r) => {
-      const itemTags = (r.item.tags || []).map((t) => t.toLowerCase());
-      return wanted.some((w) => itemTags.includes(w)); // OR within tags
+      const itemTags = (r.item.tags || []).map((t) => canonicalizeTag(t));
+      return itemTags.some((t) => wanted.has(t)); // OR within tags
     });
   }
 
@@ -166,13 +187,16 @@ export function reconcileFilterState(state: CatalogFilterState, datasets: Datase
 
   const category = state.category !== 'ALL' && categories.has(state.category) ? state.category : 'ALL';
 
+  // Store canonical tag forms so the URL/filter state stays normalized (a
+  // synonym like `regional map` becomes `region map`), and drop tags no dataset
+  // carries so a stale bookmark never leaves a dead chip active.
   const seen = new Set<string>();
   const tags: string[] = [];
   for (const t of state.tags) {
-    const lower = t.toLowerCase();
-    if (allTags.has(lower) && !seen.has(lower)) {
-      seen.add(lower);
-      tags.push(t);
+    const canon = canonicalizeTag(t);
+    if (allTags.has(canon) && !seen.has(canon)) {
+      seen.add(canon);
+      tags.push(canon);
     }
   }
 

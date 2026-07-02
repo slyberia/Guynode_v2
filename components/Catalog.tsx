@@ -6,6 +6,7 @@ import {
   CatalogFilterState,
   EMPTY_FILTER_STATE,
   applyCatalogFilters,
+  canonicalizeTag,
   deriveCategoryFacets,
   deriveTagFacets,
   reconcileFilterState,
@@ -60,9 +61,11 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
   const setSearchQuery = (searchQuery: string) => onFiltersChange({ ...filters, searchQuery });
   const setActiveCategory = (category: string) => onFiltersChange({ ...filters, category });
   const toggleTag = (tag: string) => {
-    const lower = tag.toLowerCase();
-    const has = filters.tags.some((t) => t.toLowerCase() === lower);
-    const tags = has ? filters.tags.filter((t) => t.toLowerCase() !== lower) : [...filters.tags, tag];
+    const canon = canonicalizeTag(tag);
+    const has = filters.tags.some((t) => canonicalizeTag(t) === canon);
+    const tags = has
+      ? filters.tags.filter((t) => canonicalizeTag(t) !== canon)
+      : [...filters.tags, canon];
     onFiltersChange({ ...filters, tags });
   };
   const clearFilters = () => onFiltersChange(EMPTY_FILTER_STATE);
@@ -294,7 +297,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-[10px] font-bold uppercase tracking-widest text-ink-500 dark:text-gray-500 mr-1">Tags</span>
             {tagFacets.map(({ value, count }) => {
-              const active = filters.tags.some((t) => t.toLowerCase() === value.toLowerCase());
+              const active = filters.tags.some((t) => canonicalizeTag(t) === canonicalizeTag(value));
               return (
                 <button
                   key={value}
@@ -529,7 +532,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 {selectedDataset.tags && selectedDataset.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedDataset.tags.map(tag => {
-                      const active = filters.tags.some((t) => t.toLowerCase() === tag.toLowerCase());
+                      const active = filters.tags.some((t) => canonicalizeTag(t) === canonicalizeTag(tag));
                       return (
                         <button
                           key={tag}

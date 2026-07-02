@@ -6,6 +6,7 @@ import {
   applyCatalogFilters,
   reconcileFilterState,
   hasActiveFilters,
+  canonicalizeTag,
   FORMAT_DUPLICATE_TAGS,
 } from '../utils/catalogFilter.js';
 import { Dataset } from '../types.js';
@@ -113,6 +114,39 @@ test('reconcileFilterState: keeps valid category/tags untouched', () => {
     CATALOG
   );
   assert.equal(cleaned.category, 'Reference');
+  assert.deepEqual(cleaned.tags, ['region map']);
+});
+
+test('canonicalizeTag: merges synonyms, lowercases/trims, passes others through', () => {
+  assert.equal(canonicalizeTag('regional map'), 'region map');
+  assert.equal(canonicalizeTag('  Regional Map '), 'region map');
+  assert.equal(canonicalizeTag('census'), 'census');
+});
+
+test('deriveTagFacets: synonyms collapse into one chip with a merged count', () => {
+  const data: Dataset[] = [
+    make({ id: 'a', tags: ['region map'] }),
+    make({ id: 'b', tags: ['regional map'] }),
+  ];
+  const facets = deriveTagFacets(data);
+  const regionMap = facets.filter((f) => f.value === 'region map');
+  assert.equal(regionMap.length, 1);
+  assert.equal(regionMap[0].count, 2);
+  assert.ok(!facets.some((f) => f.value === 'regional map'));
+});
+
+test('applyCatalogFilters: filtering by canonical tag matches records carrying a synonym', () => {
+  const data: Dataset[] = [
+    make({ id: 'a', tags: ['regional map'] }),
+    make({ id: 'b', tags: ['census'] }),
+  ];
+  const results = applyCatalogFilters(data, { searchQuery: '', category: 'ALL', tags: ['region map'] });
+  assert.deepEqual(results.map((r) => r.item.id), ['a']);
+});
+
+test('reconcileFilterState: normalizes a synonym tag to its canonical form', () => {
+  const data: Dataset[] = [make({ id: 'a', tags: ['regional map'] })];
+  const cleaned = reconcileFilterState({ searchQuery: '', category: 'ALL', tags: ['regional map'] }, data);
   assert.deepEqual(cleaned.tags, ['region map']);
 });
 
