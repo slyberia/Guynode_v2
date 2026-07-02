@@ -90,7 +90,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
             onClick={() => setView('LEARN_INDEX')}
             className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LEARN_INDEX' || currentView === 'LEARN_POST' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
-            Learn
+            GIS Resources
           </button>
            <button
             onClick={() => setView('ABOUT')}

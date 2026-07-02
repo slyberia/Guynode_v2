@@ -4,13 +4,13 @@
 > Do not invent missing values. Items are flagged `needs-review` for a human
 > administrator. See `docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md`.
 
-- **Generated:** 2026-06-30T01:42:43.442Z
-- **Records inspected:** 53
+- **Generated:** 2026-07-02T21:10:25.680Z
+- **Records inspected:** 85
 - **Errors:** 0
-- **Warnings:** 101
-- **Info:** 53
+- **Warnings:** 205
+- **Info:** 85
 
-> **Reading the warning count:** the 101 warnings are the
+> **Reading the warning count:** the 205 warnings are the
 > _expected enrichment backlog_ created by introducing the new metadata contract
 > in Prompt 1 — they flag fields that are not populated yet, **not** regressions
 > or corrupted data. `0` errors means no blocking schema
@@ -61,13 +61,14 @@ _No errors._
 
 Counts are total warning occurrences for each rule.
 
-### High (55)
-- `missing-license` (53) — No license recorded (legal exposure)
-- `sensitive-missing-caveats` (2) — Sensitive dataset lacks caveats
+### High (95)
+- `missing-license` (85) — No license recorded (legal exposure)
+- `sensitive-missing-caveats` (6) — Sensitive dataset lacks caveats
+- `sensitive-missing-authority` (4) — Sensitive dataset lacks authorityLevel
 
-### Medium (46)
-- `missing-citation` (23) — No citation/attribution
-- `missing-caveats` (23) — No caveats recorded
+### Medium (110)
+- `missing-citation` (55) — No citation/attribution
+- `missing-caveats` (55) — No caveats recorded
 
 ### Low (0)
 _none_
@@ -85,12 +86,13 @@ _none_
 A script can detect/prepare these, but a human confirms the fix.
 _none_
 
-### Manual / evidence-required (101)
+### Manual / evidence-required (205)
 Require human or source review — **do not invent values**.
-- `missing-license` (53) — No license recorded (legal exposure)
-- `missing-citation` (23) — No citation/attribution
-- `missing-caveats` (23) — No caveats recorded
-- `sensitive-missing-caveats` (2) — Sensitive dataset lacks caveats
+- `missing-license` (85) — No license recorded (legal exposure)
+- `missing-citation` (55) — No citation/attribution
+- `missing-caveats` (55) — No caveats recorded
+- `sensitive-missing-caveats` (6) — Sensitive dataset lacks caveats
+- `sensitive-missing-authority` (4) — Sensitive dataset lacks authorityLevel
 
 ## Script-resolvable fields (target for a future enrichment script)
 
@@ -111,7 +113,7 @@ Require human or source review — **do not invent values**.
 - `lineage` — provenance narrative from the source
 - `legalUseWarning` — legal language for sensitive boundaries
 
-## Sensitive datasets — priority metadata enrichment (32)
+## Sensitive datasets — priority metadata enrichment (36)
 
 These match caveat-sensitive categories (boundaries, Amerindian/Indigenous
 areas, historical maps, petroleum, coordinate systems, legal/planning
@@ -150,6 +152,10 @@ boundaries) and should receive caveats, `authorityLevel`, `sourceType`, and
 - `guyana-suriname-maritime-boundary-dispute` — Reference — matched: boundary
 - `linden-town-constituencies` — Administrative Boundaries — matched: boundaries
 - `georgetown-vintage-town-map-1914` — Reference — matched: historical
+- `legacy-admin-045` — Administrative Boundaries — matched: boundaries
+- `legacy-admin-047` — Administrative Boundaries — matched: boundaries
+- `legacy-admin-058` — Administrative Boundaries — matched: boundaries
+- `legacy-admin-061` — Administrative Boundaries — matched: boundaries
 
 ## Record-level worklists
 
@@ -160,13 +166,13 @@ _none_
 _none_
 
 ### Records with missing caveats
-`all-ndcs`, `gazetteer-places`, `geoname-places`, `georgetown-census-districts`, `guyana-coastal-villages`, `village-household-tables-2012`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
+`all-ndcs`, `gazetteer-places`, `geoname-places`, `georgetown-census-districts`, `guyana-coastal-villages`, `village-household-tables-2012`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `guyana-regional-reference-map`, `guyana-admin-regions-population`, `legacy-admin-045`, `legacy-admin-047`, `legacy-admin-058`, `legacy-admin-061`, `legacy-demtopo-001`, `legacy-demtopo-002`, `legacy-demtopo-003`, `legacy-demtopo-004`, `legacy-demtopo-005`, `legacy-demtopo-006`, `legacy-demtopo-007`, `legacy-demtopo-008`, `legacy-demtopo-009`, `legacy-demtopo-010`, `legacy-demtopo-011`, `legacy-demtopo-014`, `legacy-demtopo-015`, `legacy-demtopo-016`, `legacy-infra-001`, `legacy-infra-002`, `legacy-infra-003`, `legacy-infra-004`, `legacy-socio-001`, `legacy-socio-002`, `legacy-socio-003`, `legacy-socio-004`, `legacy-socio-005`, `legacy-socio-008`, `legacy-socio-009`, `legacy-socio-016`, `legacy-socio-020`, `legacy-socio-021`
 
 ### Records with placeholder thumbnails
-`plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
+`plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`, `legacy-admin-045`, `legacy-admin-047`, `legacy-admin-058`, `legacy-admin-061`, `legacy-demtopo-001`, `legacy-demtopo-002`, `legacy-demtopo-003`, `legacy-demtopo-004`, `legacy-demtopo-005`, `legacy-demtopo-006`, `legacy-demtopo-007`, `legacy-demtopo-008`, `legacy-demtopo-009`, `legacy-demtopo-010`, `legacy-demtopo-011`, `legacy-demtopo-014`, `legacy-demtopo-015`, `legacy-demtopo-016`, `legacy-infra-001`, `legacy-infra-002`, `legacy-infra-003`, `legacy-infra-004`, `legacy-socio-001`, `legacy-socio-002`, `legacy-socio-003`, `legacy-socio-004`, `legacy-socio-005`, `legacy-socio-008`, `legacy-socio-009`, `legacy-socio-016`, `legacy-socio-020`, `legacy-socio-021`
 
 ### Records with missing license / citation
-`plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`
+`plantations-and-negro-villages-1860`, `all-ndcs`, `amerindian-areas`, `amerindian-villages`, `anna-regina-boundary`, `corriverton-constituencies`, `gazetteer-places`, `geoname-places`, `georgetown-constituencies`, `georgetown-census-districts`, `guyana-coastal-villages`, `guyana-national-boundary`, `village-household-tables-2012`, `lethem-constituencies`, `linden-census-districts`, `list-of-ndcs`, `local-government-areas`, `mabaruma-constituencies`, `mahdia-boundary`, `guyana-exclusive-economic-zone`, `bartica-municipality`, `new-amsterdam-census-districts`, `georgetown-census-population-2012`, `village-population-tables-2012`, `region-1-reference-map`, `region-2-reference-map`, `region-3-reference-map`, `region-4-reference-map`, `region-6-reference-map`, `region-7-reference-map`, `region-8-reference-map`, `region-9-reference-map`, `region-10-reference-map`, `region-10-ndcs`, `region-1-ndcs`, `region-2-ndcs`, `region-3-ndcs`, `region-4-ndcs`, `region-5-villages`, `region-5-ndcs`, `region-6-ndcs`, `region-7-ndcs`, `region-8-ndcs`, `region-9-ndcs`, `region-9-boundary`, `region-1-boundary`, `rose-hall-constituencies`, `silica-city-boundary`, `guyana-suriname-maritime-boundary-dispute`, `linden-town-constituencies`, `georgetown-vintage-town-map-1914`, `guyana-regional-reference-map`, `guyana-admin-regions-population`, `legacy-admin-045`, `legacy-admin-047`, `legacy-admin-058`, `legacy-admin-061`, `legacy-demtopo-001`, `legacy-demtopo-002`, `legacy-demtopo-003`, `legacy-demtopo-004`, `legacy-demtopo-005`, `legacy-demtopo-006`, `legacy-demtopo-007`, `legacy-demtopo-008`, `legacy-demtopo-009`, `legacy-demtopo-010`, `legacy-demtopo-011`, `legacy-demtopo-014`, `legacy-demtopo-015`, `legacy-demtopo-016`, `legacy-infra-001`, `legacy-infra-002`, `legacy-infra-003`, `legacy-infra-004`, `legacy-socio-001`, `legacy-socio-002`, `legacy-socio-003`, `legacy-socio-004`, `legacy-socio-005`, `legacy-socio-008`, `legacy-socio-009`, `legacy-socio-016`, `legacy-socio-020`, `legacy-socio-021`
 
 ### Records with missing or placeholder checksum
 _none_

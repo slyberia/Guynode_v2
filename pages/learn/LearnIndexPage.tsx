@@ -2,70 +2,82 @@ import React, { useEffect, useState } from 'react';
 import { ViewState } from '../../types';
 import { RouteParams } from '../../utils/routing';
 
-interface LearnPost {
-  slug: string;
+interface Resource {
+  id: string;
   title: string;
-  category: string;
-  difficulty: string;
-  readTimeMinutes: number;
-  excerpt: string;
+  resourceType: 'web-map-app' | 'data-portal' | 'commercial-reference' | 'tutorial' | 'manual-review' | 'source-reference';
+  url: string;
+  description: string;
+  relatedDatasets?: string[];
+  status: string;
+  migrationDecision: string;
 }
 
 interface LearnIndexPageProps {
   navigate: (view: ViewState, params?: RouteParams) => void;
 }
 
-const CATEGORY_COLORS: Record<string, string> = {
-  guide:      'bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark border-brand-green-600/20 dark:border-gn-accent-dark/20',
-  tutorial:   'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20',
-  concept:    'bg-brand-gold-600/10 text-brand-gold-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold border-brand-gold-600/20 dark:border-gn-accent-gold/20',
-  comparison: 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
+const RESOURCE_TYPE_COLORS: Record<string, string> = {
+  'web-map-app': 'bg-brand-green-600/10 text-brand-green-600 border-brand-green-600/20',
+  'data-portal': 'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20',
+  'commercial-reference': 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
+  'tutorial': 'bg-brand-gold-600/10 text-brand-gold-600 border-brand-gold-600/20',
+  'source-reference': 'bg-gn-foreground-muted/10 text-gn-foreground-muted border-gn-foreground-muted/20',
+  'manual-review': 'bg-gn-surface-muted dark:bg-gn-surface-muted-dark text-gn-foreground border-gn-border'
 };
 
-const PostCard: React.FC<{ post: LearnPost; onClick: () => void }> = ({ post, onClick }) => (
-  <button
-    onClick={onClick}
-    className="text-left w-full bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-gn-accent-dark transition-colors group"
+const RESOURCE_TYPE_LABELS: Record<string, string> = {
+  'web-map-app': 'Web Map & App',
+  'data-portal': 'Data Portal',
+  'commercial-reference': 'Commercial Reference',
+  'tutorial': 'Tutorial',
+  'source-reference': 'Source Reference',
+  'manual-review': 'Other Resource'
+};
+
+const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => (
+  <a
+    href={resource.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-left w-full bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-gn-accent-dark transition-colors group block h-full flex flex-col"
   >
     <div className="flex items-center gap-2 mb-3">
-      <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${CATEGORY_COLORS[post.category] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted border-gn-border dark:border-gn-border-dark'}`}>
-        {post.category}
-      </span>
-      <span className="text-[10px] text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono">
-        {post.readTimeMinutes} min read
+      <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${RESOURCE_TYPE_COLORS[resource.resourceType] || RESOURCE_TYPE_COLORS['manual-review']}`}>
+        {RESOURCE_TYPE_LABELS[resource.resourceType] || resource.resourceType}
       </span>
     </div>
     <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-dark transition-colors">
-      {post.title}
+      {resource.title} ↗
     </h3>
-    <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed">
-      {post.excerpt}
+    <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed flex-1">
+      {resource.description}
     </p>
-  </button>
+    {resource.relatedDatasets && resource.relatedDatasets.length > 0 && (
+      <div className="mt-4 pt-3 border-t border-gn-border dark:border-gn-border-dark">
+        <span className="text-[10px] text-gn-foreground-muted">Related to {resource.relatedDatasets.length} datasets</span>
+      </div>
+    )}
+  </a>
 );
 
 export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
-  const [posts, setPosts] = useState<LearnPost[]>([]);
+  const [resources, setResources] = useState<Resource[]>([]);
   const [loadError, setLoadError] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<string>('all');
 
   useEffect(() => {
-    fetch('/learn/index.json')
+    fetch('/data/resources.json')
       .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
-      .then((data: LearnPost[]) => setPosts(data))
+      .then((data: Resource[]) => setResources(data))
       .catch(() => setLoadError(true));
   }, []);
 
-  const goToPost = (slug: string) => navigate('LEARN_POST', { slug });
+  const resourceTypes = Array.from(new Set(resources.map(r => r.resourceType))).sort();
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const gettingStartedSlugs = ['getting-started-gis-guynode', 'beginner-gis-concepts', 'arcgis-vs-qgis'];
-  const tutorialSlugs = ['open-shapefile-qgis', 'open-csv-qgis', 'open-geojson-qgis', 'open-raster-qgis', 'how-to-use-guynode-datasets'];
-  const webMappingSlugs = ['web-map-tutorials-examples', 'global-map-services', 'place-based-geocoding-guyana'];
-
-  const postsBySlug = Object.fromEntries(posts.map(p => [p.slug, p]));
+  const filteredResources = activeFilter === 'all' 
+    ? resources 
+    : resources.filter(r => r.resourceType === activeFilter);
 
   return (
     <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">
@@ -74,219 +86,69 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
       <section className="bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-green-600 dark:text-gn-accent-dark mb-4">
-            Guynode Learning Center
+            Guynode External Directory
           </p>
           <h1 className="text-4xl font-serif font-bold text-gn-foreground dark:text-gn-foreground-dark mb-6 leading-tight">
-            Learn GIS with Guynode
+            GIS Resources & Portals
           </h1>
           <p className="text-lg text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 leading-relaxed max-w-2xl mx-auto">
-            Build practical skills for working with spatial data in Guyana and beyond. Explore beginner guides, software walkthroughs, and step-by-step tutorials designed to help you move from download to map.
+            Explore web maps, external data portals, and interactive tools that provide additional context to Guynode's spatial catalog.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        </div>
+      </section>
+
+      {/* RESOURCES BROWSER */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          
+          {/* Filters */}
+          <div className="flex flex-wrap gap-2 mb-10 pb-6 border-b border-gn-border dark:border-gn-border-dark">
             <button
-              onClick={() => scrollTo('getting-started')}
-              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
+              onClick={() => setActiveFilter('all')}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === 'all' ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600'}`}
             >
-              Start Learning
+              All Resources ({resources.length})
             </button>
-            <button
-              onClick={() => scrollTo('tutorials')}
-              className="border border-brand-green-600 dark:border-gn-accent-dark text-brand-green-600 dark:text-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
-            >
-              Explore Tutorials
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* INTRO */}
-      <section className="py-16 px-6 border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-4">A Practical Starting Point for GIS Work</h2>
-          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed text-base">
-            Whether you are opening your first shapefile, comparing GIS software, or trying to understand how multiple layers work together, this section is designed to help you build confidence with spatial data. The focus is practical: understand the basics, use Guynode datasets effectively, and develop workflows that can scale from simple map viewing to deeper analysis.
-          </p>
-        </div>
-      </section>
-
-      {/* LEARNING PATHS */}
-      <section className="py-16 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-10 text-center">Choose a learning path</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                heading: 'New to GIS',
-                body: 'Learn the core ideas behind spatial data, common file types, and the basic tools used to view and analyze them.',
-                cta: 'Begin Here',
-                action: () => goToPost('getting-started-gis-guynode'),
-              },
-              {
-                heading: 'Using Guynode Data',
-                body: 'Learn how to read a dataset page, download files, open them in GIS software, and understand what the data contains.',
-                cta: 'View Workflow',
-                action: () => goToPost('how-to-use-guynode-datasets'),
-              },
-              {
-                heading: 'Software & Setup',
-                body: 'Compare ArcGIS and QGIS, then follow step-by-step tutorials for opening common data formats.',
-                cta: 'Compare Tools',
-                action: () => goToPost('arcgis-vs-qgis'),
-              },
-              {
-                heading: 'Web Mapping & Services',
-                body: 'Connect to global tile services, embed interactive maps in web projects, and geocode Guyanese addresses using open tools.',
-                cta: 'Explore Web Mapping',
-                action: () => scrollTo('web-mapping'),
-              },
-            ].map(path => (
-              <div key={path.heading} className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-6 flex flex-col gap-4">
-                <h3 className="font-bold text-base text-gn-foreground dark:text-gn-foreground-dark">{path.heading}</h3>
-                <p className="text-sm text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed flex-1">{path.body}</p>
-                <button
-                  onClick={path.action}
-                  className="text-sm font-bold text-brand-green-600 dark:text-gn-accent-dark hover:underline text-left"
-                >
-                  {path.cta} →
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GETTING STARTED */}
-      <section id="getting-started" className="py-16 px-6 border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-3">Getting Started</h2>
-          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
-            New to GIS or returning after a long gap? Start here. These guides explain core concepts, common data types, and the basic tools needed to begin working with Guynode datasets.
-          </p>
-          {loadError ? (
-            <p className="text-red-500 font-mono text-sm">&gt; Failed to load posts.</p>
-          ) : posts.length === 0 ? (
-            <div className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono text-sm animate-pulse">&gt; Loading...</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {gettingStartedSlugs.map(slug =>
-                postsBySlug[slug] ? (
-                  <PostCard key={slug} post={postsBySlug[slug]} onClick={() => goToPost(slug)} />
-                ) : null
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* TUTORIALS */}
-      <section id="tutorials" className="py-16 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-3">Tutorials</h2>
-          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
-            These practical walkthroughs help you move from downloaded files to working maps. They are designed around the kinds of formats and tasks Guynode users are most likely to encounter.
-          </p>
-          {loadError ? (
-            <p className="text-red-500 font-mono text-sm">&gt; Failed to load posts.</p>
-          ) : posts.length === 0 ? (
-            <div className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono text-sm animate-pulse">&gt; Loading...</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {tutorialSlugs.map(slug =>
-                postsBySlug[slug] ? (
-                  <PostCard key={slug} post={postsBySlug[slug]} onClick={() => goToPost(slug)} />
-                ) : null
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* WEB MAPPING & SERVICES */}
-      <section id="web-mapping" className="py-16 px-6 border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-3">Web Mapping and Services</h2>
-          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
-            Learn how to connect to global tile services, embed interactive maps in QGIS, ArcGIS Pro, and web applications, and geocode Guyanese place names using open tools.
-          </p>
-          {loadError ? (
-            <p className="text-red-500 font-mono text-sm">&gt; Failed to load posts.</p>
-          ) : posts.length === 0 ? (
-            <div className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono text-sm animate-pulse">&gt; Loading...</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {webMappingSlugs.map(slug =>
-                postsBySlug[slug] ? (
-                  <PostCard key={slug} post={postsBySlug[slug]} onClick={() => goToPost(slug)} />
-                ) : null
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* EXTERNAL RESOURCES */}
-      <section className="py-16 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-b border-gn-border dark:border-gn-border-dark">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-serif font-bold mb-3">Go further with trusted resources</h2>
-          <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-10 max-w-2xl">
-            Some topics are best explored through official software documentation. These links are included selectively for users who want to go further.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                title: 'QGIS Official Site',
-                url: 'https://qgis.org',
-                description: 'Download QGIS and explore official documentation, plugins, and community resources.',
-              },
-              {
-                title: 'ArcGIS Platform',
-                url: 'https://www.esri.com',
-                description: "Learn more about Esri's geospatial ecosystem, including desktop, web, and organizational GIS tools.",
-              },
-              {
-                title: 'QGIS Documentation',
-                url: 'https://docs.qgis.org',
-                description: 'Access the official QGIS user manual, tutorials, and training materials.',
-              },
-            ].map(resource => (
-              <a
-                key={resource.url}
-                href={resource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gn-elevated dark:bg-gn-elevated-dark border border-gn-border dark:border-gn-border-dark rounded-lg p-5 hover:border-brand-green-600 dark:hover:border-gn-accent-dark transition-colors group block"
+            {resourceTypes.map(type => (
+              <button
+                key={type}
+                onClick={() => setActiveFilter(type)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === type ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600'}`}
               >
-                <h3 className="font-bold text-sm text-gn-foreground dark:text-gn-foreground-dark mb-2 group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-dark transition-colors">
-                  {resource.title} ↗
-                </h3>
-                <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed">
-                  {resource.description}
-                </p>
-              </a>
+                {RESOURCE_TYPE_LABELS[type] || type} ({resources.filter(r => r.resourceType === type).length})
+              </button>
             ))}
           </div>
+
+          {/* Grid */}
+          {loadError ? (
+            <p className="text-red-500 font-mono text-sm">&gt; Failed to load resources.</p>
+          ) : resources.length === 0 ? (
+            <div className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark font-mono text-sm animate-pulse">&gt; Loading...</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredResources.map(resource => (
+                <ResourceCard key={resource.id} resource={resource} />
+              ))}
+            </div>
+          )}
+
         </div>
       </section>
 
       {/* FOOTER CTA */}
-      <section className="py-20 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark">
+      <section className="py-20 px-6 bg-gn-surface-muted dark:bg-gn-surface-muted-dark border-t border-gn-border dark:border-gn-border-dark">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-serif font-bold mb-4">Ready to work with real spatial data?</h2>
+          <h2 className="text-2xl font-serif font-bold mb-4">Looking for local datasets?</h2>
           <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark mb-8 leading-relaxed">
-            Browse Guynode's datasets, open them in your GIS software of choice, and build practical mapping and analysis workflows from the ground up.
+            While these external resources provide great context, Guynode's primary mission is hosting downloadable data files.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <button
               onClick={() => navigate('CATALOG')}
               className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
             >
-              Browse Datasets
-            </button>
-            <button
-              onClick={() => scrollTo('tutorials')}
-              className="border border-brand-green-600 dark:border-gn-accent-dark text-brand-green-600 dark:text-gn-accent-dark hover:bg-brand-green-600 hover:text-white dark:hover:bg-gn-accent-dark dark:hover:text-gn-foreground-dark font-bold py-3 px-8 rounded transition-colors"
-            >
-              Open Tutorials
+              Browse Data Catalog
             </button>
           </div>
         </div>

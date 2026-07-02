@@ -45,7 +45,8 @@
     ],
     "attribution": "Historical blog and pdf",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "all-ndcs",
@@ -85,7 +86,8 @@
       }
     ],
     "authorityLevel": "needs-review",
-    "geojsonUrl": "/data/administrative-boundaries/all-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/all-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "amerindian-areas",
@@ -135,7 +137,8 @@
     "attribution": "Amerindian Land Titling Project; LandMark",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/amerindian-areas.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/amerindian-areas.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "amerindian-villages",
@@ -184,7 +187,8 @@
     ],
     "attribution": "Ministry of Amerindian Affairs",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "tablePreviewUrl": "/data/tables/amerindian-villages.preview.json"
+    "tablePreviewUrl": "/data/tables/amerindian-villages.preview.json",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "anna-regina-boundary",
@@ -235,7 +239,8 @@
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/anna-regina-boundary.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/anna-regina-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "corriverton-constituencies",
@@ -285,7 +290,8 @@
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/corriverton-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/corriverton-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "gazetteer-places",
@@ -325,7 +331,8 @@
       }
     ],
     "tablePreviewUrl": "/data/tables/gazetteer-places.preview.json",
-    "geojsonUrl": "/data/points/gazetteer-places.geojson"
+    "geojsonUrl": "/data/points/gazetteer-places.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "geoname-places",
@@ -365,7 +372,8 @@
       }
     ],
     "tablePreviewUrl": "/data/tables/geoname-places.preview.json",
-    "geojsonUrl": "/data/points/geoname-places.geojson"
+    "geojsonUrl": "/data/points/geoname-places.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "georgetown-constituencies",
@@ -415,7 +423,8 @@
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/georgetown-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/georgetown-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "georgetown-census-districts",
@@ -454,7 +463,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "geojsonUrl": "/data/demographics/georgetown-census-districts.geojson"
+    "geojsonUrl": "/data/demographics/georgetown-census-districts.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-coastal-villages",
@@ -492,7 +502,8 @@
         "checksumStatus": "verified-via-origin-hash",
         "checksumSource": "origin-md5"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-national-boundary",
@@ -542,7 +553,8 @@
     "attribution": "OpenStreetMap",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/guyana-national-boundary.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/guyana-national-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "village-household-tables-2012",
@@ -580,7 +592,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
   },
   {
     "id": "lethem-constituencies",
@@ -630,7 +643,8 @@
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/lethem-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/lethem-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "linden-census-districts",
@@ -669,7 +683,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "geojsonUrl": "/data/demographics/linden-census-districts.geojson"
+    "geojsonUrl": "/data/demographics/linden-census-districts.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "list-of-ndcs",
@@ -708,7 +723,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "tablePreviewUrl": "/data/tables/list-of-ndcs.preview.json"
+    "tablePreviewUrl": "/data/tables/list-of-ndcs.preview.json",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "local-government-areas",
@@ -748,7 +764,8 @@
       }
     ],
     "authorityLevel": "needs-review",
-    "geojsonUrl": "/data/administrative-boundaries/local-government-areas.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/local-government-areas.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "mabaruma-constituencies",
@@ -798,7 +815,8 @@
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/mabaruma-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/mabaruma-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "mahdia-boundary",
@@ -848,7 +866,8 @@
     "attribution": "Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/mahdia-boundary.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/mahdia-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-exclusive-economic-zone",
@@ -898,7 +917,8 @@
     "attribution": "Flanders Marine Institute",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/guyana-exclusive-economic-zone.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/guyana-exclusive-economic-zone.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "bartica-municipality",
@@ -948,7 +968,8 @@
     "attribution": "GECOM; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/bartica-municipality.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/bartica-municipality.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "new-amsterdam-census-districts",
@@ -987,7 +1008,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "geojsonUrl": "/data/demographics/new-amsterdam-census-districts.geojson"
+    "geojsonUrl": "/data/demographics/new-amsterdam-census-districts.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "georgetown-census-population-2012",
@@ -1026,7 +1048,8 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "tablePreviewUrl": "/data/tables/georgetown-census-population-2012.preview.json"
+    "tablePreviewUrl": "/data/tables/georgetown-census-population-2012.preview.json",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "village-population-tables-2012",
@@ -1064,7 +1087,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
   },
   {
     "id": "region-1-reference-map",
@@ -1102,7 +1126,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-2-reference-map",
@@ -1140,7 +1165,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-3-reference-map",
@@ -1178,7 +1204,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-4-reference-map",
@@ -1216,7 +1243,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-6-reference-map",
@@ -1254,7 +1282,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-7-reference-map",
@@ -1292,7 +1321,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-8-reference-map",
@@ -1330,7 +1360,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-9-reference-map",
@@ -1368,7 +1399,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-10-reference-map",
@@ -1406,7 +1438,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-10-ndcs",
@@ -1455,7 +1488,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-10-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-10-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-1-ndcs",
@@ -1504,7 +1538,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-1-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-1-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-2-ndcs",
@@ -1553,7 +1588,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-2-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-2-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-3-ndcs",
@@ -1602,7 +1638,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-3-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-3-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-4-ndcs",
@@ -1651,7 +1688,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-4-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-4-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-5-villages",
@@ -1701,7 +1739,8 @@
     "attribution": "Directorate of Colonial Surveys; GuyNode",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/region-5-villages.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-5-villages.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-5-ndcs",
@@ -1750,7 +1789,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-5-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-5-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-6-ndcs",
@@ -1799,7 +1839,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-6-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-6-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-7-ndcs",
@@ -1848,7 +1889,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-7-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-7-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-8-ndcs",
@@ -1897,7 +1939,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-8-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-8-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-9-ndcs",
@@ -1946,7 +1989,8 @@
     ],
     "attribution": "Bureau of Statistics",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "geojsonUrl": "/data/administrative-boundaries/region-9-ndcs.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-9-ndcs.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-9-boundary",
@@ -1996,7 +2040,8 @@
     "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/region-9-boundary.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-9-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "region-1-boundary",
@@ -2046,7 +2091,8 @@
     "attribution": "OpenStreetMap; Guyana Lands and Surveys Commission",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/region-1-boundary.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/region-1-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "rose-hall-constituencies",
@@ -2096,7 +2142,8 @@
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/rose-hall-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/rose-hall-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "silica-city-boundary",
@@ -2146,7 +2193,8 @@
     "attribution": "Ministry of Housing and Water via Stabroek News",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/planning-and-development/silica-city-boundary.geojson"
+    "geojsonUrl": "/data/planning-and-development/silica-city-boundary.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-suriname-maritime-boundary-dispute",
@@ -2195,7 +2243,8 @@
     ],
     "attribution": "Conference paper by Peggy Hoyle (2001)",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "linden-town-constituencies",
@@ -2245,7 +2294,8 @@
     "attribution": "GECOM",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
     "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
-    "geojsonUrl": "/data/administrative-boundaries/linden-town-constituencies.geojson"
+    "geojsonUrl": "/data/administrative-boundaries/linden-town-constituencies.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "georgetown-vintage-town-map-1914",
@@ -2294,7 +2344,8 @@
     ],
     "attribution": "Historical archives",
     "sourceUrl": "https://guynode.com/admin_boundaries.html",
-    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making."
+    "legalUseWarning": "Indicative dataset only; not for legal, cadastral, electoral, maritime, or administrative decision-making.",
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-regional-reference-map",
@@ -2332,7 +2383,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
   },
   {
     "id": "guyana-admin-regions-population",
@@ -2371,6 +2423,1675 @@
         "checksumSource": "self-sha256"
       }
     ],
-    "geojsonUrl": "/data/demographics/guyana-admin-regions-population.geojson"
+    "geojsonUrl": "/data/demographics/guyana-admin-regions-population.geojson",
+    "legacyHomepageCategory": "Administrative Boundaries"
+  },
+  {
+    "id": "legacy-admin-045",
+    "title": "Classified and Unclassified NDC Boundaries, Guyana",
+    "description": "Shapefile of areas classified as NDCs and areas earmaked to be classified as NDCs. Census data are available for this NDC layer. Source: GADM maps and data",
+    "category": "Administrative Boundaries",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "GADM maps and data",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-045/all_ndcs_guyana_gadm.zip",
+        "checksum": "sha256:5691f1442f2ca2fa432a187a9ae17f904d76994b3d8fa8713071c8ef34a3846b",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "gadm.org",
+        "url": "https://gadm.org/download_country.html",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
+  },
+  {
+    "id": "legacy-admin-047",
+    "title": "Demographic Data, 2002 by NDCs",
+    "description": "Population and Household datasets for NDCs, 2002 Source: Bureau of Statistics, Guyana.",
+    "category": "Administrative Boundaries",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "PDF",
+    "size": "Unknown",
+    "source": "Bureau of Statistics, Guyana.",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (PDF)",
+        "format": "PDF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-047/list_of_ndcs.pdf",
+        "checksum": "sha256:e11325c7c3da19f2c198490545adfe3d0fdc4438b37f6bab940f2d5a85c5bdef",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-047/ndc_data_2002.zip",
+        "checksum": "sha256:e5b2b91bedfcd99e3d9ab059ee7007c91fe07ae26955264b03ca88ab483aa14c",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
+  },
+  {
+    "id": "legacy-admin-058",
+    "title": "Local Government Constituencies",
+    "description": "Constituencies of NDCs and Municipalities. Partially completed layer. Source: GuyNode.",
+    "category": "Administrative Boundaries",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "GuyNode.",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-058/guyana-lg-constituencies_latest.zip",
+        "checksum": "sha256:cf6eb824d6ed66a8c13640a0e76b26072fe7b6c468a2c47e5c98276ea07042a1",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
+  },
+  {
+    "id": "legacy-admin-061",
+    "title": "Coastal Villages",
+    "description": "Village polygons for most of Guyana's coast. Some additional editing of village boundaries may be necessary. Layers contains population totals from the 2012 census. Source: Village polygons obtained from Map drawn by the Directorate of Colonial Surveys, 1949 Digitized by GuyNode.",
+    "category": "Administrative Boundaries",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Village polygons obtained from Map drawn by the Directorate of Colonial Surveys, 1949 Digitized by GuyNode.",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-061/coastal_villages_guyana.zip",
+        "checksum": "sha256:88eba0962244d1fe47d13fa4f9af3f82c25c7d1cf8b6b1276c50cbe3296afae7",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "maps.princeton.edu",
+        "url": "https://maps.princeton.edu/catalog/princeton-cf95jf105",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Administrative Boundaries"
+  },
+  {
+    "id": "legacy-demtopo-001",
+    "title": "Region 1, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 1. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-001/region1_srtm30.zip",
+        "checksum": "sha256:092b5d022f8743314d7dd03f8f2c881e4649a6e843c86521a8c2a9ec003c9152",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-002",
+    "title": "Region 2, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 2. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-002/region2_srtm30.zip",
+        "checksum": "sha256:831083c5e893d6e5716f494c0bef07f55fd1837b895938d5afcf8b34217a5323",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-003",
+    "title": "Region 3, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 3. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-003/region3_srtm30.zip",
+        "checksum": "sha256:0e0c82720ba1830a9f931c713edd2e06164a91afc80f4b82a6b3806ddec7a287",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-004",
+    "title": "Region 4, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 4. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-004/region4_srtm30.zip",
+        "checksum": "sha256:81a5c49a965b74cb06639997f9ee538080b45266f58955c1cdb3b3c3fd13c7a7",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-005",
+    "title": "Region 5, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 5. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-005/region5_srtm30.zip",
+        "checksum": "sha256:6e2ca9485cb6f532d20907e1564210f5c68c642e052b964516ab4d4a7e0568e2",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-006",
+    "title": "Region 6, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 6 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-006/region6_srtm30.zip",
+        "checksum": "sha256:0c8ea9258d6a2e35293b4d7dc316a03b44a19db0ddfdb39864ac7290d1d332f4",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-007",
+    "title": "Region 7, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 7. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
+        "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
+        "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
+        "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
+        "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
+        "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
+        "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
+        "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
+        "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
+        "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
+        "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
+        "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
+        "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
+        "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
+        "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "provenance-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "apps.nationalmap.gov",
+        "url": "https://apps.nationalmap.gov/downloader/",
+        "relationship": "app-reference",
+        "status": "needs-review"
+      },
+      {
+        "label": "portal.opentopography.org",
+        "url": "https://portal.opentopography.org/datasets?minX=-62.5341796875&minY=0.09558114446562627&maxX=-55.12939453125&maxY=9.543333212684416",
+        "relationship": "portal-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "www.google.com",
+        "url": "https://www.google.com/maps/place/Potaro-Siparuni,+Guyana/@4.861365,-59.7785712,9z/data=!3m1!4b1!4m5!3m4!1s0x8dbc7dbb39e173a7:0xd1fed35ae7c9497d!8m2!3d4.7855853!4d-59.2879977!5m1!1e4",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "www.google.com",
+        "url": "https://www.google.com/maps/search/CuyREgion+9,+Guyana/@2.5898085,-59.9781035,8z/data=!5m1!1e4",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "www.google.com",
+        "url": "https://www.google.com/maps/place/Upper+Demerara-Berbice,+Guyana/@5.4860764,-58.773019,9z/data=!4m5!3m4!1s0x8da356a8db70ae11:0xd83b34d3ce72b090!8m2!3d5.3064879!4d-58.1892921!5m1!1e4",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "storymaps.arcgis.com",
+        "url": "https://storymaps.arcgis.com/stories/b15de933757b4ddb80c133a3b7759329",
+        "relationship": "app-reference",
+        "status": "needs-review"
+      },
+      {
+        "label": "search.earthdata.nasa.gov",
+        "url": "https://search.earthdata.nasa.gov/search?fi=ASTER&fdc=Land%2BProcess%2BDistributed%2BActive%2BArchive%2BCenter%2B%2528LPDAAC%2529",
+        "relationship": "provenance-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "drive.google.com",
+        "url": "https://drive.google.com/file/d/1A2GmWkzsXejCW4U_wDbWAI9xbJi2Oe1Y/view?usp=drive_link",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "www.eorc.jaxa.jp",
+        "url": "https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d30/aw3d30_e.htm",
+        "relationship": "provenance-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "portal.opentopography.org",
+        "url": "https://portal.opentopography.org/raster?opentopoID=OTALOS.112016.4326.2",
+        "relationship": "portal-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "drive.google.com",
+        "url": "https://drive.google.com/file/d/1cndwLLmxqEcmvUfsehHBNV7kvYYI4vpa/view?usp=share_link",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "portal.opentopography.org",
+        "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.3",
+        "relationship": "portal-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "portal.opentopography.org",
+        "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.2",
+        "relationship": "portal-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "learn.arcgis.com",
+        "url": "https://learn.arcgis.com/en/gallery/#?q=lidar",
+        "relationship": "tutorial-context",
+        "status": "needs-review"
+      },
+      {
+        "label": "learn.arcgis.com",
+        "url": "https://learn.arcgis.com/en/projects/create-and-visualize-a-lidar-point-cloud/",
+        "relationship": "tutorial-context",
+        "status": "needs-review"
+      },
+      {
+        "label": "learn.arcgis.com",
+        "url": "https://learn.arcgis.com/en/projects/classify-a-lidar-point-cloud/",
+        "relationship": "tutorial-context",
+        "status": "needs-review"
+      },
+      {
+        "label": "coast.noaa.gov",
+        "url": "https://coast.noaa.gov/dataviewer/#/lidar/search/",
+        "relationship": "tutorial-context",
+        "status": "needs-review"
+      },
+      {
+        "label": "www.usgs.gov",
+        "url": "https://www.usgs.gov/core-science-systems/ngp/3dep",
+        "relationship": "tutorial-context",
+        "status": "needs-review"
+      },
+      {
+        "label": "en-us.topographic-map.com",
+        "url": "https://en-us.topographic-map.com/maps/rq4w/Georgetown/",
+        "relationship": "commercial-reference",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-008",
+    "title": "Region 7, SRTM 30m Elevation Data (Tile 2)",
+    "description": "SRTM digital elevation model clipped to the extent of Region 7. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
+        "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
+        "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-009",
+    "title": "Region 8, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 8. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
+        "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
+        "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-010",
+    "title": "Region 9, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 9. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
+        "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
+        "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-011",
+    "title": "Region 10, SRTM 30m Elevation Data",
+    "description": "SRTM digital elevation model clipped to the extent of Region 10. 30-Meter SRTM Tile Downloader",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
+        "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
+        "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dwtkns.com",
+        "url": "http://dwtkns.com/srtm30m/",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-014",
+    "title": "Copernicus GLO-30 DEM for Guyana",
+    "description": "Copernicus GLO-30m DEM is a global 30 m radar-derived Digital Surface Model (DSM) representing surface elevations that include vegetation and built features. It provides cleaner, void-free elevation surfaces and higher consistency than optical stereo-derived DEMs, with reduced canopy bias in forested regions.",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
+        "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
+        "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "dataspace.copernicus.eu",
+        "url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+        "relationship": "provenance-source",
+        "status": "needs-review"
+      },
+      {
+        "label": "portal.opentopography.org",
+        "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.3",
+        "relationship": "reference-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-015",
+    "title": "FabDEM 30m DEM",
+    "description": "Bare-earth DEM. Copernicus GLO-30 with trees and buildings removed. Good for flood and hydrology work, where canopy heights in DSMs would bias water levels and flow paths.",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
+        "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
+        "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "gee-community-catalog.org",
+        "url": "https://gee-community-catalog.org/projects/fabdem/",
+        "relationship": "provenance-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-demtopo-016",
+    "title": "NASADEM / Reprocessed SRTM DEM",
+    "description": "Reprocessed SRTM DEMs with improved accuracy and fewer voids. Good replacement for legacy SRTM in regional studies and for comparison with Copernicus DEM.",
+    "category": "DEMs, Imagery & Topo Maps",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "GeoTIFF",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
+        "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      },
+      {
+        "label": "Legacy Direct Download (TIF)",
+        "format": "TIF",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
+        "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "DEMs, Imagery & Topo Maps"
+  },
+  {
+    "id": "legacy-infra-001",
+    "title": "Guyana, Main Roads",
+    "description": "Data downloaded from Open Street Map. Additional geoprocessing done by GuyNode.com",
+    "category": "Infrastructure",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-001/major_roads.zip",
+        "checksum": "sha256:54fe44c5da9610b4cdf96758b8b9f38772c25058e5e46c91316bce81c87c26a0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Infrastructure"
+  },
+  {
+    "id": "legacy-infra-002",
+    "title": "Metro Georgetown, Street Centerline Without Address Ranges",
+    "description": "Source: Data downloaded from Open Street Map.",
+    "category": "Infrastructure",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Data downloaded from Open Street Map.",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-002/streets_metrogtown.zip",
+        "checksum": "sha256:1be0b526e414c590dd5f509825a7dec59b627d17ef390884fe8ba7481f4cdcfe",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Infrastructure"
+  },
+  {
+    "id": "legacy-infra-003",
+    "title": "Linden, Street Centerline Without Address Ranges",
+    "description": "Data downloaded from Open Street Map.",
+    "category": "Infrastructure",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-003/linden_streets.zip",
+        "checksum": "sha256:979ddfc5f96c65c183b453d3905338917409c0375301c40d561fc8362828af70",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Infrastructure"
+  },
+  {
+    "id": "legacy-infra-004",
+    "title": "Kwakwani, Street Centerline Without Address Ranges",
+    "description": "Data downloaded from Open Street Map.",
+    "category": "Infrastructure",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-004/kwakwani_streets.zip",
+        "checksum": "sha256:a6d41b99bdd71e2b0fcacdfeae14729b34658f17f2ef6dddcdabcbb96d84a9a0",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Infrastructure"
+  },
+  {
+    "id": "legacy-socio-001",
+    "title": "List of Schools in Guyana, 2019. (xls).",
+    "description": "List of schools downloaded from Guyana's Ministry of Education's website, August 2019. Shapefile generated from list by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Spreadsheet",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (XLS)",
+        "format": "XLS",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-001/all_schools_guyana.xls",
+        "checksum": "sha256:c0437898e160e953d6ab88ffe7cacb210a2e716dacd8d037b7bbc499fd942667",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.education.gov.gy",
+        "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-002",
+    "title": "Schools in Region 1 (shp)",
+    "description": "List of schools downloaded from Guyana's Ministry of Education's website, August 2019. Shapefile generated from list by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-002/region1_schools.zip",
+        "checksum": "sha256:26bbe7ab5249d14630f37d75d5637bd4e5e09f0eb261407f4f3a84f78bff9589",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.education.gov.gy",
+        "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-003",
+    "title": "Schools in Region 2 (shp)",
+    "description": "List of schools downloaded from Guyana's Ministry of Education's website, August 2019. Shapefile generated from list by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-003/region2_schools.zip",
+        "checksum": "sha256:1038dce1c5897c4b8a8cbf87c69e4b4b7abc0467627c5b76d1e798a0e9a6b494",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.education.gov.gy",
+        "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-004",
+    "title": "Schools in Region 4 (shp)",
+    "description": "List of schools downloaded from Guyana's Ministry of Education's website, August 2019. Shapefile generated from list by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-004/region-4_schools_guyana.zip",
+        "checksum": "sha256:07cd5da2da11b2f1cee6385a13fc969408589356a45113b5e37dc77f097f7c00",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.education.gov.gy",
+        "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-005",
+    "title": "Schools in Region 5 (shp)",
+    "description": "List of schools downloaded from Guyana's Ministry of Education's website, August 2019. Shapefile generated from list by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-005/schools_region-5_-guyana.zip",
+        "checksum": "sha256:d4af2968ecc036e71366863de0b68188742f835f90d21c0a3aba69d8a323ed50",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.education.gov.gy",
+        "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-008",
+    "title": "Distribution of Covid-19 Cases, Guyana, May, 2020",
+    "description": "Cumulative Covid-19 Cases by Regional Democratic Councils as of May 7th, 2020. Region 4 and Region 10 were the regional hot spots. Source: Map created by GuyNode using data from Health.gov.gy",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "Map created by GuyNode using data from Health.gov.gy",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-008/covid-cases_may_07_rdcs.zip",
+        "checksum": "sha256:d13f28360b40587140b238e40c36a963d605e4c4e65528de884d677d6a513b14",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "covid19.health.gov.gy",
+        "url": "https://covid19.health.gov.gy/apps/moph/r/outbreak/localstats?session=10031270832794",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-009",
+    "title": "List of Health Facilities in Guyana, 2019 (xls)",
+    "description": "List of health facilities downloaded from Guyana's Ministry of Health's website, August 2019. List converted to xls format by GuyNode.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Spreadsheet",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (XLSX)",
+        "format": "XLSX",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-009/list-of-health_facilities.xlsx",
+        "checksum": "sha256:5d383bdf1a2e80dc016c285346f5a4e5f5c42c0cd41111d28d110c4ec80105ac",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "www.health.gov.gy",
+        "url": "http://www.health.gov.gy/index.php",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-016",
+    "title": "Airports and Airfields in Guyana(shp)",
+    "description": "Shapefile created by GuyNode.com. Data Source: The Humanitarian Data Exchange (HDX), Google Earth, Bing Maps.",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Shapefile",
+    "size": "Unknown",
+    "source": "The Humanitarian Data Exchange (HDX), Google Earth, Bing Maps.",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (ZIP)",
+        "format": "ZIP",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-016/airports_airstrips.zip",
+        "checksum": "sha256:ccbc4ff20b3391b46eb0c4e392da397365edf2ff7eb43493016196cfc0acf896",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "data.humdata.org",
+        "url": "https://data.humdata.org/dataset/ourairports-guy",
+        "relationship": "portal-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-020",
+    "title": "Village Population by Ethnicity, Region 1, 2012",
+    "description": "Bureau of Statistics, Guyana",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Spreadsheet",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (XLSX)",
+        "format": "XLSX",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-020/village_population_by_ethnicity_region1_2012.xlsx",
+        "checksum": "sha256:55f2d4a0138fbe282f8caed66de4f58aefcd8b6031746e11056e8003f4e09837",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "statisticsguyana.gov.gy",
+        "url": "https://statisticsguyana.gov.gy/publications/#elementor-tab-content-1465%20%3E%20ul:nth-child(3)%20%3E%20li:nth-child(1)%20%3E%20span",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
+  },
+  {
+    "id": "legacy-socio-021",
+    "title": "Village Population by Ethnicity, Region 2, 2012",
+    "description": "Bureau of Statistics, Guyana",
+    "category": "Socio-Economic Layers",
+    "lastUpdated": "2019-01-01T00:00:00Z",
+    "format": "Spreadsheet",
+    "size": "Unknown",
+    "source": "Legacy Guynode Archive",
+    "imageUrl": "/images/dataset-placeholder.jpg",
+    "ingestionStatus": "PENDING",
+    "validationReport": {
+      "status": "UNCHECKED",
+      "issues": [
+        "Legacy asset recovered via automated pipeline",
+        "Needs manual review of metadata accuracy"
+      ],
+      "timestamp": "2026-07-02T00:00:00Z"
+    },
+    "lastVerified": "2026-07-02",
+    "distributions": [
+      {
+        "label": "Legacy Direct Download (XLSX)",
+        "format": "XLSX",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-021/village_population_by_ethnicity_region2_2012.xlsx",
+        "checksum": "sha256:488781b96d868f804b68b34cba81a451a38712eada2ee62610f416a8b0b46695",
+        "checksumStatus": "generated",
+        "checksumSource": "self-sha256",
+        "downloadable": true
+      }
+    ],
+    "sourceReferences": [
+      {
+        "label": "statisticsguyana.gov.gy",
+        "url": "https://statisticsguyana.gov.gy/publications/#elementor-tab-content-1465%20%3E%20ul:nth-child(3)%20%3E%20li:nth-child(1)%20%3E%20span",
+        "relationship": "primary-source",
+        "status": "needs-review"
+      }
+    ],
+    "tags": [
+      "legacy-recovered"
+    ],
+    "legacyHomepageCategory": "Socio-Economic Layers"
   }
 ]
