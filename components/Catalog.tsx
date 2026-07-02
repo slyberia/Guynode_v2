@@ -46,6 +46,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   
   // Map State
   const [showMap, setShowMap] = useState(false);
+  // For map-table records, which face of the inline preview is showing.
+  const [mapTableView, setMapTableView] = useState<'map' | 'table'>('map');
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
 
@@ -53,7 +55,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   // converted file from /public/data); renders nothing if the record has no
   // resolvable geometry.
   useEffect(() => {
-    if (!showMap || !selectedDataset || !hasRenderableGeojson(selectedDataset) || !selectedDataset.geojsonUrl) {
+    const tableFace = selectedDataset?.viewerType === 'map-table' && mapTableView === 'table';
+    if (!showMap || tableFace || !selectedDataset || !hasRenderableGeojson(selectedDataset) || !selectedDataset.geojsonUrl) {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -112,7 +115,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
       .catch((e) => console.error("Inline preview load failed", e));
 
     return () => { cancelled = true; };
-  }, [showMap, selectedDataset]);
+  }, [showMap, selectedDataset, mapTableView]);
   
   // Initial Data Ingestion (Section 7)
   useEffect(() => {
@@ -148,6 +151,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
   // Extraction Logic on Selection
   useEffect(() => {
     setShowMap(false);
+    setMapTableView('map');
     if (selectedDataset) {
       const fetchPreview = async () => {
         setLoadingPreview(true);
@@ -454,7 +458,36 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
               {/* Inline Preview Module — renders for capability-checked records */}
               {showMap && isInlinePreviewable(selectedDataset) && (
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
-                  {selectedDataset.viewerType === 'table' ? (
+                  {selectedDataset.viewerType === 'map-table' ? (
+                    <div className="relative w-full h-full">
+                      {/* Map / Table face toggle (points + tabular preview) */}
+                      <div className="absolute top-2 right-2 z-[500] flex rounded overflow-hidden border border-cream-300 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest">
+                        {(['map', 'table'] as const).map((face) => (
+                          <button
+                            key={face}
+                            onClick={() => setMapTableView(face)}
+                            className={`px-3 py-1 transition-colors ${mapTableView === face ? 'bg-ink-900 text-white dark:bg-white dark:text-black' : 'bg-white/90 text-ink-700 dark:bg-black/80 dark:text-gray-300 hover:text-brand-green-600 dark:hover:text-white'}`}
+                          >
+                            {face}
+                          </button>
+                        ))}
+                      </div>
+                      {mapTableView === 'table' ? (
+                        selectedDataset.tablePreviewUrl ? (
+                          <TableViewer dataset={selectedDataset} />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-ink-500 dark:text-gray-400 font-mono text-xs">No table preview available.</div>
+                        )
+                      ) : (
+                        <>
+                          <div className="absolute top-2 left-2 z-[400] bg-white/90 dark:bg-black/80 px-2 py-1 rounded border border-cream-300 dark:border-white/10">
+                            <span className="text-[10px] text-brand-green-600 dark:text-gn-accent-gold font-mono">LIVE PREVIEW • POINTS</span>
+                          </div>
+                          <div ref={mapContainerRef} className="w-full h-full bg-[#121212]"></div>
+                        </>
+                      )}
+                    </div>
+                  ) : selectedDataset.viewerType === 'table' ? (
                     <TableViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'map-raster' ? (
                     <RasterOverlayViewer dataset={selectedDataset} />
