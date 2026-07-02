@@ -87,8 +87,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
 
   // Selection & Detail State
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
-  const [previewData, setPreviewData] = useState<import('../types').PreviewRow[] | null>(null);
-  const [loadingPreview, setLoadingPreview] = useState(false);
+
   
   // Map State
   const [showMap, setShowMap] = useState(false);
@@ -181,25 +180,10 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
     loadData();
   }, []);
 
-  // Extraction Logic on Selection
+  // Reset states on selection
   useEffect(() => {
     setShowMap(false);
     setMapTableView('map');
-    if (selectedDataset) {
-      const fetchPreview = async () => {
-        setLoadingPreview(true);
-        setPreviewData(null);
-        try {
-          const extracted = await MockDatasetPreviewService.generateMockPreview(selectedDataset);
-          setPreviewData(extracted);
-        } catch (e) {
-          console.error("Extraction Failed", e);
-        } finally {
-          setLoadingPreview(false);
-        }
-      };
-      fetchPreview();
-    }
   }, [selectedDataset]);
 
   // Feature Flags
@@ -405,7 +389,15 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
               {/* Dataset Metadata Header */}
               <div className="p-6 border-b border-cream-300 dark:border-white/10 bg-cream-100/50 dark:bg-gn-elevated-dark/50">
                 <div className="flex justify-between items-start mb-4">
-                  <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
+                  <div>
+                    <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
+                    {selectedDataset.legalUseWarning && (
+                      <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 rounded border border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-200 text-[10px] font-mono font-bold uppercase tracking-wider">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        Indicative Data Only
+                      </div>
+                    )}
+                  </div>
                   <div className="flex gap-2">
                     
                     {/* Inline Preview Toggle — GIS previews plus tabular previews */}
@@ -639,56 +631,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 </div>
               )}
 
-              {/* Extraction Preview Pane */}
-              <div className="flex-1 flex flex-col min-h-[300px]">
-                <div className="px-6 py-3 bg-cream-300 dark:bg-black/40 border-b border-cream-300 dark:border-white/10 flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink-500 dark:text-gray-400 uppercase tracking-widest">Data Extraction Preview</span>
-                  <div className="flex gap-2">
-                     <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  </div>
-                </div>
-                
-                <div className="flex-1 overflow-auto p-6 bg-white dark:bg-black">
-                  {loadingPreview ? (
-                     <div className="h-full flex flex-col items-center justify-center text-ink-500 dark:text-gray-500 font-mono text-xs">
-                        <div className="w-8 h-8 border-2 border-brand-green-600 dark:border-gn-accent-blue border-t-transparent rounded-full animate-spin mb-4"></div>
-                        &gt; DECRYPTING STREAM...<br/>
-                        &gt; PARSING {selectedDataset.format}...
-                     </div>
-                  ) : (
-                    <div className="font-mono text-xs">
-                      {previewData && previewData.length > 0 ? (
-                        <table className="w-full text-left border-collapse">
-                          <thead>
-                            <tr className="border-b border-cream-300 dark:border-white/20 text-brand-green-600 dark:text-gn-accent-gold">
-                              {Object.keys(previewData[0]).map(key => (
-                                <th key={key} className="py-2 px-4 uppercase">{key}</th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-cream-200 dark:divide-white/5 text-ink-700 dark:text-gray-300">
-                            {previewData.map((row, idx) => (
-                              <tr key={idx} className="hover:bg-cream-100 dark:hover:bg-white/5">
-                                {Object.values(row).map((val: unknown, i) => (
-                                  <td key={i} className="py-2 px-4 truncate max-w-xs">{String(val)}</td>
-                                ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      ) : (
-                        <div className="text-red-500 dark:text-red-400">&gt; ERROR: PREVIEW_UNAVAILABLE</div>
-                      )}
-                      <div className="mt-4 text-ink-500 dark:text-gray-600 italic">
-                        &gt; End of preview. Full dataset contains {selectedDataset.size} of data.
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
+
           ) : (
             <div className="empty-state flex flex-col items-center justify-center h-full text-gray-500 text-sm font-mono">
               <svg className="w-16 h-16 mb-4 text-gray-300 dark:text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>

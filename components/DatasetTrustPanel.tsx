@@ -79,19 +79,6 @@ export const DatasetTrustPanel: React.FC<{ dataset: Dataset }> = ({ dataset }) =
       )}
 
       <div className="flex flex-col gap-1.5 mb-1">
-        {attribution && <Row label="Attribution">{attribution}</Row>}
-        {sourceHref && (
-          <Row label="Source page">
-            <a
-              href={sourceHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-green-600 dark:text-gn-accent-secondary underline hover:no-underline break-all"
-            >
-              {sourceUrl}
-            </a>
-          </Row>
-        )}
         {/* License: site-level evidence only is NOT a dataset-level license.
             Show an honest "needs review" state rather than implying confirmation. */}
         <Row label="License">
@@ -101,30 +88,56 @@ export const DatasetTrustPanel: React.FC<{ dataset: Dataset }> = ({ dataset }) =
         </Row>
       </div>
 
-      {hasCaveats && (
-        <div className="mt-3">
-          <h4 className="text-[11px] font-bold text-ink-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-            Caveats
-          </h4>
-          <ul className="list-disc list-inside text-sm text-ink-800 dark:text-gray-200 space-y-0.5">
-            {caveats!.map((c, i) => (
-              <li key={i}>{c}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {(attribution || sourceHref || hasCaveats || hasLimitations) && (
+        <details className="mt-3 group">
+          <summary className="text-[11px] font-bold text-ink-500 dark:text-gray-400 uppercase tracking-wider mb-2 cursor-pointer hover:text-ink-800 dark:hover:text-gray-200 transition-colors select-none list-none flex items-center gap-1">
+            <svg className="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+            Show Technical Details
+          </summary>
+          <div className="pl-4 border-l-2 border-cream-300 dark:border-white/10 space-y-3 pt-1">
+            <div className="flex flex-col gap-1.5">
+              {attribution && <Row label="Attribution">{attribution}</Row>}
+              {sourceHref && (
+                <Row label="Source page">
+                  <a
+                    href={sourceHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-green-600 dark:text-gn-accent-secondary underline hover:no-underline break-all"
+                  >
+                    {sourceUrl}
+                  </a>
+                </Row>
+              )}
+            </div>
 
-      {hasLimitations && (
-        <div className="mt-3">
-          <h4 className="text-[11px] font-bold text-ink-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-            Known limitations
-          </h4>
-          <ul className="list-disc list-inside text-sm text-ink-800 dark:text-gray-200 space-y-0.5">
-            {knownLimitations!.map((c, i) => (
-              <li key={i}>{c}</li>
-            ))}
-          </ul>
-        </div>
+            {hasCaveats && (
+              <div>
+                <h4 className="text-[10px] font-bold text-ink-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+                  Caveats
+                </h4>
+                <ul className="list-disc list-inside text-sm text-ink-800 dark:text-gray-200 space-y-0.5">
+                  {caveats!.map((c, i) => (
+                    <li key={i}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {hasLimitations && (
+              <div>
+                <h4 className="text-[10px] font-bold text-ink-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+                  Known limitations
+                </h4>
+                <ul className="list-disc list-inside text-sm text-ink-800 dark:text-gray-200 space-y-0.5">
+                  {knownLimitations!.map((c, i) => (
+                    <li key={i}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </details>
       )}
     </div>
   );

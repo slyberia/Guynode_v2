@@ -82,6 +82,20 @@ export const hasRasterOverlay = (dataset: Dataset | null | undefined): boolean =
     safeUrl(dataset.downloadUrl)
   );
 
+export const ENABLE_RUNTIME_SHAPEFILE_PREVIEW = false; // Feature flag for runtime shapefile parsing
+
+/**
+ * True when the record is a Shapefile and runtime preview is enabled via feature flag.
+ */
+export const hasRenderableShapefile = (dataset: Dataset | null | undefined): boolean =>
+  Boolean(
+    ENABLE_RUNTIME_SHAPEFILE_PREVIEW &&
+    dataset &&
+    dataset.format === 'Shapefile' &&
+    dataset.downloadUrl &&
+    safeUrl(dataset.downloadUrl)
+  );
+
 /**
  * GIS-previewable == can be shown in the interactive map viewer (leaflet vector,
  * CSV points, a georeferenced raster overlay, an ArcGIS embed, or an image/pdf
@@ -94,7 +108,8 @@ export const isGisPreviewable = (dataset: Dataset | null | undefined): boolean =
     hasRenderableGeojson(dataset) ||
     hasRenderableArcGis(dataset) ||
     hasRenderableAsset(dataset) ||
-    hasRasterOverlay(dataset)
+    hasRasterOverlay(dataset) ||
+    hasRenderableShapefile(dataset)
   );
 };
 
