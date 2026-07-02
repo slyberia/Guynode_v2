@@ -126,8 +126,11 @@ export interface Dataset {
   geojsonUrl?: string; // URL for map preview
   imageUrl: string;
   
-  viewerType?: 'leaflet' | 'arcgis' | 'none' | 'image' | 'pdf';
+  viewerType?: 'leaflet' | 'arcgis' | 'none' | 'image' | 'pdf' | 'table';
   arcGisEmbedUrl?: string;
+  // Local, build-time-extracted tabular preview (see scripts/extract-table-previews.ts).
+  // Points at a bounded JSON preview under /data/tables, not the raw CSV/XLSX.
+  tablePreviewUrl?: string;
 
   // Section 7: Pipeline Fields
   ingestionStatus?: IngestionStatus;
@@ -273,6 +276,18 @@ export interface SearchResult {
   item: Dataset;
   score: number;
   matches: string[];
+}
+
+// Bounded tabular preview extracted offline from a CSV/XLSX source
+// (scripts/extract-table-previews.ts). Written to /data/tables/<id>.preview.json
+// and rendered by components/viewer/TableViewer.tsx.
+export interface TablePreview {
+  columns: string[];
+  rows: (string | number | null)[][];
+  totalRows: number;   // total data rows in the source (excludes header)
+  previewRows: number; // number of rows included in `rows`
+  truncated: boolean;  // true when totalRows > previewRows
+  sourceFormat: string; // 'CSV' | 'Spreadsheet'
 }
 
 // MOCK_DATASETS removed. Data is now fetched asynchronously from /data/datasets.json.

@@ -1,6 +1,7 @@
 import { Dataset } from '../types';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData';
 import { GEOJSON_MANIFEST } from '../data/geojsonManifest';
+import { TABLE_PREVIEW_MANIFEST } from '../data/tablePreviewManifest';
 import { safeUrl } from './url';
 
 /**
@@ -39,7 +40,31 @@ export const hasRenderableAsset = (dataset: Dataset | null | undefined): boolean
     safeUrl(dataset.downloadUrl)
   );
 
+/**
+ * True only when a table record has a bounded preview extracted to /data/tables
+ * (listed in the manifest). Not a GIS preview — rendered inline as a table.
+ */
+export const hasTablePreview = (dataset: Dataset | null | undefined): boolean =>
+  Boolean(
+    dataset &&
+    dataset.viewerType === 'table' &&
+    dataset.tablePreviewUrl &&
+    TABLE_PREVIEW_MANIFEST[dataset.tablePreviewUrl]
+  );
+
+/**
+ * GIS-previewable == can be shown in the interactive map viewer (leaflet vector,
+ * ArcGIS embed, or an image/pdf asset the viewer page renders). Tables are NOT
+ * GIS-previewable — see isInlinePreviewable.
+ */
 export const isGisPreviewable = (dataset: Dataset | null | undefined): boolean => {
   if (!dataset || dataset.viewerType === 'none') return false;
   return hasRenderableGeojson(dataset) || hasRenderableArcGis(dataset) || hasRenderableAsset(dataset);
 };
+
+/**
+ * Anything with an in-catalog inline preview: everything GIS-previewable, plus
+ * table records with a bounded preview. Gates the catalog "Preview" toggle.
+ */
+export const isInlinePreviewable = (dataset: Dataset | null | undefined): boolean =>
+  isGisPreviewable(dataset) || hasTablePreview(dataset);

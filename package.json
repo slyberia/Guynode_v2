@@ -11,6 +11,7 @@
     "validate:datasets": "tsx scripts/validate-datasets.ts",
     "check:links": "tsx scripts/check-dataset-links.ts",
     "convert:shapefiles": "tsx scripts/convert-shapefiles.ts",
+    "extract:tables": "tsx scripts/extract-table-previews.ts",
     "prebuild": "tsx scripts/validate-content.ts && tsx scripts/validate-datasets.ts && tsx scripts/generate-sitemap.js",
     "build": "vite build",
     "lint": "eslint .",
@@ -51,6 +52,7 @@
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.56.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "xlsx": "^0.18.5"
   }
 }

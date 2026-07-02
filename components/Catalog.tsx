@@ -8,8 +8,9 @@ import { CatalogCard } from './CatalogCard';
 import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
+import { TableViewer } from './viewer/TableViewer';
 import { safeUrl } from '../utils/url';
-import { isGisPreviewable, hasRenderableGeojson } from '../utils/previewCapability';
+import { isGisPreviewable, isInlinePreviewable, hasRenderableGeojson } from '../utils/previewCapability';
 
 declare global {
   interface Window {
@@ -279,8 +280,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                   <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
                   <div className="flex gap-2">
                     
-                    {/* Inline Preview Toggle — only when the record is actually renderable */}
-                    {isGisPreviewable(selectedDataset) ? (
+                    {/* Inline Preview Toggle — GIS previews plus tabular previews */}
+                    {isInlinePreviewable(selectedDataset) ? (
                       <button
                         onClick={() => setShowMap(!showMap)}
                         className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
@@ -440,10 +441,12 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 </div>
               </div>
 
-              {/* Map Preview Module — only renders for capability-checked records */}
-              {showMap && isGisPreviewable(selectedDataset) && (
+              {/* Inline Preview Module — renders for capability-checked records */}
+              {showMap && isInlinePreviewable(selectedDataset) && (
                 <div className="border-b border-cream-300 dark:border-white/10 bg-black relative animate-in fade-in slide-in-from-top-4 duration-300 h-80">
-                  {selectedDataset.viewerType === 'image' ? (
+                  {selectedDataset.viewerType === 'table' ? (
+                    <TableViewer dataset={selectedDataset} />
+                  ) : selectedDataset.viewerType === 'image' ? (
                     <ImageViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'pdf' ? (
                     <PdfViewer dataset={selectedDataset} />

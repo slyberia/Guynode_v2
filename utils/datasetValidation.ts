@@ -33,6 +33,13 @@ export interface GeojsonResolver {
   resolve: (url: string) => { bytes?: number } | null;
 }
 
+/** Injected resolvers so this module stays dependency-free (see the runner). */
+export interface ValidationOptions {
+  geojsonResolver?: GeojsonResolver;
+  /** Returns true when a table preview URL is present in the generated manifest. */
+  tablePreviewResolver?: (url: string) => boolean;
+}
+
 // Permissive shape: the JSON may carry legacy + new fields, so validate loosely
 // rather than assuming the full Dataset interface is present.
 export interface DatasetRecord {
@@ -166,8 +173,9 @@ const claimsMapPreview = (record: DatasetRecord): boolean => {
  */
 export const validateDatasetRecord = (
   record: DatasetRecord,
-  geojsonResolver?: GeojsonResolver
+  options: ValidationOptions = {}
 ): ValidationIssue[] => {
+  const { geojsonResolver, tablePreviewResolver } = options;
   const issues: ValidationIssue[] = [];
   const id = record.id || 'UNKNOWN';
   const add = (level: IssueLevel, rule: string, message: string) =>
@@ -217,6 +225,17 @@ export const validateDatasetRecord = (
       add('error', 'preview-url-unresolvable', `leaflet geojsonUrl not found in manifest/inline DB: ${record.geojsonUrl}`);
     } else if (typeof resolved.bytes === 'number' && resolved.bytes > geojsonResolver.maxBytes) {
       add('error', 'preview-oversize', `preview GeoJSON is ${resolved.bytes} bytes, exceeds budget ${geojsonResolver.maxBytes}`);
+    }
+  }
+
+  // A table record must carry a tablePreviewUrl that resolves to a generated
+  // preview (otherwise the "Preview" toggle would render an empty/broken table).
+  if (record.viewerType === 'table') {
+    const url = typeof record.tablePreviewUrl === 'string' ? record.tablePreviewUrl.trim() : '';
+    if (!url) {
+      add('error', 'table-preview-missing', 'Record is viewerType "table" but has no tablePreviewUrl');
+    } else if (tablePreviewResolver && !tablePreviewResolver(url)) {
+      add('error', 'table-preview-unresolvable', `table preview not found in manifest: ${url}`);
     }
   }
 
@@ -311,7 +330,7 @@ export interface ValidationSummary {
  */
 export const validateDatasets = (
   records: DatasetRecord[],
-  geojsonResolver?: GeojsonResolver
+  options: ValidationOptions = {}
 ): ValidationSummary => {
   const issues: ValidationIssue[] = [];
 
@@ -328,7 +347,7 @@ export const validateDatasets = (
   }
 
   for (const record of records) {
-    issues.push(...validateDatasetRecord(record, geojsonResolver));
+    issues.push(...validateDatasetRecord(record, options));
   }
 
   return {
@@ -371,6 +390,8 @@ export const RULE_CLASSIFICATION: Record<string, RuleClassification> = {
   'preview-url-missing': { priority: 'High', track: 'Semi-automatable', summary: 'Claims previewable but no URL' },
   'preview-url-unresolvable': { priority: 'High', track: 'Automatable', scriptTargets: ['geojsonUrl'], summary: 'leaflet geojsonUrl not in manifest/inline DB (run convert:shapefiles)' },
   'preview-oversize': { priority: 'High', track: 'Automatable', scriptTargets: ['geojsonUrl'], summary: 'Preview GeoJSON exceeds size budget' },
+  'table-preview-missing': { priority: 'High', track: 'Automatable', scriptTargets: ['tablePreviewUrl'], summary: 'viewerType table without tablePreviewUrl (run extract:tables)' },
+  'table-preview-unresolvable': { priority: 'High', track: 'Automatable', scriptTargets: ['tablePreviewUrl'], summary: 'table preview not in manifest (run extract:tables)' },
   'distribution-broken': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as broken/not-found' },
   'distribution-forbidden': { priority: 'High', track: 'Semi-automatable', summary: 'Distribution recorded as forbidden' },
 

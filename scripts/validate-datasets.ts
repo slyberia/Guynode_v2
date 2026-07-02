@@ -22,6 +22,7 @@ import {
   ResolutionTrack,
 } from '../utils/datasetValidation.js';
 import { GEOJSON_MANIFEST } from '../data/geojsonManifest.js';
+import { TABLE_PREVIEW_MANIFEST } from '../data/tablePreviewManifest.js';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData.js';
 
 const DATA_PATH = path.resolve(process.cwd(), 'public/data/datasets.json');
@@ -43,7 +44,10 @@ const geojsonResolver: GeojsonResolver = {
   },
 };
 
-const summary = validateDatasets(records, geojsonResolver);
+const summary = validateDatasets(records, {
+  geojsonResolver,
+  tablePreviewResolver: (url) => Boolean(TABLE_PREVIEW_MANIFEST[url]),
+});
 
 // Optional technical-validation sidecar produced by scripts/check-dataset-links.ts.
 interface TechResult {

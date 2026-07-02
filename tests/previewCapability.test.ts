@@ -3,8 +3,11 @@ import assert from 'node:assert';
 import { Dataset } from '../types.js';
 import { GLOBAL_GEOJSON_DB } from '../data/geoJsonData.js';
 import { GEOJSON_MANIFEST } from '../data/geojsonManifest.js';
+import { TABLE_PREVIEW_MANIFEST } from '../data/tablePreviewManifest.js';
 import {
   isGisPreviewable,
+  isInlinePreviewable,
+  hasTablePreview,
   hasRenderableGeojson,
   hasRenderableArcGis,
   hasRenderableAsset,
@@ -82,5 +85,21 @@ test('preview capability', async (t) => {
   await t.test('a shapefile record (no renderable payload) is NOT previewable', () => {
     const d = { ...base, viewerType: 'none', format: 'Shapefile' } as Dataset;
     assert.strictEqual(isGisPreviewable(d), false);
+  });
+
+  await t.test('a table record with a manifest-listed preview is inline-previewable, not GIS', () => {
+    const manifestUrls = Object.keys(TABLE_PREVIEW_MANIFEST);
+    assert.ok(manifestUrls.length > 0, 'table manifest should list previews — run npm run extract:tables');
+    const d = { ...base, viewerType: 'table', tablePreviewUrl: manifestUrls[0] } as Dataset;
+    assert.strictEqual(hasTablePreview(d), true);
+    assert.strictEqual(isInlinePreviewable(d), true);
+    // A table is NOT a GIS preview — the map-viewer button stays disabled.
+    assert.strictEqual(isGisPreviewable(d), false);
+  });
+
+  await t.test('a table record with an unlisted tablePreviewUrl is not previewable', () => {
+    const d = { ...base, viewerType: 'table', tablePreviewUrl: '/data/tables/nope.preview.json' } as Dataset;
+    assert.strictEqual(hasTablePreview(d), false);
+    assert.strictEqual(isInlinePreviewable(d), false);
   });
 });

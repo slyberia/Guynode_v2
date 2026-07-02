@@ -59,37 +59,61 @@ test('dataset validation', async (t) => {
   });
 
   await t.test('leaflet record with an unresolvable local geojsonUrl is an error', () => {
-    const resolver = { maxBytes: 1_500_000, resolve: () => null };
+    const geojsonResolver = { maxBytes: 1_500_000, resolve: () => null };
     const issues = validateDatasetRecord(
       { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/missing/x.geojson' },
-      resolver
+      { geojsonResolver }
     );
     assert.ok(hasRule(issues, 'preview-url-unresolvable'));
   });
 
   await t.test('leaflet record with an over-budget geojsonUrl is an error', () => {
-    const resolver = {
+    const geojsonResolver = {
       maxBytes: 1_500_000,
       resolve: (url: string) => (url === '/data/big/x.geojson' ? { bytes: 2_000_000 } : null),
     };
     const issues = validateDatasetRecord(
       { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/big/x.geojson' },
-      resolver
+      { geojsonResolver }
     );
     assert.ok(hasRule(issues, 'preview-oversize'));
   });
 
   await t.test('leaflet record with a resolvable, in-budget geojsonUrl passes', () => {
-    const resolver = {
+    const geojsonResolver = {
       maxBytes: 1_500_000,
       resolve: (url: string) => (url === '/data/ok/x.geojson' ? { bytes: 100_000 } : null),
     };
     const issues = validateDatasetRecord(
       { ...base, format: 'GeoJSON', viewerType: 'leaflet', geojsonUrl: '/data/ok/x.geojson' },
-      resolver
+      { geojsonResolver }
     );
     assert.strictEqual(hasRule(issues, 'preview-url-unresolvable'), false);
     assert.strictEqual(hasRule(issues, 'preview-oversize'), false);
+  });
+
+  await t.test('table record without a tablePreviewUrl is an error', () => {
+    const issues = validateDatasetRecord({ ...base, format: 'CSV', viewerType: 'table' });
+    assert.ok(hasRule(issues, 'table-preview-missing'));
+  });
+
+  await t.test('table record with an unresolvable tablePreviewUrl is an error', () => {
+    const tablePreviewResolver = (url: string) => url === '/data/tables/ok.preview.json';
+    const issues = validateDatasetRecord(
+      { ...base, format: 'CSV', viewerType: 'table', tablePreviewUrl: '/data/tables/missing.preview.json' },
+      { tablePreviewResolver }
+    );
+    assert.ok(hasRule(issues, 'table-preview-unresolvable'));
+  });
+
+  await t.test('table record with a resolvable tablePreviewUrl passes', () => {
+    const tablePreviewResolver = (url: string) => url === '/data/tables/ok.preview.json';
+    const issues = validateDatasetRecord(
+      { ...base, format: 'CSV', viewerType: 'table', tablePreviewUrl: '/data/tables/ok.preview.json' },
+      { tablePreviewResolver }
+    );
+    assert.strictEqual(hasRule(issues, 'table-preview-missing'), false);
+    assert.strictEqual(hasRule(issues, 'table-preview-unresolvable'), false);
   });
 
   await t.test('a PDF mislabeled as Shapefile is an error', () => {

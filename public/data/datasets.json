@@ -149,7 +149,7 @@
     ],
     "format": "Spreadsheet",
     "fileSize": "11.8 KB",
-    "viewerType": "none",
+    "viewerType": "table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/xlsx/Amerindian_Villages.xlsx",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -183,7 +183,8 @@
       "Need to verify with official sources."
     ],
     "attribution": "Ministry of Amerindian Affairs",
-    "sourceUrl": "https://guynode.com/admin_boundaries.html"
+    "sourceUrl": "https://guynode.com/admin_boundaries.html",
+    "tablePreviewUrl": "/data/tables/amerindian-villages.preview.json"
   },
   {
     "id": "anna-regina-boundary",
@@ -298,7 +299,7 @@
     ],
     "format": "CSV",
     "fileSize": "101.7 KB",
-    "viewerType": "none",
+    "viewerType": "table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/Gazeteer_Places.csv",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "GeoNames.org",
@@ -322,7 +323,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "tablePreviewUrl": "/data/tables/gazetteer-places.preview.json"
   },
   {
     "id": "geoname-places",
@@ -336,7 +338,7 @@
     ],
     "format": "CSV",
     "fileSize": "658.4 KB",
-    "viewerType": "none",
+    "viewerType": "table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/csv/GeoName_Places.csv",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "GeoNames.org",
@@ -360,7 +362,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "tablePreviewUrl": "/data/tables/geoname-places.preview.json"
   },
   {
     "id": "georgetown-constituencies",
@@ -678,7 +681,7 @@
     ],
     "format": "Spreadsheet",
     "fileSize": "13.4 KB",
-    "viewerType": "none",
+    "viewerType": "table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/xlsx/List_of_NDCs.xlsx",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Ministry of Local Government, Guyana",
@@ -702,7 +705,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "tablePreviewUrl": "/data/tables/list-of-ndcs.preview.json"
   },
   {
     "id": "local-government-areas",
@@ -995,7 +999,7 @@
     ],
     "format": "Spreadsheet",
     "fileSize": "11.0 KB",
-    "viewerType": "none",
+    "viewerType": "table",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/demographics/xlsx/Population%20by%20Census%20Districts_Georgetown.xlsx",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Bureau of Statistics",
@@ -1019,7 +1023,8 @@
         "checksumStatus": "generated",
         "checksumSource": "self-sha256"
       }
-    ]
+    ],
+    "tablePreviewUrl": "/data/tables/georgetown-census-population-2012.preview.json"
   },
   {
     "id": "village-population-tables-2012",
@@ -1071,7 +1076,7 @@
     ],
     "format": "Image",
     "fileSize": "208.2 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region1.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1109,7 +1114,7 @@
     ],
     "format": "Image",
     "fileSize": "241.8 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region2.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1147,7 +1152,7 @@
     ],
     "format": "Image",
     "fileSize": "278.4 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region3.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1185,7 +1190,7 @@
     ],
     "format": "Image",
     "fileSize": "404.6 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region4.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1223,7 +1228,7 @@
     ],
     "format": "Image",
     "fileSize": "535.7 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region6.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1261,7 +1266,7 @@
     ],
     "format": "Image",
     "fileSize": "545.7 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region7.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1299,7 +1304,7 @@
     ],
     "format": "Image",
     "fileSize": "499.5 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region8.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1337,7 +1342,7 @@
     ],
     "format": "Image",
     "fileSize": "410.9 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region9.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -1375,7 +1380,7 @@
     ],
     "format": "Image",
     "fileSize": "325.6 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/png/Region10.png",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
@@ -2252,7 +2257,7 @@
     ],
     "format": "Image",
     "fileSize": "599.2 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/jpg/Vintage%20Town%20Map%2C%20Georgetown%2C%201914%20.jpg",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Historical Archives / Public Domain",
@@ -2301,7 +2306,7 @@
     ],
     "format": "Image",
     "fileSize": "703.0 KB",
-    "viewerType": "none",
+    "viewerType": "image",
     "downloadUrl": "https://storage.googleapis.com/guynode-public-assets/spatial-data/reference/jpg/color_regional_map.jpg",
     "lastUpdated": "2024-01-01T00:00:00Z",
     "source": "Guyana Lands and Surveys Commission",
