@@ -2450,7 +2450,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/ALL_NDCs_Guyana_GADM.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-045/all_ndcs_guyana_gadm.zip",
         "checksum": "sha256:5691f1442f2ca2fa432a187a9ae17f904d76994b3d8fa8713071c8ef34a3846b",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2494,7 +2494,7 @@
       {
         "label": "Legacy Direct Download (PDF)",
         "format": "PDF",
-        "url": "https://guynode.com/List_of_NDCs.pdf",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-047/list_of_ndcs.pdf",
         "checksum": "sha256:e11325c7c3da19f2c198490545adfe3d0fdc4438b37f6bab940f2d5a85c5bdef",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2503,7 +2503,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/NDC_Data_2002.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-047/ndc_data_2002.zip",
         "checksum": "sha256:e5b2b91bedfcd99e3d9ab059ee7007c91fe07ae26955264b03ca88ab483aa14c",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2540,7 +2540,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Guyana%20LG%20Constituencies_Latest.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-058/guyana-lg-constituencies_latest.zip",
         "checksum": "sha256:cf6eb824d6ed66a8c13640a0e76b26072fe7b6c468a2c47e5c98276ea07042a1",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2577,7 +2577,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Coastal_Villages_Guyana.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/administrative-boundaries/legacy-admin-061/coastal_villages_guyana.zip",
         "checksum": "sha256:88eba0962244d1fe47d13fa4f9af3f82c25c7d1cf8b6b1276c50cbe3296afae7",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2621,7 +2621,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region1_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-001/region1_srtm30.zip",
         "checksum": "sha256:092b5d022f8743314d7dd03f8f2c881e4649a6e843c86521a8c2a9ec003c9152",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2665,7 +2665,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region2_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-002/region2_srtm30.zip",
         "checksum": "sha256:831083c5e893d6e5716f494c0bef07f55fd1837b895938d5afcf8b34217a5323",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2709,7 +2709,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region3_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-003/region3_srtm30.zip",
         "checksum": "sha256:0e0c82720ba1830a9f931c713edd2e06164a91afc80f4b82a6b3806ddec7a287",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2753,7 +2753,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region4_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-004/region4_srtm30.zip",
         "checksum": "sha256:81a5c49a965b74cb06639997f9ee538080b45266f58955c1cdb3b3c3fd13c7a7",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2797,7 +2797,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region5_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-005/region5_srtm30.zip",
         "checksum": "sha256:6e2ca9485cb6f532d20907e1564210f5c68c642e052b964516ab4d4a7e0568e2",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2841,7 +2841,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region6_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-006/region6_srtm30.zip",
         "checksum": "sha256:0c8ea9258d6a2e35293b4d7dc316a03b44a19db0ddfdb39864ac7290d1d332f4",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2885,7 +2885,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region7_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
         "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2894,7 +2894,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region7_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
         "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2903,7 +2903,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region8_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
         "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2912,7 +2912,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region8_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
         "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2921,7 +2921,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region9_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
         "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2930,7 +2930,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region9_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
         "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2939,7 +2939,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region10_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
         "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2948,7 +2948,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region10_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
         "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2957,7 +2957,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/Copernicus_Guyana_DEM30m.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
         "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2966,7 +2966,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/Copernicus_Guyana_DEM30m.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
         "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2975,7 +2975,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/FABDEM_30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
         "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2984,7 +2984,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/FABDEM_30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
         "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -2993,7 +2993,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.digitaloceanspaces.com/NASA/NASA_DEM_Guyana.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
         "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3002,7 +3002,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.digitaloceanspaces.com/NASA/NASA_DEM_Guyana.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
         "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3160,7 +3160,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region7_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
         "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3169,7 +3169,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region7_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-008/region7_srtm30.zip",
         "checksum": "sha256:e45102c7d564440a294686f64a081e611b1e8f1beff4c454bec4fd1e28a65987",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3213,7 +3213,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region8_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
         "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3222,7 +3222,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region8_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-009/region8_srtm30.zip",
         "checksum": "sha256:d070a227929fd84948104003869ef14832f07d4096308070cd1153747a22cc72",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3266,7 +3266,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region9_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
         "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3275,7 +3275,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region9_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-010/region9_srtm30.zip",
         "checksum": "sha256:45748c79ac59b15c0e9d773029a917caae61d2bd86d1498a73fd388584437b53",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3319,7 +3319,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region10_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
         "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3328,7 +3328,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region10_SRTM30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-011/region10_srtm30.zip",
         "checksum": "sha256:ae3b62770e713ef7f13f3b923288acededf6e75b1495f12cebd9a8593fed0cf0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3372,7 +3372,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/Copernicus_Guyana_DEM30m.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
         "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3381,7 +3381,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/Copernicus_Guyana_DEM30m.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-014/copernicus_guyana_dem30m.tif",
         "checksum": "sha256:e8e841b66174d483702502e0350d1964c4f6a08a0952b7f1cab368e78e16a61a",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3431,7 +3431,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/FABDEM_30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
         "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3440,7 +3440,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode-data.nyc3.cdn.digitaloceanspaces.com/FABDEM_30.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-015/fabdem_30.zip",
         "checksum": "sha256:acd3f54a676cc17adca2d34e6ca2b8019968a004f0c3a688577ab69839832348",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3484,7 +3484,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.digitaloceanspaces.com/NASA/NASA_DEM_Guyana.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
         "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3493,7 +3493,7 @@
       {
         "label": "Legacy Direct Download (TIF)",
         "format": "TIF",
-        "url": "https://guynode-data.nyc3.digitaloceanspaces.com/NASA/NASA_DEM_Guyana.tif",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/dems-imagery-topo-maps/legacy-demtopo-016/nasa_dem_guyana.tif",
         "checksum": "sha256:8b236a3e955dc19499c84cc3175c9c7b397adfd525c75672607d1e531892fd85",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3530,7 +3530,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Major_Roads.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-001/major_roads.zip",
         "checksum": "sha256:54fe44c5da9610b4cdf96758b8b9f38772c25058e5e46c91316bce81c87c26a0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3567,7 +3567,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Streets_MetroGTown.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-002/streets_metrogtown.zip",
         "checksum": "sha256:1be0b526e414c590dd5f509825a7dec59b627d17ef390884fe8ba7481f4cdcfe",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3604,7 +3604,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Linden_Streets.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-003/linden_streets.zip",
         "checksum": "sha256:979ddfc5f96c65c183b453d3905338917409c0375301c40d561fc8362828af70",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3641,7 +3641,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/kwakwani_streets.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/infrastructure/legacy-infra-004/kwakwani_streets.zip",
         "checksum": "sha256:a6d41b99bdd71e2b0fcacdfeae14729b34658f17f2ef6dddcdabcbb96d84a9a0",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3678,7 +3678,7 @@
       {
         "label": "Legacy Direct Download (XLS)",
         "format": "XLS",
-        "url": "https://guynode.com/all_schools_Guyana.xls",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-001/all_schools_guyana.xls",
         "checksum": "sha256:c0437898e160e953d6ab88ffe7cacb210a2e716dacd8d037b7bbc499fd942667",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3722,7 +3722,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region1_Schools.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-002/region1_schools.zip",
         "checksum": "sha256:26bbe7ab5249d14630f37d75d5637bd4e5e09f0eb261407f4f3a84f78bff9589",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3766,7 +3766,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region2_Schools.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-003/region2_schools.zip",
         "checksum": "sha256:1038dce1c5897c4b8a8cbf87c69e4b4b7abc0467627c5b76d1e798a0e9a6b494",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3810,7 +3810,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Region%204_Schools_Guyana.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-004/region-4_schools_guyana.zip",
         "checksum": "sha256:07cd5da2da11b2f1cee6385a13fc969408589356a45113b5e37dc77f097f7c00",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3854,7 +3854,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Schools_Region%205_%20Guyana.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-005/schools_region-5_-guyana.zip",
         "checksum": "sha256:d4af2968ecc036e71366863de0b68188742f835f90d21c0a3aba69d8a323ed50",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3898,7 +3898,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Covid%20Cases_May_07_RDCs.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-008/covid-cases_may_07_rdcs.zip",
         "checksum": "sha256:d13f28360b40587140b238e40c36a963d605e4c4e65528de884d677d6a513b14",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3942,7 +3942,7 @@
       {
         "label": "Legacy Direct Download (XLSX)",
         "format": "XLSX",
-        "url": "https://guynode.com/List%20of%20Health_Facilities.xlsx",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-009/list-of-health_facilities.xlsx",
         "checksum": "sha256:5d383bdf1a2e80dc016c285346f5a4e5f5c42c0cd41111d28d110c4ec80105ac",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -3986,7 +3986,7 @@
       {
         "label": "Legacy Direct Download (ZIP)",
         "format": "ZIP",
-        "url": "https://guynode.com/Airports_Airstrips.zip",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-016/airports_airstrips.zip",
         "checksum": "sha256:ccbc4ff20b3391b46eb0c4e392da397365edf2ff7eb43493016196cfc0acf896",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -4030,7 +4030,7 @@
       {
         "label": "Legacy Direct Download (XLSX)",
         "format": "XLSX",
-        "url": "https://guynode.com/Village_Population_by_Ethnicity_Region1_2012.xlsx",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-020/village_population_by_ethnicity_region1_2012.xlsx",
         "checksum": "sha256:55f2d4a0138fbe282f8caed66de4f58aefcd8b6031746e11056e8003f4e09837",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
@@ -4074,7 +4074,7 @@
       {
         "label": "Legacy Direct Download (XLSX)",
         "format": "XLSX",
-        "url": "https://guynode.com/Village_Population_by_Ethnicity_Region2_2012.xlsx",
+        "url": "https://storage.googleapis.com/guynode-public-assets/spatial-data/guynode_missing_asset_downloads/socio-economic-layers/legacy-socio-021/village_population_by_ethnicity_region2_2012.xlsx",
         "checksum": "sha256:488781b96d868f804b68b34cba81a451a38712eada2ee62610f416a8b0b46695",
         "checksumStatus": "generated",
         "checksumSource": "self-sha256",
