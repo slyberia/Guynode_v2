@@ -21,11 +21,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://guynode.com/?view=ANALYSIS</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://guynode.com/?view=BLOG_INDEX</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -117,21 +112,6 @@
   </url>
   <url>
     <loc>https://guynode.com/?view=LEARN_POST&amp;slug=place-based-geocoding-guyana</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://guynode.com/?view=ANALYSIS&amp;analysisId=ana-001</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://guynode.com/?view=ANALYSIS&amp;analysisId=ana-002</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://guynode.com/?view=ANALYSIS&amp;analysisId=ana-003</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

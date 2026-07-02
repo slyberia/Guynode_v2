@@ -1,14 +1,15 @@
 
 // Section 5 & 6: Dataset Schema & Metadata Model
 
+// Categories are DERIVED FROM THE DATA at runtime (see utils/catalogFilter.ts),
+// not from a fixed list — a hardcoded union drifts from datasets.json and
+// produces dead filter chips. The literals below only document the values
+// currently present in public/data/datasets.json; `string` keeps the type
+// honest for whatever the data actually contains.
 export type DataCategory =
-  | 'Boundaries'
-  | 'Demographics'
-  | 'Environment'
-  | 'Economy'
-  | 'Infrastructure'
   | 'Reference'
   | 'Administrative Boundaries'
+  | 'Demographics'
   | 'Planning and Development'
   | string;
 

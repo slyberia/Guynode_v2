@@ -1,6 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ViewState, Dataset } from './types';
+import { CatalogFilterState } from './utils/catalogFilter';
 import { Navigation } from './components/Navigation';
 import { useCatalog } from './context/CatalogContext';
 import Hero from './components/Hero';
@@ -156,6 +157,31 @@ function App() {
     window.scrollTo(0, 0);
   };
 
+  // Catalog discovery state is deep-linked in the URL (q + category + tags) so a
+  // filtered view is shareable and restored on back/forward. Filter changes use
+  // replaceState (they refine the current view rather than being a navigation),
+  // keeping the current history entry's URL in sync without spamming history.
+  const catalogFilters: CatalogFilterState = React.useMemo(() => ({
+    searchQuery: currentParams.searchQuery || '',
+    category: currentParams.category || 'ALL',
+    tags: currentParams.tags || [],
+  }), [currentParams.searchQuery, currentParams.category, currentParams.tags]);
+
+  const handleCatalogFiltersChange = useCallback((next: CatalogFilterState) => {
+    setCurrentParams(prev => {
+      const params: RouteParams = {
+        ...prev,
+        searchQuery: next.searchQuery.trim() ? next.searchQuery : undefined,
+        category: next.category && next.category !== 'ALL' ? next.category : undefined,
+        tags: next.tags.length ? next.tags : undefined,
+      };
+      if (safeHistoryAvailable()) {
+        window.history.replaceState({}, '', getUrlForView('CATALOG', params));
+      }
+      return params;
+    });
+  }, []);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark flex items-center justify-center text-gn-foreground dark:text-gn-foreground-dark">
@@ -273,7 +299,7 @@ function App() {
           </>
         );
       case 'CATALOG':
-        return <Catalog onOpenMap={handleOpenMap} initialSearchQuery={currentParams.searchQuery} />;
+        return <Catalog onOpenMap={handleOpenMap} filters={catalogFilters} onFiltersChange={handleCatalogFiltersChange} />;
       case 'MAP':
         return (
           <React.Suspense fallback={<LoadingFallback />}>

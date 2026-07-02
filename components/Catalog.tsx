@@ -1,8 +1,16 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Dataset, SearchResult, DataCategory, DatasetAsset } from '../types';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { Dataset, SearchResult, DatasetAsset } from '../types';
 import { MockDatasetPreviewService } from '../services/dataPipeline';
-import { SearchEngine } from '../services/searchEngine';
+import {
+  CatalogFilterState,
+  EMPTY_FILTER_STATE,
+  applyCatalogFilters,
+  canonicalizeTag,
+  deriveCategoryFacets,
+  deriveTagFacets,
+  reconcileFilterState,
+} from '../utils/catalogFilter';
 import { loadGeojsonOnDemand } from '../utils/geojsonLoader';
 import { CatalogCard } from './CatalogCard';
 import { DatasetTrustPanel } from './DatasetTrustPanel';
@@ -21,23 +29,61 @@ declare global {
 
 interface CatalogProps {
   onOpenMap?: (dataset: Dataset) => void;
-  initialSearchQuery?: string;
+  // Controlled filter state (source of truth lives in App/URL for deep-linking).
+  filters: CatalogFilterState;
+  onFiltersChange: (next: CatalogFilterState) => void;
 }
 
-export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery }) => {
+export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersChange }) => {
   // Data State
   const [datasets, setDatasets] = useState<Dataset[]>([]);
-  const [filteredResults, setFilteredResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Filter State
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery || '');
-  const [activeCategory, setActiveCategory] = useState<DataCategory | 'ALL'>('ALL');
+  // How many curated tag chips to surface before the "more" affordance.
+  const TAG_FACET_LIMIT = 12;
+  const [showAllTags, setShowAllTags] = useState(false);
 
-  // Update search query if prop changes
+  // Facets derived from the loaded data — never a chip that matches zero records.
+  const categoryFacets = useMemo(() => deriveCategoryFacets(datasets), [datasets]);
+  const tagFacets = useMemo(
+    () => deriveTagFacets(datasets, { limit: showAllTags ? undefined : TAG_FACET_LIMIT, include: filters.tags }),
+    [datasets, showAllTags, filters.tags]
+  );
+
+  // Combined filter step: search AND category AND (tag OR tag …).
+  const filteredResults: SearchResult[] = useMemo(
+    () => applyCatalogFilters(datasets, filters),
+    [datasets, filters]
+  );
+
+  // Filter mutators — all route through the controlled callback so the URL stays
+  // in sync (shareable + restored on back/forward).
+  const setSearchQuery = (searchQuery: string) => onFiltersChange({ ...filters, searchQuery });
+  const setActiveCategory = (category: string) => onFiltersChange({ ...filters, category });
+  const toggleTag = (tag: string) => {
+    const canon = canonicalizeTag(tag);
+    const has = filters.tags.some((t) => canonicalizeTag(t) === canon);
+    const tags = has
+      ? filters.tags.filter((t) => canonicalizeTag(t) !== canon)
+      : [...filters.tags, canon];
+    onFiltersChange({ ...filters, tags });
+  };
+  const clearFilters = () => onFiltersChange(EMPTY_FILTER_STATE);
+
+  // Drop filter values the loaded data can't back (stale bookmarked category/tag),
+  // so a shared URL never shows an empty catalog behind a dead chip.
   useEffect(() => {
-    setSearchQuery(initialSearchQuery || '');
-  }, [initialSearchQuery]);
+    if (datasets.length === 0) return;
+    const reconciled = reconcileFilterState(filters, datasets);
+    if (
+      reconciled.category !== filters.category ||
+      reconciled.tags.length !== filters.tags.length ||
+      reconciled.tags.some((t, i) => t !== filters.tags[i])
+    ) {
+      onFiltersChange(reconciled);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [datasets]);
 
   // Selection & Detail State
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
@@ -135,19 +181,6 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
     loadData();
   }, []);
 
-  // Search & Filter Logic (Section 8)
-  useEffect(() => {
-    // 1. Full text search
-    let results = SearchEngine.search(datasets, searchQuery);
-    
-    // 2. Category Filter
-    if (activeCategory !== 'ALL') {
-      results = results.filter(r => r.item.category === activeCategory);
-    }
-
-    setFilteredResults(results);
-  }, [searchQuery, activeCategory, datasets]);
-
   // Extraction Logic on Selection
   useEffect(() => {
     setShowMap(false);
@@ -223,12 +256,12 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
             </div>
           </div>
           <div className="flex flex-col gap-2 items-end">
-            <input 
-              type="text" 
-              placeholder="> SEARCH DATASETS..." 
-              value={searchQuery}
+            <input
+              type="text"
+              placeholder="> SEARCH DATASETS..."
+              value={filters.searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-gn-accent-gold font-mono focus:border-brand-green-500 dark:focus:border-gn-accent-blue outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600" 
+              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-gn-accent-gold font-mono focus:border-brand-green-500 dark:focus:border-gn-accent-blue outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600"
             />
             {/* Place Finder Stub */}
             <div className="text-[9px] text-ink-500 dark:text-gray-600 font-mono flex items-center gap-1">
@@ -238,23 +271,88 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
           </div>
         </div>
         
-        {/* Category Chips */}
+        {/* Category Chips — derived from the loaded data; every chip has a real
+            count and yields >= 1 result (no dead filters). */}
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-          <button 
+          <button
             onClick={() => setActiveCategory('ALL')}
-            className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors ${activeCategory === 'ALL' ? 'bg-ink-900 text-cream-100 border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'text-ink-500 border-cream-300 hover:border-ink-900 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
+            className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${filters.category === 'ALL' ? 'bg-ink-900 text-cream-100 border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'text-ink-500 border-cream-300 hover:border-ink-900 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
           >
-            ALL
+            ALL ({datasets.length})
           </button>
-          {['Boundaries', 'Demographics', 'Environment', 'Economy', 'Infrastructure', 'Reference', 'Administrative Boundaries', 'Planning and Development'].map(cat => (
-             <button 
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${activeCategory === cat ? 'bg-brand-green-600 text-white border-brand-green-600 dark:bg-gn-accent-dark dark:text-white dark:border-gn-accent-dark' : 'text-ink-500 border-cream-300 hover:border-brand-green-600 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
+          {categoryFacets.map(({ value, count }) => (
+            <button
+              key={value}
+              onClick={() => setActiveCategory(value)}
+              className={`px-4 py-1 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${filters.category === value ? 'bg-brand-green-600 text-white border-brand-green-600 dark:bg-gn-accent-dark dark:text-white dark:border-gn-accent-dark' : 'text-ink-500 border-cream-300 hover:border-brand-green-600 dark:text-gray-400 dark:border-white/20 dark:hover:border-white'}`}
             >
-              {cat}
+              {value} ({count})
             </button>
           ))}
+        </div>
+
+        {/* Tag Facet — curated tags derived from the data (format-duplicate noise
+            excluded). Multi-select; results match ANY selected tag (OR). */}
+        {tagFacets.length > 0 && (
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-ink-500 dark:text-gray-500 mr-1">Tags</span>
+            {tagFacets.map(({ value, count }) => {
+              const active = filters.tags.some((t) => canonicalizeTag(t) === canonicalizeTag(value));
+              return (
+                <button
+                  key={value}
+                  onClick={() => toggleTag(value)}
+                  aria-pressed={active}
+                  className={`text-[10px] font-mono px-2 py-1 rounded border transition-colors ${active ? 'bg-brand-gold-600 text-white border-brand-gold-600 dark:bg-gn-accent-gold dark:text-black dark:border-gn-accent-gold' : 'bg-cream-200 text-ink-500 border-cream-300 hover:border-brand-gold-600 dark:bg-white/10 dark:text-gray-400 dark:border-white/10 dark:hover:border-gn-accent-gold'}`}
+                >
+                  #{value} <span className="opacity-60">{count}</span>
+                </button>
+              );
+            })}
+            <button
+              onClick={() => setShowAllTags((v) => !v)}
+              className="text-[10px] font-mono px-2 py-1 rounded text-brand-green-600 dark:text-gn-accent-blue hover:underline"
+            >
+              {showAllTags ? 'less' : 'more…'}
+            </button>
+          </div>
+        )}
+
+        {/* Result count + active-filter summary. Combining rule stated so results
+            are explainable: AND across facet types, OR within tags. */}
+        <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+          <span className="text-ink-700 dark:text-gray-300 font-bold">
+            {filteredResults.length} of {datasets.length} datasets
+          </span>
+          {(filters.category !== 'ALL' || filters.tags.length > 0 || filters.searchQuery.trim()) && (
+            <>
+              <span className="text-ink-500 dark:text-gray-600">•</span>
+              {filters.searchQuery.trim() && (
+                <span className="text-ink-500 dark:text-gray-500">“{filters.searchQuery.trim()}”</span>
+              )}
+              {filters.category !== 'ALL' && (
+                <button
+                  onClick={() => setActiveCategory('ALL')}
+                  className="inline-flex items-center gap-1 bg-brand-green-600/10 text-brand-green-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold px-2 py-0.5 rounded"
+                >
+                  {filters.category} <span aria-hidden>✕</span>
+                </button>
+              )}
+              {filters.tags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className="inline-flex items-center gap-1 bg-brand-gold-600/10 text-brand-gold-600 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold px-2 py-0.5 rounded"
+                >
+                  #{tag} <span aria-hidden>✕</span>
+                </button>
+              ))}
+              <button onClick={clearFilters} className="text-ink-500 dark:text-gray-500 hover:text-ink-900 dark:hover:text-white underline">
+                clear all
+              </button>
+              <span className="text-ink-400 dark:text-gray-600 hidden sm:inline">matches search ∧ category ∧ any selected tag</span>
+            </>
+          )}
         </div>
       </div>
 
@@ -275,7 +373,23 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 />
               ))}
               {filteredResults.length === 0 && (
-                <div className="p-8 text-center text-ink-500 dark:text-gray-600 text-sm">No datasets found matching query.</div>
+                <div className="p-8 text-center text-ink-500 dark:text-gray-500 text-sm space-y-3">
+                  <p>
+                    No datasets match{' '}
+                    {filters.searchQuery.trim() && <>“{filters.searchQuery.trim()}”</>}
+                    {filters.category !== 'ALL' && <> in <span className="font-bold">{filters.category}</span></>}
+                    {filters.tags.length > 0 && (
+                      <> tagged {filters.tags.map((t) => `#${t}`).join(' or ')}</>
+                    )}
+                    .
+                  </p>
+                  <button
+                    onClick={clearFilters}
+                    className="text-xs font-bold uppercase tracking-widest px-4 py-2 rounded border border-ink-900/20 text-ink-900 hover:border-ink-900 dark:border-white/20 dark:text-white dark:hover:border-white transition-colors"
+                  >
+                    Clear filters
+                  </button>
+                </div>
               )}
             </div>
           )}
@@ -415,13 +529,22 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, initialSearchQuery 
                 {/* Provenance & usage — surfaces enriched trust metadata (Prompt 1.6). */}
                 <DatasetTrustPanel dataset={selectedDataset} />
 
-                {selectedDataset.tags && (
-                  <div className="flex gap-2 mb-6">
-                    {selectedDataset.tags.map(tag => (
-                      <span key={tag} className="text-[10px] bg-cream-200 dark:bg-white/10 px-2 py-1 rounded text-ink-500 dark:text-gray-400 font-mono">
-                        #{tag}
-                      </span>
-                    ))}
+                {selectedDataset.tags && selectedDataset.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {selectedDataset.tags.map(tag => {
+                      const active = filters.tags.some((t) => canonicalizeTag(t) === canonicalizeTag(tag));
+                      return (
+                        <button
+                          key={tag}
+                          onClick={() => toggleTag(tag)}
+                          aria-pressed={active}
+                          title={active ? `Remove filter #${tag}` : `Filter catalog by #${tag}`}
+                          className={`text-[10px] px-2 py-1 rounded font-mono transition-colors ${active ? 'bg-brand-gold-600 text-white dark:bg-gn-accent-gold dark:text-black' : 'bg-cream-200 text-ink-500 hover:text-ink-900 dark:bg-white/10 dark:text-gray-400 dark:hover:text-white'}`}
+                        >
+                          #{tag}
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
                 
