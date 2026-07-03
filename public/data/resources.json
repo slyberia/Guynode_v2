@@ -4,7 +4,7 @@
     "title": "30-Meter SRTM Tile Downloader",
     "resourceType": "data-portal",
     "url": "http://dwtkns.com/srtm30m/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Interactive web map interface to download 1-arc second (30m) SRTM global digital elevation data.",
     "relatedDatasets": [
       "legacy-demtopo-006",
       "legacy-demtopo-008",
@@ -19,306 +19,381 @@
       "legacy-demtopo-009"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-143245",
-    "title": "External Resource on health.gov.gy",
+    "title": "Guyana Ministry of Health",
     "resourceType": "source-reference",
     "url": "http://www.health.gov.gy/index.php",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Official portal of the Ministry of Health. Provides authoritative health statistics, reports, and epidemiological context.",
     "relatedDatasets": [
       "legacy-socio-009"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "source-reference"
   },
   {
     "id": "res-276677",
     "title": "USGS National Map Downloader",
-    "resourceType": "source-reference",
+    "resourceType": "data-portal",
     "url": "https://apps.nationalmap.gov/downloader/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Explore and download foundational geospatial data from the US Geological Survey, including global elevation products.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-25551",
-    "title": "External Resource on coast.noaa.gov",
-    "resourceType": "source-reference",
+    "title": "NOAA Data Access Viewer (Lidar)",
+    "resourceType": "data-portal",
     "url": "https://coast.noaa.gov/dataviewer/#/lidar/search/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Search and download high-resolution coastal elevation and lidar data provided by NOAA.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-586161",
-    "title": "External Resource on covid19.health.gov.gy",
-    "resourceType": "source-reference",
+    "title": "Guyana COVID-19 Dashboard",
+    "resourceType": "reference",
     "url": "https://covid19.health.gov.gy/apps/moph/r/outbreak/localstats?session=10031270832794",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Legacy interactive dashboard mapping local COVID-19 statistics and outbreak data across Guyana.",
     "relatedDatasets": [
       "legacy-socio-008"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-497770",
-    "title": "External Resource on data.humdata.org",
-    "resourceType": "source-reference",
+    "title": "HDX: Guyana Airports",
+    "resourceType": "data-portal",
     "url": "https://data.humdata.org/dataset/ourairports-guy",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Humanitarian Data Exchange portal containing point locations of airports and landing strips in Guyana.",
     "relatedDatasets": [
       "legacy-socio-016"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-530083",
     "title": "Copernicus Open Access Hub",
     "resourceType": "data-portal",
     "url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Access European Space Agency (ESA) Sentinel imagery and the Copernicus DEM (GLO-30) for topographical analysis.",
     "relatedDatasets": [
       "legacy-demtopo-014"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-596016",
-    "title": "External Resource on drive.google.com",
-    "resourceType": "manual-review",
+    "title": "ALOS DEM Guyana (Legacy Drive Link)",
+    "resourceType": "reference",
     "url": "https://drive.google.com/file/d/1A2GmWkzsXejCW4U_wDbWAI9xbJi2Oe1Y/view?usp=drive_link",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Google Drive archive of the ALOS DEM for Guyana. Pending migration to main data catalog.",
     "relatedDatasets": [
       "legacy-demtopo-012",
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-489283",
-    "title": "External Resource on drive.google.com",
-    "resourceType": "manual-review",
+    "title": "ASTER DEM Guyana (Legacy Drive Link)",
+    "resourceType": "reference",
     "url": "https://drive.google.com/file/d/1cndwLLmxqEcmvUfsehHBNV7kvYYI4vpa/view?usp=share_link",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Google Drive archive of the ASTER DEM for Guyana. Pending migration to main data catalog.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-268323",
-    "title": "External Resource on en-us.topographic-map.com",
-    "resourceType": "source-reference",
+    "title": "Georgetown Topographic Map",
+    "resourceType": "reference",
     "url": "https://en-us.topographic-map.com/maps/rq4w/Georgetown/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Interactive web elevation map of Georgetown, visualizing basic topography and sea-level.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-858244",
     "title": "GADM Data Download Portal",
     "resourceType": "data-portal",
     "url": "https://gadm.org/download_country.html",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Global Administrative Areas (GADM) spatial database providing administrative boundaries for Guyana.",
     "relatedDatasets": [
       "legacy-admin-045"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-436428",
-    "title": "External Resource on gee-community-catalog.org",
-    "resourceType": "source-reference",
+    "title": "FABDEM (GEE Catalog)",
+    "resourceType": "data-portal",
     "url": "https://gee-community-catalog.org/projects/fabdem/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Forest And Buildings removed Copernicus DEM. A global bare-earth digital terrain model available via Google Earth Engine.",
     "relatedDatasets": [
       "legacy-demtopo-015"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-518820",
-    "title": "External Resource on learn.arcgis.com",
+    "title": "ArcGIS Learn: Lidar Gallery",
     "resourceType": "tutorial",
     "url": "https://learn.arcgis.com/en/gallery/#?q=lidar",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Curated tutorials and resources from Esri for processing, visualizing, and analyzing Lidar data.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "tutorial"
   },
   {
     "id": "res-211322",
-    "title": "External Resource on learn.arcgis.com",
+    "title": "ArcGIS Tutorial: Classify Lidar",
     "resourceType": "tutorial",
     "url": "https://learn.arcgis.com/en/projects/classify-a-lidar-point-cloud/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Step-by-step instructional guide on how to classify Lidar point clouds using ArcGIS Pro.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "tutorial"
   },
   {
     "id": "res-264764",
-    "title": "External Resource on learn.arcgis.com",
+    "title": "ArcGIS Tutorial: Visualize Lidar",
     "resourceType": "tutorial",
     "url": "https://learn.arcgis.com/en/projects/create-and-visualize-a-lidar-point-cloud/",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Instructional guide for creating and visualizing 3D Lidar point clouds.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "tutorial"
   },
   {
     "id": "res-62393",
-    "title": "External Resource on maps.princeton.edu",
+    "title": "Princeton Map Collection",
     "resourceType": "source-reference",
     "url": "https://maps.princeton.edu/catalog/princeton-cf95jf105",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Historical map archives and historical geospatial datasets hosted by Princeton University Library.",
     "relatedDatasets": [
       "legacy-admin-061"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "source-reference"
   },
   {
     "id": "res-746628",
-    "title": "External Resource on portal.opentopography.org",
-    "resourceType": "source-reference",
+    "title": "OpenTopography Portal (Guyana)",
+    "resourceType": "data-portal",
     "url": "https://portal.opentopography.org/datasets?minX=-62.5341796875&minY=0.09558114446562627&maxX=-55.12939453125&maxY=9.543333212684416",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Bounding-box search query on OpenTopography for high-resolution elevation data covering northern Guyana.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-716828",
-    "title": "External Resource on portal.opentopography.org",
-    "resourceType": "source-reference",
+    "title": "OpenTopography: ALOS World 3D",
+    "resourceType": "data-portal",
     "url": "https://portal.opentopography.org/raster?opentopoID=OTALOS.112016.4326.2",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Direct access to the ALOS World 3D (AW3D30) global digital surface model via OpenTopography.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-957518",
-    "title": "External Resource on portal.opentopography.org",
-    "resourceType": "source-reference",
+    "title": "OpenTopography: SRTM GL1",
+    "resourceType": "data-portal",
     "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.2",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Direct access to the SRTM GL1 (30m) global digital elevation model via OpenTopography.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-985319",
-    "title": "External Resource on portal.opentopography.org",
-    "resourceType": "source-reference",
+    "title": "OpenTopography: SRTM GL3",
+    "resourceType": "data-portal",
     "url": "https://portal.opentopography.org/raster?opentopoID=OTSDEM.032021.4326.3",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Direct access to the SRTM GL3 (90m) global digital elevation model via OpenTopography.",
     "relatedDatasets": [
       "legacy-demtopo-014",
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-541716",
-    "title": "NASA EarthData Search Portal",
+    "title": "NASA EarthData: ASTER",
     "resourceType": "data-portal",
     "url": "https://search.earthdata.nasa.gov/search?fi=ASTER&fdc=Land%2BProcess%2BDistributed%2BActive%2BArchive%2BCenter%2B%2528LPDAAC%2529",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "NASAs EarthData portal pre-filtered for ASTER Global Digital Elevation Model (GDEM) products.",
     "relatedDatasets": [
       "legacy-demtopo-012",
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-811665",
     "title": "Guyana Topographic Maps (Commercial)",
-    "resourceType": "commercial-reference",
+    "resourceType": "reference",
     "url": "https://shop.geospatial.com/publication/FVR52TZAFRKAMSTG151P6Y6W25/Guyana-1-to-50000-Scale-Topographic-Maps-GDLS",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Commercial vendor providing 1:50,000 scale topographic map sheets for Guyana.",
     "relatedDatasets": [
       "legacy-demtopo-033"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-390427",
-    "title": "External Resource on statisticsguyana.gov.gy",
+    "title": "Guyana Bureau of Statistics",
     "resourceType": "source-reference",
     "url": "https://statisticsguyana.gov.gy/publications/#elementor-tab-content-1465%20%3E%20ul:nth-child(3)%20%3E%20li:nth-child(1)%20%3E%20span",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Official publication portal for the Guyana Bureau of Statistics, hosting census data and demographic reports.",
     "relatedDatasets": [
       "legacy-socio-020",
       "legacy-socio-021"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "source-reference"
   },
   {
     "id": "res-385921",
-    "title": "External Resource on storymaps.arcgis.com",
-    "resourceType": "source-reference",
+    "title": "ArcGIS StoryMap Reference",
+    "resourceType": "tutorial",
     "url": "https://storymaps.arcgis.com/stories/b15de933757b4ddb80c133a3b7759329",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Interactive spatial narrative or presentation built with ArcGIS StoryMaps related to Guyanese geography.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "tutorial"
   },
   {
     "id": "res-854561",
     "title": "Interactive Web Map (ArcGIS)",
-    "resourceType": "web-map-app",
+    "resourceType": "data-portal",
     "url": "https://www.arcgis.com/apps/View/index.html?appid=76b2cd9845744904bf65c2fc2e5f46e3",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Legacy interactive web mapping application visualizing spatial themes via ArcGIS Online.",
     "relatedDatasets": [
       "legacy-demtopo-033"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "data-portal"
   },
   {
     "id": "res-300673",
-    "title": "External Resource on education.gov.gy",
+    "title": "Ministry of Education: List of Schools",
     "resourceType": "source-reference",
     "url": "https://www.education.gov.gy/web/index.php/downloads/cat_view/8-downloads/61-other-files/22-list-of-schools",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Tabular dataset of public schools in Guyana provided by the Ministry of Education. Useful for geocoding.",
     "relatedDatasets": [
       "legacy-socio-005",
       "legacy-socio-001",
@@ -327,66 +402,84 @@
       "legacy-socio-002"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "source-reference"
   },
   {
     "id": "res-792083",
-    "title": "External Resource on eorc.jaxa.jp",
+    "title": "JAXA ALOS Global Digital Surface Model",
     "resourceType": "source-reference",
     "url": "https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d30/aw3d30_e.htm",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "External source page for JAXAs ALOS World 3D 30-meter elevation product, useful as context for DEM comparison.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "source-reference"
   },
   {
     "id": "res-977476",
-    "title": "External Resource on google.com",
-    "resourceType": "source-reference",
+    "title": "Google Maps: Potaro-Siparuni",
+    "resourceType": "reference",
     "url": "https://www.google.com/maps/place/Potaro-Siparuni,+Guyana/@4.861365,-59.7785712,9z/data=!3m1!4b1!4m5!3m4!1s0x8dbc7dbb39e173a7:0xd1fed35ae7c9497d!8m2!3d4.7855853!4d-59.2879977!5m1!1e4",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Google Maps bounding box view for Region 8 (Potaro-Siparuni), used as a generic legacy reference point.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-145286",
-    "title": "External Resource on google.com",
-    "resourceType": "source-reference",
+    "title": "Google Maps: Upper Demerara-Berbice",
+    "resourceType": "reference",
     "url": "https://www.google.com/maps/place/Upper+Demerara-Berbice,+Guyana/@5.4860764,-58.773019,9z/data=!4m5!3m4!1s0x8da356a8db70ae11:0xd83b34d3ce72b090!8m2!3d5.3064879!4d-58.1892921!5m1!1e4",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Google Maps bounding box view for Region 10 (Upper Demerara-Berbice).",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-232428",
-    "title": "External Resource on google.com",
-    "resourceType": "source-reference",
+    "title": "Google Maps: Cuyuni-Mazaruni",
+    "resourceType": "reference",
     "url": "https://www.google.com/maps/search/CuyREgion+9,+Guyana/@2.5898085,-59.9781035,8z/data=!5m1!1e4",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Google Maps bounding box view for Region 7/9.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "reference"
   },
   {
     "id": "res-683556",
-    "title": "External Resource on usgs.gov",
-    "resourceType": "data-portal",
+    "title": "USGS 3D Elevation Program (3DEP)",
+    "resourceType": "tutorial",
     "url": "https://www.usgs.gov/core-science-systems/ngp/3dep",
-    "description": "External resource or data portal referenced by legacy Guynode.",
+    "description": "Documentation for the USGS 3DEP program, demonstrating best practices in national elevation dataset management.",
     "relatedDatasets": [
       "legacy-demtopo-007"
     ],
     "status": "external",
-    "migrationDecision": "moved-to-resources"
+    "migrationDecision": "moved-to-resources",
+    "metadataConfidence": "medium",
+    "metadataSource": "curated-from-url-and-legacy-context",
+    "thumbnailType": "tutorial"
   }
 ]
