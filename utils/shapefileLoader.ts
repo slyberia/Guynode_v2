@@ -1,4 +1,4 @@
-import * as shp from 'shpjs';
+import shp from 'shpjs';
 import type { FeatureCollection } from 'geojson';
 
 /**
