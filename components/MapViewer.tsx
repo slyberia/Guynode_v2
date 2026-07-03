@@ -180,7 +180,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
           const clippedBounds = getMapBounds(mapInstanceRef.current);
           const dataToRender = currentState.fullDatasetMode ? geoData : clipToViewBounds(geoData, clippedBounds);
 
-          let style: import('leaflet').PathOptions = {
+          const style: import('leaflet').PathOptions = {
             color: layer.color,
             weight: configStyle.weight || 2,
             fillOpacity: (configStyle.fillOpacity || 0.2) * layer.opacity,
@@ -450,7 +450,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
      updateUrl(newActive);
   };
 
-  const updateUrl = (activeLayerIds: string[]) => {
+  const updateUrl = (_activeLayerIds: string[]) => {
      // Stub for URL syncing logic
   };
 
