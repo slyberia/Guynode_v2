@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Dataset, ValidationStatus } from '../types';
+import { Dataset } from '../types';
 import { getCategoryColor, computeQuickStats, getSmallPreview } from '../utils/contextCardUtils';
 
 interface CatalogCardProps {

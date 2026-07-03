@@ -11,6 +11,7 @@ export const createCatalogDatasetEntry = (draft: DatasetConfigDraft): Dataset =>
     title: draft.title,
     description: draft.description,
     category: draft.category,
+    tags: [],
     lastUpdated: draft.updatedAt.split('T')[0],
     format: draft.format,
     size: formatBytes(draft.sizeBytes),

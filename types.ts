@@ -199,7 +199,6 @@ export interface Dataset {
 
   // Multi-asset support
   assets?: DatasetAsset[];
-  tags?: string[];
 }
 
 export interface BlogCategory {
