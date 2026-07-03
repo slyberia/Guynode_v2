@@ -13,7 +13,6 @@ import {
 } from '../utils/catalogFilter';
 import { loadGeojsonOnDemand } from '../utils/geojsonLoader';
 import { CatalogCard } from './CatalogCard';
-import { DatasetTrustPanel } from './DatasetTrustPanel';
 import { ImageViewer } from './viewer/ImageViewer';
 import { PdfViewer } from './viewer/PdfViewer';
 import { TableViewer } from './viewer/TableViewer';
@@ -43,6 +42,9 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
   // How many curated tag chips to surface before the "more" affordance.
   const TAG_FACET_LIMIT = 12;
   const [showAllTags, setShowAllTags] = useState(false);
+  
+  // Sidebar State for GIS Viewer / Catalog layout
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Facets derived from the loaded data — never a chip that matches zero records.
   const categoryFacets = useMemo(() => deriveCategoryFacets(datasets), [datasets]);
@@ -349,7 +351,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
       <div className="flex flex-1 overflow-hidden">
         
         {/* Left Pane: Dataset List */}
-        <div className="w-1/3 border-r border-cream-300 dark:border-gn-border-dark overflow-y-auto bg-cream-100 dark:bg-black custom-scrollbar transition-colors duration-300">
+        {isSidebarOpen && (
+        <div className="w-[350px] border-r border-cream-300 dark:border-gn-border-dark overflow-y-auto bg-cream-100 dark:bg-black custom-scrollbar transition-colors duration-300 flex-shrink-0">
           {loading ? (
              <div className="p-8 text-center font-mono text-ink-500 dark:text-gray-500 animate-pulse">&gt; INITIALIZING PIPELINE...</div>
           ) : (
@@ -384,9 +387,23 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
             </div>
           )}
         </div>
+        )}
 
         {/* Right Pane: Detail & Extraction View */}
-        <div className="w-2/3 bg-cream-200 dark:bg-gn-surface-muted-dark flex flex-col overflow-hidden relative transition-colors duration-300">
+        <div className="flex-1 bg-cream-200 dark:bg-gn-surface-muted-dark flex flex-col overflow-hidden relative transition-colors duration-300">
+          {/* Sidebar Toggle Button */}
+          <button 
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="absolute top-4 left-4 z-[600] bg-white/90 dark:bg-black/90 text-gn-foreground dark:text-white p-2 rounded border border-gn-border dark:border-white/10 shadow hover:bg-gn-border dark:hover:bg-white/10 transition-colors"
+            title={isSidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+          >
+            {isSidebarOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            )}
+          </button>
+
           {/* Background Grid Pattern */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
           
@@ -524,8 +541,16 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 
                 <p className="text-ink-700 dark:text-gray-300 text-sm mb-6 max-w-3xl leading-relaxed">{selectedDataset.description}</p>
 
-                {/* Provenance & usage — surfaces enriched trust metadata (Prompt 1.6). */}
-                <DatasetTrustPanel dataset={selectedDataset} />
+                {/* Provenance & usage — centralized disclaimer badge */}
+                <div className="mb-6 flex items-center justify-between bg-brand-gold-600/10 dark:bg-gn-accent-gold/10 border border-brand-gold-600/20 dark:border-gn-accent-gold/20 p-3 rounded">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-brand-gold-600 dark:text-gn-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span className="text-xs text-gn-foreground dark:text-gray-300">Data requires careful interpretation.</span>
+                  </div>
+                  <a href="/?view=SUPPORT&supportSection=data-license" className="text-xs font-bold text-brand-green-600 hover:text-brand-green-700 dark:text-gn-accent-blue hover:underline uppercase tracking-widest">
+                    Read Disclaimer
+                  </a>
+                </div>
 
                 {selectedDataset.tags && selectedDataset.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">

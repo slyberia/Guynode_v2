@@ -77,7 +77,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
               onClick={() => setView('ATTRIBUTION')}
               className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ATTRIBUTION' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
             >
-              Attribution
+              Citations
             </button>
           )}
           <button
