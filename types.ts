@@ -178,6 +178,8 @@ export interface Dataset {
   geographicCoverage?: string;
   temporalCoverage?: string;
   spatialReference?: string;
+  spatialResolution?: string;
+  boundingBox?: [[number, number], [number, number]]; // [southWest, northEast]
 
   // --- License and citation (additive, optional) ---
   license?: string;

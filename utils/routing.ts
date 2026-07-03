@@ -11,6 +11,12 @@ export interface RouteParams {
   tags?: string[];
   adminSection?: string;
   supportSection?: string; // New param for Support page anchors
+  
+  // Advanced Search Params
+  format?: string;
+  sourceAuthority?: string;
+  authorityLevel?: string;
+  onlyDownloadable?: boolean;
 }
 
 /**
@@ -67,7 +73,11 @@ export const getViewFromUrl = (search: string, pathname: string = window.locatio
     searchQuery: params.get('q') || undefined,
     tags: parseTags(params.get('tags')),
     adminSection: params.get('section') || undefined,
-    supportSection: params.get('section') || undefined // Map generic 'section' param to supportSection as well
+    supportSection: params.get('section') || undefined, // Map generic 'section' param to supportSection as well
+    format: params.get('format') || undefined,
+    sourceAuthority: params.get('sourceAuthority') || undefined,
+    authorityLevel: params.get('authorityLevel') || undefined,
+    onlyDownloadable: params.get('onlyDownloadable') === 'true'
   };
 
   let view: ViewState = 'HOME';
@@ -179,6 +189,11 @@ export const getUrlForView = (view: ViewState, params?: RouteParams): string => 
   if (params?.tags && params.tags.length) sp.set('tags', params.tags.join(','));
   if (params?.adminSection) sp.set('section', params.adminSection);
   if (params?.supportSection) sp.set('section', params.supportSection);
+  
+  if (params?.format) sp.set('format', params.format);
+  if (params?.sourceAuthority) sp.set('sourceAuthority', params.sourceAuthority);
+  if (params?.authorityLevel) sp.set('authorityLevel', params.authorityLevel);
+  if (params?.onlyDownloadable) sp.set('onlyDownloadable', 'true');
 
   return `?${sp.toString()}`;
 };

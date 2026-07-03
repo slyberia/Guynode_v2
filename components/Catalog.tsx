@@ -10,6 +10,9 @@ import {
   deriveCategoryFacets,
   deriveTagFacets,
   reconcileFilterState,
+  deriveFormatFacets,
+  deriveSourceFacets,
+  deriveAuthorityLevelFacets,
 } from '../utils/catalogFilter';
 import { loadGeojsonOnDemand } from '../utils/geojsonLoader';
 import { CatalogCard } from './CatalogCard';
@@ -45,6 +48,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
   
   // Sidebar State for GIS Viewer / Catalog layout
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
   // Facets derived from the loaded data — never a chip that matches zero records.
   const categoryFacets = useMemo(() => deriveCategoryFacets(datasets), [datasets]);
@@ -52,6 +56,18 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
     () => deriveTagFacets(datasets, { limit: showAllTags ? undefined : TAG_FACET_LIMIT, include: filters.tags }),
     [datasets, showAllTags, filters.tags]
   );
+  
+  const formatFacets = useMemo(() => deriveFormatFacets(applyCatalogFilters(datasets, { ...filters, format: 'ALL' })), [datasets, filters]);
+  const sourceFacets = useMemo(() => deriveSourceFacets(applyCatalogFilters(datasets, { ...filters, sourceAuthority: 'ALL' })), [datasets, filters]);
+  const authorityFacets = useMemo(() => deriveAuthorityLevelFacets(applyCatalogFilters(datasets, { ...filters, authorityLevel: 'ALL' })), [datasets, filters]);
+
+  // Count active advanced filters for the badge
+  const activeAdvancedCount = [
+    filters.format && filters.format !== 'ALL',
+    filters.sourceAuthority && filters.sourceAuthority !== 'ALL',
+    filters.authorityLevel && filters.authorityLevel !== 'ALL',
+    filters.onlyDownloadable
+  ].filter(Boolean).length;
 
   // Combined filter step: search AND category AND (tag OR tag …).
   const filteredResults: SearchResult[] = useMemo(
@@ -91,6 +107,18 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
   // Selection & Detail State
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [showAccessMenu, setShowAccessMenu] = useState(false);
+
+  // Mutually Exclusive Panel Handlers
+  const handleToggleDetails = () => {
+    if (!showDetails) setShowMap(false);
+    setShowDetails(!showDetails);
+  };
+
+  const handleToggleMap = () => {
+    if (!showMap) setShowDetails(false);
+    setShowMap(!showMap);
+  };
 
   
   // Map State
@@ -249,13 +277,26 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
             </div>
           </div>
           <div className="flex flex-col gap-2 items-end">
-            <input
-              type="text"
-              placeholder="> SEARCH DATASETS..."
-              value={filters.searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-gn-accent-gold font-mono focus:border-brand-green-500 dark:focus:border-gn-accent-blue outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600"
-            />
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="> SEARCH DATASETS..."
+                value={filters.searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded-sm px-4 py-2 text-sm text-ink-900 dark:text-gn-accent-gold font-mono focus:border-brand-green-500 dark:focus:border-gn-accent-blue outline-none w-80 uppercase placeholder-ink-500 dark:placeholder-gray-600"
+              />
+              <button 
+                onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
+                className={`px-3 py-2 border rounded-sm font-bold text-xs uppercase tracking-widest transition-colors flex items-center gap-1 ${showAdvancedSearch || activeAdvancedCount > 0 ? 'bg-ink-900 text-cream-100 border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
+              >
+                Advanced
+                {activeAdvancedCount > 0 && (
+                  <span className="bg-brand-green-600 text-white rounded-full px-1.5 py-0.5 text-[9px] leading-none">
+                    {activeAdvancedCount}
+                  </span>
+                )}
+              </button>
+            </div>
             {/* Place Finder Stub */}
             <div className="text-[9px] text-ink-500 dark:text-gray-600 font-mono flex items-center gap-1">
                <span className="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
@@ -263,6 +304,56 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
             </div>
           </div>
         </div>
+        
+        {/* Advanced Search Panel */}
+        {showAdvancedSearch && (
+          <div className="bg-cream-200 dark:bg-gn-surface-muted-dark border border-cream-300 dark:border-gn-border-dark rounded p-4 mt-2 grid grid-cols-1 md:grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
+            <div>
+              <label className="block text-[10px] font-bold text-ink-500 dark:text-gray-500 uppercase tracking-widest mb-1">Format</label>
+              <select 
+                value={filters.format || 'ALL'} 
+                onChange={(e) => onFiltersChange({ ...filters, format: e.target.value })}
+                className="w-full bg-cream-100 dark:bg-black border border-cream-300 dark:border-gn-border-dark rounded px-2 py-1.5 text-xs font-mono text-ink-900 dark:text-gray-300 outline-none focus:border-brand-green-500"
+              >
+                <option value="ALL">Any Format</option>
+                {formatFacets.map(f => <option key={f.value} value={f.value}>{f.value} ({f.count})</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block text-[10px] font-bold text-ink-500 dark:text-gray-500 uppercase tracking-widest mb-1">Source Authority</label>
+              <select 
+                value={filters.sourceAuthority || 'ALL'} 
+                onChange={(e) => onFiltersChange({ ...filters, sourceAuthority: e.target.value })}
+                className="w-full bg-cream-100 dark:bg-black border border-cream-300 dark:border-gn-border-dark rounded px-2 py-1.5 text-xs font-mono text-ink-900 dark:text-gray-300 outline-none focus:border-brand-green-500"
+              >
+                <option value="ALL">Any Source</option>
+                {sourceFacets.map(f => <option key={f.value} value={f.value}>{f.value} ({f.count})</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block text-[10px] font-bold text-ink-500 dark:text-gray-500 uppercase tracking-widest mb-1">Authority Level</label>
+              <select 
+                value={filters.authorityLevel || 'ALL'} 
+                onChange={(e) => onFiltersChange({ ...filters, authorityLevel: e.target.value })}
+                className="w-full bg-cream-100 dark:bg-black border border-cream-300 dark:border-gn-border-dark rounded px-2 py-1.5 text-xs font-mono text-ink-900 dark:text-gray-300 outline-none focus:border-brand-green-500"
+              >
+                <option value="ALL">Any Level</option>
+                {authorityFacets.map(f => <option key={f.value} value={f.value}>{f.value} ({f.count})</option>)}
+              </select>
+            </div>
+            <div className="flex items-center mt-4 md:mt-5">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  checked={filters.onlyDownloadable || false} 
+                  onChange={(e) => onFiltersChange({ ...filters, onlyDownloadable: e.target.checked })}
+                  className="rounded border-gray-300 text-brand-green-600 focus:ring-brand-green-500"
+                />
+                <span className="text-[10px] font-bold text-ink-500 dark:text-gray-500 uppercase tracking-widest">Downloadable Only</span>
+              </label>
+            </div>
+          </div>
+        )}
         
         {/* Category Chips — derived from the loaded data; every chip has a real
             count and yields >= 1 result (no dead filters). */}
@@ -357,16 +448,25 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
           {loading ? (
              <div className="p-8 text-center font-mono text-ink-500 dark:text-gray-500 animate-pulse">&gt; INITIALIZING PIPELINE...</div>
           ) : (
-            <div className="divide-y divide-cream-300 dark:divide-white/5">
-              {filteredResults.map(({ item }) => (
-                <CatalogCard 
-                  key={item.id}
-                  dataset={item}
-                  isSelected={selectedDataset?.id === item.id}
-                  onClick={() => setSelectedDataset(item)}
-                />
-              ))}
-              {filteredResults.length === 0 && (
+            <div className="flex flex-col h-full">
+              <div className="px-4 py-2 bg-cream-200/50 dark:bg-white/5 border-b border-cream-300 dark:border-white/5 text-xs font-mono text-ink-500 dark:text-gray-500 flex justify-between items-center">
+                <span>Showing {filteredResults.length} of {datasets.length} datasets</span>
+                {(filteredResults.length !== datasets.length || filters.searchQuery) && (
+                  <button onClick={clearFilters} className="text-brand-green-600 hover:text-brand-green-500 underline decoration-brand-green-600/30">
+                    Clear All
+                  </button>
+                )}
+              </div>
+              <div className="divide-y divide-cream-300 dark:divide-white/5 overflow-y-auto custom-scrollbar flex-1">
+                {filteredResults.map(({ item }) => (
+                  <CatalogCard 
+                    key={item.id}
+                    dataset={item}
+                    isSelected={selectedDataset?.id === item.id}
+                    onClick={() => setSelectedDataset(item)}
+                  />
+                ))}
+                {filteredResults.length === 0 && (
                 <div className="p-8 text-center text-ink-500 dark:text-gray-500 text-sm space-y-3">
                   <p>
                     No datasets match{' '}
@@ -386,24 +486,13 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 </div>
               )}
             </div>
+            </div>
           )}
         </div>
         )}
 
         {/* Right Pane: Detail & Extraction View */}
         <div className="flex-1 bg-cream-200 dark:bg-gn-surface-muted-dark flex flex-col overflow-hidden relative transition-colors duration-300">
-          {/* Sidebar Toggle Button */}
-          <button 
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="absolute top-4 left-4 z-[600] bg-white/90 dark:bg-black/90 text-gn-foreground dark:text-white p-2 rounded border border-gn-border dark:border-white/10 shadow hover:bg-gn-border dark:hover:bg-white/10 transition-colors"
-            title={isSidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-          >
-            {isSidebarOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            )}
-          </button>
 
           {/* Background Grid Pattern */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
@@ -412,17 +501,36 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
             <div className="flex flex-col h-full overflow-y-auto custom-scrollbar">
               {/* Dataset Metadata Header */}
               <div className="p-6 border-b border-cream-300 dark:border-white/10 bg-cream-100/50 dark:bg-gn-elevated-dark/50">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
+                <div className="flex justify-between items-start mb-4 gap-4">
+                  <div className="flex items-start gap-3">
+                    <button 
+                      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                      className="mt-1 bg-white dark:bg-black text-gn-foreground dark:text-white p-1.5 rounded border border-gn-border dark:border-white/10 shadow-sm hover:bg-cream-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
+                      title={isSidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+                    >
+                      {isSidebarOpen ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                      )}
+                    </button>
                     <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-wrap justify-end">
                     
-                    {/* Inline Preview Toggle — GIS previews plus tabular previews */}
+                    {/* DETAILS BUTTON (Mutually exclusive with preview, Ghost button, tactile) */}
+                    <button
+                      onClick={handleToggleDetails}
+                      className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border active:scale-95 ${showDetails ? 'bg-yellow-600 text-white border-yellow-600 dark:bg-yellow-600 dark:text-black dark:border-yellow-600' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-yellow-600 dark:text-white dark:border-white/20 dark:hover:border-yellow-600'}`}
+                    >
+                      {showDetails ? 'Hide Details' : 'Details'}
+                    </button>
+
+                    {/* PREVIEW BUTTON (Mutually exclusive with details, Ghost button, tactile) */}
                     {isInlinePreviewable(selectedDataset) ? (
                       <button
-                        onClick={() => setShowMap(!showMap)}
-                        className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
+                        onClick={handleToggleMap}
+                        className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border active:scale-95 ${showMap ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
                       >
                         {showMap ? 'Hide Preview' : 'Preview'}
                       </button>
@@ -432,12 +540,12 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                       </button>
                     )}
 
-                    {/* Preview in GIS Viewer — enabled only when the handoff can render something */}
+                    {/* SEE IN GIS VIEWER BUTTON */}
                     {onOpenMap && (
                       isGisPreviewable(selectedDataset) ? (
                         <button
                           onClick={() => onOpenMap(selectedDataset)}
-                          className="bg-ink-900 hover:bg-ink-700 text-white border border-ink-900 dark:bg-white dark:text-black dark:border-white dark:hover:bg-gray-200 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest"
+                          className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-400 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest active:scale-95"
                         >
                           See in GIS Viewer
                         </button>
@@ -452,47 +560,60 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                       )
                     )}
 
-                    <button
-                      onClick={() => setShowDetails(!showDetails)}
-                      className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showDetails ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
-                    >
-                      {showDetails ? 'Hide Details' : 'Details'}
-                    </button>
-
-                    {/* Download Data Button */}
-                    {selectedDataset.downloadUrl && safeUrl(selectedDataset.downloadUrl) ? (
-                      <a
-                        href={safeUrl(selectedDataset.downloadUrl)!}
-                        download
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const url = safeUrl(selectedDataset.downloadUrl!);
-                          if (!url) return;
-                          if (window.confirm("By downloading this dataset, you agree to the Guynode Data License. Attribution is required. Proceed?")) {
-                            const link = document.createElement('a');
-                            link.href = url;
-                            link.download = '';
-                            link.target = '_blank';
-                            link.rel = 'noopener noreferrer';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                          }
-                        }}
-                        className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-secondary dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center"
-                      >
-                        Download Data
-                      </a>
-                    ) : (
-                      <button
-                        disabled
-                        className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest opacity-50 cursor-not-allowed"
-                      >
-                        Download Data
-                      </button>
-                    )}
+                    {/* ACCESS DATA DROPDOWN (Replacing Download button) */}
+                    <div className="relative">
+                      {selectedDataset.downloadUrl && safeUrl(selectedDataset.downloadUrl) ? (
+                        <>
+                          <button
+                            onClick={() => setShowAccessMenu(!showAccessMenu)}
+                            className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-secondary dark:hover:bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest inline-flex items-center gap-1 active:scale-95"
+                          >
+                            Access Data
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                          </button>
+                          
+                          {showAccessMenu && (
+                            <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gn-elevated-dark shadow-xl border border-cream-300 dark:border-white/10 rounded overflow-hidden z-[1000] animate-in fade-in slide-in-from-top-1">
+                              <a
+                                href={safeUrl(selectedDataset.downloadUrl)!}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => {
+                                  setShowAccessMenu(false);
+                                  if (!window.confirm("By downloading this dataset, you agree to the Guynode Data License. Attribution is required. Proceed?")) {
+                                    e.preventDefault();
+                                  }
+                                }}
+                                className="block w-full text-left px-4 py-3 hover:bg-cream-100 dark:hover:bg-white/5 text-sm font-bold text-ink-900 dark:text-white border-b border-cream-200 dark:border-white/5 transition-colors"
+                              >
+                                Download File ({selectedDataset.format})
+                              </a>
+                              <button
+                                onClick={() => {
+                                  const url = safeUrl(selectedDataset.downloadUrl!);
+                                  if (url) {
+                                    navigator.clipboard.writeText(url);
+                                    alert("URL copied to clipboard! You can paste this directly into QGIS or ArcGIS.");
+                                  }
+                                  setShowAccessMenu(false);
+                                }}
+                                className="block w-full text-left px-4 py-3 hover:bg-cream-100 dark:hover:bg-white/5 text-sm font-bold text-ink-900 dark:text-white transition-colors"
+                              >
+                                Copy URL for GIS Software
+                              </button>
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <button
+                          disabled
+                          className="bg-gray-200 text-gray-400 border border-gray-300 dark:bg-white/5 dark:text-white/30 dark:border-white/5 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest opacity-50 cursor-not-allowed"
+                        >
+                          Access Data
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
                 
@@ -566,7 +687,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                   </div>
                 )}
                 
-                <div className="grid grid-cols-4 gap-4 text-xs font-mono border-t border-cream-300 dark:border-white/5 pt-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 gap-y-6 text-xs font-mono border-t border-cream-300 dark:border-white/5 pt-4">
                   <div>
                     <div className="text-ink-500 dark:text-gray-500 mb-1">SOURCE AUTHORITY</div>
                     <div className="text-brand-gold-600 dark:text-gn-accent-gold">{selectedDataset.source}</div>
@@ -593,7 +714,37 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                       );
                     })()}
                   </div>
+                  <div>
+                    <div className="text-ink-500 dark:text-gray-500 mb-1">REFERENCE SYSTEM</div>
+                    <div className="text-ink-900 dark:text-white">{selectedDataset.crs || selectedDataset.spatialReference || 'Unknown'}</div>
+                  </div>
+                  <div>
+                    <div className="text-ink-500 dark:text-gray-500 mb-1">RESOLUTION</div>
+                    <div className="text-ink-900 dark:text-white">{selectedDataset.spatialResolution || 'Unknown'}</div>
+                  </div>
+                  <div className="col-span-2">
+                    <div className="text-ink-500 dark:text-gray-500 mb-1">LICENSE & LINEAGE</div>
+                    <div className="text-ink-900 dark:text-white line-clamp-2" title={selectedDataset.lineage}>
+                      {selectedDataset.license || 'Standard'} • {selectedDataset.lineage || 'Lineage not provided'}
+                    </div>
+                  </div>
                 </div>
+
+                {/* Bounding Box Locator Map */}
+                {selectedDataset.boundingBox && (
+                  <div className="mt-6 border border-cream-300 dark:border-white/10 rounded overflow-hidden">
+                    <div className="bg-cream-200 dark:bg-white/5 px-3 py-2 text-xs font-bold text-ink-900 dark:text-gray-300 uppercase tracking-widest border-b border-cream-300 dark:border-white/10 flex justify-between">
+                      <span>Spatial Extent (Bounding Box)</span>
+                    </div>
+                    <div className="h-48 bg-cream-100 dark:bg-black relative flex items-center justify-center p-4">
+                       <div className="w-full h-full border border-dashed border-ink-500/30 dark:border-white/20 flex flex-col items-center justify-center text-ink-500 dark:text-gray-500 font-mono text-xs gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                          <div>NE: [{selectedDataset.boundingBox[1][0]}, {selectedDataset.boundingBox[1][1]}]</div>
+                          <div>SW: [{selectedDataset.boundingBox[0][0]}, {selectedDataset.boundingBox[0][1]}]</div>
+                       </div>
+                    </div>
+                  </div>
+                )}
                   </div>
                 )}
               </div>
