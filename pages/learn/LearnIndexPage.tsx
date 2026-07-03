@@ -14,6 +14,13 @@ interface Resource {
   metadataConfidence?: string;
   metadataSource?: string;
   thumbnailType?: string;
+  catalogMetadata?: {
+    format: string;
+    size: string;
+    sourceAuthority: string;
+    lastUpdated: string;
+    reasonUnmigrated: string;
+  };
 }
 
 interface Dataset {
@@ -101,6 +108,36 @@ const ResourceModal: React.FC<{
           <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark leading-relaxed mb-6">
             {resource.description}
           </p>
+
+          {resource.catalogMetadata && (
+            <div className="mb-6 bg-guyana-red/5 dark:bg-guyana-red/10 border border-guyana-red/20 rounded-lg p-4">
+              <h3 className="text-sm font-bold text-guyana-red uppercase tracking-wider mb-2 flex items-center gap-2">
+                <span>⚠️</span> Legacy Storage Warning
+              </h3>
+              <p className="text-xs text-gn-foreground dark:text-gn-foreground-dark mb-4 leading-relaxed">
+                {resource.catalogMetadata.reasonUnmigrated}
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 text-xs pt-4 border-t border-guyana-red/10">
+                <div>
+                  <span className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark block mb-1 uppercase tracking-wider text-[10px]">Format</span>
+                  <span className="font-mono text-gn-foreground dark:text-gn-foreground-dark">{resource.catalogMetadata.format}</span>
+                </div>
+                <div>
+                  <span className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark block mb-1 uppercase tracking-wider text-[10px]">Est. Size</span>
+                  <span className="font-mono text-gn-foreground dark:text-gn-foreground-dark">{resource.catalogMetadata.size}</span>
+                </div>
+                <div>
+                  <span className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark block mb-1 uppercase tracking-wider text-[10px]">Source Authority</span>
+                  <span className="font-bold text-gn-foreground dark:text-gn-foreground-dark">{resource.catalogMetadata.sourceAuthority}</span>
+                </div>
+                <div>
+                  <span className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark block mb-1 uppercase tracking-wider text-[10px]">Last Updated</span>
+                  <span className="text-gn-foreground dark:text-gn-foreground-dark">{resource.catalogMetadata.lastUpdated}</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {relatedCount > 0 && (
             <div className="mb-6">

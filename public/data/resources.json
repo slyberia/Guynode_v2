@@ -128,7 +128,14 @@
     "migrationDecision": "moved-to-resources",
     "metadataConfidence": "medium",
     "metadataSource": "curated-from-url-and-legacy-context",
-    "thumbnailType": "reference"
+    "thumbnailType": "reference",
+    "catalogMetadata": {
+      "format": "GeoTIFF",
+      "size": "Unknown (Requires Auth)",
+      "sourceAuthority": "JAXA",
+      "lastUpdated": "Legacy (Pre-2023)",
+      "reasonUnmigrated": "This dataset is hosted on a personal Google Drive account and triggers a virus scan warning due to its massive file size. It requires manual download verification, preventing its automated ingestion into the main Data Catalog."
+    }
   },
   {
     "id": "res-489283",
@@ -143,7 +150,14 @@
     "migrationDecision": "moved-to-resources",
     "metadataConfidence": "medium",
     "metadataSource": "curated-from-url-and-legacy-context",
-    "thumbnailType": "reference"
+    "thumbnailType": "reference",
+    "catalogMetadata": {
+      "format": "ZIP (GeoTIFF)",
+      "size": "Unknown (Requires Auth)",
+      "sourceAuthority": "NASA/METI",
+      "lastUpdated": "Legacy (Pre-2023)",
+      "reasonUnmigrated": "This dataset is hosted on a personal Google Drive account and triggers a virus scan warning due to its massive file size. It requires manual download verification, preventing its automated ingestion into the main Data Catalog."
+    }
   },
   {
     "id": "res-268323",
