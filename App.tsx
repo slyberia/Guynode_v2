@@ -21,7 +21,6 @@ const ChangelogPage = React.lazy(() => import('./components/ChangelogPage').then
 const SupportPage = React.lazy(() => import('./components/SupportPage').then(module => ({ default: module.SupportPage })));
 const ReportIssuePage = React.lazy(() => import('./components/ReportIssuePage').then(module => ({ default: module.ReportIssuePage })));
 
-const LocatorPage = React.lazy(() => import('./pages/LocatorPage').then(module => ({ default: module.LocatorPage })));
 const LearnIndexPage = React.lazy(() => import('./pages/learn/LearnIndexPage').then(module => ({ default: module.LearnIndexPage })));
 const LearnPostPage = React.lazy(() => import('./pages/learn/LearnPostPage').then(module => ({ default: module.LearnPostPage })));
 
@@ -312,13 +311,6 @@ function App() {
         return (
           <React.Suspense fallback={<LoadingFallback />}>
             <AttributionPage theme={theme} navigate={handleNavigation} />
-          </React.Suspense>
-        );
-
-      case 'LOCATOR':
-        return (
-          <React.Suspense fallback={<LoadingFallback />}>
-            <LocatorPage theme={theme} navigate={handleNavigation} />
           </React.Suspense>
         );
       case 'LEARN_INDEX':
