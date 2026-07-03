@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Dataset, ValidationStatus } from '../types';
-import { getCategoryColor, computeQuickStats, deriveValidationStatus } from '../utils/contextCardUtils';
+import { Dataset } from '../types';
+import { getCategoryColor, computeQuickStats, getSmallPreview } from '../utils/contextCardUtils';
 
 interface CatalogCardProps {
   dataset: Dataset;
@@ -9,33 +9,45 @@ interface CatalogCardProps {
   onClick: () => void;
 }
 
-const ValidationBadge: React.FC<{ status: ValidationStatus; title?: string }> = ({ status, title }) => {
-  const colors = {
-    [ValidationStatus.VERIFIED]: 'text-green-600 bg-green-600/10 border-green-600/30 dark:text-green-400 dark:bg-green-400/10 dark:border-green-400/30',
-    [ValidationStatus.WARNING]: 'text-yellow-600 bg-yellow-600/10 border-yellow-600/30 dark:text-yellow-400 dark:bg-yellow-400/10 dark:border-yellow-400/30',
-    [ValidationStatus.ERROR]: 'text-red-600 bg-red-600/10 border-red-600/30 dark:text-red-400 dark:bg-red-400/10 dark:border-red-400/30',
-    [ValidationStatus.UNCHECKED]: 'text-gray-500 bg-gray-200 border-gray-300 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600',
-  };
+const TrustBadges: React.FC<{ dataset: Dataset }> = ({ dataset }) => {
+  const isAvailable = Boolean(dataset.downloadUrl);
+  const hasChecksum = Boolean(dataset.metadataHash);
+  const authority = dataset.authorityLevel?.toLowerCase();
 
   return (
-    <span title={title} className={`text-[10px] font-mono px-2 py-0.5 rounded border ${colors[status]} uppercase tracking-wider`}>
-      {status}
-    </span>
+    <div className="flex gap-1 items-center flex-wrap justify-end">
+      {isAvailable && (
+        <span title="File available for download" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-green-600 bg-green-600/10 border-green-600/30 dark:text-green-400 dark:bg-green-400/10 dark:border-green-400/30 uppercase tracking-wider">
+          AVAILABLE
+        </span>
+      )}
+      {hasChecksum && (
+        <span title="Checksum verified" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-blue-600 bg-blue-600/10 border-blue-600/30 dark:text-blue-400 dark:bg-blue-400/10 dark:border-blue-400/30 uppercase tracking-wider">
+          VERIFIED
+        </span>
+      )}
+      {authority === 'official' && (
+        <span title="Official source" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-brand-gold-600 bg-brand-gold-600/10 border-brand-gold-600/30 dark:text-gn-accent-gold dark:bg-gn-accent-gold/10 dark:border-gn-accent-gold/30 uppercase tracking-wider">
+          OFFICIAL
+        </span>
+      )}
+      {authority === 'indicative' && (
+        <span title="Indicative use only" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-yellow-600 bg-yellow-600/10 border-yellow-600/30 dark:text-yellow-400 dark:bg-yellow-400/10 dark:border-yellow-400/30 uppercase tracking-wider">
+          INDICATIVE
+        </span>
+      )}
+      {dataset.legalUseWarning && (
+        <span title="Contains legal use warning" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-red-600 bg-red-600/10 border-red-600/30 dark:text-red-400 dark:bg-red-400/10 dark:border-red-400/30 uppercase tracking-wider">
+          WARNING
+        </span>
+      )}
+    </div>
   );
-};
-
-// Honest badge: derived from the real metadata validator, not the static
-// validationReport.status (hardcoded VERIFIED for every record).
-const validationTooltip = (status: ValidationStatus, errors: number, warnings: number): string => {
-  if (status === ValidationStatus.ERROR) return `${errors} validation error${errors === 1 ? '' : 's'}`;
-  if (status === ValidationStatus.WARNING) return `${warnings} metadata warning${warnings === 1 ? '' : 's'} (e.g. missing license/caveats)`;
-  return 'Metadata complete: no validation warnings';
 };
 
 export const CatalogCard: React.FC<CatalogCardProps> = ({ dataset, isSelected, onClick }) => {
   const stats = computeQuickStats(dataset);
   const categoryColor = getCategoryColor(dataset.category);
-  const validation = deriveValidationStatus(dataset);
 
   return (
     <div 
@@ -50,16 +62,16 @@ export const CatalogCard: React.FC<CatalogCardProps> = ({ dataset, isSelected, o
 
       <div className="flex justify-between items-start mb-2 pr-4">
         <span className="text-xs font-mono text-gray-500 dark:text-gray-500">{dataset.id.toUpperCase()}</span>
-        <ValidationBadge status={validation.status} title={validationTooltip(validation.status, validation.errorCount, validation.warningCount)} />
+        <TrustBadges dataset={dataset} />
       </div>
 
       <div className="flex gap-4">
         {/* Mini Preview */}
         <div className="w-16 h-16 flex-shrink-0 bg-white dark:bg-black border border-stone-300 dark:border-white/10 rounded overflow-hidden hidden sm:block">
            <img
-              src={dataset.imageUrl ? dataset.imageUrl : '/images/dataset-placeholder.jpg'}
+              src={getSmallPreview(dataset)}
               onError={(e) => {
-                e.currentTarget.src = '/images/dataset-placeholder.jpg';
+                e.currentTarget.src = '/images/dataset-thumbnails/mixed.svg';
               }}
               alt=""
               className="w-full h-full object-cover opacity-80 dark:opacity-60"

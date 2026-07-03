@@ -20,7 +20,7 @@ export interface DerivedValidation {
  * only when it has zero validation errors AND zero warnings.
  */
 export const deriveValidationStatus = (dataset: Dataset): DerivedValidation => {
-  const issues = validateDatasetRecord(dataset);
+  const issues = validateDatasetRecord(dataset as unknown as Record<string, unknown>);
   const errorCount = issues.filter((i) => i.level === 'error').length;
   const warningCount = issues.filter((i) => i.level === 'warning').length;
   const status =
@@ -63,7 +63,42 @@ export const computeQuickStats = (dataset: Dataset): { label: string, value: str
 };
 
 export const getSmallPreview = (dataset: Dataset): string => {
-  // Returns a CSS class or URL for a mini-preview
-  // Using generic placeholder pattern for now
-  return dataset.imageUrl || '/images/dataset-placeholder.jpg';
+  // If the dataset has a REAL, unique custom image, use it.
+  if (dataset.imageUrl && !dataset.imageUrl.includes('placeholder')) {
+    return dataset.imageUrl;
+  }
+
+  // Otherwise, use a deterministic format-based thumbnail
+  const format = (dataset.format || '').toLowerCase();
+  
+  switch (format) {
+    case 'shapefile':
+      return '/images/dataset-thumbnails/shapefile.svg';
+    case 'geojson':
+      return '/images/dataset-thumbnails/geojson.svg';
+    case 'geotiff':
+      return '/images/dataset-thumbnails/geotiff.svg';
+    case 'spreadsheet':
+    case 'xlsx':
+    case 'xls':
+      return '/images/dataset-thumbnails/spreadsheet.svg';
+    case 'csv':
+      return '/images/dataset-thumbnails/csv.svg';
+    case 'pdf':
+      return '/images/dataset-thumbnails/pdf.svg';
+    case 'image':
+    case 'png':
+    case 'jpg':
+    case 'jpeg':
+      return '/images/dataset-thumbnails/image.svg';
+    case 'api':
+      return '/images/dataset-thumbnails/api.svg';
+    case 'web-map':
+      return '/images/dataset-thumbnails/web-map.svg';
+    case 'mixed':
+      return '/images/dataset-thumbnails/mixed.svg';
+    default:
+      // Fallback for unknown formats
+      return '/images/dataset-thumbnails/mixed.svg';
+  }
 };
