@@ -40,7 +40,8 @@ export const TableViewer: React.FC<TableViewerProps> = ({ dataset }) => {
   const preview = loaded && loaded.url === url ? loaded.preview : null;
   const error = !url || failedUrl === url;
 
-  const downloadUrl = dataset.downloadUrl ? safeUrl(dataset.downloadUrl) : null;
+  const rawDownloadUrl = dataset.downloadUrl || dataset.distributions?.find(d => ['Spreadsheet', 'CSV', 'XLSX', 'XLS'].includes(d.format))?.url;
+  const downloadUrl = rawDownloadUrl ? safeUrl(rawDownloadUrl) : null;
 
   return (
     <div className="flex flex-col h-full bg-gn-surface dark:bg-gn-surface-dark border-b border-gn-border dark:border-white/10">

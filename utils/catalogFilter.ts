@@ -200,7 +200,9 @@ export function deriveAuthorityLevelFacets(datasets: (Dataset | SearchResult)[])
   const counts = new Map<string, number>();
   for (const item of datasets) {
     const d = 'item' in item ? item.item : item;
-    if (d.authorityLevel) counts.set(d.authorityLevel, (counts.get(d.authorityLevel) || 0) + 1);
+    if (d.authorityLevel && d.authorityLevel !== 'needs-review') {
+      counts.set(d.authorityLevel, (counts.get(d.authorityLevel) || 0) + 1);
+    }
   }
   return Array.from(counts.entries())
     .map(([value, count]) => ({ value, count }))

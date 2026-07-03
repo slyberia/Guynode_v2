@@ -79,6 +79,13 @@ export const GisViewerPage: React.FC<GisViewerPageProps> = ({ setView, activeDat
         <div className="w-full lg:w-80 bg-gn-surface dark:bg-gn-bg-deep border-b lg:border-b-0 lg:border-r border-gn-border dark:border-white/10 flex flex-col flex-shrink-0 transition-colors duration-300">
           
           <div className="p-6 border-b border-gn-border dark:border-white/5">
+            <button 
+              onClick={() => setView('CATALOG')} 
+              className="mb-4 flex items-center gap-2 text-sm text-brand-green-600 dark:text-gn-accent-gold hover:underline font-bold"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back to Catalog
+            </button>
             <h2 className="text-xl font-serif font-bold text-gn-foreground dark:text-white mb-2">Interactive GIS Viewer</h2>
             <p className="text-sm text-gn-foreground-muted dark:text-gray-400 leading-relaxed">
               Explore Guyana's spatial layers in a high-fidelity environment. This viewer supports vector tiles, temporal analysis, and multi-layer comparison.
