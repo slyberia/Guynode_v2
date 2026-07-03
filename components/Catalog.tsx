@@ -90,6 +90,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
 
   // Selection & Detail State
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   
   // Map State
@@ -414,12 +415,6 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h1 className="text-2xl font-bold text-ink-900 dark:text-white max-w-2xl">{selectedDataset.title}</h1>
-                    {selectedDataset.legalUseWarning && (
-                      <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 rounded border border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-200 text-[10px] font-mono font-bold uppercase tracking-wider">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        Indicative Data Only
-                      </div>
-                    )}
                   </div>
                   <div className="flex gap-2">
                     
@@ -444,7 +439,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                           onClick={() => onOpenMap(selectedDataset)}
                           className="bg-ink-900 hover:bg-ink-700 text-white border border-ink-900 dark:bg-white dark:text-black dark:border-white dark:hover:bg-gray-200 text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest"
                         >
-                          Preview in GIS Viewer
+                          See in GIS Viewer
                         </button>
                       ) : (
                         <button
@@ -456,6 +451,13 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                         </button>
                       )
                     )}
+
+                    <button
+                      onClick={() => setShowDetails(!showDetails)}
+                      className={`text-xs font-bold px-4 py-2 rounded transition-colors uppercase tracking-widest border ${showDetails ? 'bg-ink-900 text-white border-ink-900 dark:bg-white dark:text-black dark:border-white' : 'bg-transparent text-ink-900 border-ink-900/20 hover:border-ink-900 dark:text-white dark:border-white/20 dark:hover:border-white'}`}
+                    >
+                      {showDetails ? 'Hide Details' : 'Details'}
+                    </button>
 
                     {/* Download Data Button */}
                     {selectedDataset.downloadUrl && safeUrl(selectedDataset.downloadUrl) ? (
@@ -541,16 +543,9 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                 
                 <p className="text-ink-700 dark:text-gray-300 text-sm mb-6 max-w-3xl leading-relaxed">{selectedDataset.description}</p>
 
-                {/* Provenance & usage — centralized disclaimer badge */}
-                <div className="mb-6 flex items-center justify-between bg-brand-gold-600/10 dark:bg-gn-accent-gold/10 border border-brand-gold-600/20 dark:border-gn-accent-gold/20 p-3 rounded">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-brand-gold-600 dark:text-gn-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    <span className="text-xs text-gn-foreground dark:text-gray-300">Data requires careful interpretation.</span>
-                  </div>
-                  <a href="/?view=SUPPORT&supportSection=data-license" className="text-xs font-bold text-brand-green-600 hover:text-brand-green-700 dark:text-gn-accent-blue hover:underline uppercase tracking-widest">
-                    Read Disclaimer
-                  </a>
-                </div>
+                {/* Details Section */}
+                {showDetails && (
+                  <div className="animate-in fade-in slide-in-from-top-2">
 
                 {selectedDataset.tags && selectedDataset.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -599,6 +594,8 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                     })()}
                   </div>
                 </div>
+                  </div>
+                )}
               </div>
 
               {/* Inline Preview Module — renders for capability-checked records */}
