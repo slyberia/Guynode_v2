@@ -164,7 +164,11 @@ function App() {
     searchQuery: currentParams.searchQuery || '',
     category: currentParams.category || 'ALL',
     tags: currentParams.tags || [],
-  }), [currentParams.searchQuery, currentParams.category, currentParams.tags]);
+    format: currentParams.format || 'ALL',
+    sourceAuthority: currentParams.sourceAuthority || 'ALL',
+    authorityLevel: currentParams.authorityLevel || 'ALL',
+    onlyDownloadable: currentParams.onlyDownloadable || false
+  }), [currentParams.searchQuery, currentParams.category, currentParams.tags, currentParams.format, currentParams.sourceAuthority, currentParams.authorityLevel, currentParams.onlyDownloadable]);
 
   const handleCatalogFiltersChange = useCallback((next: CatalogFilterState) => {
     setCurrentParams(prev => {
@@ -173,6 +177,10 @@ function App() {
         searchQuery: next.searchQuery.trim() ? next.searchQuery : undefined,
         category: next.category && next.category !== 'ALL' ? next.category : undefined,
         tags: next.tags.length ? next.tags : undefined,
+        format: next.format && next.format !== 'ALL' ? next.format : undefined,
+        sourceAuthority: next.sourceAuthority && next.sourceAuthority !== 'ALL' ? next.sourceAuthority : undefined,
+        authorityLevel: next.authorityLevel && next.authorityLevel !== 'ALL' ? next.authorityLevel : undefined,
+        onlyDownloadable: next.onlyDownloadable ? true : undefined
       };
       if (safeHistoryAvailable()) {
         window.history.replaceState({}, '', getUrlForView('CATALOG', params));

@@ -16,6 +16,12 @@ export interface CatalogFilterState {
   searchQuery: string;
   category: string; // 'ALL' or a real category value present in the data
   tags: string[]; // OR-combined; each must be a real tag present in the data
+  
+  // Advanced Search Fields
+  format?: string;
+  sourceAuthority?: string;
+  authorityLevel?: string;
+  onlyDownloadable?: boolean;
 }
 
 export interface Facet {
@@ -27,6 +33,10 @@ export const EMPTY_FILTER_STATE: CatalogFilterState = {
   searchQuery: '',
   category: 'ALL',
   tags: [],
+  format: 'ALL',
+  sourceAuthority: 'ALL',
+  authorityLevel: 'ALL',
+  onlyDownloadable: false,
 };
 
 /**
@@ -164,6 +174,39 @@ export function deriveAllTags(datasets: Dataset[]): Set<string> {
   return all;
 }
 
+export function deriveFormatFacets(datasets: (Dataset | SearchResult)[]): Facet[] {
+  const counts = new Map<string, number>();
+  for (const item of datasets) {
+    const d = 'item' in item ? item.item : item;
+    if (d.format) counts.set(d.format, (counts.get(d.format) || 0) + 1);
+  }
+  return Array.from(counts.entries())
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+}
+
+export function deriveSourceFacets(datasets: (Dataset | SearchResult)[]): Facet[] {
+  const counts = new Map<string, number>();
+  for (const item of datasets) {
+    const d = 'item' in item ? item.item : item;
+    if (d.source) counts.set(d.source, (counts.get(d.source) || 0) + 1);
+  }
+  return Array.from(counts.entries())
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+}
+
+export function deriveAuthorityLevelFacets(datasets: (Dataset | SearchResult)[]): Facet[] {
+  const counts = new Map<string, number>();
+  for (const item of datasets) {
+    const d = 'item' in item ? item.item : item;
+    if (d.authorityLevel) counts.set(d.authorityLevel, (counts.get(d.authorityLevel) || 0) + 1);
+  }
+  return Array.from(counts.entries())
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+}
+
 /**
  * Apply search + category + tag filters in one pure step.
  * AND across facet types; OR within the tag facet.
@@ -181,6 +224,20 @@ export function applyCatalogFilters(datasets: Dataset[], state: CatalogFilterSta
       const itemTags = (r.item.tags || []).map((t) => canonicalizeTag(t));
       return itemTags.some((t) => wanted.has(t)); // OR within tags
     });
+  }
+
+  // Advanced Filters
+  if (state.format && state.format !== 'ALL') {
+    results = results.filter((r) => r.item.format === state.format);
+  }
+  if (state.sourceAuthority && state.sourceAuthority !== 'ALL') {
+    results = results.filter((r) => r.item.source === state.sourceAuthority);
+  }
+  if (state.authorityLevel && state.authorityLevel !== 'ALL') {
+    results = results.filter((r) => r.item.authorityLevel === state.authorityLevel);
+  }
+  if (state.onlyDownloadable) {
+    results = results.filter((r) => Boolean(r.item.downloadUrl));
   }
 
   return results;
@@ -212,10 +269,26 @@ export function reconcileFilterState(state: CatalogFilterState, datasets: Datase
     }
   }
 
-  return { searchQuery: state.searchQuery, category, tags };
+  return { 
+    searchQuery: state.searchQuery, 
+    category, 
+    tags,
+    format: state.format,
+    sourceAuthority: state.sourceAuthority,
+    authorityLevel: state.authorityLevel,
+    onlyDownloadable: state.onlyDownloadable
+  };
 }
 
 /** True when at least one facet is active (used for empty-state / clear affordances). */
 export function hasActiveFilters(state: CatalogFilterState): boolean {
-  return Boolean(state.searchQuery.trim()) || state.category !== 'ALL' || state.tags.length > 0;
+  return Boolean(
+    state.searchQuery.trim() || 
+    state.category !== 'ALL' || 
+    state.tags.length > 0 ||
+    (state.format && state.format !== 'ALL') ||
+    (state.sourceAuthority && state.sourceAuthority !== 'ALL') ||
+    (state.authorityLevel && state.authorityLevel !== 'ALL') ||
+    state.onlyDownloadable
+  );
 }
