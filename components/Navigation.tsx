@@ -34,7 +34,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
           </div>
           <div className="flex flex-col items-start">
             <span className="text-gn-foreground dark:text-gn-foreground-dark font-bold tracking-tight text-lg leading-none group-hover:text-brand-green-600 dark:group-hover:text-gn-accent-gold transition-colors">GuyNode</span>
-            <span className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark uppercase tracking-widest leading-none mt-1">Data Portal</span>
+            <span className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark uppercase tracking-widest leading-none mt-1">Spatial Data Portal</span>
           </div>
         </button>
 
