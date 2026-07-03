@@ -19,7 +19,8 @@ import { PdfViewer } from './viewer/PdfViewer';
 import { TableViewer } from './viewer/TableViewer';
 import { RasterOverlayViewer } from './viewer/RasterOverlayViewer';
 import { safeUrl } from '../utils/url';
-import { isGisPreviewable, isInlinePreviewable, hasRenderableGeojson } from '../utils/previewCapability';
+import { isGisPreviewable, isInlinePreviewable, hasRenderableGeojson, ENABLE_RUNTIME_SHAPEFILE_PREVIEW } from '../utils/previewCapability';
+import { loadShapefile } from '../utils/shapefileLoader';
 
 declare global {
   interface Window {
@@ -101,7 +102,9 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
   // resolvable geometry.
   useEffect(() => {
     const tableFace = selectedDataset?.viewerType === 'map-table' && mapTableView === 'table';
-    if (!showMap || tableFace || !selectedDataset || !hasRenderableGeojson(selectedDataset) || !selectedDataset.geojsonUrl) {
+    const hasGeo = hasRenderableGeojson(selectedDataset);
+    const hasShape = selectedDataset?.format === 'Shapefile' && selectedDataset?.downloadUrl;
+    if (!showMap || tableFace || !selectedDataset || !(hasGeo || hasShape)) {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -112,7 +115,11 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
     let cancelled = false;
     const dataset = selectedDataset;
 
-    loadGeojsonOnDemand(dataset.geojsonUrl!)
+    const dataPromise = (dataset.format === 'Shapefile' && dataset.downloadUrl)
+      ? loadShapefile(dataset.downloadUrl)
+      : loadGeojsonOnDemand(dataset.geojsonUrl!);
+
+    dataPromise
       .then((geoJsonData) => {
         if (cancelled || !mapContainerRef.current || !geoJsonData || !window.L) return;
         const L = window.L;
@@ -186,8 +193,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
     setMapTableView('map');
   }, [selectedDataset]);
 
-  // Feature Flags
-  const ENABLE_SHAPEFILE_PREVIEW = false;
+  // Feature Flags from previewCapability used below
 
   const handleAssetAction = (asset: DatasetAsset, action: 'view' | 'download') => {
     try {
@@ -485,7 +491,7 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                               <span className="text-sm font-medium text-ink-900 dark:text-gray-200">{asset.label}</span>
                            </div>
                            <div className="flex gap-2">
-                              {asset.type === 'shapefile' && !ENABLE_SHAPEFILE_PREVIEW ? (
+                              {asset.type === 'shapefile' && !ENABLE_RUNTIME_SHAPEFILE_PREVIEW ? (
                                 <span className="text-[10px] font-mono text-brand-gold-600 dark:text-gn-accent-gold border border-brand-gold-600/30 dark:border-gn-accent-gold/30 px-2 py-1 rounded bg-brand-gold-600/10 dark:bg-gn-accent-gold/10 cursor-help" title="Viewing requires offline GIS software. Conversion pipeline coming in v4.2.">
                                   REQUIRES GIS SOFTWARE
                                 </span>

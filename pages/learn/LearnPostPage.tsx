@@ -147,10 +147,10 @@ const LearnPostPageInner: React.FC<LearnPostPageProps> = ({ slug, navigate }) =>
 
           {/* Badges */}
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${CATEGORY_COLORS[post.category] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted border-gn-border'}`}>
+            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${CATEGORY_COLORS[post.category] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted dark:text-gn-foreground-muted-dark border-gn-border dark:border-gn-border-dark'}`}>
               {post.category}
             </span>
-            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${DIFFICULTY_COLORS[post.difficulty] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted border-gn-border'}`}>
+            <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${DIFFICULTY_COLORS[post.difficulty] ?? 'bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground-muted dark:text-gn-foreground-muted-dark border-gn-border dark:border-gn-border-dark'}`}>
               {post.difficulty}
             </span>
           </div>
@@ -186,6 +186,9 @@ const LearnPostPageInner: React.FC<LearnPostPageProps> = ({ slug, navigate }) =>
           prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-gn-border dark:prose-h2:border-gn-border-dark prose-h2:pb-2
           prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
           prose-ul:my-4 prose-ol:my-4 prose-li:my-1
+          prose-table:w-full prose-table:border-collapse prose-table:text-[13px] prose-table:my-4
+          prose-th:bg-gn-surface-muted dark:prose-th:bg-gn-surface-muted-dark prose-th:text-gn-foreground dark:prose-th:text-gn-foreground-dark prose-th:font-bold prose-th:text-left prose-th:p-2 prose-th:border prose-th:border-gn-border dark:prose-th:border-gn-border-dark
+          prose-td:p-2 prose-td:border prose-td:border-gn-border dark:prose-td:border-gn-border-dark prose-td:text-gn-foreground dark:prose-td:text-gn-foreground-dark prose-td:align-top
           max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ blockquote: BlockquoteRenderer }}>{post.content}</ReactMarkdown>
         </div>

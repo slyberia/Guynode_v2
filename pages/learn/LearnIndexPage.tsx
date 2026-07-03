@@ -18,12 +18,12 @@ interface LearnIndexPageProps {
 }
 
 const RESOURCE_TYPE_COLORS: Record<string, string> = {
-  'web-map-app': 'bg-brand-green-600/10 text-brand-green-600 border-brand-green-600/20',
-  'data-portal': 'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20',
-  'commercial-reference': 'bg-guyana-red/10 text-guyana-red border-guyana-red/20',
-  'tutorial': 'bg-brand-gold-600/10 text-brand-gold-600 border-brand-gold-600/20',
-  'source-reference': 'bg-gn-foreground-muted/10 text-gn-foreground-muted border-gn-foreground-muted/20',
-  'manual-review': 'bg-gn-surface-muted dark:bg-gn-surface-muted-dark text-gn-foreground border-gn-border'
+  'web-map-app': 'bg-brand-green-600/10 text-brand-green-600 border-brand-green-600/20 dark:bg-gn-accent-dark/10 dark:text-gn-accent-dark dark:border-gn-accent-dark/20',
+  'data-portal': 'bg-gn-accent-blue/10 text-gn-accent-blue border-gn-accent-blue/20 dark:bg-gn-accent-blue/10 dark:text-gn-accent-blue dark:border-gn-accent-blue/20',
+  'commercial-reference': 'bg-guyana-red/10 text-guyana-red border-guyana-red/20 dark:bg-guyana-red/10 dark:text-guyana-red dark:border-guyana-red/20',
+  'tutorial': 'bg-brand-gold-600/10 text-brand-gold-600 border-brand-gold-600/20 dark:bg-gn-accent-gold/10 dark:text-gn-accent-gold dark:border-gn-accent-gold/20',
+  'source-reference': 'bg-gn-foreground-muted/10 text-gn-foreground-muted border-gn-foreground-muted/20 dark:bg-gn-foreground-muted-dark/10 dark:text-gn-foreground-muted-dark dark:border-gn-foreground-muted-dark/20',
+  'manual-review': 'bg-gn-surface-muted dark:bg-gn-surface-muted-dark text-gn-foreground dark:text-gn-foreground-dark border-gn-border dark:border-gn-border-dark'
 };
 
 const RESOURCE_TYPE_LABELS: Record<string, string> = {
@@ -105,7 +105,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
           <div className="flex flex-wrap gap-2 mb-10 pb-6 border-b border-gn-border dark:border-gn-border-dark">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === 'all' ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600'}`}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === 'all' ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark dark:text-gn-foreground-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600 dark:border-gn-border-dark dark:text-gn-foreground-muted-dark dark:hover:border-gn-accent-dark'}`}
             >
               All Resources ({resources.length})
             </button>
@@ -113,7 +113,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
               <button
                 key={type}
                 onClick={() => setActiveFilter(type)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === type ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600'}`}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-colors border ${activeFilter === type ? 'bg-brand-green-600 border-brand-green-600 text-white dark:bg-gn-accent-dark dark:border-gn-accent-dark dark:text-gn-foreground-dark' : 'bg-transparent border-gn-border text-gn-foreground-muted hover:border-brand-green-600 dark:border-gn-border-dark dark:text-gn-foreground-muted-dark dark:hover:border-gn-accent-dark'}`}
               >
                 {RESOURCE_TYPE_LABELS[type] || type} ({resources.filter(r => r.resourceType === type).length})
               </button>
@@ -146,7 +146,7 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
           <div className="flex justify-center">
             <button
               onClick={() => navigate('CATALOG')}
-              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-3 px-8 rounded transition-colors"
+              className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-gn-accent-green text-white font-bold py-3 px-8 rounded transition-colors"
             >
               Browse Data Catalog
             </button>

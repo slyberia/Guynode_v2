@@ -5,9 +5,14 @@ import { ViewState, Dataset } from '../types';
 import { useCatalog } from '../context/CatalogContext';
 import { loadGeojsonOnDemand, loadWithWorker } from '../utils/geojsonLoader';
 import { clipToViewBounds, BoundingBox } from '../utils/spatialUtils';
-import { getComparisonStyle } from '../utils/viewerComparison';
 import { loadTemporalLayer, getAvailableYears } from '../utils/timelineLoader';
 import { computeGeojsonStats, GeoStats } from '../utils/geojsonValidator';
+import { loadShapefile } from '../utils/shapefileLoader';
+
+const LAYER_COLORS = [
+  '#2F5F53', '#B8860B', '#1D6B4C', '#CE1126', '#009739',
+  '#0C447C', '#7A4A10', '#534AB7',
+];
 
 // New Components
 import { LayerControlPanel, ViewerLayerConfig } from './viewer/LayerControlPanel';
@@ -50,8 +55,7 @@ interface MapViewerProps {
 
 // Unified Viewer State
 interface ViewerState {
-  primaryDatasetId: string | null;
-  comparisonDatasetId: string | null;
+  activeLayerIds: string[];
   temporalYear: number | null;
   fullDatasetMode: boolean;
   loadingStatus: 'IDLE' | 'LOADING' | 'ERROR';
@@ -71,8 +75,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
 
   // 1. Consolidated Viewer State
   const [viewerState, setViewerState] = useState<ViewerState>({
-    primaryDatasetId: activeDataset?.id || null,
-    comparisonDatasetId: null,
+    activeLayerIds: activeDataset ? [activeDataset.id] : [],
     temporalYear: null,
     fullDatasetMode: false,
     loadingStatus: 'IDLE',
@@ -99,41 +102,27 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
   const [availableYears, setAvailableYears] = useState<number[]>([]);
 
   // 4. Layer Synchronization Logic
-  const syncLayersWithState = React.useCallback((pId: string | null, cId: string | null, _year: number | null) => {
+  const syncLayersWithState = React.useCallback((activeLayerIds: string[], _year: number | null) => {
     setLayers(prev => {
       const newLayers: ViewerLayerConfig[] = [];
 
-      // Primary Layer
-      if (pId) {
-        const pData = datasets.find(d => d.id === pId);
-        if (pData && pData.geojsonUrl) {
-           const existing = prev.find(l => l.id === pData.geojsonUrl && !l.isComparison);
+      activeLayerIds.forEach((id, index) => {
+        const data = datasets.find(d => d.id === id);
+        if (data && (data.geojsonUrl || (data.format === 'Shapefile' && data.downloadUrl))) {
+           const layerId = data.geojsonUrl || data.downloadUrl!;
+           const existing = prev.find(l => l.datasetId === data.id);
+           const color = index === 0 ? (data.style?.color || "#3b82f6") : LAYER_COLORS[index % LAYER_COLORS.length];
            newLayers.push({
-             id: pData.geojsonUrl,
-             name: pData.title,
+             id: layerId,
+             datasetId: data.id,
+             name: data.title,
              visible: existing ? existing.visible : true,
-             opacity: existing ? existing.opacity : 1,
-             isComparison: false,
-             status: existing ? existing.status : 'IDLE' // Will trigger load if IDLE
-           });
-        }
-      }
-
-      // Comparison Layer
-      if (cId) {
-        const cData = datasets.find(d => d.id === cId);
-        if (cData && cData.geojsonUrl) {
-           const existing = prev.find(l => l.id === cData.geojsonUrl && l.isComparison);
-           newLayers.push({
-             id: cData.geojsonUrl,
-             name: `[CMP] ${cData.title}`,
-             visible: existing ? existing.visible : true,
-             opacity: existing ? existing.opacity : 0.8,
-             isComparison: true,
+             opacity: existing ? existing.opacity : (index === 0 ? 1 : 0.8),
+             color: color,
              status: existing ? existing.status : 'IDLE'
            });
         }
-      }
+      });
       return newLayers;
     });
   }, [datasets]);
@@ -156,7 +145,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
 
     currentLayers.forEach(layer => {
       if (layer.visible && layer.status === 'READY') {
-        const key = layer.id + (layer.isComparison ? '_cmp' : '');
+        const key = layer.id;
         const fullData = dataCacheRef.current.get(key);
         if (!fullData) return;
 
@@ -191,21 +180,13 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
           const clippedBounds = getMapBounds(mapInstanceRef.current);
           const dataToRender = currentState.fullDatasetMode ? geoData : clipToViewBounds(geoData, clippedBounds);
 
-          let style: import('leaflet').PathOptions = {
-            color: configStyle.color || "#3b82f6",
+          const style: import('leaflet').PathOptions = {
+            color: layer.color,
             weight: configStyle.weight || 2,
             fillOpacity: (configStyle.fillOpacity || 0.2) * layer.opacity,
             opacity: layer.opacity,
             dashArray: configStyle.dashArray || undefined
           };
-
-          if (layer.isComparison) {
-             style = {
-               ...getComparisonStyle(),
-               fillOpacity: 0.1 * layer.opacity,
-               opacity: layer.opacity
-             };
-          }
 
           L.geoJSON(dataToRender, {
             style: style,
@@ -275,7 +256,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
         
         // Initial Sync with props
         if (activeDataset) {
-          syncLayersWithState(activeDataset.id, null, null);
+          syncLayersWithState([activeDataset.id], null);
         }
 
         // CRITICAL FIX: Invalidate size after layout settles to prevent clipping errors
@@ -316,10 +297,11 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
 
   // 3. React to Prop Changes (Deep Linking)
   useEffect(() => {
-    if (activeDataset && activeDataset.id !== viewerState.primaryDatasetId) {
+    if (activeDataset && viewerState.activeLayerIds[0] !== activeDataset.id) {
+      const newActive = [activeDataset.id, ...viewerState.activeLayerIds.filter(id => id !== activeDataset.id)];
       setViewerState(prev => ({
          ...prev,
-         primaryDatasetId: activeDataset.id,
+         activeLayerIds: newActive,
          loadingStatus: 'LOADING',
          errorMessage: null
       }));
@@ -335,9 +317,9 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
         setViewerState(prev => ({ ...prev, temporalYear: null }));
       }
 
-      syncLayersWithState(activeDataset.id, viewerState.comparisonDatasetId, viewerState.temporalYear);
+      syncLayersWithState(newActive, viewerState.temporalYear);
     }
-  }, [activeDataset, syncLayersWithState, viewerState.comparisonDatasetId, viewerState.primaryDatasetId, viewerState.temporalYear]);
+  }, [activeDataset, syncLayersWithState, viewerState.activeLayerIds, viewerState.temporalYear]);
 
   // 5. Data Loading Pipeline (The Robust Engine)
   useEffect(() => {
@@ -371,12 +353,17 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
                }
                loadedData = await georasterRef.current.parseGeoraster(arrayBuffer);
              } else {
-               // A. Timeline Handling (Intercept Primary URL)
-               const pData = datasets.find(d => d.id === viewerState.primaryDatasetId);
-               if (!layer.isComparison && pData && pData.temporalLayers && viewerState.temporalYear) {
-                   loadedData = await loadTemporalLayer(pData.temporalLayers, viewerState.temporalYear);
+               const dataset = datasets.find(d => d.id === layer.datasetId);
+               
+               // A. Timeline Handling
+               if (dataset?.temporalLayers && viewerState.temporalYear) {
+                   loadedData = await loadTemporalLayer(dataset.temporalLayers, viewerState.temporalYear);
                }
-               // B. Standard Load
+               // B. Shapefile Load
+               else if (dataset?.format === 'Shapefile' && dataset.downloadUrl) {
+                   loadedData = await loadShapefile(dataset.downloadUrl);
+               }
+               // C. Standard Load
                else {
                  if (layer.name.includes("Mining")) {
                    updatedLayers[i].status = 'OPTIMIZING';
@@ -389,13 +376,13 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
              }
 
              if (loadedData) {
-               dataCacheRef.current.set(layer.id + (layer.isComparison ? '_cmp' : ''), loadedData);
+               dataCacheRef.current.set(layer.id, loadedData);
                updatedLayers[i].status = 'READY';
                
-               // Compute Stats for primary only (only for geojson)
-               if (!layer.isComparison && !isGeoTiff) {
+               // Compute Stats for first layer only
+               if (i === 0 && !isGeoTiff) {
                  setActiveStats(computeGeojsonStats(loadedData));
-               } else if (!layer.isComparison && isGeoTiff) {
+               } else if (i === 0 && isGeoTiff) {
                  setActiveStats(null); // Or some raster stats if available
                }
              } else {
@@ -405,7 +392,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
            } catch (err) {
              console.error("Layer Load Error:", err);
              updatedLayers[i].status = 'ERROR';
-             if (!layer.isComparison) {
+             if (i === 0) {
                setViewerState(prev => ({ ...prev, errorMessage: "Failed to load primary dataset." }));
              }
            }
@@ -440,42 +427,31 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
     });
   };
 
-  const handleComparisonToggle = () => {
-    const currentVs = viewerStateRef.current;
-    if (currentVs.comparisonDatasetId) {
-       // Disable
-       setViewerState(prev => ({ ...prev, comparisonDatasetId: null }));
-       setLayers(prev => {
-         const updated = prev.filter(l => !l.isComparison);
-         renderLayers(updated, { ...currentVs, comparisonDatasetId: null });
-         return updated;
-       });
-       
-       // Update URL
-       updateUrl(currentVs.primaryDatasetId, null);
-    } else {
-       // Enable (wait for selection)
-       setViewerState(prev => ({ ...prev, comparisonDatasetId: 'PENDING' }));
-    }
-  };
-
-  const handleComparisonSelect = (id: string) => {
+  const handleAddLayer = (id: string) => {
      const currentVs = viewerStateRef.current;
-     setViewerState(prev => ({ ...prev, comparisonDatasetId: id }));
-     syncLayersWithState(currentVs.primaryDatasetId, id, currentVs.temporalYear);
-     updateUrl(currentVs.primaryDatasetId, id);
+     if (!currentVs.activeLayerIds.includes(id)) {
+       const newActive = [...currentVs.activeLayerIds, id];
+       setViewerState(prev => ({ ...prev, activeLayerIds: newActive }));
+       syncLayersWithState(newActive, currentVs.temporalYear);
+       updateUrl(newActive);
+     }
   };
 
-  const updateUrl = (pId: string | null, _cId: string | null) => {
-     // NOTE: In a real app we'd push to history. 
-     // Here we just ensure we don't break the back button flow handled by App.tsx
-     // App.tsx handles URL -> State. Here we just update internal state mostly.
-     // To strictly follow protocol, we should use setView to update URL.
-     if (pId) {
-        // Construct params
-        // setView('MAP', { datasetId: pId ... }) 
-        // We skip complex deep linking for comparison in this iteration to stay within complexity limits
-     }
+  const handleRemoveLayer = (id: string) => {
+     const currentVs = viewerStateRef.current;
+     const newActive = currentVs.activeLayerIds.filter(lid => lid !== id);
+     setViewerState(prev => ({ ...prev, activeLayerIds: newActive }));
+     
+     setLayers(prev => {
+       const updated = prev.filter(l => l.datasetId !== id);
+       renderLayers(updated, { ...currentVs, activeLayerIds: newActive });
+       return updated;
+     });
+     updateUrl(newActive);
+  };
+
+  const updateUrl = (_activeLayerIds: string[]) => {
+     // Stub for URL syncing logic
   };
 
   // Resolve Legend Entries
@@ -483,7 +459,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
     .filter(l => l.visible && l.status === 'READY')
     .map(l => {
        const dataset = datasets.find(d => d.geojsonUrl === l.id);
-       return dataset ? { datasetTitle: l.name, items: getLegendEntriesForDataset(dataset, l.isComparison) } : null;
+       return dataset ? { datasetTitle: l.name, items: getLegendEntriesForDataset(dataset, false) } : null;
     })
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
@@ -535,11 +511,9 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
                // Trigger re-render of current layers
                setTimeout(() => renderLayers(layers, viewerState), 0);
             }}
-            comparisonEnabled={!!viewerState.comparisonDatasetId}
-            onToggleComparison={handleComparisonToggle}
-             comparisonDatasets={datasets.filter(d => d.id !== viewerState.primaryDatasetId && d.geojsonUrl)}
-            selectedComparisonId={viewerState.comparisonDatasetId === 'PENDING' ? '' : viewerState.comparisonDatasetId || ''}
-            onSelectComparison={handleComparisonSelect}
+            availableDatasets={datasets.filter(d => !viewerState.activeLayerIds.includes(d.id) && (d.geojsonUrl || (d.format === 'Shapefile' && d.downloadUrl)))}
+            onAddLayer={handleAddLayer}
+            onRemoveLayer={handleRemoveLayer}
          />
 
          {/* NEW: Metadata Sidebar */}
