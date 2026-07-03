@@ -75,9 +75,10 @@ export const LearnIndexPage: React.FC<LearnIndexPageProps> = ({ navigate }) => {
 
   const resourceTypes = Array.from(new Set(resources.map(r => r.resourceType))).sort();
 
-  const filteredResources = activeFilter === 'all' 
+  const filteredResources = (activeFilter === 'all' 
     ? resources 
-    : resources.filter(r => r.resourceType === activeFilter);
+    : resources.filter(r => r.resourceType === activeFilter)
+  ).sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className="min-h-screen bg-gn-surface dark:bg-gn-surface-dark text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">

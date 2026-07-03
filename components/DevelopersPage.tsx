@@ -140,44 +140,6 @@ export const DevelopersPage: React.FC = () => {
            </div>
         </section>
 
-        {/* Future Roadmap (New) */}
-        <section className="bg-gn-surface-muted dark:bg-white/5 border border-gn-border dark:border-white/10 rounded-xl p-8">
-           <h3 className="text-xl font-bold text-gn-foreground dark:text-gn-foreground-dark mb-4 flex items-center gap-2">
-             Future Capabilities <span className="text-xs font-normal text-gn-foreground-muted dark:text-gray-400 bg-gn-surface dark:bg-black px-2 py-1 rounded uppercase tracking-wide border border-gn-border dark:border-white/10">Planned</span>
-           </h3>
-           <p className="text-gn-foreground-muted dark:text-gray-300 mb-6 max-w-2xl">
-             We are continuously improving the developer experience. The following features are on our exploration roadmap for future iterations:
-           </p>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex gap-3">
-                 <div className="w-1 h-full bg-blue-500 rounded-full"></div>
-                 <div>
-                    <h4 className="font-bold text-gn-foreground dark:text-white text-sm">Vector Tiles (MVT)</h4>
-                    <p className="text-xs text-gn-foreground-muted dark:text-gray-400 mt-1">
-                      Serving heavy layers (e.g. detailed hydrology) as Mapbox Vector Tiles for better client-side performance.
-                    </p>
-                 </div>
-              </div>
-              <div className="flex gap-3">
-                 <div className="w-1 h-full bg-purple-500 rounded-full"></div>
-                 <div>
-                    <h4 className="font-bold text-gn-foreground dark:text-white text-sm">Advanced Place Finder</h4>
-                    <p className="text-xs text-gn-foreground-muted dark:text-gray-400 mt-1">
-                      Expanded gazetteer support for locating informal settlements and historic place names.
-                    </p>
-                 </div>
-              </div>
-              <div className="flex gap-3">
-                 <div className="w-1 h-full bg-green-500 rounded-full"></div>
-                 <div>
-                    <h4 className="font-bold text-gn-foreground dark:text-white text-sm">OGC Standards</h4>
-                    <p className="text-xs text-gn-foreground-muted dark:text-gray-400 mt-1">
-                      Evaluation of WMS/WFS endpoints for direct integration with legacy enterprise GIS software.
-                    </p>
-                 </div>
-              </div>
-           </div>
-        </section>
 
         {/* Contribution & License */}
         <section className="border-t border-gn-border dark:border-white/10 pt-12 pb-12">

@@ -14,8 +14,16 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
            <div>
              <h4 className="text-gn-foreground dark:text-gn-foreground-dark font-bold mb-6">Contact</h4>
              <ul className="space-y-4 text-sm text-gn-foreground-muted dark:text-gn-foreground-muted-dark">
-               <li>Georgetown Office +592 222 1234</li>
-               <li>support@guynode.com</li>
+               <li>
+                 <a href="https://github.com/slyberia/Guynode_v2" target="_blank" rel="noopener noreferrer" className="hover:text-gn-foreground dark:hover:text-gn-foreground-dark transition-colors">
+                   GitHub Repository
+                 </a>
+               </li>
+               <li>
+                 <a href="mailto:info@guynode.com" className="hover:text-gn-foreground dark:hover:text-gn-foreground-dark transition-colors">
+                   info@guynode.com
+                 </a>
+               </li>
                <li>
                  <button onClick={() => setView('REPORT_ISSUE')} className="hover:text-gn-foreground dark:hover:text-gn-foreground-dark transition-colors underline decoration-ink-300 dark:decoration-gray-700">
                    Report an Issue

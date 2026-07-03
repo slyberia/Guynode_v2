@@ -67,12 +67,6 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
             GIS Viewer
           </button>
           <button
-            onClick={() => setView('LOCATOR')}
-            className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'LOCATOR' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
-          >
-            Locator
-          </button>
-          <button
             onClick={() => setView('DOCS')}
             className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'DOCS' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
           >
@@ -83,7 +77,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView, th
               onClick={() => setView('ATTRIBUTION')}
               className={`text-sm font-medium transition-colors focus:outline-none focus:underline ${currentView === 'ATTRIBUTION' ? 'text-brand-green-600 dark:text-gn-accent-gold' : 'text-gn-foreground-muted dark:text-gn-foreground-muted-dark hover:text-gn-foreground dark:hover:text-gn-foreground-dark'}`}
             >
-              Attribution
+              Citations
             </button>
           )}
           <button

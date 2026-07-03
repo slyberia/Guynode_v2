@@ -21,7 +21,6 @@ const ChangelogPage = React.lazy(() => import('./components/ChangelogPage').then
 const SupportPage = React.lazy(() => import('./components/SupportPage').then(module => ({ default: module.SupportPage })));
 const ReportIssuePage = React.lazy(() => import('./components/ReportIssuePage').then(module => ({ default: module.ReportIssuePage })));
 
-const LocatorPage = React.lazy(() => import('./pages/LocatorPage').then(module => ({ default: module.LocatorPage })));
 const LearnIndexPage = React.lazy(() => import('./pages/learn/LearnIndexPage').then(module => ({ default: module.LearnIndexPage })));
 const LearnPostPage = React.lazy(() => import('./pages/learn/LearnPostPage').then(module => ({ default: module.LearnPostPage })));
 
@@ -262,9 +261,9 @@ function App() {
             <section className="bg-gn-surface dark:bg-gn-surface-dark py-24 text-gn-foreground dark:text-gn-foreground-dark transition-colors duration-300">
               <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
                  <div>
-                   <h2 className="text-4xl font-serif font-bold mb-6">Request a Demo</h2>
+                   <h2 className="text-4xl font-serif font-bold mb-6">Contribute Data</h2>
                    <p className="text-gn-foreground-muted dark:text-gn-foreground-muted-dark text-lg mb-8">
-                     Help us connect you to the right person. Whether you are a government agency, a private investor, or a researcher, GuyNode has a tailored solution for you.
+                     Guynode relies on open-source contributions. If you have authoritative spatial datasets, historical maps, or community-collected data, help us grow the archive.
                    </p>
                  </div>
                  <div className="space-y-4">
@@ -275,19 +274,17 @@ function App() {
                       <label className="sr-only" htmlFor="lastName">Last Name</label>
                       <input id="lastName" type="text" placeholder="Last Name" className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500" />
                     </div>
-                    <label className="sr-only" htmlFor="email">Business Email</label>
-                    <input id="email" type="email" placeholder="Business Email" className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500" />
+                    <label className="sr-only" htmlFor="email">Email</label>
+                    <input id="email" type="email" placeholder="Email Address" className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500" />
                     
-                    <label className="sr-only" htmlFor="industry">Industry</label>
-                    <select id="industry" className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500">
-                      <option>Select Industry...</option>
-                      <option>Energy</option>
-                      <option>Agriculture</option>
-                      <option>Mining</option>
-                      <option>Government</option>
-                    </select>
-                    <button className="bg-brand-green-600 hover:bg-brand-green-500 dark:bg-gn-accent-dark dark:hover:bg-brand-green-500 text-white font-bold py-4 rounded w-full transition-colors">
-                      Submit Request
+                    <label className="sr-only" htmlFor="datasetLink">Link to Dataset (Optional)</label>
+                    <input id="datasetLink" type="url" placeholder="Link to Dataset (Optional)" className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500" />
+                    
+                    <label className="sr-only" htmlFor="message">Message</label>
+                    <textarea id="message" rows={4} placeholder="Tell us about the data you want to contribute..." className="border border-gn-border dark:border-gn-border-dark bg-gn-elevated dark:bg-gn-elevated-dark p-3 rounded w-full focus:outline-none focus:border-brand-green-500"></textarea>
+                    
+                    <button className="bg-brand-green-600 hover:bg-brand-green-700 text-white font-bold py-3 px-6 rounded transition-colors w-full">
+                      Submit Contribution
                     </button>
                     <p className="text-xs text-gn-foreground-muted dark:text-gn-foreground-muted-dark mt-4">
                       By submitting this form, you agree to our Privacy Policy. <br/>
@@ -314,13 +311,6 @@ function App() {
         return (
           <React.Suspense fallback={<LoadingFallback />}>
             <AttributionPage theme={theme} navigate={handleNavigation} />
-          </React.Suspense>
-        );
-
-      case 'LOCATOR':
-        return (
-          <React.Suspense fallback={<LoadingFallback />}>
-            <LocatorPage theme={theme} navigate={handleNavigation} />
           </React.Suspense>
         );
       case 'LEARN_INDEX':

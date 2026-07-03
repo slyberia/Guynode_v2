@@ -296,28 +296,33 @@ export const MapViewer: React.FC<MapViewerProps> = ({ activeDataset, theme, setV
   }, [theme]);
 
   // 3. React to Prop Changes (Deep Linking)
-  useEffect(() => {
-    if (activeDataset && viewerState.activeLayerIds[0] !== activeDataset.id) {
-      const newActive = [activeDataset.id, ...viewerState.activeLayerIds.filter(id => id !== activeDataset.id)];
-      setViewerState(prev => ({
-         ...prev,
-         activeLayerIds: newActive,
-         loadingStatus: 'LOADING',
-         errorMessage: null
-      }));
-      
-      // Initialize Timeline if needed
-      if (activeDataset.temporalLayers) {
-        const years = getAvailableYears(activeDataset.temporalLayers);
-        setAvailableYears(years);
-        const defaultYear = years[years.length - 1];
-        setViewerState(prev => ({ ...prev, temporalYear: defaultYear }));
-      } else {
-        setAvailableYears([]);
-        setViewerState(prev => ({ ...prev, temporalYear: null }));
-      }
+  const lastActiveDatasetRef = useRef<string | null>(null);
 
-      syncLayersWithState(newActive, viewerState.temporalYear);
+  useEffect(() => {
+    if (activeDataset && activeDataset.id !== lastActiveDatasetRef.current) {
+      lastActiveDatasetRef.current = activeDataset.id;
+      if (viewerState.activeLayerIds[0] !== activeDataset.id) {
+        const newActive = [activeDataset.id, ...viewerState.activeLayerIds.filter(id => id !== activeDataset.id)];
+        setViewerState(prev => ({
+           ...prev,
+           activeLayerIds: newActive,
+           loadingStatus: 'LOADING',
+           errorMessage: null
+        }));
+        
+        // Initialize Timeline if needed
+        if (activeDataset.temporalLayers) {
+          const years = getAvailableYears(activeDataset.temporalLayers);
+          setAvailableYears(years);
+          const defaultYear = years[years.length - 1];
+          setViewerState(prev => ({ ...prev, temporalYear: defaultYear }));
+        } else {
+          setAvailableYears([]);
+          setViewerState(prev => ({ ...prev, temporalYear: null }));
+        }
+
+        syncLayersWithState(newActive, viewerState.temporalYear);
+      }
     }
   }, [activeDataset, syncLayersWithState, viewerState.activeLayerIds, viewerState.temporalYear]);
 
