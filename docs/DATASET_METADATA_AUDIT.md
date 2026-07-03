@@ -4,7 +4,7 @@
 > Do not invent missing values. Items are flagged `needs-review` for a human
 > administrator. See `docs/GUYNODE_PORTAL_IMPLEMENTATION_SEQUENCE.md`.
 
-- **Generated:** 2026-07-03T22:07:21.741Z
+- **Generated:** 2026-07-03T22:14:40.386Z
 - **Records inspected:** 85
 - **Errors:** 0
 - **Warnings:** 205
