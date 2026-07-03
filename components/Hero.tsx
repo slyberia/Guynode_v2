@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface HeroProps {
   setView?: (v: import('../types').ViewState) => void;
 }
 
 const Hero: React.FC<HeroProps> = () => {
+  const [metrics, setMetrics] = useState({ datasets: 0, vector: 0, raster: 0 });
+
+  useEffect(() => {
+    fetch('/data/datasets.json')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          const vectorCount = data.filter(d => ['geojson', 'shapefile', 'kml'].includes((d.format || '').toLowerCase())).length;
+          const rasterCount = data.filter(d => ['geotiff'].includes((d.format || '').toLowerCase())).length;
+          setMetrics({ datasets: data.length, vector: vectorCount, raster: rasterCount });
+        }
+      })
+      .catch(err => console.error('Failed to load metrics:', err));
+  }, []);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12">
       
@@ -52,25 +66,25 @@ const Hero: React.FC<HeroProps> = () => {
 
               {/* Terminal overlay box */}
               <div className="absolute bottom-4 left-4 bg-white/95 px-4 py-3 rounded border border-gray-200 text-xs font-mono text-gray-700 shadow-md">
-                &gt; RENDERING LAYERS...<br/>
-                &gt; BOUNDARIES: LOADED<br/>
-                &gt; MINING_BLOCKS: ACTIVE
+                &gt; INITIALIZING CATALOG...<br/>
+                &gt; CATALOG: {metrics.datasets > 0 ? 'LOADED' : 'LOADING'}<br/>
+                &gt; TOTAL_RECORDS: {metrics.datasets > 0 ? metrics.datasets : '...'}
               </div>
             </div>
 
             {/* Right Side Stats */}
             <div className="md:col-span-2 flex flex-col justify-between gap-4">
               <div className="border border-gray-200 p-4 rounded-lg bg-white shadow-sm">
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">GDP Growth</div>
-                <div className="text-2xl text-teal-700 font-bold">+38.4%</div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Total Datasets</div>
+                <div className="text-2xl text-teal-700 font-bold">{metrics.datasets > 0 ? metrics.datasets : '...'}</div>
               </div>
               <div className="border border-gray-200 p-4 rounded-lg bg-white shadow-sm">
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Forest Cover</div>
-                <div className="text-2xl text-teal-700 font-bold">87.2%</div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Vector Layers</div>
+                <div className="text-2xl text-teal-700 font-bold">{metrics.datasets > 0 ? metrics.vector : '...'}</div>
               </div>
               <div className="border border-gray-200 p-4 rounded-lg bg-white shadow-sm">
-                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Active Layers</div>
-                <div className="text-2xl text-yellow-600 font-bold">3</div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Raster Layers</div>
+                <div className="text-2xl text-yellow-600 font-bold">{metrics.datasets > 0 ? metrics.raster : '...'}</div>
               </div>
             </div>
 
