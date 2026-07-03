@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { DatasetEndpointPanel } from './DatasetEndpointPanel';
 import { useCatalog } from '../../context/CatalogContext';
@@ -8,6 +7,7 @@ export const DevelopersDatasetTable: React.FC = () => {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<string>('ALL');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isTableExpanded, setIsTableExpanded] = useState(false);
 
   const filtered = useMemo(() => {
     return datasets.filter(d => {
@@ -17,6 +17,8 @@ export const DevelopersDatasetTable: React.FC = () => {
       return matchSearch && matchCat;
     });
   }, [search, category, datasets]);
+
+  const displayedRows = isTableExpanded ? filtered : filtered.slice(0, 5);
 
   return (
     <div className="space-y-6">
@@ -61,7 +63,7 @@ export const DevelopersDatasetTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {filtered.map(d => (
+              {displayedRows.map(d => (
                 <React.Fragment key={d.id}>
                   <tr className="hover:bg-white/5 transition-colors">
                     <td className="px-6 py-4">
@@ -102,6 +104,16 @@ export const DevelopersDatasetTable: React.FC = () => {
             </tbody>
           </table>
         </div>
+        {filtered.length > 5 && (
+          <div className="p-4 border-t border-white/10 text-center bg-white/5 hover:bg-white/10 transition-colors">
+            <button 
+              onClick={() => setIsTableExpanded(!isTableExpanded)} 
+              className="text-xs font-bold text-gray-300 hover:text-white uppercase tracking-widest w-full"
+            >
+              {isTableExpanded ? 'Collapse Table' : `Show All ${filtered.length} Datasets`}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

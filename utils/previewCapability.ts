@@ -32,13 +32,13 @@ export const hasRenderableArcGis = (dataset: Dataset | null | undefined): boolea
   Boolean(dataset?.arcGisEmbedUrl && safeUrl(dataset.arcGisEmbedUrl));
 
 /** True only when an image/pdf record carries a safe asset to render. */
-export const hasRenderableAsset = (dataset: Dataset | null | undefined): boolean =>
-  Boolean(
-    dataset &&
-    (dataset.viewerType === 'image' || dataset.viewerType === 'pdf') &&
-    dataset.downloadUrl &&
-    safeUrl(dataset.downloadUrl)
-  );
+export const hasRenderableAsset = (dataset: Dataset | null | undefined): boolean => {
+  if (!dataset) return false;
+  const isMedia = dataset.viewerType === 'image' || dataset.viewerType === 'pdf' || dataset.format === 'PDF' || dataset.format === 'Image';
+  if (!isMedia) return false;
+  const url = dataset.downloadUrl || dataset.distributions?.find(d => ['PDF', 'Image', 'PNG', 'JPG'].includes(d.format))?.url;
+  return Boolean(url && safeUrl(url));
+};
 
 /**
  * True only when a table record has a bounded preview extracted to /data/tables

@@ -785,9 +785,9 @@ export const Catalog: React.FC<CatalogProps> = ({ onOpenMap, filters, onFiltersC
                     <TableViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'map-raster' ? (
                     <RasterOverlayViewer dataset={selectedDataset} />
-                  ) : selectedDataset.viewerType === 'image' ? (
+                  ) : selectedDataset.viewerType === 'image' || selectedDataset.format === 'Image' ? (
                     <ImageViewer dataset={selectedDataset} />
-                  ) : selectedDataset.viewerType === 'pdf' ? (
+                  ) : selectedDataset.viewerType === 'pdf' || selectedDataset.format === 'PDF' ? (
                     <PdfViewer dataset={selectedDataset} />
                   ) : selectedDataset.viewerType === 'arcgis' && selectedDataset.arcGisEmbedUrl ? (
                     <iframe

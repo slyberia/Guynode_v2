@@ -8,7 +8,8 @@ interface PdfViewerProps {
 
 export const PdfViewer: React.FC<PdfViewerProps> = ({ dataset }) => {
   const [loadError, setLoadError] = useState(false);
-  const url = dataset.downloadUrl ? safeUrl(dataset.downloadUrl) : null;
+  const rawUrl = dataset.downloadUrl || dataset.distributions?.find(d => d.format === 'PDF')?.url;
+  const url = rawUrl ? safeUrl(rawUrl) : null;
 
   return (
     <div className="flex flex-col h-full bg-gn-surface dark:bg-gn-surface-dark border-b border-gn-border dark:border-white/10">
