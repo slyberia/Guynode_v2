@@ -31,16 +31,6 @@ const TrustBadges: React.FC<{ dataset: Dataset }> = ({ dataset }) => {
           OFFICIAL
         </span>
       )}
-      {authority === 'indicative' && (
-        <span title="Indicative use only" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-yellow-600 bg-yellow-600/10 border-yellow-600/30 dark:text-yellow-400 dark:bg-yellow-400/10 dark:border-yellow-400/30 uppercase tracking-wider">
-          INDICATIVE
-        </span>
-      )}
-      {dataset.legalUseWarning && (
-        <span title="Contains legal use warning" className="text-[9px] font-mono px-1.5 py-0.5 rounded border text-red-600 bg-red-600/10 border-red-600/30 dark:text-red-400 dark:bg-red-400/10 dark:border-red-400/30 uppercase tracking-wider">
-          WARNING
-        </span>
-      )}
     </div>
   );
 };
