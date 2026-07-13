@@ -14,6 +14,12 @@ export const tag = defineType({
       options: { source: 'name', maxLength: 96 },
       validation: (r) => r.required(),
     }),
+    defineField({
+      name: 'legacyId',
+      title: 'Legacy ID',
+      type: 'string',
+      description: 'ID from the pre-Sanity JSON. Import bookkeeping only.',
+    }),
   ],
   preview: { select: { title: 'name', subtitle: 'slug.current' } },
 })

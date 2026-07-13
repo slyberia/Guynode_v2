@@ -72,8 +72,14 @@ export const blogPost = defineType({
         defineField({ name: 'description', title: 'SEO description', type: 'text', rows: 2 }),
       ],
     }),
+    defineField({
+      name: 'legacyId',
+      title: 'Legacy ID',
+      type: 'string',
+      description: 'ID from the pre-Sanity JSON (e.g. post-4). Import bookkeeping only.',
+    }),
   ],
   preview: {
-    select: { title: 'title', subtitle: 'author.name', media: 'heroImage' },
+    select: { title: 'title', subtitle: 'excerpt', media: 'heroImage' },
   },
 })

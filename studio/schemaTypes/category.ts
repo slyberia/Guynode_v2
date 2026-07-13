@@ -15,6 +15,12 @@ export const category = defineType({
       validation: (r) => r.required(),
     }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 2 }),
+    defineField({
+      name: 'legacyId',
+      title: 'Legacy ID',
+      type: 'string',
+      description: 'ID from the pre-Sanity JSON (e.g. cat-4). Import bookkeeping only.',
+    }),
   ],
   preview: { select: { title: 'name', subtitle: 'slug.current' } },
 })

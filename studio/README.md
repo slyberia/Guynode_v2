@@ -2,10 +2,26 @@
 
 Phase 1 of the migration plan (`docs/SANITY_MIGRATION_PLAN.md`).
 
-**Status: schema DESIGNED, not yet DEPLOYED.** These type definitions are the
-source of truth for the Sanity Studio and for the MCP `deploy_schema` step. No
-Sanity project, dataset, or schema has been created yet — the deploy half of
-Phase 1 was blocked on the Sanity MCP being reachable.
+**Status: DEPLOYED (MCP-managed).** Phase 1 is complete:
+
+| What | Value |
+|---|---|
+| Project | `guynode` (`rd6i9t7y`), org 32BELOW — pre-existing, reused |
+| Dataset | `production` (public ACL) |
+| Schema | 6 types, deployed via MCP `deploy_schema` (workspace `default`) |
+| Studio | https://guynode.sanity.studio/ (hosted, MCP-managed) |
+| CORS | `https://www.guynode.com`, `http://localhost:3000` |
+
+**The MCP-managed schema is authoritative.** The files here are a mirror kept
+in sync for review and documentation. There is deliberately no local Studio
+installation (`sanity.config.ts` / Studio deps) — the hosted MCP-managed Studio
+replaces it. If a local Studio is ever scaffolded, schema management must move
+to `npx sanity schema deploy` and the MCP `deploy_schema` tool must no longer
+be used (the two paths conflict).
+
+Schema changes: edit the mirror here first, then re-run `deploy_schema` with
+the equivalent declaration, then re-run `deploy_studio` so the hosted Studio
+picks up the change.
 
 ## Schema types (`schemaTypes/`)
 
@@ -24,16 +40,11 @@ Datasets remain pipeline-generated JSON (`public/data/datasets.json`) and are
 never authored in Sanity. Blog posts and analyses reference dataset IDs as plain
 strings only.
 
-## Remaining Phase 1 steps (need the Sanity MCP reachable)
+## Notes for Phase 2 (content migration)
 
-1. `search_docs` / `read_docs` (`get-started`, `schema`, `groq` rules) to confirm
-   current Studio/schema APIs before deploy.
-2. `whoami` / `list_projects` — reuse an existing project or `create_project` +
-   `create_dataset` if none.
-3. `deploy_schema` from `schemaTypes/index.ts`; `deploy_studio`.
-4. `add_cors_origin` for `https://www.guynode.com` + localhost.
-5. Verify with `get_schema` and an empty `query_documents` per type.
-
-Studio runtime scaffolding (`sanity.config.ts`, Studio deps) is deferred until
-deploy so we don't add `sanity`/Studio dependencies to `package.json` before the
-project exists.
+- Per Sanity schema rules: do NOT mint deterministic `_id`s from legacy IDs.
+  Let Sanity generate `_id`s; the source JSON IDs (`post-4`, `auth-1`,
+  `ana-001`, ...) go in each document's `legacyId` field, and imports upsert by
+  querying `legacyId`/`slug`.
+- Verified empty state: `count()` per type returned 0 across all 6 types after
+  deploy.

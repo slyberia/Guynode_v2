@@ -16,6 +16,12 @@ export const author = defineType({
       options: { hotspot: true },
       description: 'Replaces the legacy avatarUrl. On export, serialized back to avatarUrl.',
     }),
+    defineField({
+      name: 'legacyId',
+      title: 'Legacy ID',
+      type: 'string',
+      description: 'ID from the pre-Sanity JSON (e.g. auth-1). Import bookkeeping only.',
+    }),
   ],
   preview: { select: { title: 'name', subtitle: 'role' } },
 })
